@@ -21,6 +21,7 @@ TABLE CONTENT
  Custom amine
 */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 /*import vendors*/
 @import url(vendors/normalize.css);
 @import url(vendors/bootstrap.min.css);
@@ -341,6 +342,10 @@ input[type=number]:focus,
   color: #a2a2a2 !important;
 }
 
+.bg-none{
+  background: none !important;
+}
+
 .bg-brand {
   background-color: var(--main-color) !important;
 }
@@ -431,6 +436,10 @@ input[type=number]:focus,
 
 .bg-grey-9 {
   background-color: #f4f5f9 !important;
+}
+
+.bg-product{
+  background-color: #f2f2f2 !important;
 }
 
 .font-xs {
@@ -12406,6 +12415,13 @@ ion-icon{
 
 .text-shadow-light{
   text-shadow: 3px 3px 4px rgba(0,0,0,0.25);
+}
+
+.text-name-product{
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 20px;
+  color: var(--txt-main-color);
 }
 
 /*# sourceMappingURL=main.css.map */
