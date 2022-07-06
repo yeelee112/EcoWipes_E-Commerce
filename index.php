@@ -97,7 +97,7 @@
                                         <a href="page-account.html"><span class="lable ml-0">Account</span></a> -->
                                     </div>
 
-                                   
+
 
                                     <!-- <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
@@ -144,36 +144,35 @@
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt>Milks and Dairies</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-2.svg" alt>Clothing & beauty</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-3.svg" alt>Pet Foods & Toy</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-4.svg" alt>Baking material</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg" alt>Fresh Fruit</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-6.svg" alt>Wines & Drinks</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-7.svg" alt>Fresh Seafood</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-8.svg" alt>Fast food</a>
+                                            <a href="#">Ecobi</a>
+                                        <li>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-9.svg" alt>Vegetables</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-10.svg" alt>Bread and Juice</a>
+                                            <a href="#">Ecobi</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -181,18 +180,18 @@
                                     <div class="d-flex categori-dropdown-inner">
                                         <ul>
                                             <li>
-                                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-1.svg" alt>Milks and Dairies</a>
+                                                <a href="#">Ecobi</a>
                                             </li>
                                             <li>
-                                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-2.svg" alt>Clothing & beauty</a>
+                                                <a href="#">Ecobi</a>
                                             </li>
                                         </ul>
                                         <ul class="end">
                                             <li>
-                                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-3.svg" alt>Wines & Drinks</a>
+                                                <a href="#">Ecobi</a>
                                             </li>
                                             <li>
-                                                <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/icon-4.svg" alt>Fresh Seafood</a>
+                                                <a href="#">Ecobi</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -214,7 +213,7 @@
                                         <a href="#">Sản phẩm <i class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
                                             <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                <a class="menu-title" href="#">ECOBI</a>
+                                                <a class="menu-title" href="#">Ecobi</a>
                                                 <ul>
                                                     <li><a href="#">Meat & Poultry</a></li>
                                                     <li><a href="#">Meat & Poultry</a></li>
@@ -430,21 +429,20 @@
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(https://lh3.googleusercontent.com/pw/AM-JKLX4tiuocUSVP_q_bPTS9RwKr9ZOiljlhLrz3WKGLj_lv_b_W9BL21eACmq1vn7BG3uer0otI-Q0mybckR9BAswe5pam8BceFSOeKNGmiQWhKXer1p0k1VN8mUh90nZvlBUJm-uxl6jrKzrcp6wQ2Nhp=w1920-h770)">
+                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(https://lh3.googleusercontent.com/pw/AM-JKLXbF_NOKAvmDWlR-pKf83qNlXzHR0AYj2AOrusNL42v56xPxBztCRrdeZfnHMULvdwy1hy-viTpR62kXfx8Xb3LlukPalC_WdUVIn4yik_peRZxbq3CLNBFHkQbyYAM64wDWa0S0m3gn-5HTxZocT-L=w1920-h650)">
                             <div class="slider-content">
-                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft">
-                                    Khăn lau bếp<br>
+                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow">
+                                    Khăn ướt Lau bếp<br>
                                 </h1>
-                                <p class="mb-65">Sự lựa chọn tốt nhất cho nội trợ</p>
+                                <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn <span style="color:#72be44;font-weight:700;">tốt nhất</span> cho nội trợ</p>
                             </div>
                         </div>
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(https://lh3.googleusercontent.com/pw/AM-JKLWoIIUAjr_Xpkf20IY5ujVb3rlbG68-aWYxjGV5BVACZwx3hTBKgXP7UgheRM1UkOVEtPBOLspbu-kC1nNKZBVRrhiMVJ4s_T3-0-Fvu0tMBkg8woY5tRUHB7ffcEuxxPpCLrGnksBWBfbgp3yNvRZJ=w1920-h770)">
+                        <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(https://lh3.googleusercontent.com/pw/AM-JKLVYDDFrTwPT49JPT6Es44N9gFsdUMVqAo7JBQLzFC9UMnqTqS0fvm5z8E9tIS3r7Cm-jatgUIxTzE4u8y79lFiKhQixcJYnQRnBuGZK6kmItmsv2RRzlvgfO1IjAOHN2NfWPRuE5HIzsz7d7JwnmdYM=w1920-h650)">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40">
-                                    Fresh Vegetables<br>
-                                    Big discount
+                                    Khăn ướt <br>Tẩy trang
                                 </h1>
-                                <p class="mb-65">Save up to 50% off on your first order</p>
+                                <p class="mb-65">Sạch sạch sạch sạch</p>
                             </div>
                         </div>
                     </div>
@@ -452,9 +450,67 @@
                 </div>
             </div>
         </section>
+
+        <section class="popular-categories section-padding">
+            <div class="container wow animate__animated animate__fadeIn">
+                <div class="section-title">
+                    <div class="title">
+                        <h3>Sản phẩm nổi bật</h3>
+                        <ul class="list-inline nav nav-tabs links">
+                            <li class="list-inline-item nav-item"><a class="nav-link active" href="#">Tất cả</a></li>
+                            <li class="list-inline-item nav-item"><a class="nav-link" href="#">Ecobi</a></li>
+                            <li class="list-inline-item nav-item"><a class="nav-link" href="#">Eco Bamboo</a></li>
+                            <li class="list-inline-item nav-item"><a class="nav-link" href="#">Eco Function</a></li>
+                            <li class="list-inline-item nav-item"><a class="nav-link" href="#">Eco Tissue</a></li>
+                        </ul>
+                    </div>
+                    <div class="slider-arrow slider-arrow-2 flex-right carausel-10-columns-arrow" id="carausel-4-columns-arrows"></div>
+                </div>
+                <div class="carausel-4-columns-cover position-relative">
+                    <div class="carausel-4-columns" id="carausel-4-columns">
+                        <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                            <figure class="img-hover-scale overflow-hidden">
+                                <a href="shop-grid-right.html"><img src="" alt></a>
+                            </figure>
+                            <h6><a href="shop-grid-right.html">Khăn ướt</a></h6>
+                            <!-- <span>26 items</span> -->
+                        </div>
+                        <div class="card-2 bg-10 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
+                            <figure class="img-hover-scale overflow-hidden">
+                                <a href="shop-grid-right.html"><img src="" alt></a>
+                            </figure>
+                            <h6><a href="shop-grid-right.html">Khăn lạnh</a></h6>
+                            <!-- <span>28 items</span> -->
+                        </div>
+                        <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                            <figure class="img-hover-scale overflow-hidden">
+                                <a href="shop-grid-right.html"><img src="" alt></a>
+                            </figure>
+                            <h6><a href="shop-grid-right.html">Khăn ướt</a></h6>
+                            <!-- <span>26 items</span> -->
+                        </div>
+                        <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                            <figure class="img-hover-scale overflow-hidden">
+                                <a href="shop-grid-right.html"><img src="" alt></a>
+                            </figure>
+                            <h6><a href="shop-grid-right.html">Khăn ướt</a></h6>
+                            <!-- <span>26 items</span> -->
+                        </div>
+                        <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                            <figure class="img-hover-scale overflow-hidden">
+                                <a href="shop-grid-right.html"><img src="" alt></a>
+                            </figure>
+                            <h6><a href="shop-grid-right.html">Khăn ướt</a></h6>
+                            <!-- <span>26 items</span> -->
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    
+
     <!-- Preloader Start -->
     <!-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -486,6 +542,7 @@
     <script src="assets/js/plugins/jquery.vticker-min.js"></script>
     <script src="assets/js/plugins/jquery.theia.sticky.js"></script>
     <script src="assets/js/plugins/jquery.elevatezoom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js" async=""></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- Template  JS -->
