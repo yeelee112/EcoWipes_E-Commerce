@@ -3932,8 +3932,8 @@ table .product-thumbnail img {
   position: relative;
   background-color: #fff;
   overflow: hidden;
-  max-height: 320px;
-  padding: 25px 25px 0 25px;
+  /* max-height: 320px; */
+  /* padding: 25px 25px 0 25px; */
 }
 
 .product-cart-wrap .product-img-action-wrap .product-action-1 {
@@ -3977,9 +3977,9 @@ table .product-thumbnail img {
 .product-cart-wrap .product-action-1 {
   position: absolute;
   left: 50%;
-  top: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  top: 95%;
+  -webkit-transform: translateX(-50%) translateY(-95%);
+          transform: translateX(-50%) translateY(-95%);
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all .3s ease 0s;
@@ -4162,6 +4162,7 @@ table .product-thumbnail img {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 5px;
+  height: 38.38px !important;
 }
 
 .product-cart-wrap .product-content-wrap h2 a {
@@ -4187,7 +4188,7 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-content-wrap .product-price span.old-price {
-  font-size: 14px;
+  font-size: 13px;
   color: #adadad;
   margin: 0 0 0 7px;
   text-decoration: line-through;
@@ -4257,7 +4258,7 @@ table .product-thumbnail img {
 .product-cart-wrap .product-card-bottom .add-cart .add {
   position: relative;
   display: inline-block;
-  padding: 6px 20px 6px 20px;
+  padding: 6px 10px 6px 10px;
   border-radius: 4px;
   background-color: #DEF9EC;
   font-size: 14px;
