@@ -137,6 +137,7 @@ li.hr span {
   --light-main-color:#9eba86;
   --txt-main-color: #253D4E;
   --op-main-color: #598e38;
+  --gradient-right-sale: linear-gradient(to right, purple, red);
 }
 
 /*--- Common Classes---------------------*/
@@ -2755,7 +2756,7 @@ input.qty-val {
   padding: 20px 5px 30px 5px;
   margin-left: 7px;
   margin-right: 7px;
-  background-color: #fff;
+  background-image: linear-gradient(to bottom, purple, red);
   border-radius: 4px;
   border: none;
   margin-bottom: 2rem;
@@ -2763,7 +2764,7 @@ input.qty-val {
 
 .deals-countdown .countdown-section .countdown-amount {
   display: inline-block;
-  color: var(--main-color);
+  color: white;
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
@@ -2782,12 +2783,13 @@ input.qty-val {
   text-align: center;
   bottom: 10px;
   display: block;
-  color: #7E7E7E;
+  color: white;
   width: 100%;
   padding-left: 0;
   padding-right: 0;
   overflow: hidden;
   font-size: 16px;
+  height: 18px !important;
   text-transform: capitalize;
 }
 
@@ -3483,7 +3485,7 @@ table .product-thumbnail img {
   border-radius: 15px;
   overflow: hidden;
   height: 520px;
-  background: url(../imgs/banner/banner-4.png) no-repeat center bottom;
+  background: url(../imgs/banner/banner-5.png) no-repeat center bottom;
   background-size: cover;
   width: 100%;
 }
@@ -3965,6 +3967,8 @@ table .product-thumbnail img {
   top: 0;
   z-index: 2;
   opacity: 0;
+  height: 100%;
+  object-fit: cover !important;
   visibility: hidden;
   transition: 0.25s opacity, 0.25s visibility, transform 1.5s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 1.5s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -4265,6 +4269,12 @@ table .product-thumbnail img {
   font-weight: 700;
 }
 
+@media only screen and (max-width: 1600px) {
+  .product-cart-wrap .product-card-bottom .add-cart .add span{
+    display: none;
+  }
+}
+
 .product-cart-wrap .product-card-bottom .add-cart .add:hover {
   background-color: var(--main-color);
   color: #fff;
@@ -4340,7 +4350,7 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .progress {
-  height: 5px;
+  height: 8px;
 }
 
 .product-cart-wrap:hover .product-img-action-wrap .product-img a img.hover-img {
@@ -5408,7 +5418,7 @@ table .product-thumbnail img {
 }
 
 .progress-bar {
-  background-color: var(--main-color);
+  background-image: var(--gradient-right-sale);
 }
 
 .shop-filter-toogle {
@@ -8446,7 +8456,7 @@ span.fi-rs-apps {
 }
 
 .main-menu > nav > ul > li.hot-deals a {
-  background-image: linear-gradient(to right, purple, red); 
+  background-image: var(--gradient-right-sale); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
