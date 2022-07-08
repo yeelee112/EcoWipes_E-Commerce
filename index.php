@@ -931,92 +931,73 @@
 
         <section class="newsletter mb-15 wow animate__animated animate__fadeIn">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="position-relative newsletter-inner">
-                            <div class="newsletter-content">
-                                <h2 class="mb-20">
-                                    Stay home & get your daily <br>
-                                    needs from our shop
+                <div class="position-relative newsletter-inner">
+                    <div class="newsletter-content">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h2 class="mb-20 text-white">
+                                    Nhận ưu đãi và<br> coupon mới nhất!
                                 </h2>
-                                <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Nest Mart</span></p>
-                                <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Your emaill address">
-                                    <button class="btn" type="submit">Subscribe</button>
-                                </form>
+                                <p class="mb-45 text-white">Đăng ký để nhận được thông báo mới nhất</p>
+                                
                             </div>
-                            <img src="assets/imgs/banner/banner-9.png" alt="newsletter">
+                            <div class="col-md-6">
+                                    <form class="form-subcriber d-flex">
+                                        <input type="email" placeholder="Nhập địa chỉ email của bạn">
+                                        <button class="btn" type="submit" style="width: 200px;">Đăng ký</button>
+                                    </form>
+                                </div>
+                            <!-- <img src="assets/imgs/banner/banner-1.png" alt="newsletter"> 72be44   AEEB88 --> 
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <section class="featured section-padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
+                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6 mb-md-4 mb-xl-0">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay="0">
                             <div class="banner-icon">
-                                <img src="assets/imgs/theme/icons/icon-1.svg" alt>
+                                <img src="assets/imgs/theme/icons/icon-3.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <h3 class="icon-box-title">Best prices & offers</h3>
-                                <p>Orders $50 or more</p>
+                                <h3 class="icon-box-title">Hỗ trợ trực tiếp</h3>
+                                <p>24/7 khi khách hàng cần</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                             <div class="banner-icon">
                                 <img src="assets/imgs/theme/icons/icon-2.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <h3 class="icon-box-title">Free delivery</h3>
-                                <p>24/7 amazing services</p>
+                                <h3 class="icon-box-title">Nhiều ưu đãi</h3>
+                                <p>Giỏ hàng to, ưu đãi lớn</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                             <div class="banner-icon">
-                                <img src="assets/imgs/theme/icons/icon-3.svg" alt>
+                                <img src="assets/imgs/theme/icons/icon-1.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <h3 class="icon-box-title">Great daily deal</h3>
-                                <p>When you sign up</p>
+                                <h3 class="icon-box-title">Bảo hành</h3>
+                                <p>Đừng ngại đặt hàng</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
                             <div class="banner-icon">
                                 <img src="assets/imgs/theme/icons/icon-4.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <h3 class="icon-box-title">Wide assortment</h3>
-                                <p>Mega Discounts</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
-                            <div class="banner-icon">
-                                <img src="assets/imgs/theme/icons/icon-5.svg" alt>
-                            </div>
-                            <div class="banner-text">
-                                <h3 class="icon-box-title">Easy returns</h3>
-                                <p>Within 30 days</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
-                        <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
-                            <div class="banner-icon">
-                                <img src="assets/imgs/theme/icons/icon-6.svg" alt>
-                            </div>
-                            <div class="banner-text">
-                                <h3 class="icon-box-title">Safe delivery</h3>
-                                <p>Within 30 days</p>
+                                <h3 class="icon-box-title">Đổi trả dễ dàng</h3>
+                                <p>Bảo đảm an toàn</p>
                             </div>
                         </div>
                     </div>
@@ -1024,7 +1005,7 @@
             </div>
         </section>
 
-        <!-- <footer class="main">
+        <footer class="main">
             <section class="section-padding footer-mid">
                 <div class="container pt-15 pb-20">
                     <div class="row">
@@ -1032,13 +1013,12 @@
                             <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                                 <div class="logo mb-30">
                                     <a href class="mb-15"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
-                                    <p class="font-lg text-heading">Awesome grocery store website template</p>
                                 </div>
                                 <ul class="contact-infor">
-                                    <li><img src="assets/imgs/theme/icons/icon-location.svg" alt><strong>Address: </strong> <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span></li>
-                                    <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt><strong>Call Us:</strong><span>(+91) - 540-025-124553</span></li>
-                                    <li><img src="assets/imgs/theme/icons/icon-email-2.svg" alt><strong>Email:</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81f2e0ede4c1cfe4f2f5afe2eeec">[email&#160;protected]</a></span></li>
-                                    <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span></li>
+                                    <li><img src="assets/imgs/theme/icons/icon-location.svg" alt><strong>Địa chỉ: </strong> <span>Số 03 đường An Phú Đông 25, P.An Phú Đông, Q.12, Tp.HCM</span></li>
+                                    <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt><strong>ĐT: </strong><span>(+84) 28 628 74 999</span></li>
+                                    <li><img src="assets/imgs/theme/icons/icon-email-2.svg" alt><strong>Email: </strong><span><a href="mailto:info@ecowipes.com.vn" class="__cf_email__" data-cfemail="81f2e0ede4c1cfe4f2f5afe2eeec">info@ecowipes.com.vn</a></span></li>
+                                    <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt><strong>Giờ làm việc: </strong><span>08:00 - 17:00, Thứ 2 - Thứ 7</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -1110,7 +1090,7 @@
                         <div class="footer-bottom"></div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-6">
-                        <p class="font-sm mb-0">&copy; 2022, <strong class="text-brand">Nest</strong> - HTML Ecommerce Template <br>All rights reserved</p>
+                        <p class="font-sm mb-0">&copy; 2021, <strong class="text-brand">EcoWipes Vietnam Corporation</strong> - All Rights Reserved.</p>
                     </div>
                     <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
                         <div class="hotline d-lg-inline-flex mr-30">
@@ -1135,7 +1115,7 @@
                     </div>
                 </div>
             </div>
-        </footer> -->
+        </footer>
 
 
 

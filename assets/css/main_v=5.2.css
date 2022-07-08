@@ -3390,7 +3390,8 @@ table .product-thumbnail img {
 }
 
 .banner-left-icon .banner-icon {
-  max-width: 60px;
+  min-width: 60px;
+  max-height: 60px;
   margin-right: 20px;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
@@ -5419,6 +5420,7 @@ table .product-thumbnail img {
 
 .progress-bar {
   background-image: var(--gradient-right-sale);
+  border-radius: 0.25rem;
 }
 
 .shop-filter-toogle {
@@ -9599,7 +9601,7 @@ footer .hotline img {
 
 .newsletter .newsletter-inner .newsletter-content form {
   background-color: #fff;
-  max-width: 450px;
+  max-width: 500px;
   border-radius: 50px;
   position: relative;
   z-index: 4;
