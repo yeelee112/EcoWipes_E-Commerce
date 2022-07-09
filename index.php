@@ -273,6 +273,7 @@
                                                 <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ</a></h2>
                                                 <div class="product-price mt-10">
                                                     <span>38.000 đ </span>
+                                                    <span class="old-price">40.000 đ</span>
                                                 </div>
                                                 <div class="sold mt-15 mb-15">
                                                     <div class="progress mb-5">
@@ -460,6 +461,8 @@
                                         <div class="product-card-bottom">
                                             <div class="product-price">
                                                 <span>38.000 đ</span>
+                                                <span class="old-price"></span>
+
                                             </div>
                                             <div class="add-cart">
                                                 <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </a>

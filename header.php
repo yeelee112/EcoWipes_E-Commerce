@@ -189,7 +189,7 @@
                                         <a href="about-us">Về chúng tôi</a>
                                     </li>
                                     <li class="position-static">
-                                        <a href="#">Sản phẩm <i class="fi-rs-angle-down"></i></a>
+                                        <a href="shop">Sản phẩm <i class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
                                             <li class="sub-mega-menu sub-mega-menu-width-22">
                                                 <a class="menu-title" href="#">Ecobi</a>
