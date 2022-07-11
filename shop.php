@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>EcoWipes | E-Commerce</title>
-    <?php
-    require_once 'library.php';
-    ?>
+    <?php require_once 'library.php'; ?>
 </head>
 
 <body>
@@ -111,87 +109,38 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- Fillter By Price -->
-                    <div class="sidebar-widget price_range range mb-30">
-                        <h5 class="section-title style-1 mb-30">Fill by price</h5>
-                        <div class="price-filter">
-                            <div class="price-filter-inner">
-                                <div id="slider-range" class="mb-20"></div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong></div>
-                                    <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-group">
-                            <div class="list-group-item mb-10 mt-10">
-                                <label class="fw-900">Color</label>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value>
-                                    <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
-                                    <br>
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value>
-                                    <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
-                                    <br>
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value>
-                                    <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
-                                </div>
-                                <label class="fw-900 mt-15">Item Condition</label>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value>
-                                    <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                                    <br>
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value>
-                                    <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
-                                    <br>
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value>
-                                    <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="shop" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
-                    </div>
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
-                        <h5 class="section-title style-1 mb-30">New products</h5>
+                        <h5 class="section-title style-1 mb-30">Sản phẩm mới</h5>
                         <div class="single-post clearfix">
                             <div class="image">
-                                <img src="assets/imgs/shop/thumbnail-3.jpg" alt="#">
+                                <img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h5><a href="shop-product-detail.html">Chen Cardigan</a></h5>
-                                <p class="price mb-0 mt-5">$99.50</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 90%"></div>
-                                </div>
+                                <h6><a href="shop-product-detail.html">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h6>
+                                <p class="price mb-0 mt-5">38.000 đ</p>
                             </div>
                         </div>
                         <div class="single-post clearfix">
                             <div class="image">
-                                <img src="assets/imgs/shop/thumbnail-4.jpg" alt="#">
+                                <img src="assets/imgs/product/EW_MALL_MakeupRemover_0Thumb.png" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h6><a href="shop-product-detail.html">Chen Sweater</a></h6>
-                                <p class="price mb-0 mt-5">$89.50</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 80%"></div>
-                                </div>
+                                <h6><a href="shop-product-detail.html">Khăn tẩy trang 25 tờ</a></h6>
+                                <p class="price mb-0 mt-5">38.000 đ</p>
                             </div>
                         </div>
                         <div class="single-post clearfix">
                             <div class="image">
-                                <img src="assets/imgs/shop/thumbnail-5.jpg" alt="#">
+                                <img src="assets/imgs/product/EW_MALL_MakeupRemover_0Thumb.png" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h6><a href="shop-product-detail.html">Colorful Jacket</a></h6>
-                                <p class="price mb-0 mt-5">$25</p>
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width: 60%"></div>
-                                </div>
+                                <h6><a href="shop-product-detail.html">Giấy vệ sinh cao cấp 10 cuộn / Không lõi</a></h6>
+                                <p class="price mb-0 mt-5">38.000 đ</p>
                             </div>
                         </div>
                     </div>
-                    <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
+                    <!-- <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
                         <img src="assets/imgs/banner/banner-11.png" alt>
                         <div class="banner-text">
                             <span>Oganic</span>
@@ -201,7 +150,7 @@
                                 Juice
                             </h4>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

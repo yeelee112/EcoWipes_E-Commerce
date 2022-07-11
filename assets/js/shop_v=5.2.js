@@ -64,27 +64,48 @@
             });
         });
         //Qty Up-Down
-        $('.detail-qty').each(function () {
+        $(".detail-qty").each(function () {
             var qtyval = parseInt($(this).find(".qty-val").val(), 10);
-
-            $('.qty-up').on('click', function (event) {
-                event.preventDefault();
-                qtyval = qtyval + 1;   
-                $(this).prev().val(qtyval);
+            $(".qty-up").on("click", function (event) {
+              event.preventDefault();
+              qtyval = qtyval + 1;
+              $(this).prev().val(qtyval);
             });
 
-             $(".qty-down").on("click", function (event) {
-                 event.preventDefault(); 
-                 qtyval = qtyval - 1;
-                 if (qtyval > 1) {
-                     $(this).next().val(qtyval);
-                 } else {
-                     qtyval = 1;
-                     $(this).next().val(qtyval);
-                 }
-             });
-        });
+            $(".qty-down").on("click", function (event) {
+              event.preventDefault();
+              qtyval = qtyval - 1;
+              if (qtyval > 1) {
+                $(this).next().val(qtyval);
+              } else {
+                qtyval = 1;
+                $(this).next().val(qtyval);
+              }
+            });
+          });
 
+        $(".qty-val").change(function(){
+            $(".detail-qty").each(function () {
+              var qtyval = parseInt($(this).find(".qty-val").val(), 10);
+              $(".qty-up").on("click", function (event) {
+                event.preventDefault();
+                qtyval = qtyval + 1;
+                $(this).prev().val(qtyval);
+              });
+
+              $(".qty-down").on("click", function (event) {
+                event.preventDefault();
+                qtyval = qtyval - 1;
+                if (qtyval > 1) {
+                  $(this).next().val(qtyval);
+                } else {
+                  qtyval = 1;
+                  $(this).next().val(qtyval);
+                }
+              });
+            });
+        });
+        
         $('.dropdown-menu .cart_list').on('click', function (event) {
             event.stopPropagation();
         });

@@ -1,6 +1,9 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="UTF-8">
+<meta name="author" content="EcoWipes">
 <meta name="description" content>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta http-equiv = "content-language" content = "vi">
 <meta property="og:title" content>
 <meta property="og:type" content>
 <meta property="og:url" content>
