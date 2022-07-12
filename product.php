@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
-                    <span></span> <a href="#">Cửa hàng</a> <span></span><a href="#"> Khăn Gia Đình </a><span></span> Khăn ướt Ecobi 80 tờ - Không Mùi
+                    <span></span> <a href="shop">Cửa hàng</a> <span></span><a href="#"> Khăn Gia Đình </a><span></span> Khăn ướt Ecobi 80 tờ - Không Mùi
                 </div>
             </div>
         </div>
@@ -79,21 +79,38 @@
                                             <li><a href="#">100 tờ</a></li>
                                         </ul>
                                     </div>
-                                    <div class="attr-detail attr-size mb-40">
-                                        <strong class="mr-10 mb-10 mt-20">Kiểu: </strong>
+                                    <div class="attr-detail attr-size mb-10">
+                                        <strong class="mr-10 mb-10">Kiểu: </strong>
                                         <ul class="list-filter size-filter font-small">
                                             <li><a href="#">Hương Dịu Nhẹ</a></li>
                                             <li class="active"><a href="#">Không Mùi</a></li>
                                         </ul>
                                     </div>
-                                    <div class="detail-extralink mb-50">
-                                        <div class="detail-qty border radius">
-                                            <a class="qty-down" type="number"><i class="fi-rs-angle-small-down"></i></a>
-                                            <input class="qty-val" value="1" min="1" type="number" inputmode="numeric" pattern="\d*"></input>
-                                            <a class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                    <div class="detail-extralink mb-10 mt-20">
+                                        <div class="detail-qty">
+                                            <strong class="mr-20">Số lượng: </strong>
+                                            <a class="qty-down border"><i class="fa-solid fa-minus"></i></a>
+                                            <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="90" oninput="this.value = Math.abs(this.value)"></input>
+                                            <a class="qty-up border"><i class="fa-solid fa-plus"></i></a>
                                         </div>
+
                                         <div class="product-extra-link2">
                                             <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                        </div>
+                                    </div>
+                                    <div class="overview-product-container">
+                                        <div class="overview-product-title">
+                                            <h4>Thông tin sản phẩm</h4>
+                                        </div>
+                                        <div class="overview-product-list">
+                                            <ul>
+                                                <li>Quy cách: 80 tờ/gói - 24 gói/thùng.</li>
+                                                <li>Kích thước khăn: Khăn khổ lớn 170x200mm.</li>
+                                                <li>Định lượng vải: Vải bi 50gsm với các hạt nổi 3D.</li>
+                                                <li>Mùi hương: KHÔNG MÙI.</li>
+                                                <li>Hạn sử dụng: 3 năm từ ngày sản xuất.</li>
+                                                <li>Ngày sản xuất & hạn sử dụng: In trên bao bì.</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +119,7 @@
                         </div>
                         <div class="product-info">
                             <div class="tab-style3">
-                                <div class="title-describe-source"> 
+                                <div class="title-describe-source">
                                     <h3>MÔ TẢ SẢN PHẨM KHĂN ƯỚT EM BÉ ECOBI KHÔNG MÙI 80 TỜ</h3>
                                 </div>
                                 <div class="product-content-describe-source">
@@ -194,7 +211,7 @@
                                 <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                     <div class="product-cart-wrap hover-up">
                                         <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom">
+                                            <div class="product-img">
                                                 <a href="shop-product-right.html" tabindex="0">
                                                     <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
                                                     <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
@@ -219,7 +236,7 @@
                                 <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                     <div class="product-cart-wrap hover-up">
                                         <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom">
+                                            <div class="product-img">
                                                 <a href="shop-product-right.html" tabindex="0">
                                                     <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
                                                     <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
@@ -244,7 +261,7 @@
                                 <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                     <div class="product-cart-wrap hover-up">
                                         <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom">
+                                            <div class="product-img">
                                                 <a href="shop-product-right.html" tabindex="0">
                                                     <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
                                                     <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
@@ -270,7 +287,7 @@
                                 <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                     <div class="product-cart-wrap hover-up">
                                         <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom">
+                                            <div class="product-img">
                                                 <a href="shop-product-right.html" tabindex="0">
                                                     <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
                                                     <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
@@ -302,6 +319,17 @@
     </main>
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
+    <script>
+        $('#qty-val').on('input', function() {
+            var value = $(this).val();
+
+            if ((value !== '') && (value.indexOf('.') === -1)) {
+
+                $(this).val(Math.max(Math.min(value, 90), 1));
+            }
+        });
+        
+    </script>
 </body>
 
 </html>

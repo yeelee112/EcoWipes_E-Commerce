@@ -65,45 +65,44 @@
         });
         //Qty Up-Down
         $(".detail-qty").each(function () {
-            var qtyval = parseInt($(this).find(".qty-val").val(), 10);
+            var maxValue = $('.qty-val').attr("max");
             $(".qty-up").on("click", function (event) {
-              event.preventDefault();
-              qtyval = qtyval + 1;
-              $(this).prev().val(qtyval);
-            });
+                var qtyval = parseInt($('.qty-val').val(), 10);
+                if(qtyval < maxValue){
+                  event.preventDefault();
+                  qtyval = qtyval + 1;
+                  $(this).prev().val(qtyval);
+                }
+                else{
+                  $(".qty-up").css("display","none");
+                }
+              });
 
             $(".qty-down").on("click", function (event) {
+              var qtyval = parseInt($('.qty-val').val(), 10);
               event.preventDefault();
               qtyval = qtyval - 1;
               if (qtyval > 1) {
                 $(this).next().val(qtyval);
-              } else {
+                $(".qty-up").css("display","inline");
+              } 
+              else {
                 qtyval = 1;
                 $(this).next().val(qtyval);
+                $(".qty-up").css("display","inline");
               }
             });
           });
 
-        $(".qty-val").change(function(){
-            $(".detail-qty").each(function () {
-              var qtyval = parseInt($(this).find(".qty-val").val(), 10);
-              $(".qty-up").on("click", function (event) {
-                event.preventDefault();
-                qtyval = qtyval + 1;
-                $(this).prev().val(qtyval);
-              });
-
-              $(".qty-down").on("click", function (event) {
-                event.preventDefault();
-                qtyval = qtyval - 1;
-                if (qtyval > 1) {
-                  $(this).next().val(qtyval);
-                } else {
-                  qtyval = 1;
-                  $(this).next().val(qtyval);
-                }
-              });
-            });
+        $(".qty-val").keyup(function(){
+          var maxValue = $('.qty-val').attr("max");
+          var qtyval = parseInt($('.qty-val').val(), 10);
+          if(qtyval >= maxValue){
+            $(".qty-up").css("display","none");
+          }
+          else{
+            $(".qty-up").css("display","inline");
+          }
         });
         
         $('.dropdown-menu .cart_list').on('click', function (event) {
