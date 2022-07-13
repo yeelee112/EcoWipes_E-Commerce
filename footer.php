@@ -1,4 +1,4 @@
-<footer class="main" style="padding-top:80px;">
+<footer class="main" style="margin-top:80px;">
     <section class="section-padding footer-mid">
         <div class="container pt-15 pb-20">
             <div class="row">

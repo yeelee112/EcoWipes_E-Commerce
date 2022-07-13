@@ -102,7 +102,7 @@
                                 <div class="" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
                                     Kết thúc trong:
                                 </div>
-                                <div class="deals-countdown pl-5" id="clock" data-countdown="2022/07/09 00:00:00">
+                                <div class="deals-countdown pl-5" id="clock" data-countdown="2022/07/20 00:00:00">
                                     <span class="countdown-section">
                                         <span class="countdown-amount hover-up">03</span>
                                         <span class="countdown-period"> ngày </span>
@@ -612,10 +612,10 @@
     <?php require_once 'script.php' ?>
 
     <script>
-        $('#clock').countdown('2022/07/09 00:00:00').on('update.countdown',
+        $('#clock').countdown('2022/07/21 00:00:00').on('update.countdown',
             function(event) {
                 var $this = $(this).html(event.strftime('' +
-                    '<span class="countdown-section"><span class="countdown-amount hover-up">%-d</span><span class="countdown-period"> Ngày </span></span>' +
+                    '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> Ngày </span></span>' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%H</span><span class="countdown-period"> Giờ </span></span>' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%M</span><span class="countdown-period"> Phút </span></span>' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%S</span><span class="countdown-period"> Giây </span></span>'));

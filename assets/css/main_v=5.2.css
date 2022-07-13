@@ -12517,4 +12517,135 @@ input[type=number] {
   padding: 3px 0;
   font-size:15px;
 }
+
+.cart-screen{
+  background-color: #f8f8f8;
+}
+
+
+.cart-heading{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.cart-title{
+  padding-left:20px;
+}
+
+.cart-item-img{
+  max-width: 80px;
+}
+
+/* .text-start{
+  text-align: left !important;
+} */
+
+/* .text-title{
+  font-size: 1rem;
+} */
+
+.btn.btn-items{
+  color: #72be44;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.6em;
+}
+
+.cart-remove{
+  color: #495057;
+    font-size: .7875rem;
+}
+
+.cart-header {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-weight: 700;
+  padding: 1.2rem 2rem;
+  color: var(--txt-main-color);
+  background: #f8f9fa;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e9ecef;
+  background-color: white;
+}
+
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+
+svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.cart-body{
+  font-size: 0.85rem;
+}
+
+.svg-inline--fa.fa-w-11 {
+  width: 0.75em;
+}
+
+.cart-item{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.cart-item:last-child{
+  border-bottom: none;
+}
+
+.cart-remove {
+  font-weight: 500;
+  text-align: center;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 0.9rem;
+  color: #ff7373;
+  text-decoration: underline;
+}
+
+.text-product-cart{
+  font-weight: 600;
+}
+
+.text-muted {
+  --bs-text-opacity: 1;
+  color: #868e96 !important;
+}
+
+.input-items {
+  min-width: 40px;
+}
+
+@media (min-width: 768px){
+  .border-md {
+    border: 1px solid #dee2e6 !important;
+  }
+}
+
+.cart-body, .cart-footer {
+  padding: 0 2rem;
+  background-color: white;
+}
+
+.text-dark{
+  color: var(--txt-main-color) !important;
+}
+
+.text-total-price{
+  font-weight: 600;
+  color: var(--txt-main-color);
+}
+
+.price-per-item{
+  font-weight: 500;
+}
+
+.detail-qty a{
+  -webkit-transition: all 0s ease 0s !important; 
+  transition: all 0s ease 0s !important;
+}
+
 /*# sourceMappingURL=main.css.map */

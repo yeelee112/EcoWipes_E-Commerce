@@ -321,14 +321,14 @@
     <?php require_once 'script.php' ?>
     <script>
         $('#qty-val').on('input', function() {
+            var maxValue = $(this).parent().children('#qty-val').attr("max");
             var value = $(this).val();
 
             if ((value !== '') && (value.indexOf('.') === -1)) {
 
-                $(this).val(Math.max(Math.min(value, 90), 1));
+                $(this).val(Math.max(Math.min(value, maxValue), 1));
             }
         });
-        
     </script>
 </body>
 
