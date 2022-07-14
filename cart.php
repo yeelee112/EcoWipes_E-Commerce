@@ -161,8 +161,6 @@
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
     <script>
-        const maxQuantity = 10000;
-        const maxInputQuantity = 99999;
 
         // $('#qty-val').on('input', function() {
         //     var maxValue = $(this).parent().children('#qty-val').attr("max");
