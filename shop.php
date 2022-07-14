@@ -28,7 +28,7 @@
                 <div class="col-lg-4-5">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
-                            <p>Chúng tôi tìm thấy <strong class="text-brand">29</strong> sản phẩm cho bạn</p>
+                            <p>Chúng tôi tìm thấy <strong class="text-brand">24</strong> sản phẩm cho bạn</p>
                         </div>
                         <div class="sort-by-product-area">
                             <div class="sort-by-cover">

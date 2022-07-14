@@ -55,17 +55,20 @@
                             <div class="cart-item">
                                 <div class=" d-flex align-items-center text-start row">
                                     <div class="col-md-5 col-12">
-                                        <div class="d-flex align-items-center"><a href="#"><img class="cart-item-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt="..." /></a>
-                                            <div class="cart-title text-start"><a class="text-uppercase text-dark text-product-cart" href="#">Khăn ướt Ecobi 80 tờ - Không Mùi</a>
+                                        <div class="d-flex align-items-center"><a href="#"><img class="cart-item-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_0Thumb.png" alt="..." /></a>
+                                            <div class="cart-title text-start"><a class="text-uppercase text-dark text-product-cart" href="#">Khăn ướt Ecobi 80 tờ - Hương Dịu Nhẹ</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mt-4 mt-md-0 col-md-7 col-12">
                                         <div class="align-items-center row">
                                             <div class="col-md-3">
-                                                <div class="row">
+                                                <div class="row align-items-center">
                                                     <div class="d-md-none text-muted col-6">Giá</div>
-                                                    <div class="text-start col-md-12 col-6 price-per-item">38.000 đ
+                                                    <div class="text-start col-md-12 col-6 price-per-item">
+                                                        <input type="hidden" class="hidden-input" value="40000">
+                                                        <div class="first-price">40.000 ₫</div>
+                                                        <!-- <div class="original-price">40.000 đ</div> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,7 +88,7 @@
                                                 <div class="row">
                                                     <div class="d-md-none text-muted col-6">Tổng</div>
                                                     <div class="text-start col-md-12 col-6 text-total-price">
-                                                        <!-- -->38.000 đ
+                                                        <!-- 40.000 ₫-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,9 +112,12 @@
                                     <div class="mt-4 mt-md-0 col-md-7 col-12">
                                         <div class="align-items-center row">
                                             <div class="col-md-3">
-                                                <div class="row">
+                                                <div class="row align-items-center">
                                                     <div class="d-md-none text-muted col-6">Giá</div>
-                                                    <div class="text-start col-md-12 col-6 price-per-item">38.000 đ
+                                                    <div class="text-start col-md-12 col-6 price-per-item">
+                                                        <input type="hidden" class="hidden-input" value="38000">
+                                                        <div class="first-price">38.000 ₫</div>
+                                                        <div class="second-price">40.000 ₫</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +127,7 @@
                                                     <div class="col-md-12 col-sm-3 col-5 a">
                                                         <div class="detail-qty mb-0">
                                                             <a class="btn-items btn-items-decrease border"><i class="fa-solid fa-minus"></i></a>
-                                                            <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="90" oninput="this.value = Math.abs(this.value)"></input>
+                                                            <input class="qty-val border" id="qty-val" value="2" min="1" type="number" inputmode="numeric" max="80" oninput="this.value = Math.abs(this.value)"></input>
                                                             <a class="btn-items btn-items-increase border"><i class="fa-solid fa-plus"></i></a>
                                                         </div>
                                                     </div>
@@ -130,7 +136,8 @@
                                             <div class="col-md-3">
                                                 <div class="row">
                                                     <div class="d-md-none text-muted col-6">Tổng</div>
-                                                    <div class="text-start col-md-12 col-6 text-total-price">38.000 đ
+                                                    <div class="text-start col-md-12 col-6 text-total-price">
+                                                        <!-- 38.000 đ -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,7 +168,6 @@
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
     <script>
-
         // $('#qty-val').on('input', function() {
         //     var maxValue = $(this).parent().children('#qty-val').attr("max");
         //     var value = $(this).val();
@@ -171,6 +177,30 @@
         //         $(this).val(Math.max(Math.min(value, maxValue), 1));
         //     }
         // });
+
+
+        
+        $(document).ready(function() {
+            var elements = $("input#qty-val");
+            $.each($("input#qty-val"), function () {
+                var findNumb = $(this).val();
+
+                var totalPrice = $(this).closest(".cart-item").find(".text-total-price");
+                var totalPriceText = totalPrice.text();
+                var totalPriceNumb = Number(totalPriceText.replace(/[^0-9.-]+/g, ""));
+
+                var pricePerItem = $(this).closest(".cart-item").find(".hidden-input").val();
+                var pricePerItemNumb = Number(pricePerItem.replace(/[^0-9.-]+/g, ""));
+
+                totalPriceNumb = pricePerItemNumb * findNumb;
+
+                totalPrice.text(new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(totalPriceNumb));
+            });
+        });
+
 
         (function($) {
             $.fn.inputFilter = function(inputFilter) {
@@ -189,32 +219,32 @@
             };
         }(jQuery));
 
-        $("#intLimitTextBox").inputFilter(function(value) {
-            return /^\d*$/.test(value) && (value === "" || parseInt(value) <= maxInputQuantity && parseInt(value) > 0);
-        });
+        
 
         $(".btn-items-decrease").click(function() {
-            var findNumb = $(this).parent().children("input").val();
+            var findNumb = $(this).parent().children(".qty-val").val();
             var maxQuantity = $(this).parent().children('#qty-val').attr("max");
 
             if (findNumb > 1) {
                 $(this).css("visibility", "visible");
                 findNumb--;
-                $(this).parent().children("input").val(findNumb);
+                $(this).parent().children(".qty-val").val(findNumb);
 
                 var totalPrice = $(this).closest(".cart-item").find(".text-total-price");
                 var totalPriceText = totalPrice.text();
                 var totalPriceNumb = Number(totalPriceText.replace(/[^0-9.-]+/g, ""));
 
-                if ($(this).parent().children("input").val() < maxQuantity) {
+                if ($(this).parent().children(".qty-val").val() < maxQuantity) {
                     $(this).closest(".cart-item").find(".btn-items-increase").css("visibility", "visible");
                 }
-                var pricePerItem = $(this).closest(".cart-item").find(".price-per-item").text();
+                var pricePerItem = $(this).closest(".cart-item").find(".hidden-input").val();
                 var pricePerItemNumb = Number(pricePerItem.replace(/[^0-9.-]+/g, ""));
 
                 totalPriceNumb = pricePerItemNumb * findNumb;
-                totalPriceNumb = totalPriceNumb.toFixed(3) + ' đ';
-                totalPrice.text(totalPriceNumb);
+                totalPrice.text(new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(totalPriceNumb));
             }
             if (findNumb == 1) {
                 $(this).css("visibility", "hidden");
@@ -225,9 +255,9 @@
             var maxQuantity = $(this).parent().children('#qty-val').attr("max");
             var findNumb = $(this).parent().children("input").val();
             findNumb++;
-            $(this).parent().children("input").val(findNumb);
-            if ($(this).parent().children("input").val() >= maxQuantity) {
-                $(this).parent().children("input").val(maxQuantity);
+            $(this).parent().children(".qty-val").val(findNumb);
+            if ($(this).parent().children(".qty-val").val() >= maxQuantity) {
+                $(this).parent().children(".qty-val").val(maxQuantity);
                 $(this).css("visibility", "hidden");
             }
 
@@ -243,23 +273,26 @@
             var totalPriceText = totalPrice.text();
             var totalPriceNumb = Number(totalPriceText.replace(/[^0-9.-]+/g, ""));
 
-            var pricePerItem = $(this).closest(".cart-item").find(".price-per-item").text();
+            var pricePerItem = $(this).closest(".cart-item").find(".hidden-input").val();
+
             var pricePerItemNumb = Number(pricePerItem.replace(/[^0-9.-]+/g, ""));
 
             totalPriceNumb = pricePerItemNumb * findNumb;
-            totalPriceNumb = totalPriceNumb.toFixed(3) + ' đ';
-            totalPrice.text(totalPriceNumb);
+            totalPrice.text(new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(totalPriceNumb));
         });
 
-        $("input").on('input', function() {
+        $(".qty-val").on('input', function() {
             var maxQuantity = $(this).parent().children('#qty-val').attr("max");
-            var findQuantity = $(this).parent().children("input").val();
+            var findQuantity = $(this).parent().children(".qty-val").val();
             var value = $(this).val();
 
             if ((value !== '') && (value.indexOf('.') === -1)) {
-
                 $(this).val(Math.max(Math.min(value, maxQuantity), 1));
             }
+
             if ($(this).val() < 0) {
                 $(this).val("1");
             }
@@ -287,14 +320,18 @@
             var totalPriceText = totalPrice.text();
             var totalPriceNumb = Number(totalPriceText.replace(/[^0-9.-]+/g, ""));
 
-            var pricePerItem = $(this).closest(".cart-item").find(".price-per-item").text();
+            var pricePerItem = $(this).closest(".cart-item").find(".hidden-input").val();
             var pricePerItemNumb = Number(pricePerItem.replace(/[^0-9.-]+/g, ""));
 
             totalPriceNumb = pricePerItemNumb * findNumb;
-            totalPriceNumb = totalPriceNumb.toFixed(3) + ' đ';
 
-            totalPrice.text(totalPriceNumb);
+            totalPrice.text(new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(totalPriceNumb));
         });
+
+        
     </script>
 </body>
 

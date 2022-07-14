@@ -71,9 +71,9 @@
                                             <a href="login">Đăng ký</a>
                                         </div>
                                         <!-- <a href="page-account.html">
-                                            <ion-icon name="person-circle-outline"></ion-icon>
+                                            <img class="avt-account" src="https://ui-avatars.com/api/?name=Digital+Design&rounded=true&size=48">
                                         </a>
-                                        <a href="page-account.html"><span class="lable ml-0">Account</span></a> -->
+                                        <a href="page-account.html"><span class="lable ml-0">Digital Design</span></a> -->
                                     </div>
 
 

@@ -12436,6 +12436,10 @@ footer .hotline img {
   line-height:0;
 }
 
+.avt-account{
+  margin-right: 15px;
+}
+
 ion-icon{
   color: var(--txt-main-color);
 }
@@ -12606,6 +12610,10 @@ svg:not(:root).svg-inline--fa {
   text-decoration: underline;
 }
 
+.cart-remove:hover{
+  color: #e42e2e;
+}
+
 .text-product-cart{
   font-weight: 600;
 }
@@ -12647,5 +12655,12 @@ svg:not(:root).svg-inline--fa {
   -webkit-transition: all 0s ease 0s !important; 
   transition: all 0s ease 0s !important;
 }
+
+.price-per-item .second-price{
+  font-size: 0.7rem;
+  color: #B6B6B6;
+  text-decoration: line-through;
+}
+
 
 /*# sourceMappingURL=main.css.map */

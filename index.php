@@ -187,8 +187,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_0Thumb.png" alt>
+                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_Feature1.png" alt>
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -202,7 +202,7 @@
                                                 <div class="product-category">
                                                     <a href="shop-grid-right.html">Khăn Gia Đình</a>
                                                 </div>
-                                                <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
+                                                <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ - Hương Dịu Nhẹ</a></h2>
                                                 <div class="product-price mt-10">
                                                     <span>38.000 đ </span>
                                                     <span class="old-price">40.000 đ</span>
@@ -221,8 +221,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_KITCHEN_42Wipes_01.jpg" alt>
+                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_KITCHEN_42Wipes_03.jpg" alt>
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -234,18 +234,18 @@
                                             </div>
                                             <div class="product-content-wrap">
                                                 <div class="product-category">
-                                                    <a href="shop-grid-right.html">Khăn Gia Đình</a>
+                                                    <a href="shop-grid-right.html">Khăn Chức Năng</a>
                                                 </div>
-                                                <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
+                                                <h2><a href="shop-product-right.html">Khăn lau bếp 42 tờ</a></h2>
                                                 <div class="product-price mt-10">
-                                                    <span>38.000 đ </span>
-                                                    <span class="old-price">40.000 đ</span>
+                                                    <span>48.000 đ </span>
+                                                    <span class="old-price">54.000 đ</span>
                                                 </div>
                                                 <div class="sold mt-15 mb-15">
                                                     <div class="progress mb-5">
-                                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar" role="progressbar" style="width: 47.5%" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
-                                                    <span class="font-xs text-heading"> Đã bán: 90/120</span>
+                                                    <span class="font-xs text-heading"> Đã bán: 57/120</span>
                                                 </div>
                                                 <a href="shop-cart.html" class="btn w-100 hover-up" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</a>
                                             </div>
@@ -255,8 +255,8 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img">
                                                     <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_SneakerWipes_0Thumb.png" alt>
+                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_SneakerWipes_Features_05.png" alt>
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">
@@ -268,18 +268,18 @@
                                             </div>
                                             <div class="product-content-wrap">
                                                 <div class="product-category">
-                                                    <a href="shop-grid-right.html">Khăn Gia Đình</a>
+                                                    <a href="shop-grid-right.html">Khăn Chức Năng</a>
                                                 </div>
-                                                <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ</a></h2>
+                                                <h2><a href="shop-product-right.html">Khăn lau giày 25 tờ</a></h2>
                                                 <div class="product-price mt-10">
-                                                    <span>38.000 đ </span>
-                                                    <span class="old-price">40.000 đ</span>
+                                                    <span>40.000 đ </span>
+                                                    <span class="old-price">44.000 đ</span>
                                                 </div>
                                                 <div class="sold mt-15 mb-15">
                                                     <div class="progress mb-5">
-                                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
-                                                    <span class="font-xs text-heading"> Đã bán: 90/120</span>
+                                                    <span class="font-xs text-heading"> Đã bán: 110/120</span>
                                                 </div>
                                                 <a href="shop-cart.html" class="btn w-100 hover-up" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</a>
                                             </div>
@@ -402,8 +402,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                <img class="default-img" src="assets/imgs/product/EW_MALL_Ecobi_DryWipes_270s_Combo3_1.jpg" alt>
+                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_Ecobi_DryWipes_270s_Combo3_2.jpg" alt>
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -417,14 +417,14 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.html">Khăn Gia Đình</a>
                                         </div>
-                                        <h2><a href="#">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
+                                        <h2><a href="#">Combo 3 túi Khăn Khô Đa Năng 270 tờ</a></h2>
                                         <div>
                                             <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">Ecobi</a></span>
                                         </div>
                                         <div class="product-card-bottom">
                                             <div class="product-price">
-                                                <span>38.000 đ</span>
-                                                <span class="old-price">40.000 đ</span>
+                                                <span>145.500 đ</span>
+                                                <span class="old-price">150.000 đ</span>
                                             </div>
                                             <div class="add-cart">
                                                 <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </a>
@@ -439,8 +439,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_0Thumb.png" alt>
+                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_Features_01.png" alt>
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -477,8 +477,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                <img class="default-img" src="assets/imgs/product/EW_EcoTissue_FacialTissue_Blue_01.png" alt>
+                                                <img class="hover-img" src="assets/imgs/product/EW_EcoTissue_FacialTissue_Blue_03.png" alt>
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -490,11 +490,11 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.html">Khăn Gia Đình</a>
+                                            <a href="shop-grid-right.html">Giấy</a>
                                         </div>
-                                        <h2><a href="#">Giấy vệ sinh cao cấp 10 cuộn/Không lõi</a></h2>
+                                        <h2><a href="#">Giấy lụa cao cấp Hộp rút 180 tờ</a></h2>
                                         <div>
-                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">Ecobi</a></span>
+                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">EcoTissue</a></span>
                                         </div>
                                         <div class="product-card-bottom">
                                             <div class="product-price">
