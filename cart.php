@@ -153,14 +153,80 @@
                         </div>
                         <div class="my-5 d-flex justify-content-between flex-column flex-lg-row">
                             <div class="cart-action d-flex justify-content-between">
-                                <a class="btn "><i class="fi-rs-arrow-left mr-10"></i>Tiếp tục mua sắm</a>
+                                <a href="shop" class="continue-purchase-btn">
+                                    <ion-icon name="chevron-back-outline"></ion-icon>
+                                    <div class="pl-10">Tiếp tục mua sắm</div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    
+                    <div class="total-cart">
+                        <div class="cart-header middle-text">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    Thanh toán
+                                </div>
+                            </div>
+                        </div>
+                        <div class="total-cart-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="order-summary-label">Thành tiền</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="order-summary-value">116.000 ₫</p>
+                                    <input type="hidden" class="input-sub-total" value="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="ship-summary-label">Shipping</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="ship-summary-value">Chưa xác định</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="total-summary-label">Tổng thanh toán</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="total-summary-value">116.000 ₫<span> *</span></p>
+                                    <p class="sup-total-summary-label">(Không bao gồm phí ship)</p>
+                                    <input type="hidden" class="input-total-summary" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coupon-container">
+                        <div class="row">
+                            <div class="col-12">
+                                <form>
+                                    <label class="coupon-label">Mã giảm giá</label>
+                                    <div class="row">
+                                        <div class="col pr-0">
+                                            <input type="text" style="height:100%" name="coupon">
+                                        </div>
+                                        <div class="col-4 col-sm-auto">
+                                            <button type="submit" class="btn-primary">Sử dụng</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-cart-btn">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="go-to-checkout">
+                                    <a href="checkout" class="btn checkout-btn">Thanh toán</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -179,10 +245,10 @@
         // });
 
 
-        
+
         $(document).ready(function() {
             var elements = $("input#qty-val");
-            $.each($("input#qty-val"), function () {
+            $.each($("input#qty-val"), function() {
                 var findNumb = $(this).val();
 
                 var totalPrice = $(this).closest(".cart-item").find(".text-total-price");
@@ -219,7 +285,6 @@
             };
         }(jQuery));
 
-        
 
         $(".btn-items-decrease").click(function() {
             var findNumb = $(this).parent().children(".qty-val").val();
@@ -253,7 +318,7 @@
 
         $(".btn-items-increase").click(function() {
             var maxQuantity = $(this).parent().children('#qty-val').attr("max");
-            var findNumb = $(this).parent().children("input").val();
+            var findNumb = $(this).parent().children("#qty-val").val();
             findNumb++;
             $(this).parent().children(".qty-val").val(findNumb);
             if ($(this).parent().children(".qty-val").val() >= maxQuantity) {
@@ -330,8 +395,6 @@
                 currency: 'VND'
             }).format(totalPriceNumb));
         });
-
-        
     </script>
 </body>
 

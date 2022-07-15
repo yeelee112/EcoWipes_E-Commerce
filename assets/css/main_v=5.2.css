@@ -797,9 +797,9 @@ p {
   color: #253D4E;
 }
 
-p:last-child {
+/* p:last-child {
   margin-bottom: 0;
-}
+} */
 
 .font-weight-bold {
   font-weight: 700;
@@ -12662,5 +12662,69 @@ svg:not(:root).svg-inline--fa {
   text-decoration: line-through;
 }
 
+.total-cart-body{
+  padding: 1.5rem 2rem;
+  background-color: white;
+}
+
+.total-cart-body p{
+  font-size: 0.85rem;
+}
+
+p.total-summary-label, p.total-summary-value{
+  font-weight: 600;
+  color: var(--txt-main-color);
+  font-size: 1rem;
+  margin-bottom: 0px;
+}
+
+p.sup-total-summary-label{
+  font-size: 0.8rem;
+  color:#ff3a21;
+}
+
+.sup-total-summary-label span{
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.total-summary-value span{
+  color: #ff3a21;
+}
+
+.continue-purchase-btn{
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: var(--main-color);
+}
+
+.coupon-container{
+  padding: 1.2rem 2rem;
+  background-color: white;
+  margin-top:24px;
+}
+
+.coupon-label{
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--txt-main-color);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+.checkout-cart-btn{
+  margin-top: 24px;
+  margin-bottom: 80px;
+}
+
+.go-to-checkout .checkout-btn{
+  font-size: 0.85rem;
+  font-weight: 700;
+  color:white;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  width: 100%;
+}
 
 /*# sourceMappingURL=main.css.map */
