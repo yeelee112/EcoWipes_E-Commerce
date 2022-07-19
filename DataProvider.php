@@ -1,7 +1,7 @@
 <?php
-	define("SERVER", "");
-	define("DATABASE", "");
-	define("USERNAME", "");
+	define("SERVER", "localhost");
+	define("DATABASE", "ecowipes_ecommerce");
+	define("USERNAME", "root");
 	define("PASSWORD", "");
 	
 	class DataProvider

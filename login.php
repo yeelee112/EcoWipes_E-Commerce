@@ -1,3 +1,99 @@
+<?php 
+    session_start();
+    require_once 'functionPhp.php';
+    require_once 'DataProvider.php';
+    $postData = $statusLogin = $statusRegister = $status = '';
+    $msgClass = 'errordiv';
+
+    if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
+        header("Location: /");
+    }
+
+    $errorForm = 0;
+
+    $mysqli = DataProvider::getConnection();
+    $postData = $_POST;
+    if(isset($_POST['submitSignin'])){
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+
+        if (!empty($phone) && !empty($password)) {
+            $phone = mysqli_real_escape_string($mysqli, $phone);
+            $password = md5($password);
+
+
+            require_once 'DataProvider.php';
+            $sql = "select * from user_account a where a.phone = '$phone' and a.user_password = '$password'";
+            $list = DataProvider::execQuery($sql);
+
+            $row = mysqli_fetch_assoc($list);
+
+            $numRow = mysqli_num_rows($list);
+
+            if($numRow === 1){
+                if($row["phone"] == $phone && $row["user_password"] == $password){
+                    $_SESSION['nameUser'] = $row["fullname"];
+                    $_SESSION['phoneUser'] = $row['phone'];
+                    if(isset($_SESSION['rewindURL']) && !empty($_SESSION['rewindURL'])){
+                        $rewindUrl = $_SESSION['rewindURL'];
+                        header("Location: $rewindUrl");
+                    }
+                    else{
+                        header("Location: /");
+                    }
+                }
+                else{
+                    $statusLogin = 'Số điện thoại hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
+                }
+            }
+            else{
+                $statusLogin = 'Số điện thoại hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
+            }
+        }
+        else{
+            $statusLogin = 'Số điện thoại hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
+        }
+    }
+
+    if (isset($_POST['submitSignup'])) {
+        $errorForm = 1;
+        $fullname = $_POST['name'];
+        $email  = $_POST['email'];
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+        $repassword = $_POST['confirm_password'];
+
+        if (!empty($fullname) && !empty($email) && !empty($password) && !empty($repassword)) {
+            $email = mysqli_real_escape_string($mysqli, $email);
+
+            require_once 'DataProvider.php';
+            $sql = "select * from user_account a where a.phone = '$phone'";
+            $list = DataProvider::execQuery($sql);
+            $numRow = mysqli_num_rows($list);
+
+            if ($numRow === 0) {
+                if ($password == $repassword) {
+                    $password = md5($password);
+
+                    $sql = "insert into user_account values ('','$email','$password','$fullname','$phone',NOW(),NOW())";
+                    $list = DataProvider::execQuery($sql);
+                    $_SESSION['nameUser'] = $fullname;
+                    $_SESSION['phoneUser'] = $phone;
+                } 
+                else {
+                    $statusRegister = 'Mật khẩu và xác nhận mật khẩu không trùng nhau. Vui lòng thử lại.';
+                }
+            } 
+            else {
+                $statusRegister = 'Email này đã được đăng ký. Vui lòng thử với email khác.';
+            }
+        }
+        else {
+            $statusRegister = 'Vui lòng điền đầy đủ thông tin.';
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 
@@ -70,98 +166,9 @@
 </head>
 
 <body>
-    <?php require_once 'header.php' ?>
     <?php
-    require_once 'DataProvider.php';
-    $postData = $statusLogin = $statusRegister = $status = '';
-    $msgClass = 'errordiv';
-
-    if (isset($_SESSION['nameUser']) && isset($_SESSION['emailUser'])) {
-        header("Location: /");
-    }
-
-    $errorForm = 0;
-
-    // $mysqli = DataProvider::getConnection();
-    // $postData = $_POST;
-    // if(isset($_POST['submitSignin'])){
-    //     $email = $_POST['email'];
-    //     $password = $_POST['password'];
-
-    //     if (!empty($email) && !empty($password)) {
-    //         $email = mysqli_real_escape_string($mysqli, $email);
-    //         $password = md5($password);
-
-
-    //         require_once 'DataProvider.php';
-    //         $sql = "select * from AccountUser a where a.Username = '$email' and a.Password = '$password'";
-    //         $list = DataProvider::execQuery($sql);
-
-    //         $row = mysqli_fetch_assoc($list);
-
-    //         $numRow = mysqli_num_rows($list);
-
-    //         if($numRow === 1){
-    //             if($row["Username"] === $email && $row["Password"] === $password){
-    //                 $_SESSION['nameUser'] = $row["Fullname"];
-    //                 $_SESSION['emailUser'] = $row['Username'];
-    //                 if(isset($_SESSION['rewindURL']) && !empty($_SESSION['rewindURL'])){
-    //                     $rewindUrl = $_SESSION['rewindURL'];
-    //                     header("Location: $rewindUrl");
-    //                 }
-    //                 else{
-    //                     header("Location: /");
-    //                 }
-    //             }
-    //             else{
-    //                 $statusLogin = 'Email hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
-    //             }
-    //         }
-    //         else{
-    //             $statusLogin = 'Email hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
-    //         }
-    //     }
-    //     else{
-    //         $statusLogin = 'Xin điền đầy đủ thông tin. Vui lòng thử lại.';
-    //     }
-    // }
-
-    if (isset($_POST['submitSignup'])) {
-        $errorForm = 1;
-        $fullname = $_POST['name'];
-        $email  = $_POST['email'];
-        $phone = $_POST['phone'];
-        $password = $_POST['password'];
-        $repassword = $_POST['confirm_password'];
-
-        if (!empty($fullname) && !empty($email) && !empty($password) && !empty($repassword)) {
-            $email = mysqli_real_escape_string($mysqli, $email);
-
-            require_once 'DataProvider.php';
-            $sql = "select * from AccountUser a where a.Username = '$email'";
-            $list = DataProvider::execQuery($sql);
-            $numRow = mysqli_num_rows($list);
-
-            if ($numRow === 0) {
-                if ($password == $repassword) {
-                    $password = md5($password);
-
-                    $sql = "insert into AccountUser values ('','$email','$fullname','$password','','','','',NOW(),NOW())";
-                    $list = DataProvider::execQuery($sql);
-                    $_SESSION['nameUser'] = $fullname;
-                    $_SESSION['emailUser'] = $email;
-                } else {
-                    $statusRegister = 'Mật khẩu và xác nhận mật khẩu không trùng nhau. Vui lòng thử lại.';
-                }
-            } else {
-                $statusRegister = 'Email này đã được đăng ký. Vui lòng thử với email khác.';
-            }
-        } else {
-            $statusRegister = 'Vui lòng điền đầy đủ thông tin.';
-        }
-    }
+    require_once 'header.php';
     ?>
-    </head>
 
     <body>
         <?php require_once 'header.php' ?>
@@ -236,30 +243,33 @@
                                         <?php } ?>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fullname" class="form-label">Họ tên</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo !empty($postData['name']) ? $postData['name'] : ''; ?>" required="">
+                                        <label for="phone" class="form-label">Số điện thoại *</label>
+                                        <input type="number" class="form-control" id="phone" name="phone" value="<?php echo !empty($postData['phone']) ? $postData['phone'] : ''; ?>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="fullname" class="form-label">Họ tên *</label>
+                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo !empty($postData['name']) ? $postData['name'] : ''; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Địa chỉ Email</label>
                                         <input type="email" class="form-control" id="email" name="email" value="<?php echo !empty($postData['email']) ? $postData['email'] : ''; ?>" required="">
+                                        <div id="emailHelp" class="form-text">
+                                            Bạn sẽ nhận được nhiều ưu đãi hơn nhờ Email nhé!!
+                                        </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="phone" class="form-label">Số điện thoại</label>
-                                        <input type="number" class="form-control" id="phone" name="phone" value="<?php echo !empty($postData['phone']) ? $postData['phone'] : ''; ?>" required="">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Mật khẩu</label>
+                                        <label for="password" class="form-label">Mật khẩu *</label>
                                         <div class="input-group mb-3">
-                                            <input type="password" class="form-control" id="password" name="password" value="<?php echo !empty($postData['password']) ? $postData['password'] : ''; ?>" required="">
+                                            <input type="password" class="form-control" id="password" name="password" value="<?php echo !empty($postData['password']) ? $postData['password'] : ''; ?>" required>
                                             <span class="input-group-text">
                                                 <i class="far fa-eye-slash togglePassword" style="cursor: pointer"></i>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="confirm_password" class="form-label">Xác nhận lại mật khẩu</label>
+                                        <label for="confirm_password" class="form-label">Xác nhận lại mật khẩu *</label>
                                         <div class="input-group mb-3">
-                                            <input type="password" class="form-control" id="password" name="confirm_password" value="<?php echo !empty($postData['confirm_password']) ? $postData['confirm_password'] : ''; ?>" required="">
+                                            <input type="password" class="form-control" id="password" name="confirm_password" value="<?php echo !empty($postData['confirm_password']) ? $postData['confirm_password'] : ''; ?>" required>
                                             <span class="input-group-text">
                                                 <i class="far fa-eye-slash togglePassword" style="cursor: pointer"></i>
                                             </span>

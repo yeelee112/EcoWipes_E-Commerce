@@ -17,8 +17,8 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
-                    <span></span> <a href="shop">Cửa hàng</a>
                     <span></span> Giỏ hàng
+                    <span></span> <div class="breadcrumb-next-step">Thanh toán</div>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="mt-4 mt-md-0 col-md-7 col-12">
                                         <div class="align-items-center row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-3 mt-5 mb-5">
                                                 <div class="row align-items-center">
                                                     <div class="d-md-none text-muted col-6">Giá</div>
                                                     <div class="text-start col-md-12 col-6 price-per-item">
@@ -72,7 +72,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 mt-5 mb-5">
                                                 <div class="align-items-center row">
                                                     <div class="d-md-none text-muted col-md-12 col-6">Số lượng</div>
                                                     <div class="col-md-12 col-sm-3 col-5">
@@ -84,7 +84,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3 mt-5 mb-5">
                                                 <div class="row">
                                                     <div class="d-md-none text-muted col-6">Tổng</div>
                                                     <div class="text-start col-md-12 col-6 text-total-price">
@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="mt-4 mt-md-0 col-md-7 col-12">
                                         <div class="align-items-center row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-3 mt-5 mb-5">
                                                 <div class="row align-items-center">
                                                     <div class="d-md-none text-muted col-6">Giá</div>
                                                     <div class="text-start col-md-12 col-6 price-per-item">
@@ -121,7 +121,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 mt-5 mb-5">
                                                 <div class="align-items-center row">
                                                     <div class="d-md-none text-muted col-md-12 col-6">Số lượng</div>
                                                     <div class="col-md-12 col-sm-3 col-5 a">
@@ -133,7 +133,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3 mt-5 mb-5">
                                                 <div class="row">
                                                     <div class="d-md-none text-muted col-6">Tổng</div>
                                                     <div class="text-start col-md-12 col-6 text-total-price">
@@ -174,7 +174,7 @@
                         <div class="total-cart-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="order-summary-label">Thành tiền</p>
+                                    <p class="order-summary-label">Tạm tính</p>
                                 </div>
                                 <div class="col-6 text-end">
                                     <p class="order-summary-value">116.000 ₫</p>
@@ -183,7 +183,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="ship-summary-label">Shipping</p>
+                                    <p class="ship-summary-label">Vận chuyển</p>
                                 </div>
                                 <div class="col-6 text-end">
                                     <p class="ship-summary-value">Chưa xác định</p>
@@ -191,7 +191,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="total-summary-label">Tổng thanh toán</p>
+                                    <p class="total-summary-label">Tổng cộng</p>
                                 </div>
                                 <div class="col-6 text-end">
                                     <p class="total-summary-value">116.000 ₫<span> *</span></p>
@@ -204,16 +204,10 @@
                     <div class="coupon-container">
                         <div class="row">
                             <div class="col-12">
-                                <form>
-                                    <label class="coupon-label">Mã giảm giá</label>
-                                    <div class="row">
-                                        <div class="col pr-0">
-                                            <input type="text" style="height:100%" name="coupon">
-                                        </div>
-                                        <div class="col-4 col-sm-auto">
-                                            <button type="submit" class="btn-primary">Sử dụng</button>
-                                        </div>
-                                    </div>
+                                <label class="coupon-label">Mã giảm giá</label>
+                                <form method="post" class="apply-coupon">
+                                    <input type="text" placeholder="Nhập mã giảm giá">
+                                    <button class="btn  btn-md" name="login">Sử dụng</button>
                                 </form>
                             </div>
                         </div>
@@ -222,7 +216,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="go-to-checkout">
-                                    <a href="checkout" class="btn checkout-btn">Thanh toán</a>
+                                    <a href="checkout" class="btn checkout-btn">Tiếp tục</a>
                                 </div>
                             </div>
                         </div>

@@ -55,7 +55,7 @@
                                 <h4>
                                     Ecobi<br>
                                 </h4>
-                                <a href="#" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
+                                <a href="shop?pid=ecobi" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                 <h4>
                                     Eco Bamboo
                                 </h4>
-                                <a href="#" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
+                                <a href="shop?pid=eco-bamboo" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <img src="assets/imgs/banner/banner-3.png" alt>
                             <div class="banner-text">
                                 <h4>EcoWipes</h4>
-                                <a href="#" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
+                                <a href="shop?pid=ecowipes" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <img src="assets/imgs/banner/banner-4.png" alt>
                             <div class="banner-text">
                                 <h4>Eco Tissue</h4>
-                                <a href="#" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
+                                <a href="shop?pid=eco-tissue" class="btn btn-xs">Xem ngay <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                 <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
                     <h3 class>Best Sells Mỗi ngày</h3>
                     <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
-                        <li class="nav-item" role="presentation">
+                        <!-- <li class="nav-item" role="presentation">
                             <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
                                 <div class="" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
                                     Kết thúc trong:
@@ -127,9 +127,9 @@
                         </li>
                         <li class="nav-item" role="presentation" style="display:flex;">
                             <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán chạy</button>
-                        </li>
+                        </li> -->
                         <li class="nav-item" role="presentation" style="display:flex;">
-                            <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Mới</button>
+                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Mới</button>
                         </li>
                     </ul>
                 </div>
@@ -145,7 +145,7 @@
                         <!-- TAB PANE START-->
                         <div class="tab-content" id="myTabContent-1">
                             <!-- TAB PANE 1-->
-                            <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel" aria-labelledby="tab-one-1">
+                            <div class="tab-pane fade show active" id="tab-three-1" role="tabpanel" aria-labelledby="tab-one-1">
                                 <div class="carausel-4-columns-cover arrow-center position-relative">
                                     <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
                                     <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
@@ -154,7 +154,7 @@
                                                 <div class="product-img">
                                                     <a href="shop-product-right.html">
                                                         <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                        <img class="hover-img" src="" alt>
                                                     </a>
                                                 </div>
                                                 <div class="product-action-1">

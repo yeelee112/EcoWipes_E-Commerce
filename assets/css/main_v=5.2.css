@@ -53,6 +53,10 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 thead {
   font-weight: 600;
 }
@@ -5700,7 +5704,7 @@ table.no-border td, table.no-border th, table.no-border thead {
 }
 
 .apply-coupon button {
-  min-width: 150px;
+  min-width: 120px;
   height: 51px;
   border-radius: 0 10px 10px 0;
   background-color: #253D4E;
@@ -8901,7 +8905,7 @@ span.fi-rs-apps {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-width: 412px;
+  min-width: 333px;
 }
 
 .categories-dropdown-active-large {
@@ -8916,7 +8920,7 @@ span.fi-rs-apps {
   border: 1px solid #BCE3C9;
   border-radius: 10px;
   font-size: 16px;
-  min-width: 270px;
+
   -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   opacity: 0;
@@ -12725,6 +12729,157 @@ p.sup-total-summary-label{
   text-transform: uppercase;
   letter-spacing: .2em;
   width: 100%;
+}
+
+.breadcrumb{
+  display: flex !important;
+}
+
+.breadcrumb-next-step{
+  font-weight: 400;
+}
+.form-label{
+  font-size: 0.95rem;
+  color: var(--txt-main-color);
+  font-weight: 500;
+}
+
+.info-user-shipping{
+  background-color: white;
+}
+
+.info-shipping-title{
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.form-user-info-shipping{
+  padding: 1.2rem 2rem;
+}
+
+.product-checkout-container{
+  padding: 1.2rem 2rem;
+  background-color: white;
+}
+
+.confirm-shipping-container{
+  background-color: white;
+}
+
+.lb-message{
+  font-size: 0.95rem;
+  color: var(--txt-main-color);
+  font-weight: 500;
+  min-width: 130px;
+  margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.lb-message img{
+  height: 32px !important;
+}
+
+.feature-checkout-container{
+  width: 100% !important;
+  padding: 1rem 2rem;
+  border: 1px dashed #c5c5c5;
+}
+
+.feature-checkout-container input{
+  height: 50px;
+}
+
+@media only screen and (min-width: 767px) {
+  .feature-checkout-container:last-child{
+    left: -1px;
+    width: calc(100% + 1px) !important;
+    position: relative;
+    border: 1px dashed #c5c5c5;
+
+  }
+}
+
+.total-price-checkout-container{
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ff8f2e;
+}
+
+.title-checkout-container{
+  font-size: 14px;
+}
+
+.confirm-shipping-container .row:last-child{
+  height: 60px;
+}
+
+.payment-method-radio-container{
+  padding: 1rem 2rem;
+}
+
+.title-payment-method{
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--txt-main-color);
+}
+
+.payment-method-radio-container input[type="radio"]:checked ~ label{
+  border: 1px solid var(--main-color);
+}
+
+input[type="radio"] ~ label.btn-shipping-method{
+  background-color: white;
+  font-weight: 500;
+  padding: 12px 30px;
+  border-radius: 4px;
+  border: 1px solid #c5c5c5;
+  cursor: pointer;
+  position: relative;
+}
+
+.checked-payment-method{
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  overflow: hidden;
+  right: 0;
+  bottom: 0;
+}
+
+.checked-payment-method::before{
+  border: 1.5rem solid transparent;
+  border-bottom: 1.5rem solid var(--main-color);
+  content: "";
+  position: absolute;
+  right: -1.5rem;
+  bottom: 0;
+}
+
+.btn-shipping-method .icon-tick-bold{
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.shopee-svg-icon{
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  position: relative;
+}
+
+.btn-order-container{
+  padding: 1rem 2rem;
+}
+
+.btn-order{
+  padding: 15px 100px;
 }
 
 /*# sourceMappingURL=main.css.map */
