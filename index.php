@@ -19,10 +19,10 @@
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
                         <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
                             <div class="slider-content mt-30 ml-110" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
-                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
-                                    Chất lượng vàng<br>
+                                <h1 class="display-2 mb-10 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                    Chất lượng vàng
                                 </h1>
-                                <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">Mang ngàn thấu hiểu</p>
+                                <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
                             </div>
                         </div>
                         <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
@@ -108,7 +108,7 @@
                 <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
                     <h3 class>Best Sells Mỗi ngày</h3>
                     <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
-                        <!-- <li class="nav-item" role="presentation">
+                        <li class="nav-item" role="presentation">
                             <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
                                 <div class="" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
                                     Kết thúc trong:
@@ -136,7 +136,7 @@
                                 </div>
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation" style="display:flex;">
+                        <!-- <li class="nav-item" role="presentation" style="display:flex;">
                             <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán chạy</button>
                         </li> -->
                         <li class="nav-item" role="presentation" style="display:flex;">
@@ -189,7 +189,7 @@
                                                             echo '<span class="old-price">' . number_format($row["price_old"], 0, ",", ".") . ' ₫</span>';
                                                         ?>
                                                     </div>
-                                                    <button class="btn w-100 hover-up" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
+                                                    <button class="btn w-100 hover-up" onclick="<?php if($checkAccountSession == true){ echo "add_to_cart_per_click(this.value)"; } else{ echo "location.href='login'"; }?>" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -266,7 +266,7 @@
                                                     ?>
                                                 </div>
                                                 <div class="add-cart">
-                                                    <button class="add" id="toast" onclick="add_to_cart_per_click(this.value)" value="<?php echo $rowChild["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
+                                                    <button class="add" id="toast" onclick="<?php if($checkAccountSession == true){ echo "add_to_cart_per_click(this.value)"; } else{ echo "location.href='login'"; }?>" value="<?php echo $rowChild["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -431,7 +431,7 @@
     <?php require_once 'script.php' ?>
 
     <script>
-        $('#clock').countdown('2022/07/21 00:00:00').on('update.countdown',
+        $('#clock').countdown('2022/07/23 00:00:00').on('update.countdown',
             function(event) {
                 var $this = $(this).html(event.strftime('' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> Ngày </span></span>' +

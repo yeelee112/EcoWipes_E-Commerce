@@ -7,7 +7,6 @@
     ini_set('session.gc_maxlifetime', $expire);
     session_start();
     setcookie(session_name(),session_id(),time()+$expire); 
-    session_start();
     if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
         header("Location: /");
     }

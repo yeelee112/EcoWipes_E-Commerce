@@ -240,7 +240,7 @@ function removeQueryStringParameter($url, $varname)
                                 <img src="<?php echo $row['img_thumb'] ?>" alt="<?php echo $row['product_name'] ?>">
                             </div>
                             <div class="content pt-10">
-                                <h6><a href="shop-product-detail.html"><?php echo $row['product_name'] ?></a></h6>
+                                <h6><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row['product_name'] ?></a></h6>
                                 <p class="price mb-0 mt-5"><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</p>
                             </div>
                         </div>

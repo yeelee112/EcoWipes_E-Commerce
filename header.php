@@ -4,12 +4,15 @@ require_once 'functionPhp.php';
 $activePage = basename($_SERVER['PHP_SELF'], ".php");
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $currentPage = $_SERVER['REQUEST_URI'];
-
+$nameUser = '';
+$phone = '';
 $checkAccountSession = false;
 
 if (!isset($_SESSION)) {
     session_start();
 }
+require_once 'DataProvider.php';
+
 if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
     $nameUser = $_SESSION['nameUser'];
     $phone = $_SESSION['phoneUser'];
@@ -44,7 +47,6 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
     unset($_SESSION['phoneUser']);
 
     redirect($_SESSION['rewindURL']);
-    exit;
 }
 ?>
 
@@ -61,7 +63,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                             <select class="select-active">
                                 <option>Tất cả danh mục</option>
                                 <?php
-                                
+
                                 $sql = "SELECT group_name FROM group_product group by group_name";
                                 $list = DataProvider::execQuery($sql);
                                 while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
@@ -74,57 +76,11 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
-                            <div class="header-action-icon-2">
-                                <a style="line-height:0" class="mini-cart-icon" href="cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                    <span class="pro-count blue">
-                                    <?php 
-                                        $count = 0;
-                                        $sqlCountItem = "select * from shopping_session ss, cart_item ci, user_account ua where ss.id = ci.session_id and ss.user_id = ua.id and ss.user_id = '".$rowUser["id"]."'";
-                                        $listCountItem = DataProvider::execQuery($sqlCountItem);
-                                        while($rowCountItem = mysqli_fetch_array($listCountItem, MYSQLI_ASSOC)){
-                                            $count+= $rowCountItem["quantity"];
-                                        }
-                                        echo $count;
-                                    ?>
-                                    </span>
-                                </a>
 
-                                <div class="cart-dropdown-wrap cart-container cart-dropdown-hm2">
-
-                                    <ul>
-                                        <?php  
-                                        $sql1 = "select * from shopping_session ss, cart_item ci, product p, image_product ip where ss.id = ci.session_id and ci.product_id = p.id and p.id = ip.product_id and ss.user_id = '".$rowUser["id"]."'";
-                                        $list1 = DataProvider::execQuery($sql1);
-                                        while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
-                                            $priceTotal += $row1["price"] * $row1["quantity"];
-                                        ?>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product?item=<?php echo $row1["product_text"] ?>"><img alt="<?php echo $row1["product_name"] ?>" src="<?php echo $row1["img_thumb"] ?>"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a></h4>
-                                                <h4><span><?php echo $row1["quantity"] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".")?> ₫</h4> 
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <button class="btn-delete-cart-product" tyle="button" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>"><i class="fi-rs-cross-small"></i></button>
-                                            </div>
-                                        </li>
-                                        <?php } ?>
-                                    </ul>
-                                    <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-total">
-                                            <h4>Tổng cộng <span><?php echo number_format($priceTotal, 0, ",", "."); ?> ₫</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-button">
-                                            <a href="cart" class="outline">Xem giỏ hàng</a>
-                                            <a href="checkout">Thanh toán</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            <div class="hotline d-none d-lg-flex">
+                    <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline">
+                    <p>1900 - 1009<span>Chăm sóc khách hàng</span></p>
+                </div>
                             <div class="header-action-icon-2">
                                 <div class="signin-block-container">
                                     <?php
@@ -132,7 +88,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                         <a href="#">
                                             <img class="avt-account" src="https://ui-avatars.com/api/?name=<?php echo $nameUser; ?>&rounded=true&size=48">
                                         </a>
-                                        <a href="#"><span class="lable ml-0">Digital Design</span></a>
+                                        <a><span class="lable ml-0"><?php echo $nameUser; ?></span></a>
                                     <?php
                                     } else {
                                     ?>
@@ -145,6 +101,8 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                     <?php } ?>
                                     <!--  -->
                                 </div>
+                                
+                                <?php if ($checkAccountSession == true) { ?>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
                                             <!-- <li>
@@ -163,10 +121,11 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                                 <a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
                                             </li> -->
                                             <li style="justify-content: center;">
-                                                <a style="display: flex;align-items: center;" href="page-login.html"><i style="line-height: 0;" class="fi fi-rs-sign-out mr-10"></i>Đăng xuất</a>
+                                                <a style="display: flex;align-items: center;" href="<?php echo $logoutAction; ?>"><i style="line-height: 0;" class="fi fi-rs-sign-out mr-10"></i>Đăng xuất</a>
                                             </li>
                                         </ul>
                                     </div>
+                                    <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -314,10 +273,65 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                         </nav>
                     </div>
                 </div>
-                <div class="hotline d-none d-lg-flex">
-                    <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline">
-                    <p>1900 - 1009<span>Chăm sóc khách hàng</span></p>
-                </div>
+                <div class="header-action-right">
+                        <div class="header-action-2">
+                            <div class="header-action-icon-2">
+                                <a style="line-height:0" class="mini-cart-icon" href="cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                    <?php if($checkAccountSession == true){ ?>
+                                    <span class="pro-count blue">
+                                    <?php 
+                                        $count = 0;
+                                        $sqlCountItem = "select * from shopping_session ss, cart_item ci, user_account ua where ss.id = ci.session_id and ss.user_id = ua.id and ss.user_id = '".$rowUser["id"]."'";
+                                        $listCountItem = DataProvider::execQuery($sqlCountItem);
+                                        while($rowCountItem = mysqli_fetch_array($listCountItem, MYSQLI_ASSOC)){
+                                            $count+= $rowCountItem["quantity"];
+                                        }
+                                        echo $count;
+                                    ?>
+                                    </span>
+                                    <?php } ?>
+                                </a>
+                                <?php if($checkAccountSession == true){ ?>
+                                <div class="cart-dropdown-wrap cart-container cart-dropdown-hm2">
+                                    <ul>
+                                        <?php  
+                                        $sql1 = "select * from shopping_session ss, cart_item ci, product p, image_product ip where ss.id = ci.session_id and ci.product_id = p.id and p.id = ip.product_id and ss.user_id = '".$rowUser["id"]."'";
+                                        $list1 = DataProvider::execQuery($sql1);
+                                        while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
+                                            $priceTotal += $row1["price"] * $row1["quantity"];
+                                        ?>
+                                        <li>
+                                            <div class="shopping-cart-img">
+                                                <a href="product?item=<?php echo $row1["product_text"] ?>"><img alt="<?php echo $row1["product_name"] ?>" src="<?php echo $row1["img_thumb"] ?>"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a></h4>
+                                                <h4><span><?php echo $row1["quantity"] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".")?> ₫</h4> 
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <button class="btn-delete-cart-product" tyle="button" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>"><i class="fi-rs-cross-small"></i></button>
+                                            </div>
+                                        </li>
+                                        <?php } ?>
+                                    </ul>
+                                    <div class="shopping-cart-footer">
+                                        <div class="shopping-cart-total">
+                                            <h4>Tổng cộng <span><?php echo number_format($priceTotal, 0, ",", "."); ?> ₫</span></h4>
+                                        </div>
+                                        <div class="shopping-cart-button">
+                                            <a href="cart" class="outline">Xem giỏ hàng</a>
+                                            <a href="checkout">Thanh toán</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <?php } ?>
+                            </div>
+                        
+                        </div>
+                    </div>
+                
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
                         <span class="burger-icon-top"></span>
