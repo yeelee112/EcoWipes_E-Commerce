@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>EcoWipes | E-Commerce</title>
-    <?php 
-        require_once 'library.php';
+    <?php
+    require_once 'library.php';
     ?>
 </head>
 
@@ -17,20 +17,31 @@
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
+                            <div class="slider-content mt-30 ml-110" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
+                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                    Chất lượng vàng<br>
+                                </h1>
+                                <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">Mang ngàn thấu hiểu</p>
+                            </div>
+                        </div>
                         <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
                             <div class="slider-content">
-                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow">
+                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
                                     Khăn ướt Lau bếp<br>
                                 </h1>
-                                <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn <span style="color:#72be44;font-weight:700;">tốt nhất</span> cho nội trợ</p>
+                                <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
                             </div>
                         </div>
                         <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
                             <div class="slider-content">
-                                <h1 class="display-2 mb-40">
-                                    Khăn ướt <br>Tẩy trang
+                                <h1 class="display-2 mb-40" style="color:#59392f">
+                                    Khăn ướt Tẩy trang
                                 </h1>
-                                <p class="mb-65">Sạch sạch sạch sạch</p>
+                                <p class="mb-65" style="font-weight:700">Làm sạch lớp trang điểm
+                                    <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
+                                    bụi bẩn và nhờn
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -135,7 +146,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
-                        <div class="banner-img style-2">
+                        <div class="banner-img best-sale-img style-2">
                             <div class="banner-text">
                                 <h2 class="mb-100" style="font-size:42px;color:white;">Bring nature into your home</h2>
                             </div>
@@ -149,142 +160,39 @@
                                 <div class="carausel-4-columns-cover arrow-center position-relative">
                                     <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
                                     <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
-                                        <div class="product-cart-wrap">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img">
-                                                    <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                        <img class="hover-img" src="" alt>
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="hot">Save 15%</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <div class="product-category">
-                                                    <a href="shop-grid-right.html">Khăn Gia Đình</a>
-                                                </div>
-                                                <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
-                                                <div class="product-price mt-10">
-                                                    <span>38.000 đ </span>
-                                                    <span class="old-price">40.000 đ</span>
-                                                </div>
-                                                <div class="sold mt-15 mb-15">
-                                                    <div class="progress mb-5">
-                                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <?php
+                                        require_once 'DataProvider.php';
+                                        $sql = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 8";
+                                        $list = DataProvider::execQuery($sql);
+                                        while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                                        ?>
+                                            <div class="product-cart-wrap">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img">
+                                                        <a href="product?item=<?php echo $row["product_text"] ?>">
+                                                            <img class="default-img" src="<?php echo $row["img_thumb"]; ?>" alt>
+                                                            <img class="hover-img" src="<?php echo $row["img_1"]; ?>" alt>
+                                                        </a>
                                                     </div>
-                                                    <span class="font-xs text-heading"> Đã bán: 90/120</span>
-                                                </div>
-                                                <a href="shop-cart.html" class="btn w-100 hover-up" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</a>
-                                            </div>
-                                        </div>
-                                        <!--End product Wrap-->
-                                        <div class="product-cart-wrap">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img">
-                                                    <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_0Thumb.png" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_Feature1.png" alt>
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="new">Save 35%</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <div class="product-category">
-                                                    <a href="shop-grid-right.html">Khăn Gia Đình</a>
-                                                </div>
-                                                <h2><a href="shop-product-right.html">Khăn ướt Ecobi 80 tờ - Hương Dịu Nhẹ</a></h2>
-                                                <div class="product-price mt-10">
-                                                    <span>38.000 đ </span>
-                                                    <span class="old-price">40.000 đ</span>
-                                                </div>
-                                                <div class="sold mt-15 mb-15">
-                                                    <div class="progress mb-5">
-                                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="hot">Mới</span>
                                                     </div>
-                                                    <span class="font-xs text-heading"> Đã bán: 90/120</span>
                                                 </div>
-                                                <a href="shop-cart.html" class="btn w-100 hover-up" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</a>
-                                            </div>
-                                        </div>
-                                        <!--End product Wrap-->
-                                        <div class="product-cart-wrap">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img">
-                                                    <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_KITCHEN_42Wipes_01.jpg" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_KITCHEN_42Wipes_03.jpg" alt>
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="sale">Sale</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <div class="product-category">
-                                                    <a href="shop-grid-right.html">Khăn Chức Năng</a>
-                                                </div>
-                                                <h2><a href="shop-product-right.html">Khăn lau bếp 42 tờ</a></h2>
-                                                <div class="product-price mt-10">
-                                                    <span>48.000 đ </span>
-                                                    <span class="old-price">54.000 đ</span>
-                                                </div>
-                                                <div class="sold mt-15 mb-15">
-                                                    <div class="progress mb-5">
-                                                        <div class="progress-bar" role="progressbar" style="width: 47.5%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="product-content-wrap">
+                                                    <div class="product-category">
+                                                        <a href="shop?gid=<?php echo $row["group_text"] ?>"><?php echo $row["group_name"] ?></a>
                                                     </div>
-                                                    <span class="font-xs text-heading"> Đã bán: 57/120</span>
-                                                </div>
-                                                <a href="shop-cart.html" class="btn w-100 hover-up" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</a>
-                                            </div>
-                                        </div>
-                                        <!--End product Wrap-->
-                                        <div class="product-cart-wrap">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img">
-                                                    <a href="shop-product-right.html">
-                                                        <img class="default-img" src="assets/imgs/product/EW_MALL_SneakerWipes_0Thumb.png" alt>
-                                                        <img class="hover-img" src="assets/imgs/product/EW_MALL_SneakerWipes_Features_05.png" alt>
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="best">Best sale</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <div class="product-category">
-                                                    <a href="shop-grid-right.html">Khăn Chức Năng</a>
-                                                </div>
-                                                <h2><a href="shop-product-right.html">Khăn lau giày 25 tờ</a></h2>
-                                                <div class="product-price mt-10">
-                                                    <span>40.000 đ </span>
-                                                    <span class="old-price">44.000 đ</span>
-                                                </div>
-                                                <div class="sold mt-15 mb-15">
-                                                    <div class="progress mb-5">
-                                                        <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <h2><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row["product_name"] ?></a></h2>
+                                                    <div class="product-price mt-10 mb-10">
+                                                        <span><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</span>
+                                                        <?php if ($row["price_old"] != NULL)
+                                                            echo '<span class="old-price">' . number_format($row["price_old"], 0, ",", ".") . ' ₫</span>';
+                                                        ?>
                                                     </div>
-                                                    <span class="font-xs text-heading"> Đã bán: 110/120</span>
+                                                    <button class="btn w-100 hover-up" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
                                                 </div>
-                                                <a href="shop-cart.html" class="btn w-100 hover-up" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</a>
                                             </div>
-                                        </div>
-                                        <!--End product Wrap-->
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -299,219 +207,130 @@
 
         <section class="product-tabs section-padding position-relative">
             <div class="container">
-                <div class="section-title style-2 wow animate__animated animate__fadeIn">
+                <div class="section-title style-2">
                     <h3>Sản phẩm nổi bật</h3>
                     <ul class="nav nav-tabs links" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Tất cả</button>
+                            <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-all" type="button" role="tab" aria-controls="tab-all" aria-selected="true">Tất cả</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false">EcoWipes</button>
+                            <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-ecowipes" type="button" role="tab" aria-controls="tab-ecowipes" aria-selected="false">EcoWipes</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Ecobi</button>
+                            <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-ecobi" type="button" role="tab" aria-controls="tab-ecobi" aria-selected="false">Ecobi</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-four" data-bs-toggle="tab" data-bs-target="#tab-four" type="button" role="tab" aria-controls="tab-four" aria-selected="false">Eco Bamboo</button>
+                            <button class="nav-link" id="nav-tab-four" data-bs-toggle="tab" data-bs-target="#tab-eco-bamboo" type="button" role="tab" aria-controls="tab-eco-bamboo" aria-selected="false">Eco Bamboo</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-five" data-bs-toggle="tab" data-bs-target="#tab-five" type="button" role="tab" aria-controls="tab-five" aria-selected="false">Eco Tissue</button>
+                            <button class="nav-link" id="nav-tab-five" data-bs-toggle="tab" data-bs-target="#tab-eco-tissue" type="button" role="tab" aria-controls="tab-eco-tissue" aria-selected="false">Eco Tissue</button>
                         </li>
                     </ul>
                 </div>
                 <!--End nav-tabs-->
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
+                    <div class="tab-pane show active" id="tab-all" role="tabpanel" aria-labelledby="tab-all">
                         <div class="row product-grid-4">
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_MakeupRemover_0Thumb.png" alt>
-                                                <img class="hover-img" src="https://media2.giphy.com/media/QxA4AwZ79J6SlFCmHD/giphy.gif?cid=ecf05e47pxt6ypv31fw33dmv3rxqdcuxhxyumr3mv6i5fhrw&rid=giphy.gif&ct=g" alt>
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.html">Khăn Chức Năng</a>
-                                        </div>
-                                        <h2><a href="#">Khăn tẩy trang 25 tờ</a></h2>
-                                        <div>
-                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">EcoWipes</a></span>
-                                        </div>
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>38.000 đ</span>
-                                                <span class="old-price">40.000 đ</span>
+                            <?php
+                            require_once 'DataProvider.php';
+                            $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 10";
+                            $listChild = DataProvider::execQuery($sqlChild);
+                            while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
+                            ?>
+                                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img">
+                                                <a href="product?item=<?php echo $rowChild["product_text"] ?>">
+                                                    <img class="default-img" src="<?php echo $rowChild["img_thumb"] ?>" alt>
+                                                    <img class="hover-img" src="<?php echo $rowChild["img_1"] ?>" alt>
+                                                </a>
                                             </div>
-                                            <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </a>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">Mới</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end product card-->
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="sale">Sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.html">Khăn Gia Đình</a>
-                                        </div>
-                                        <h2><a href="#">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
-                                        <div>
-                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">Ecobi</a></span>
-                                        </div>
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>38.000 đ</span>
-                                                <span class="old-price">40.000 đ</span>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop?gid=<?php echo $rowChild["group_text"] ?>"><?php echo $rowChild["group_name"] ?></a>
                                             </div>
-                                            <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </a>
+                                            <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
+                                            <div>
+                                                <span class="font-small text-muted">Thương hiệu: <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
+                                            </div>
+                                            <div class="product-card-bottom">
+                                                <div class="product-price">
+                                                    <span><?php echo number_format($rowChild["price"], 0, ",", "."); ?> ₫</span>
+                                                    <?php if ($rowChild["price_old"] != NULL)
+                                                        echo '<span class="old-price">' . number_format($rowChild["price_old"], 0, ",", ".") . ' ₫</span>';
+                                                    ?>
+                                                </div>
+                                                <div class="add-cart">
+                                                    <button class="add" id="toast" onclick="add_to_cart_per_click(this.value)" value="<?php echo $rowChild["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--end product card-->
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".3s">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_Ecobi_DryWipes_270s_Combo3_1.jpg" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_Ecobi_DryWipes_270s_Combo3_2.jpg" alt>
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.html">Khăn Gia Đình</a>
-                                        </div>
-                                        <h2><a href="#">Combo 3 túi Khăn Khô Đa Năng 270 tờ</a></h2>
-                                        <div>
-                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">Ecobi</a></span>
-                                        </div>
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>145.500 đ</span>
-                                                <span class="old-price">150.000 đ</span>
-                                            </div>
-                                            <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end product card-->
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_0Thumb.png" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_PINK_Features_01.png" alt>
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.html">Khăn Gia Đình</a>
-                                        </div>
-                                        <h2><a href="#">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
-                                        <div>
-                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">Ecobi</a></span>
-                                        </div>
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>38.000 đ</span>
-                                                <span class="old-price"></span>
-
-                                            </div>
-                                            <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end product card-->
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".5s">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img class="default-img" src="assets/imgs/product/EW_EcoTissue_FacialTissue_Blue_01.png" alt>
-                                                <img class="hover-img" src="assets/imgs/product/EW_EcoTissue_FacialTissue_Blue_03.png" alt>
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Xem trước" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">-5%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.html">Giấy</a>
-                                        </div>
-                                        <h2><a href="#">Giấy lụa cao cấp Hộp rút 180 tờ</a></h2>
-                                        <div>
-                                            <span class="font-small text-muted">Thương hiệu: <a href="vendor-details-1.html">EcoTissue</a></span>
-                                        </div>
-                                        <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>38.000 đ</span>
-                                                <span class="old-price">40.000 đ</span>
-                                            </div>
-                                            <div class="add-cart">
-                                                <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end product card-->
+                            <?php } ?>
                         </div>
                         <!--End product-grid-4-->
                     </div>
+
+                    <?php
+                    require_once 'DataProvider.php';
+                    $sql = "SELECT * from brand_product";
+                    $list = DataProvider::execQuery($sql);
+                    while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                    ?>
+                        <div class="tab-pane fade" id="tab-<?php echo $row["brand_text"] ?>" role="tabpanel" aria-labelledby="tab-<?php echo $row["brand_text"] ?>">
+                            <div class="row product-grid-4">
+                                <?php
+                                require_once 'DataProvider.php';
+                                $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and b.brand_text = '" . $row["brand_text"] . "' order by p.created_at ASC LIMIT 10";
+                                $listChild = DataProvider::execQuery($sqlChild);
+                                while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
+                                ?>
+                                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img">
+                                                    <a href="product?item=<?php echo $row["product_text"] ?>">
+                                                        <img class="default-img" src="<?php echo $rowChild["img_thumb"] ?>" alt>
+                                                        <img class="hover-img" src="<?php echo $rowChild["img_1"] ?>" alt>
+                                                    </a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    <span class="hot">Mới</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a href="shop?gid=<?php echo $rowChild["group_text"] ?>"><?php echo $rowChild["group_name"] ?></a>
+                                                </div>
+                                                <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
+                                                <div>
+                                                    <span class="font-small text-muted">Thương hiệu: <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
+                                                </div>
+                                                <div class="product-card-bottom">
+                                                    <div class="product-price">
+                                                        <span><?php echo number_format($rowChild["price"], 0, ",", "."); ?> ₫</span>
+                                                        <?php if ($rowChild["price_old"] != NULL)
+                                                            echo '<span class="old-price">' . number_format($rowChild["price_old"], 0, ",", ".") . ' ₫</span>';
+                                                        ?>
+                                                    </div>
+                                                    <div class="add-cart">
+                                                        <button class="add"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <!--End product-grid-4-->
+                        </div>
+                    <?php } ?>
                     <!--En tab one-->
                 </div>
                 <!--End tab-content-->
@@ -621,18 +440,28 @@
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%S</span><span class="countdown-period"> Giây </span></span>'));
             });
     </script>
+    <script>
+        function add_to_cart_per_click(txtProduct) {
+            cuteToast({
+                type: "success", // or 'info', 'error', 'warning'
+                message: "Đã thêm vào giỏ hàng",
+                timer: 3000
+            });
+            $.ajax({
+                    method: "POST", // phương thức dữ liệu được truyền đi 
+                    url: "processAddToCart", // gọi đến file server show_data.php để xử lý
+                    data: "id=" + txtProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
+                })
+                .done(function(data) {
+                    $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
+                }).fail(function() {
+                    alert("failed!");
+                }); //Some action to indicate is Failing ;
+        }
 
-    <!-- <script type="text/javascript">
-    $("#clock").countdown("2022/07/09 00:00:00", function(event) {
-        $(this).text(
-            event.strftime(''
-                    +'<span class="countdown-section"><span class="countdown-amount hover-up">%-d</span><span class="countdown-period"> Ngày%!d </span></span>' 
-                    +'<span class="countdown-section"><span class="countdown-amount hover-up">%H</span><span class="countdown-period"> Giờ </span></span>' 
-                    +'<span class="countdown-section"><span class="countdown-amount hover-up">%M</span><span class="countdown-period"> Phút </span></span>' 
-                    +'<span class="countdown-section"><span class="countdown-amount hover-up">%S</span><span class="countdown-period"> Giây </span></span>')
-        );
-    });
-    </script> -->
+        var convertHeight = $(".product-cart-wrap").height();
+        $(".banner-img.best-sale-img").css("height", convertHeight);
+    </script>
 
 </body>
 

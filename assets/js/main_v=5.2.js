@@ -31,7 +31,7 @@
         scrollSpeed: 900,
         animation: "fade"
     });
-
+    
     /*------ Wow Active ----*/
     new WOW().init();
 
@@ -84,6 +84,7 @@
         appendArrows: ".hero-slider-1-arrow",
         autoplay: true
     });
+
 
     /*Carausel 8 columns*/
     $(".carausel-8-columns").each(function (key, item) {

@@ -1,10 +1,13 @@
 <?php 
-    session_start();
     require_once 'functionPhp.php';
     require_once 'DataProvider.php';
     $postData = $statusLogin = $statusRegister = $status = '';
     $msgClass = 'errordiv';
-
+    $expire = 365*24*3600; // We choose a one year duration
+    ini_set('session.gc_maxlifetime', $expire);
+    session_start();
+    setcookie(session_name(),session_id(),time()+$expire); 
+    session_start();
     if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
         header("Location: /");
     }
@@ -79,6 +82,7 @@
                     $list = DataProvider::execQuery($sql);
                     $_SESSION['nameUser'] = $fullname;
                     $_SESSION['phoneUser'] = $phone;
+                    header("Location: /");
                 } 
                 else {
                     $statusRegister = 'Mật khẩu và xác nhận mật khẩu không trùng nhau. Vui lòng thử lại.';

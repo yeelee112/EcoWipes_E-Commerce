@@ -1,3 +1,15 @@
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto" style="color:#72be44;">Thêm vào giỏ hàng thành công</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Giỏ hàng đã cập nhật
+    </div>
+  </div>
+</div>
+
 <footer class="main" style="margin-top:80px;">
     <section class="section-padding footer-mid">
         <div class="container pt-15 pb-20">

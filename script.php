@@ -21,7 +21,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js" async=""></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 <!-- Template  JS -->
 <script src="assets/js/main_v%3D5.2.js"></script>
 <script src="assets/js/shop_v%3D5.2.js"></script>

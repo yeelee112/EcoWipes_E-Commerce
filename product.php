@@ -1,3 +1,51 @@
+<?php
+require_once 'functionPhp.php';
+require_once 'DataProvider.php';
+if (!isset($_GET["item"])) {
+    redirect("shop.php");
+    exit();
+} else {
+    $id = $_GET["item"];
+    if (isset($_GET["item"])) {
+        $sqlDebug = "select * from product where product_text = '$id'";
+        $listDebug = DataProvider::execQuery($sqlDebug);
+        $rowDebug = mysqli_fetch_assoc($listDebug);
+        if ($rowDebug < 1) {
+            redirect("shop.php");
+            exit();
+        } else {
+            $sql = "update product set total_view = total_view + 1 where product_text = '$id'";
+            DataProvider::execQuery($sql);
+
+            $sql = "select * from product p, image_product i where product_text = '$id' and p.id = i.product_id";
+            $row = DataProvider::execQuery($sql);
+
+            $item = mysqli_fetch_assoc($row);
+
+            $nameProduct = $item["product_name"];
+            $idType = $item["type_id"];
+            $idProduct = $item["id"];
+            $sheetStyle  = $item["sheet_style"];
+            $typeStyle = $item["type_style"];
+            $price = $item["price"];
+            $textProduct = $item["product_text"];
+            $totalStore = $item["total_store"];
+
+            $sqlType = "select * from type_product where id = '$idType'";
+            $rowType = DataProvider::execQuery($sqlType);
+            $typeProduct = mysqli_fetch_assoc($rowType);
+
+            $sqlGroup = "SELECT * FROM group_product g, type_product t WHERE t.id = '$idType' AND t.group_id = g.id";
+            $rowGroup = DataProvider::execQuery($sqlGroup);
+            $groupProduct = mysqli_fetch_assoc($rowGroup);
+
+            $sqlBrand = "SELECT * FROM group_product g, type_product t, brand_product b WHERE t.id = '$idType' AND b.id = g.brand_id and g.id = t.group_id";
+            $rowBrand = DataProvider::execQuery($sqlBrand);
+            $brandProduct = mysqli_fetch_assoc($rowBrand);
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -17,7 +65,11 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
-                    <span></span> <a href="shop">Cửa hàng</a> <span></span><a href="#"> Khăn Gia Đình </a><span></span> Khăn ướt Ecobi 80 tờ - Không Mùi
+                    <span></span> <a href="shop">Cửa hàng</a>
+                    <span></span><a href="shop?pid=<?php echo $brandProduct["brand_text"] ?>"> <?php echo $brandProduct["brand_name"] ?> </a>
+                    <span></span><a href="shop?gid=<?php echo $groupProduct["group_text"] ?>"> <?php echo $groupProduct["group_name"] ?> </a>
+                    <span></span><a href="shop?cid=<?php echo $typeProduct["type_text"] ?>"> <?php echo $typeProduct["type_name"] ?> </a>
+                    <span></span> <?php echo $nameProduct ?>
                 </div>
             </div>
         </div>
@@ -31,73 +83,147 @@
                                     <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                     <!-- MAIN SLIDES -->
                                     <div class="product-image-slider">
-                                        <figure class="border-radius-10">
-                                            <img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt="product image">
-                                        </figure>
-                                        <figure class="border-radius-10">
-                                            <img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt="product image">
-                                        </figure>
-                                        <figure class="border-radius-10">
-                                            <img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_02.png" alt="product image">
-                                        </figure>
-                                        <figure class="border-radius-10">
-                                            <img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_03.png" alt="product image">
-                                        </figure>
-                                        <figure class="border-radius-10">
-                                            <img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_04.png" alt="product image">
-                                        </figure>
+                                        <?php if ($item["img_thumb"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_thumb"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_1"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_1"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_2"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_2"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_3"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_3"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_4"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_4"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_5"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
                                     </div>
                                     <!-- THUMBNAILS -->
                                     <div class="slider-nav-thumbnails">
-                                        <div><img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt="product image"></div>
-                                        <div><img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt="product image"></div>
-                                        <div><img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_02.png" alt="product image"></div>
-                                        <div><img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_03.png" alt="product image"></div>
-                                        <div><img src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_04.png" alt="product image"></div>
+                                        <?php if ($item["img_thumb"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_thumb"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_1"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_1"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_2"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_2"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_3"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_3"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_4"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_4"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
+
+                                        <?php if ($item["img_5"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
+
+
                                     </div>
                                 </div>
                                 <!-- End Gallery -->
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="detail-info pr-30 pl-30">
-                                    <span class="stock-status out-stock"> Hot </span>
-                                    <h2 class="title-detail">Khăn ướt Ecobi 80 tờ - Không Mùi</h2>
+                                    <span class="stock-status out-stock"> Mới </span>
+                                    <h2 class="title-detail"><?php echo $nameProduct; ?></h2>
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
-                                            <span class="current-price text-brand">38.000 đ</span>
-                                            <span>
+                                            <span class="current-price text-brand"><?php echo number_format($price, 0, ",", "."); ?> ₫</span>
+                                            <!-- <span>
                                                 <span class="save-price font-md color3 ml-15">Giảm 5%</span>
                                                 <span class="old-price font-md ml-15">40.000 đ</span>
-                                            </span>
+                                            </span> -->
                                         </div>
                                     </div>
                                     <div class="attr-detail attr-size mb-10">
                                         <strong class="mr-10 mb-10">Số lượng tờ: </strong>
                                         <ul class="list-filter size-filter font-small">
-                                            <li><a href="#">20 tờ</a></li>
-                                            <li class="active"><a href="#">80 tờ</a></li>
-                                            <li><a href="#">100 tờ</a></li>
+                                            <?php
+                                            require_once 'DataProvider.php';
+                                            $sql = "select * from product p, sheets s, type_product t where s.type_id = t.id and p.product_text = '$textProduct' and t.id = p.type_id;";
+                                            $list = DataProvider::execQuery($sql);
+                                            while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                                                $sqlSheet = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and tp.type = '" . $row["type_style"] . "' and tp.type = p.type_style and s.sheet = '" . $row["sheet"] . "'";
+                                                $listSheet = DataProvider::execQuery($sqlSheet);
+                                                $rowSheet = mysqli_fetch_assoc($listSheet);
+                                            ?>
+                                                <li class="<?php if ($sheetStyle == $row["sheet"]) {
+                                                                echo "active disabled";
+                                                            } ?>">
+                                                    <a href="product?item=<?php
+                                                                            echo $rowSheet["product_text"];
+                                                                            ?>"><?php echo $row["sheet"] ?>
+                                                    </a>
+                                                </li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                     <div class="attr-detail attr-size mb-10">
                                         <strong class="mr-10 mb-10">Kiểu: </strong>
                                         <ul class="list-filter size-filter font-small">
-                                            <li><a href="#">Hương Dịu Nhẹ</a></li>
-                                            <li class="active"><a href="#">Không Mùi</a></li>
+                                            <?php
+                                            require_once 'DataProvider.php';
+                                            $sql = "select * from product p, types tp, type_product t where tp.type_id = t.id and p.product_text = '$textProduct' and t.id = p.type_id;";
+                                            $list = DataProvider::execQuery($sql);
+                                            while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                                                $sqlStyle = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and s.sheet = '" . $row["sheet_style"] . "' and tp.type = p.type_style and tp.type = '" . $row["type"] . "'";
+                                                $listStyle = DataProvider::execQuery($sqlStyle);
+                                                $rowStyle = mysqli_fetch_assoc($listStyle);
+                                            ?>
+                                                <li class="<?php if ($typeStyle == $row["type"]) {
+                                                                echo "active disabled";
+                                                            } ?>">
+                                                    <a href="product?item=<?php
+                                                                            echo $rowStyle["product_text"];
+                                                                            ?>"><?php echo $row["type"] ?>
+                                                    </a>
+                                                </li>
+                                            <?php } ?>
+                                            <!-- <li class="active"><a href="#">Không Mùi</a></li> -->
                                         </ul>
                                     </div>
-                                    <div class="detail-extralink mb-10 mt-20">
-                                        <div class="detail-qty">
-                                            <strong class="mr-20">Số lượng: </strong>
-                                            <a class="qty-down border"><i class="fa-solid fa-minus"></i></a>
-                                            <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="90" oninput="this.value = Math.abs(this.value)"></input>
-                                            <a class="qty-up border"><i class="fa-solid fa-plus"></i></a>
-                                        </div>
+                                    <form method="POST">
+                                        <div class="detail-extralink mb-10 mt-20">
+                                            <div class="detail-qty">
+                                                <strong class="mr-20">Số lượng: </strong>
+                                                <a class="qty-down border"><i class="fa-solid fa-minus"></i></a>
+                                                <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="<?php echo $totalStore; ?>" oninput="this.value = Math.abs(this.value)"></input>
+                                                <a class="qty-up border"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
 
-                                        <div class="product-extra-link2">
-                                            <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                            <div class="product-extra-link2">
+                                                <button type="button" onclick="add_to_cart()" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form >
                                     <div class="overview-product-container">
                                         <div class="overview-product-title">
                                             <h4>Thông tin sản phẩm</h4>
@@ -120,84 +246,15 @@
                         <div class="product-info">
                             <div class="tab-style3">
                                 <div class="title-describe-source">
-                                    <h3>MÔ TẢ SẢN PHẨM KHĂN ƯỚT EM BÉ ECOBI KHÔNG MÙI 80 TỜ</h3>
+                                    <h3>MÔ TẢ SẢN PHẨM <?php echo mb_strtoupper($nameProduct); ?></h3>
                                 </div>
                                 <div class="product-content-describe-source">
-                                    <p style="margin:0"><span style="font-family:none"></span></p>
-                                    <h3 style="font-weight:bold"><span>THÔNG TIN THƯƠNG HIỆU:</span></h3>
-                                    <p style="margin:0"><span>Thương hiệu ECOBI là một thương hiệu mới ra mắt của công ty Cổ phần ECOWIPES Việt Nam - tự hào là doanh nghiệp tiên phong trong việc sản xuất khăn ướt trên dây chuyền tự động hóa &amp; hiện đại bậc nhất. Trong suốt chặng đường hơn 10 năm phát triển, công ty luôn nỗ lực không ngừng trong sản xuất kinh doanh, chinh phục niềm tin yêu của của người tiêu dùng trên khắp mọi miền đất nước và cả thị trường quốc tế.</span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <h3><span>KHĂN ƯỚT EM BÉ ECOBI KHÔNG MÙI 80 TỜ</span></h3>
-                                    <p style="margin:0"><span>Là món đồ siêu tiện dụng nhưng khăn giấy ướt cũng là sản phẩm mẹ phải &quot;đau đầu&quot; lựa chọn. Đặt yếu tố an toàn và tiện lợi lên hàng đầu, khăn ướt ECOBI sản xuất tại ECOWIPES VIỆT NAM chính là thứ đồ luôn-phải-có trong túi đồ của mẹ và bé với:</span></p>
-                                    <p style="margin:0"><span></span><span>* Thành phần chứa 99,9% là nước tinh khiết, được sản xuất trong phòng vô trùng.</span></p>
-                                    <p style="margin:0"><span>* KHÔNG chất tạo mùi, KHÔNG cồn, KHÔNG Paraben và chất huỳnh quang.</span></p>
-                                    <p style="margin:0"><span>* Vitamin E và chiết xuất lô hội giúp dưỡng ẩm cho làn da nhạy cảm của bé.</span></p>
-                                    <p style="margin:0"><span>* Sợi vải siêu dày và mềm mại, không để lại sợi bông khi lau và không làm xước hay gây kích ứng da bé.</span></p>
-                                    <p style="margin:0"><span>* Kích thước khăn khổ lớn với các hạt nổi 3D giúp giữ độ ẩm lâu hơn khăn ướt thông thường.</span></p>
-                                    <p style="margin:0"><span>* Nắp mở sản phẩm đẹp, màu sắc bắt mắt, tiện lợi dễ dàng bảo quản và sử dụng.</span></p>
-                                    <p style="margin:0"><span>* ĐẶC BIỆT, sản phẩm đã được kiểm nghiệm da liễu an toàn cho làn da bé yêu.</span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <div style="width:100.0%;margin:0">
-                                        <div style="width:100.0%;display:block;margin:0">
-                                            <div style="width:100.0%;display:block;margin:0">
-                                                <div style="width:100.0%;display:block;margin:0">
-                                                    <div style="width:100.0%;display:block;margin:0">
-                                                        <div style="width:100.0%;display:block;margin:0">
-                                                            <div style="width:100.0%;display:block;margin:0">
-                                                                <div style="width:100.0%;display:block;margin:0">
-                                                                    <div style="width:100.0%;display:block;margin:0">
-                                                                        <div style="width:100.0%;display:block"><img class="" src="https://sg-live-01.slatic.net/p/62fcae91cd714b2d61063372a2b37e0f.png" style="width:100.0%;display:block" /></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p style="margin:0"><span></span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <h3><span>THÀNH PHẦN:</span></h3>
-                                    <p style="margin:0"><span>Vải không dệt bi 50, nước tinh khiết R.O, chất dưỡng ẩm, tinh chất Lô hội, chất kháng khuẩn.</span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <h3><span>THÔNG TIN SẢN PHẨM:</span></h3>
-                                    <p style="margin:0"><span>+ Quy cách: 80 tờ/gói.</span></p>
-                                    <p style="margin:0"><span>+ Kích thước khăn: Khăn khổ lớn 170x200mm.</span></p>
-                                    <p style="margin:0"><span>+ Định lượng vải: Vải bi 50gsm với các hạt nổi 3D.</span></p>
-                                    <p style="margin:0"><span>+ Mùi hương: KHÔNG MÙI.</span></p>
-                                    <p style="margin:0"><span>+ Hạn sử dụng: 3 năm từ ngày sản xuất.</span></p>
-                                    <p style="margin:0"><span>+ Ngày sản xuất &amp; hạn sử dụng: In trên bao bì.</span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <h3><span>BẢO QUẢN:</span></h3>
-                                    <p style="margin:0"><span>Bảo quản nơi khô ráo thoáng mát, tránh ánh nắng trực tiếp và những nơi có nhiệt độ cao.</span></p>
-                                    <p style="margin:0"><span></span></p>
-                                    <h3><span>⚠ LƯU Ý:</span></h3>
-                                    <p style="margin:0"><span>** Sản phẩm không tan trong nước, không bỏ sản phẩm vào bồn cầu.</span></p>
-                                    <p style="margin:0"><span>** Để xa tầm tay trẻ em. Ngưng sử dụng và hỏi ý kiến Bác sĩ nếu có xảy ra các phản ứng bất thường trên da.</span></p><span></span>
-                                    <div style="width:100.0%;margin:0">
-                                        <div style="width:100.0%;display:block;margin:0">
-                                            <div style="width:100.0%;display:block;margin:0">
-                                                <div style="width:100.0%;display:block;margin:0">
-                                                    <div style="width:100.0%;display:block;margin:0">
-                                                        <div style="width:100.0%;display:block;margin:0">
-                                                            <div style="width:100.0%;display:block;margin:0">
-                                                                <div style="width:100.0%;display:block;margin:0">
-                                                                    <div style="width:100.0%;display:block;margin:0">
-                                                                        <div style="width:100.0%;display:block"><img class="" src="https://sg-live-01.slatic.net/p/32315c61f533446595e624637fc43a42.jpg" style="width:100.0%;display:block" /></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p style="margin:0"><span></span></p>
-                                    <p style="margin:0"><span></span></p>
+                                    <?php
+                                    $sql = "select * from product p, product_desc d where p.id = d.product_id and p.product_name = '$nameProduct'";
+                                    $list = DataProvider::execQuery($sql);
+                                    $row = mysqli_fetch_assoc($list);
+                                    echo $row["product_desc"];
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -315,7 +372,6 @@
                 </div>
             </div>
         </div>
-        </div>
     </main>
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
@@ -329,6 +385,28 @@
                 $(this).val(Math.max(Math.min(value, maxValue), 1));
             }
         });
+
+        var txtProduct = "<?php echo $textProduct; ?>";
+        
+
+        function add_to_cart() {
+            cuteToast({
+                type: "success", // or 'info', 'error', 'warning'
+                message: "Đã thêm vào giỏ hàng",
+                timer: 3000
+            });
+            var qtyProduct = $('.qty-val').val();
+            $.ajax({
+                    method: "POST", // phương thức dữ liệu được truyền đi 
+                    url: "processAddToCart", // gọi đến file server show_data.php để xử lý
+                    data: "id=" + txtProduct + "&qty=" + qtyProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
+                })
+                .done(function(data) {
+                    $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
+                }).fail(function() {
+                    alert("failed!");
+                }); //Some action to indicate is Failing ;
+        }
     </script>
 </body>
 

@@ -4200,7 +4200,7 @@ table .product-thumbnail img {
 
 .product-cart-wrap .product-content-wrap .product-price span {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   color: var(--main-color);
 }
 
@@ -4284,6 +4284,8 @@ table .product-thumbnail img {
   display: inline-block;
   padding: 6px 10px 6px 10px;
   border-radius: 4px;
+  border:none;
+  color: var(--main-color);
   background-color: #DEF9EC;
   font-size: 14px;
   font-weight: 700;
@@ -4300,8 +4302,8 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-card-bottom .add-cart .add:hover {
-  background-color: var(--main-color);
-  color: #fff;
+  background-color: var(--main-color) !important;
+  color: #fff !important;
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
@@ -4488,7 +4490,7 @@ table .product-thumbnail img {
 }
 
 .product-price {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .product-list-small article:not(:last-child) {
@@ -5201,7 +5203,7 @@ table .product-thumbnail img {
 .detail-info .product-price .current-price {
   font-size: 40px;
   text-decoration: none;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .detail-info .product-price .old-price {
@@ -7227,8 +7229,6 @@ h6.post-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   margin: 0 0 20px;
 }
 
@@ -11912,7 +11912,7 @@ footer .hotline img {
     height: 350px;
   }
   .hero-slider-1 .single-hero-slider .display-2 {
-    font-size: 46px;
+    font-size: 46px !important;
     margin-bottom: 25px !important;
   }
   .hero-slider-1 .single-hero-slider .slider-content p {
@@ -12481,8 +12481,8 @@ ion-icon{
 
 .product-content-describe-source h3{
   font-size: 24px;
-  margin-bottom: 10px;
-  margin-top: 40px;
+  margin-bottom: 10px !important;
+  margin-top: 40px !important;
   font-weight: 500 !important;
 }
 
@@ -12882,4 +12882,24 @@ input[type="radio"] ~ label.btn-shipping-method{
   padding: 15px 100px;
 }
 
+.sort-by-dropdown-wrap{
+  display: flex;
+  align-items: center;
+}
+
+li.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.btn-delete-cart-product{
+  border:none !important;
+  background: white !important;
+}
+
+
+button.cart-remove{
+  border:none;
+  background-color: white;
+}
 /*# sourceMappingURL=main.css.map */
