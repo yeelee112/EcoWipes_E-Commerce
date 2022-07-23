@@ -24,7 +24,6 @@
         $checkSecure++;
     }
     
-
     if($checkSecure >= 3){
         if(isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])){
             $uid = $_SESSION['phoneUser'];
@@ -40,13 +39,13 @@
         $listCart = DataProvider::execQuery($sqlCart);
         $rowCart = mysqli_fetch_assoc($listCart);
 
-        $sqlAddOrderDetail = "insert into order_detail values('".$rowCart["id"]."','".$rowUser["id"]."','".$rowCart["total_price"]."','$nameUser','$phoneUser','$addressUser','$messageUser','now()','now()')";
+        $sqlAddOrderDetail = "insert into order_detail values('".$rowCart["id"]."','".$rowUser["id"]."','".$rowCart["total_price"]."','$nameUser','$phoneUser','$addressUser','$messageUser',now(),now())";
         DataProvider::execQuery($sqlAddOrderDetail);
 
         $sqlCartItem = "select * from cart_item ci, shopping_session ss where ci.session_id = ss.id and ss.user_id = '".$rowUser["id"]."'";
         $listCartItem = DataProvider::execQuery($sqlCartItem);
         while($rowCartItem = mysqli_fetch_array($listCartItem, MYSQLI_ASSOC)){
-            $sqlAddOrderItem = "insert into order_items values ('','".$rowCart["id"]."','".$rowCartItem["product_id"]."','".$rowCartItem["quantity"]."','now()','now()')";
+            $sqlAddOrderItem = "insert into order_items values ('','".$rowCart["id"]."','".$rowCartItem["product_id"]."','".$rowCartItem["quantity"]."',now(),now())";
             DataProvider::execQuery($sqlAddOrderItem);
             $sqlDeteleCartItem = "delete from cart_item where product_id = '".$rowCartItem["product_id"]."'";
             DataProvider::execQuery($sqlDeteleCartItem);
@@ -55,6 +54,5 @@
         DataProvider::execQuery($sqlDeleteSession);
 
         header("Location: /");
-
     }
 ?>

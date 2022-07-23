@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -29,9 +31,6 @@
                     <h1 class="heading-2 mb-10">
                         Giỏ hàng
                     </h1>
-                    <div class="d-flex justify-content-between">
-                        <h6 class="text-body">Có tất cả <span class="text-brand">3</span> sản phẩm trong giỏ hàng của bạn</h6>
-                    </div>
                 </div>
             </div>
             <div class="row">

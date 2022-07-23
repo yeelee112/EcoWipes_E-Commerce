@@ -17,6 +17,7 @@
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                        <a href="shop?pid=ecobi">
                         <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
                             <div class="slider-content mt-30 ml-110" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
                                 <h1 class="display-2 mb-10 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
@@ -25,6 +26,8 @@
                                 <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
                             </div>
                         </div>
+                        </a>
+                        <a href="shop?cid=khan-lau-bep'">
                         <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
@@ -33,6 +36,8 @@
                                 <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
                             </div>
                         </div>
+                        </a>
+                        <a href="shop?cid=khan-tay-trang">
                         <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40" style="color:#59392f">
@@ -44,6 +49,7 @@
                                 </p>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <div class="slider-arrow hero-slider-1-arrow"></div>
                 </div>

@@ -48,7 +48,7 @@ if (isset($pid)) {
 } else if (isset($cid)) {
     $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and t.type_text = '$cid'";
 } else if ($searchStatus == 1) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and (b.brand_name like '%$search%' or g.group_name like '%$search%' or t.type_name like '%$search%' or p.sheet_style like '%$search%' or p.type_style like '%$search%'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and (b.brand_name like '%$search%' or g.group_name like '%$search%' or t.type_name like '%$search%' or p.sheet_style like '%$search%' or p.type_style like '%$search%')";
 } else {
     $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id";
 }
@@ -113,6 +113,7 @@ function removeQueryStringParameter($url, $varname)
                     <?php
                     $listProduct = DataProvider::execQuery($sqlListProduct);
                     $rowTitle = mysqli_fetch_assoc($listProduct);
+
                     if($rs == 1){ ?> 
                         <span></span><?php echo $rowTitle["brand_name"] ?>
                     <?php } 
@@ -201,7 +202,7 @@ function removeQueryStringParameter($url, $varname)
                                                 <!-- <span class="old-price">40.000 đ</span> -->
                                             </div>
                                             <div class="add-cart">
-                                                <button class="add" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
+                                                <button class="add" onclick="<?php if($checkAccountSession == true){ echo "add_to_cart_per_click(this.value)"; } else{ echo "location.href='login'"; }?>" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
                                             </div>
                                         </div>
                                     </div>

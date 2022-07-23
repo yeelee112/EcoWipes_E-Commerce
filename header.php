@@ -59,7 +59,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
+                        <form action="shop" method="get">
                             <select class="select-active">
                                 <option>Tất cả danh mục</option>
                                 <?php
@@ -71,7 +71,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                 }
                                 ?>
                             </select>
-                            <input type="text" placeholder="Tìm kiếm trên EcoWipes">
+                            <input type="text" name="search" placeholder="Tìm kiếm trên EcoWipes" value="<?php if(isset($_GET["search"])){ echo $_GET["search"]; } ?>">
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -276,7 +276,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                 <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a style="line-height:0" class="mini-cart-icon" href="cart">
+                                <a style="line-height:0" class="mini-cart-icon" href="<?php if($checkAccountSession == true){ echo "cart";} else{ echo "login";} ?>">
                                     <ion-icon name="cart-outline"></ion-icon>
                                     <?php if($checkAccountSession == true){ ?>
                                     <span class="pro-count blue">
