@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['nameUser']) && !isset($_SESSION['phoneUser'])) {
+    header("Location: /");
+}
 $priceTotalWithNoReset = 0;
 $totalQuantityProduct = 0;
 ?>
@@ -84,7 +88,6 @@ $totalQuantityProduct = 0;
                                 $priceTotal += $row1["price"] * $row1["quantity"];
                                 $priceTotalWithNoReset += $row1["price"] * $row1["quantity"];
                                 $priceTotalShow = number_format($priceTotal, 0, ",", ".") . ' ₫';
-
                             ?>
                                 <div class="cart-item">
                                     <div class=" d-flex align-items-center text-start row">
@@ -131,7 +134,6 @@ $totalQuantityProduct = 0;
                             <?php
                                 $priceTotal = 0;
                             } ?>
-
                         </div>
                     </div>
                 </div>
@@ -152,14 +154,26 @@ $totalQuantityProduct = 0;
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col d-flex justify-content-end align-items-center">
+                            <div class="col d-md-flex justify-content-end align-items-center">
                                 <div class="title-payment-method"> Phương thức thanh toán</div>
                                 <div class="payment-method-radio-container">
-                                    <input type="radio" class="btn-check" name="payment-method" id="cod" autocomplete="off" value="COD" checked>
-                                    <label class="btn-shipping-method mb-0 ml-20" for="cod">
+                                    <input type="radio" class="btn-check" name="payment-method" id="cod" value="COD" checked>
+                                    <label class="btn-shipping-method mb-0" for="cod">
                                         Thanh toán khi nhận hàng
                                         <div class="checked-payment-method">
-                                            <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="shopee-svg-icon icon-tick-bold">
+                                            <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
+                                                <g>
+                                                    <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </label>
+
+                                    <input type="radio" class="btn-check" name="payment-method" id="banking" value="Banking">
+                                    <label class="btn-shipping-method mb-0" for="banking">
+                                        Chuyển khoản qua ngân hàng
+                                        <div class="checked-payment-method">
+                                            <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
                                                 <g>
                                                     <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
                                                 </g>
@@ -169,8 +183,20 @@ $totalQuantityProduct = 0;
                                 </div>
                             </div>
                         </div>
+                        <div class="row justify-content-end">
+                            <div class="col-lg-3 align-self-end">
+                                <div class="info-banking-container">
+                                    <div class="info-banking-inner">
+                                        <div>Ngân hàng: <span>ACB</span></div>
+                                        <div>STK: <span>01000110011010</span></div>
+                                        <div>Chủ TK: <span>Cty Cổ phần EcoWipes</span></div>
+                                        <div class="note-banking-method">(*) Đơn hàng sẽ được chuyển đi ngay sau khi cửa hàng xác nhận chuyển khoản thành công</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class="col d-flex justify-content-end align-items-center">
+                            <div class="col d-flex justify-content-md-end align-items-md-center">
                                 <div class="title-checkout-container">
                                     Thành tiền (<?php echo $totalQuantityProduct; ?> sản phẩm):
                                 </div>
@@ -197,6 +223,15 @@ $totalQuantityProduct = 0;
         function messageRedirect(val) {
             $(".message-form").val(val);
         }
+
+        $('input:radio[name="payment-method"]').change(
+            function() {
+                if ($(this).val() == 'Banking') {
+                    $('.info-banking-container').css("display", "block");
+                } else {
+                    $('.info-banking-container').css("display", "none");
+                }
+            });
     </script>
 </body>
 

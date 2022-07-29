@@ -36,7 +36,7 @@
         $rowBind = mysqli_fetch_assoc($listBind);
 
         if(mysqli_num_rows($listBind) > 0){
-            $sqlUpdateQuantity = "update cart_item set quantity = $qtyProduct where product_id = '".$rowProduct["id"]."'";
+            $sqlUpdateQuantity = "update cart_item set quantity = $qtyProduct, updated_at = now() where product_id = '".$rowProduct["id"]."'";
             DataProvider::execQuery($sqlUpdateQuantity);
             
             $priceTotalWithNoReset = 0;
@@ -101,10 +101,14 @@
             $priceTotal = 0;
             }
 
-            $sqlUpdateSessionTotalPrice = "update shopping_session set total_price = $priceTotalWithNoReset where user_id = '".$rowUser["id"]."'";
+            $sqlUpdateSessionTotalPrice = "update shopping_session set total_price = $priceTotalWithNoReset, updated_at = now() where user_id = '".$rowUser["id"]."'";
             DataProvider::execQuery($sqlUpdateSessionTotalPrice);
 
             echo $data;
         }
+    }
+
+    else{
+        header('Location: /');
     }
 ?>

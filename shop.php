@@ -37,20 +37,17 @@ if (isset($_GET["sort"])) {
     $sort = mysqli_real_escape_string($mysqli, $_GET["sort"]);
 }
 
-if (isset($_GET["sort"])) {
-    $sort = mysqli_real_escape_string($mysqli, $_GET["sort"]);
-}
 
 if (isset($pid)) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and b.brand_text = '$pid'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and b.brand_text = '$pid'";
 } else if (isset($gid)) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and g.group_text = '$gid'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and g.group_text = '$gid'";
 } else if (isset($cid)) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and t.type_text = '$cid'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and t.type_text = '$cid'";
 } else if ($searchStatus == 1) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and (b.brand_name like '%$search%' or g.group_name like '%$search%' or t.type_name like '%$search%' or p.sheet_style like '%$search%' or p.type_style like '%$search%')";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and (b.brand_name like '%$search%' or g.group_name like '%$search%' or t.type_name like '%$search%' or p.sheet_style like '%$search%' or p.type_style like '%$search%')";
 } else {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, b.brand_name, b.brand_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id";
 }
 
 if ($temp > 1) {
@@ -108,20 +105,19 @@ function removeQueryStringParameter($url, $varname)
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
+                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
                     <span></span> <a href="shop">Cửa hàng</a>
                     <?php
                     $listProduct = DataProvider::execQuery($sqlListProduct);
                     $rowTitle = mysqli_fetch_assoc($listProduct);
+                    $countRow = mysqli_num_rows($listProduct);
 
-                    if($rs == 1){ ?> 
+                    if ($rs == 1 && $countRow > 1) { ?>
                         <span></span><?php echo $rowTitle["brand_name"] ?>
-                    <?php } 
-                    else if($rs == 2){ ?>
+                    <?php } else if ($rs == 2 && $countRow > 1) { ?>
                         <span></span><a href="shop?pid=<?php echo $rowTitle["brand_text"] ?>"> <?php echo $rowTitle["brand_name"] ?> </a>
                         <span></span><?php echo $rowTitle["group_name"] ?>
-                    <?php }
-                    else if($rs == 3){ ?>
+                    <?php } else if ($rs == 3 && $countRow > 1) { ?>
                         <span></span><a href="shop?pid=<?php echo $rowTitle["brand_text"] ?>"> <?php echo $rowTitle["brand_name"] ?> </a>
                         <span></span><a href="shop?gid=<?php echo $rowTitle["group_text"] ?>"> <?php echo $rowTitle["group_name"] ?> </a>
                         <span></span><?php echo $rowTitle["type_name"] ?>
@@ -129,7 +125,6 @@ function removeQueryStringParameter($url, $varname)
                 </div>
             </div>
         </div>
-
 
         <div class="container mb-30">
             <div class="row">
@@ -196,13 +191,21 @@ function removeQueryStringParameter($url, $varname)
                                             <a href="shop?pid=<?php echo $row["brand_text"] ?>"><?php echo $row["brand_name"] ?></a>
                                         </div>
                                         <h2><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row["product_name"] ?></a></h2>
+                                        <div class="count-product-sold">
+                                                Đã bán: <?php echo $row["total_sold"] ?>
+                                            </div>
                                         <div class="product-card-bottom">
+                                        
                                             <div class="product-price">
                                                 <span><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</span>
                                                 <!-- <span class="old-price">40.000 đ</span> -->
                                             </div>
                                             <div class="add-cart">
-                                                <button class="add" onclick="<?php if($checkAccountSession == true){ echo "add_to_cart_per_click(this.value)"; } else{ echo "location.href='login'"; }?>" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
+                                                <button class="add" onclick="<?php if ($checkAccountSession == true) {
+                                                                                    echo "add_to_cart_per_click(this.value)";
+                                                                                } else {
+                                                                                    echo "location.href='login'";
+                                                                                } ?>" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -219,32 +222,32 @@ function removeQueryStringParameter($url, $varname)
                         <h5 class="section-title style-1 mb-30">Danh mục</h5>
                         <ul>
                             <?php
-                                require_once 'DataProvider.php';
-                                $sqlCountBrand = "select b.brand_name, b.brand_text, count(p.id) as count from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id group by b.brand_name;";
-                                $listCountBrand = DataProvider::execQuery($sqlCountBrand);
-                                while ($row = mysqli_fetch_array($listCountBrand, MYSQLI_ASSOC)) {
-                                    echo '<li><a href="shop?pid='.$row['brand_text'].'">'.$row['brand_name'].'</a><span class="count">'.$row['count'].'</span></li>';
+                            require_once 'DataProvider.php';
+                            $sqlCountBrand = "select b.brand_name, b.brand_text, count(p.id) as count from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id group by b.brand_name;";
+                            $listCountBrand = DataProvider::execQuery($sqlCountBrand);
+                            while ($row = mysqli_fetch_array($listCountBrand, MYSQLI_ASSOC)) {
+                                echo '<li><a href="shop?pid=' . $row['brand_text'] . '">' . $row['brand_name'] . '</a><span class="count">' . $row['count'] . '</span></li>';
                             } ?>
                         </ul>
                     </div>
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
                         <h5 class="section-title style-1 mb-30">Sản phẩm mới</h5>
-                        <?php 
-                            require_once 'DataProvider.php';
-                            $sql = "select p.product_name, p.price, i.img_thumb, p.product_text from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id LIMIT 3";
-                            $list = DataProvider::execQuery($sql);
-                            while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                        <?php
+                        require_once 'DataProvider.php';
+                        $sql = "select p.product_name, p.price, i.img_thumb, p.product_text from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id LIMIT 3";
+                        $list = DataProvider::execQuery($sql);
+                        while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
                         ?>
-                        <div class="single-post clearfix">
-                            <div class="image">
-                                <img src="<?php echo $row['img_thumb'] ?>" alt="<?php echo $row['product_name'] ?>">
+                            <div class="single-post clearfix">
+                                <div class="image">
+                                    <img src="<?php echo $row['img_thumb'] ?>" alt="<?php echo $row['product_name'] ?>">
+                                </div>
+                                <div class="content pt-10">
+                                    <h6><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row['product_name'] ?></a></h6>
+                                    <p class="price mb-0 mt-5"><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</p>
+                                </div>
                             </div>
-                            <div class="content pt-10">
-                                <h6><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row['product_name'] ?></a></h6>
-                                <p class="price mb-0 mt-5"><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</p>
-                            </div>
-                        </div>
                         <?php } ?>
                     </div>
                     <!-- <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
@@ -265,6 +268,19 @@ function removeQueryStringParameter($url, $varname)
     <?php require_once 'footer.php' ?>
 
     <?php require_once 'script.php' ?>
+    <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+
+    <script>
+        var p1 = new google.maps.LatLng(10.8615861, 106.697854);
+        var p2 = new google.maps.LatLng(10.8520538, 106.6626652);
+
+        alert(calcDistance(p1, p2));
+
+        //calculates distance between two points in km's
+        function calcDistance(p1, p2) {
+            return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+        }
+    </script> -->
 
     <script>
         function add_to_cart_per_click(txtProduct) {
@@ -273,17 +289,17 @@ function removeQueryStringParameter($url, $varname)
                 message: "Đã thêm vào giỏ hàng",
                 timer: 3000
             });
-        $.ajax({
-                method: "POST", // phương thức dữ liệu được truyền đi 
-                url: "processAddToCart", // gọi đến file server show_data.php để xử lý
-                data: "id=" + txtProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
-            })
-            .done(function(data) {
-                $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
-            }).fail(function() {
-                alert("failed!");
-            }); //Some action to indicate is Failing ;
-    }
+            $.ajax({
+                    method: "POST", // phương thức dữ liệu được truyền đi 
+                    url: "processAddToCart", // gọi đến file server show_data.php để xử lý
+                    data: "id=" + txtProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
+                })
+                .done(function(data) {
+                    $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
+                }).fail(function() {
+                    alert("failed!");
+                }); //Some action to indicate is Failing ;
+        }
 
         var txtSort = $('.sort-by-product-area .sort-by-cover a.active').text();
         $('.sort-by-dropdown-wrap span').text(txtSort);

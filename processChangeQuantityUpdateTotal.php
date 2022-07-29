@@ -36,7 +36,7 @@
         $rowBind = mysqli_fetch_assoc($listBind);
 
         if(mysqli_num_rows($listBind) > 0){
-            $sqlUpdateQuantity = "update cart_item set quantity = $qtyProduct where product_id = '".$rowProduct["id"]."'";
+            $sqlUpdateQuantity = "update cart_item set quantity = $qtyProduct, updated_at = now() where product_id = '".$rowProduct["id"]."'";
             DataProvider::execQuery($sqlUpdateQuantity);
             
             $sqlTotal = "select * from shopping_session ss where ss.user_id = '".$rowUser["id"]."'";
@@ -74,5 +74,8 @@
 
             echo $data;
         }
+    }
+    else{
+        header('Location: /');
     }
 ?>

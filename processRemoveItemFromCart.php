@@ -43,10 +43,13 @@
 
             $priceTotalShow = number_format($priceTotal, 0, ",", ".").' ₫';
 
-            $sqlUpdateSessionTotalPrice = "update shopping_session set total_price = $priceTotal where user_id = '".$rowUser["id"]."'";
+            $sqlUpdateSessionTotalPrice = "update shopping_session set total_price = $priceTotal, updated_at = now() where user_id = '".$rowUser["id"]."'";
             DataProvider::execQuery($sqlUpdateSessionTotalPrice);
 
             echo '';
         }
+    }
+    else{
+        header('Location: /');
     }
 ?>

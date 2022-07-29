@@ -1,53 +1,52 @@
 <?php
-require_once 'library.php';
-require_once 'functionPhp.php';
-$activePage = basename($_SERVER['PHP_SELF'], ".php");
-$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$currentPage = $_SERVER['REQUEST_URI'];
-$nameUser = '';
-$phone = '';
-$checkAccountSession = false;
+    require_once 'library.php';
+    require_once 'functionPhp.php';
+    $activePage = basename($_SERVER['PHP_SELF'], ".php");
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $currentPage = $_SERVER['REQUEST_URI'];
+    $nameUser = '';
+    $phone = '';
+    $checkAccountSession = false;
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-require_once 'DataProvider.php';
-
-if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
-    $nameUser = $_SESSION['nameUser'];
-    $phone = $_SESSION['phoneUser'];
-    $checkAccountSession = true;
-
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     require_once 'DataProvider.php';
-    $sqlUser = "select * from user_account where phone = '$phone'";
-    $listUser = DataProvider::execQuery($sqlUser);
-    $rowUser = mysqli_fetch_assoc($listUser);
 
-    $priceTotal = 0;
-}
+    if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
+        $nameUser = $_SESSION['nameUser'];
+        $phone = $_SESSION['phoneUser'];
+        $checkAccountSession = true;
 
-$logoutAction = $_SERVER['PHP_SELF'] . "?doLogout=true";
+        require_once 'DataProvider.php';
+        $sqlUser = "select * from user_account where phone = '$phone'";
+        $listUser = DataProvider::execQuery($sqlUser);
+        $rowUser = mysqli_fetch_assoc($listUser);
 
-if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")) {
-    $logoutAction .= "&" . htmlentities($_SERVER['QUERY_STRING']);
-}
+        $priceTotal = 0;
+    }
 
-if ($currentPage != '/login' && (empty($_GET['doLogout']))) {
-    $_SESSION['rewindURL'] = NULL;
+    $logoutAction = $_SERVER['PHP_SELF'] . "?doLogout=true";
 
-    unset($_SESSION['rewindURL']);
-    $_SESSION['rewindURL'] = $currentPage;
-}
+    if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")) {
+        $logoutAction .= "&" . htmlentities($_SERVER['QUERY_STRING']);
+    }
 
-if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
-    // to fully log out a visitor we need to clear the session variables
-    $_SESSION['nameUser'] = NULL;
-    $_SESSION['phoneUser'] = NULL;
-    unset($_SESSION['nameUser']);
-    unset($_SESSION['phoneUser']);
+    if ($currentPage != '/login' && (empty($_GET['doLogout']))) {
+        $_SESSION['rewindURL'] = NULL;
 
-    redirect($_SESSION['rewindURL']);
-}
+        unset($_SESSION['rewindURL']);
+        $_SESSION['rewindURL'] = $currentPage;
+    }
+
+    if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
+        $_SESSION['nameUser'] = NULL;
+        $_SESSION['phoneUser'] = NULL;
+        unset($_SESSION['nameUser']);
+        unset($_SESSION['phoneUser']);
+
+        redirect($_SESSION['rewindURL']);
+    }
 ?>
 
 <header class="header-area header-style-1 header-height-2">
@@ -195,13 +194,13 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                             <ul>
                                 <li class="hot-deals"><img src="assets/imgs/theme/icons/icon-hot.svg" alt="hot deals"><a href="#">Deals</a></li>
                                 <li>
-                                    <a class="active" href="/">Trang chủ</a>
+                                    <a class="<?php echo ($activePage == 'index') ? 'active' : ''; ?>" href="/">Trang chủ</a>
                                 </li>
                                 <li>
-                                    <a href="about-us">Về chúng tôi</a>
+                                    <a href="about-us" class="<?php echo ($activePage == 'about-us') ? 'active' : ''; ?>" >Về chúng tôi</a>
                                 </li>
                                 <li class="position-static">
-                                    <a href="shop">Sản phẩm <i class="fi-rs-angle-down"></i></a>
+                                    <a href="shop" class="<?php echo ($activePage == 'shop' || $activePage == 'product') ? 'active' : ''; ?>">Sản phẩm <i class="fi-rs-angle-down"></i></a>
                                     <ul class="mega-menu">
                                         <?php
                                         require_once 'DataProvider.php';
@@ -267,7 +266,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="contact-us">Liên hệ</a>
+                                    <a href="contact-us" class="<?php echo ($activePage == 'contact-us') ? 'active' : ''; ?>">Liên hệ</a>
                                 </li>
                             </ul>
                         </nav>
@@ -294,6 +293,10 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                 </a>
                                 <?php if($checkAccountSession == true){ ?>
                                 <div class="cart-dropdown-wrap cart-container cart-dropdown-hm2">
+                                    <?php if($count == 0){   
+                                    echo '<div>Chưa có sản phẩm nào trong giỏ hàng.</div>';
+                                    }
+                                    else{ ?>
                                     <ul>
                                         <?php  
                                         $sql1 = "select * from shopping_session ss, cart_item ci, product p, image_product ip where ss.id = ci.session_id and ci.product_id = p.id and p.id = ip.product_id and ss.user_id = '".$rowUser["id"]."'";
@@ -324,7 +327,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                             <a href="checkout">Thanh toán</a>
                                         </div>
                                     </div>
-
+                                    <?php } ?>
                                 </div>
                                 <?php } ?>
                             </div>

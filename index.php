@@ -18,43 +18,249 @@
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
                         <a href="shop?pid=ecobi">
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
-                            <div class="slider-content mt-30 ml-110" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
-                                <h1 class="display-2 mb-10 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
-                                    Chất lượng vàng
-                                </h1>
-                                <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
+                                <div class="slider-content mt-30 ml-110" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
+                                    <h1 class="display-2 mb-10 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                        Chất lượng vàng
+                                    </h1>
+                                    <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
+                                </div>
                             </div>
-                        </div>
                         </a>
                         <a href="shop?cid=khan-lau-bep'">
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
-                            <div class="slider-content">
-                                <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
-                                    Khăn ướt Lau bếp<br>
-                                </h1>
-                                <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
+                            <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
+                                <div class="slider-content">
+                                    <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                        Khăn ướt Lau bếp<br>
+                                    </h1>
+                                    <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
+                                </div>
                             </div>
-                        </div>
                         </a>
                         <a href="shop?cid=khan-tay-trang">
-                        <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
-                            <div class="slider-content">
-                                <h1 class="display-2 mb-40" style="color:#59392f">
-                                    Khăn ướt Tẩy trang
-                                </h1>
-                                <p class="mb-65" style="font-weight:700">Làm sạch lớp trang điểm
-                                    <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
-                                    bụi bẩn và nhờn
-                                </p>
+                            <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
+                                <div class="slider-content">
+                                    <h1 class="display-2 mb-40" style="color:#59392f">
+                                        Khăn ướt Tẩy trang
+                                    </h1>
+                                    <p class="mb-65" style="font-weight:700">Làm sạch lớp trang điểm
+                                        <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
+                                        bụi bẩn và nhờn
+                                    </p>
+                                </div>
                             </div>
-                        </div>
                         </a>
                     </div>
                     <div class="slider-arrow hero-slider-1-arrow"></div>
                 </div>
             </div>
         </section>
+
+        <section class="section-padding pb-5">
+            <div class="container">
+                <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
+                    <h3 class>Best Sells Mỗi ngày</h3>
+                    <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
+                                <div class="" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
+                                    Kết thúc trong:
+                                </div>
+                                <div class="deals-countdown pl-5" id="clock" data-countdown="">
+                                    <span class="countdown-section">
+                                        <span class="countdown-amount hover-up">03</span>
+                                        <span class="countdown-period"> ngày </span>
+                                    </span>
+                                    <span class="countdown-section">
+                                        <span class="countdown-amount hover-up">02</span>
+                                        <span class="countdown-period"> giờ </span>
+                                    </span>
+                                    <span class="countdown-section">
+                                        <span class="countdown-amount hover-up">43</span>
+                                        <span class="countdown-period"> phút </span>
+                                    </span>
+                                    <span class="countdown-section">
+                                        <span class="countdown-amount hover-up">29</span>
+                                        <span class="countdown-period"> giây </span>
+                                    </span>
+                                </div>
+                                <div class="" style="background: linear-gradient(to left, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
+                                    Flash Sale
+                                </div>
+                            </button>
+                        </li>
+                        <!-- <li class="nav-item" role="presentation" style="display:flex;">
+                            <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán chạy</button>
+                        </li> -->
+                        <li class="nav-item" role="presentation" style="display:flex;">
+                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Mới</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
+                        <div class="banner-img best-sale-img style-2">
+                            <div class="banner-text">
+                                <h2 class="mb-100" style="font-size:42px;color:white;">Bring nature into your home</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
+                        <!-- TAB PANE START-->
+                        <div class="tab-content" id="myTabContent-1">
+                            <!-- TAB PANE 1-->
+                            <div class="tab-pane fade show active" id="tab-three-1" role="tabpanel" aria-labelledby="tab-one-1">
+                                <div class="carausel-4-columns-cover arrow-center position-relative">
+                                    <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
+                                    <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
+                                        <?php
+                                        require_once 'DataProvider.php';
+                                        $sql = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 8";
+                                        $list = DataProvider::execQuery($sql);
+                                        while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                                        ?>
+                                            <div class="product-cart-wrap">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img">
+                                                        <a href="product?item=<?php echo $row["product_text"] ?>">
+                                                            <img class="default-img lazyload" src="<?php echo $row["img_thumb"]; ?>" alt>
+                                                            <img class="hover-img lazyload" src="<?php echo $row["img_1"]; ?>" alt>
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="hot">Mới</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content-wrap">
+                                                    <div class="product-category">
+                                                        <a href="shop?gid=<?php echo $row["group_text"] ?>"><?php echo $row["group_name"] ?></a>
+                                                    </div>
+                                                    <h2><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row["product_name"] ?></a></h2>
+                                                    <div class="product-price mt-10 mb-10">
+                                                        <span><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</span>
+                                                        <?php if ($row["price_old"] != NULL)
+                                                            echo '<span class="old-price">' . number_format($row["price_old"], 0, ",", ".") . ' ₫</span>';
+                                                        ?>
+                                                    </div>
+                                                    <button class="btn w-100 hover-up" onclick="<?php if ($checkAccountSession == true) {
+                                                                                                    echo "add_to_cart_per_click(this.value)";
+                                                                                                } else {
+                                                                                                    echo "location.href='login'";
+                                                                                                } ?>" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END TAB PANE-->
+                        </div>
+                        <!--End tab-content-->
+                    </div>
+                    <!--End Col-lg-9-->
+                </div>
+            </div>
+        </section>
+
+        <section class="product-tabs section-padding position-relative pt-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="section-title style-2 mb-20">
+                            <h3>Danh mục</h3>
+                        </div>
+                        <div class="categories-container">
+                            <div class="categories-inner">
+                                <div class="accordion">
+                                    <ul class="categories-parent-container">
+                                        <?php
+                                            require_once 'DataProvider.php';
+                                            $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                            $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
+                                            while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
+                                        ?>
+                                        <li>
+                                            <a href="shop?pid=<?php echo $rowBrandAccordion["brand_text"] ?>"><?php echo $rowBrandAccordion["brand_name"] ?></a>
+                                            <ul class="categories-child-container">
+                                                <?php
+                                                    require_once 'DataProvider.php';
+                                                    $sqlTypeAccordion = "select * from brand_product bp, group_product gp, type_product tp where bp.id = gp.brand_id and gp.id = tp.group_id and bp.id = '".$rowBrandAccordion["id"]."'";
+                                                    $listTypeAccordion = DataProvider::execQuery($sqlTypeAccordion);
+                                                    while ($rowTypeAccordion = mysqli_fetch_array($listTypeAccordion, MYSQLI_ASSOC)) {
+                                                ?>
+                                                <li>
+                                                    <a href="shop?cid=<?php echo $rowTypeAccordion["type_text"] ?>"><?php echo $rowTypeAccordion["type_name"] ?></a>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End nav-tabs-->
+                    <div class="col-md-9">
+                        <div class="row product-grid-4">
+                            <?php
+                            require_once 'DataProvider.php';
+                            $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 12";
+                            $listChild = DataProvider::execQuery($sqlChild);
+                            while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
+                            ?>
+                                <div class="col-lg-1-4 col-md-3  col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img">
+                                                <a href="product?item=<?php echo $rowChild["product_text"] ?>">
+                                                    <img class="default-img lazyload" src="<?php echo $rowChild["img_thumb"] ?>" alt>
+                                                    <img class="hover-img lazyload" src="<?php echo $rowChild["img_1"] ?>" alt>
+                                                </a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">Mới</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop?gid=<?php echo $rowChild["group_text"] ?>"><?php echo $rowChild["group_name"] ?></a>
+                                            </div>
+                                            <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
+                                            <div>
+                                                <span class="font-small text-muted">Thương hiệu: <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
+                                            </div>
+                                            <div class="count-product-sold">
+                                                Đã bán: <?php echo $rowChild["total_sold"] ?>
+                                            </div>
+                                            <div class="product-card-bottom">
+                                                <div class="product-price">
+                                                    <span><?php echo number_format($rowChild["price"], 0, ",", "."); ?> ₫</span>
+                                                    <?php if ($rowChild["price_old"] != NULL)
+                                                        echo '<span class="old-price">' . number_format($rowChild["price_old"], 0, ",", ".") . ' ₫</span>';
+                                                    ?>
+                                                </div>
+                                                <div class="add-cart">
+                                                    <button class="add" id="toast" onclick="<?php if ($checkAccountSession == true) {
+                                                                                                echo "add_to_cart_per_click(this.value)";
+                                                                                            } else {
+                                                                                                echo "location.href='login'";
+                                                                                            } ?>" value="<?php echo $rowChild["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <!--End product-grid-4-->
+                </div>
+                <!--En tab one-->
+            </div>
+            <!--End tab-content-->
+        </section>
+        <!--Products Tabs-->
 
         <section class="popular-categories section-padding">
             <div class="container wow animate__animated animate__fadeIn">
@@ -63,7 +269,6 @@
                         <h3>Thương hiệu nổi bật</h3>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="banner-img wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
@@ -108,241 +313,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="section-padding pb-5">
-            <div class="container">
-                <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
-                    <h3 class>Best Sells Mỗi ngày</h3>
-                    <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
-                                <div class="" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
-                                    Kết thúc trong:
-                                </div>
-                                <div class="deals-countdown pl-5" id="clock" data-countdown="2022/07/20 00:00:00">
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">03</span>
-                                        <span class="countdown-period"> ngày </span>
-                                    </span>
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">02</span>
-                                        <span class="countdown-period"> giờ </span>
-                                    </span>
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">43</span>
-                                        <span class="countdown-period"> phút </span>
-                                    </span>
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">29</span>
-                                        <span class="countdown-period"> giây </span>
-                                    </span>
-                                </div>
-                                <div class="" style="background: linear-gradient(to bottom, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
-                                    Flash Sale
-                                </div>
-                            </button>
-                        </li>
-                        <!-- <li class="nav-item" role="presentation" style="display:flex;">
-                            <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán chạy</button>
-                        </li> -->
-                        <li class="nav-item" role="presentation" style="display:flex;">
-                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Mới</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 d-none d-lg-flex wow animate__animated animate__fadeIn">
-                        <div class="banner-img best-sale-img style-2">
-                            <div class="banner-text">
-                                <h2 class="mb-100" style="font-size:42px;color:white;">Bring nature into your home</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-12 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
-                        <!-- TAB PANE START-->
-                        <div class="tab-content" id="myTabContent-1">
-                            <!-- TAB PANE 1-->
-                            <div class="tab-pane fade show active" id="tab-three-1" role="tabpanel" aria-labelledby="tab-one-1">
-                                <div class="carausel-4-columns-cover arrow-center position-relative">
-                                    <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
-                                    <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
-                                        <?php
-                                        require_once 'DataProvider.php';
-                                        $sql = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 8";
-                                        $list = DataProvider::execQuery($sql);
-                                        while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
-                                        ?>
-                                            <div class="product-cart-wrap">
-                                                <div class="product-img-action-wrap">
-                                                    <div class="product-img">
-                                                        <a href="product?item=<?php echo $row["product_text"] ?>">
-                                                            <img class="default-img" src="<?php echo $row["img_thumb"]; ?>" alt>
-                                                            <img class="hover-img" src="<?php echo $row["img_1"]; ?>" alt>
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="hot">Mới</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content-wrap">
-                                                    <div class="product-category">
-                                                        <a href="shop?gid=<?php echo $row["group_text"] ?>"><?php echo $row["group_name"] ?></a>
-                                                    </div>
-                                                    <h2><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row["product_name"] ?></a></h2>
-                                                    <div class="product-price mt-10 mb-10">
-                                                        <span><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</span>
-                                                        <?php if ($row["price_old"] != NULL)
-                                                            echo '<span class="old-price">' . number_format($row["price_old"], 0, ",", ".") . ' ₫</span>';
-                                                        ?>
-                                                    </div>
-                                                    <button class="btn w-100 hover-up" onclick="<?php if($checkAccountSession == true){ echo "add_to_cart_per_click(this.value)"; } else{ echo "location.href='login'"; }?>" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END TAB PANE-->
-                        </div>
-                        <!--End tab-content-->
-                    </div>
-                    <!--End Col-lg-9-->
-                </div>
-            </div>
-        </section>
-
-        <section class="product-tabs section-padding position-relative">
-            <div class="container">
-                <div class="section-title style-2">
-                    <h3>Sản phẩm nổi bật</h3>
-                    <ul class="nav nav-tabs links" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-all" type="button" role="tab" aria-controls="tab-all" aria-selected="true">Tất cả</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-ecowipes" type="button" role="tab" aria-controls="tab-ecowipes" aria-selected="false">EcoWipes</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-ecobi" type="button" role="tab" aria-controls="tab-ecobi" aria-selected="false">Ecobi</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-four" data-bs-toggle="tab" data-bs-target="#tab-eco-bamboo" type="button" role="tab" aria-controls="tab-eco-bamboo" aria-selected="false">Eco Bamboo</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-five" data-bs-toggle="tab" data-bs-target="#tab-eco-tissue" type="button" role="tab" aria-controls="tab-eco-tissue" aria-selected="false">Eco Tissue</button>
-                        </li>
-                    </ul>
-                </div>
-                <!--End nav-tabs-->
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane show active" id="tab-all" role="tabpanel" aria-labelledby="tab-all">
-                        <div class="row product-grid-4">
-                            <?php
-                            require_once 'DataProvider.php';
-                            $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 10";
-                            $listChild = DataProvider::execQuery($sqlChild);
-                            while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
-                            ?>
-                                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                    <div class="product-cart-wrap mb-30">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img">
-                                                <a href="product?item=<?php echo $rowChild["product_text"] ?>">
-                                                    <img class="default-img" src="<?php echo $rowChild["img_thumb"] ?>" alt>
-                                                    <img class="hover-img" src="<?php echo $rowChild["img_1"] ?>" alt>
-                                                </a>
-                                            </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">Mới</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content-wrap">
-                                            <div class="product-category">
-                                                <a href="shop?gid=<?php echo $rowChild["group_text"] ?>"><?php echo $rowChild["group_name"] ?></a>
-                                            </div>
-                                            <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
-                                            <div>
-                                                <span class="font-small text-muted">Thương hiệu: <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
-                                            </div>
-                                            <div class="product-card-bottom">
-                                                <div class="product-price">
-                                                    <span><?php echo number_format($rowChild["price"], 0, ",", "."); ?> ₫</span>
-                                                    <?php if ($rowChild["price_old"] != NULL)
-                                                        echo '<span class="old-price">' . number_format($rowChild["price_old"], 0, ",", ".") . ' ₫</span>';
-                                                    ?>
-                                                </div>
-                                                <div class="add-cart">
-                                                    <button class="add" id="toast" onclick="<?php if($checkAccountSession == true){ echo "add_to_cart_per_click(this.value)"; } else{ echo "location.href='login'"; }?>" value="<?php echo $rowChild["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                        <!--End product-grid-4-->
-                    </div>
-
-                    <?php
-                    require_once 'DataProvider.php';
-                    $sql = "SELECT * from brand_product";
-                    $list = DataProvider::execQuery($sql);
-                    while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
-                    ?>
-                        <div class="tab-pane fade" id="tab-<?php echo $row["brand_text"] ?>" role="tabpanel" aria-labelledby="tab-<?php echo $row["brand_text"] ?>">
-                            <div class="row product-grid-4">
-                                <?php
-                                require_once 'DataProvider.php';
-                                $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and b.brand_text = '" . $row["brand_text"] . "' order by p.created_at ASC LIMIT 10";
-                                $listChild = DataProvider::execQuery($sqlChild);
-                                while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
-                                ?>
-                                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                        <div class="product-cart-wrap mb-30">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img">
-                                                    <a href="product?item=<?php echo $row["product_text"] ?>">
-                                                        <img class="default-img" src="<?php echo $rowChild["img_thumb"] ?>" alt>
-                                                        <img class="hover-img" src="<?php echo $rowChild["img_1"] ?>" alt>
-                                                    </a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="hot">Mới</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <div class="product-category">
-                                                    <a href="shop?gid=<?php echo $rowChild["group_text"] ?>"><?php echo $rowChild["group_name"] ?></a>
-                                                </div>
-                                                <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
-                                                <div>
-                                                    <span class="font-small text-muted">Thương hiệu: <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
-                                                </div>
-                                                <div class="product-card-bottom">
-                                                    <div class="product-price">
-                                                        <span><?php echo number_format($rowChild["price"], 0, ",", "."); ?> ₫</span>
-                                                        <?php if ($rowChild["price_old"] != NULL)
-                                                            echo '<span class="old-price">' . number_format($rowChild["price_old"], 0, ",", ".") . ' ₫</span>';
-                                                        ?>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <button class="add"><i class="fi-rs-shopping-cart mr-5"></i><span>Thêm</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                            <!--End product-grid-4-->
-                        </div>
-                    <?php } ?>
-                    <!--En tab one-->
-                </div>
-                <!--End tab-content-->
-            </div>
-        </section>
-        <!--Products Tabs-->
 
         <section class="newsletter mb-15 wow animate__animated animate__fadeIn">
             <div class="container">

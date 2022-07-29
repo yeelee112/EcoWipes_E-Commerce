@@ -53,6 +53,12 @@
         $sqlDeleteSession = "delete from shopping_session where id = '".$rowCart["id"]."'";
         DataProvider::execQuery($sqlDeleteSession);
 
+        echo "<script>alert('Cảm ơn bạn đã đặt hàng thành công')</script>";
+
         header("Location: /");
+    }
+
+    else{
+        header('Location: /');
     }
 ?>

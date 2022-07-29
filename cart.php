@@ -1,4 +1,9 @@
-
+<?php
+    session_start();
+    if (!isset($_SESSION['nameUser']) && !isset($_SESSION['phoneUser'])) {
+        header("Location: /");
+    }
+?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">

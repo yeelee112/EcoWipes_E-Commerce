@@ -72,4 +72,8 @@
             </div>';
         }
     }
+
+    else{
+        header('Location: /');
+    }
 ?>

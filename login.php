@@ -1,12 +1,15 @@
 <?php 
     require_once 'functionPhp.php';
     require_once 'DataProvider.php';
+
     $postData = $statusLogin = $statusRegister = $status = '';
     $msgClass = 'errordiv';
-    $expire = 365*24*3600; // We choose a one year duration
+
+    $expire = 365 * 24 * 3600; // We choose a one year duration
     ini_set('session.gc_maxlifetime', $expire);
     session_start();
-    setcookie(session_name(),session_id(),time()+$expire); 
+    setcookie(session_name(), session_id(), time() + $expire); 
+
     if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
         header("Location: /");
     }
@@ -15,6 +18,7 @@
 
     $mysqli = DataProvider::getConnection();
     $postData = $_POST;
+
     if(isset($_POST['submitSignin'])){
         $phone = $_POST['phone'];
         $password = $_POST['password'];
@@ -77,8 +81,8 @@
                 if ($password == $repassword) {
                     $password = md5($password);
 
-                    $sql = "insert into user_account values ('','$email','$password','$fullname','$phone',NOW(),NOW())";
-                    $list = DataProvider::execQuery($sql);
+                    $sql = "insert into user_account values ('','$email','$password','$fullname','$phone',NULL,NOW(),NOW())";
+                    DataProvider::execQuery($sql);
                     $_SESSION['nameUser'] = $fullname;
                     $_SESSION['phoneUser'] = $phone;
                     header("Location: /");
@@ -88,7 +92,7 @@
                 }
             } 
             else {
-                $statusRegister = 'Email này đã được đăng ký. Vui lòng thử với email khác.';
+                $statusRegister = 'Số điện thoại này đã được đăng ký. Vui lòng thử với số điện thoại khác.';
             }
         }
         else {

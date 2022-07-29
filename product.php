@@ -1,6 +1,8 @@
 <?php
 require_once 'functionPhp.php';
 require_once 'DataProvider.php';
+
+$oldprice = 0;
 if (!isset($_GET["item"])) {
     redirect("shop.php");
     exit();
@@ -30,6 +32,7 @@ if (!isset($_GET["item"])) {
             $price = $item["price"];
             $textProduct = $item["product_text"];
             $totalStore = $item["total_store"];
+            $oldprice = $item["price_old"];
 
             $sqlType = "select * from type_product where id = '$idType'";
             $rowType = DataProvider::execQuery($sqlType);
@@ -60,11 +63,11 @@ if (!isset($_GET["item"])) {
     <!-- Quick view -->
     <?php require_once 'header.php' ?>
 
-    <main class="main">
+    <main class="main" style="color:#253D4E">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
+                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
                     <span></span> <a href="shop">Cửa hàng</a>
                     <span></span><a href="shop?pid=<?php echo $brandProduct["brand_text"] ?>"> <?php echo $brandProduct["brand_name"] ?> </a>
                     <span></span><a href="shop?gid=<?php echo $groupProduct["group_text"] ?>"> <?php echo $groupProduct["group_name"] ?> </a>
@@ -157,6 +160,16 @@ if (!isset($_GET["item"])) {
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <span class="current-price text-brand"><?php echo number_format($price, 0, ",", "."); ?> ₫</span>
+                                            <?php 
+                                                if ($oldprice != NULL){
+                                                    echo '
+                                                        <span>  
+                                                            <span class="save-price font-md color3 ml-15">Giảm '.round((($oldprice - $price) / $oldprice * 100), 0, PHP_ROUND_HALF_UP).'&#37;</span>
+                                                            <span class="old-price font-md ml-15">' . number_format($oldprice, 0, ",", ".") . ' ₫</span>
+                                                        </span>
+                                                    ';
+                                                }
+                                            ?>
                                             <!-- <span>
                                                 <span class="save-price font-md color3 ml-15">Giảm 5%</span>
                                                 <span class="old-price font-md ml-15">40.000 đ</span>
@@ -214,13 +227,17 @@ if (!isset($_GET["item"])) {
                                         <div class="detail-extralink mb-10 mt-20">
                                             <div class="detail-qty">
                                                 <strong class="mr-20">Số lượng: </strong>
-                                                <a class="qty-down border"><i class="fa-solid fa-minus"></i></a>
+                                                <a class="qty-down border" style="right: -1px;position: relative;"><i class="fa-solid fa-minus"></i></a>
                                                 <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="<?php echo $totalStore; ?>" oninput="this.value = Math.abs(this.value)"></input>
-                                                <a class="qty-up border"><i class="fa-solid fa-plus"></i></a>
+                                                <a class="qty-up border"  style="right: 1px;position: relative;"><i class="fa-solid fa-plus"></i></a>
                                             </div>
 
                                             <div class="product-extra-link2">
-                                                <button type="button" onclick="add_to_cart()" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                                <button type="button" onclick="<?php if ($checkAccountSession == true) {
+                                                                                    echo "add_to_cart()";
+                                                                                } else {
+                                                                                    echo "location.href='login'";
+                                                                                } ?>" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
                                     </form >
