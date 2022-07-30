@@ -233,11 +233,7 @@ if (!isset($_GET["item"])) {
                                             </div>
 
                                             <div class="product-extra-link2">
-                                                <button type="button" onclick="<?php if ($checkAccountSession == true) {
-                                                                                    echo "add_to_cart()";
-                                                                                } else {
-                                                                                    echo "location.href='login'";
-                                                                                } ?>" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                                <button type="button" onclick="add_to_cart()" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
                                     </form >

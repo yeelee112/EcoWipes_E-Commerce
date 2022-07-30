@@ -201,11 +201,7 @@ function removeQueryStringParameter($url, $varname)
                                                 <!-- <span class="old-price">40.000 đ</span> -->
                                             </div>
                                             <div class="add-cart">
-                                                <button class="add" onclick="<?php if ($checkAccountSession == true) {
-                                                                                    echo "add_to_cart_per_click(this.value)";
-                                                                                } else {
-                                                                                    echo "location.href='login'";
-                                                                                } ?>" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
+                                                <button class="add" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
                                             </div>
                                         </div>
                                     </div>

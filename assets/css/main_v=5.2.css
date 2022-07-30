@@ -7410,6 +7410,30 @@ h6.post-title {
   opacity: 1;
   visibility: visible;
   top: calc(100% + 10px);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 5px;
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #72be44; 
 }
 
 .header-middle-ptb-1 {
@@ -13006,4 +13030,10 @@ button.cart-remove{
   }
   
 }
+
+.empty-product-cart{
+  padding: 20px 0;
+}
+
+
 /*# sourceMappingURL=main.css.map */

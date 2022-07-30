@@ -6,7 +6,10 @@
     $currentPage = $_SERVER['REQUEST_URI'];
     $nameUser = '';
     $phone = '';
+    $count = 0;
     $checkAccountSession = false;
+
+
 
     if (!isset($_SESSION)) {
         session_start();
@@ -275,47 +278,51 @@
                 <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a style="line-height:0" class="mini-cart-icon" href="<?php if($checkAccountSession == true){ echo "cart";} else{ echo "login";} ?>">
+                                <a style="line-height:0" class="mini-cart-icon" href="cart">
                                     <ion-icon name="cart-outline"></ion-icon>
-                                    <?php if($checkAccountSession == true){ ?>
                                     <span class="pro-count blue">
                                     <?php 
                                         $count = 0;
-                                        $sqlCountItem = "select * from shopping_session ss, cart_item ci, user_account ua where ss.id = ci.session_id and ss.user_id = ua.id and ss.user_id = '".$rowUser["id"]."'";
-                                        $listCountItem = DataProvider::execQuery($sqlCountItem);
-                                        while($rowCountItem = mysqli_fetch_array($listCountItem, MYSQLI_ASSOC)){
-                                            $count+= $rowCountItem["quantity"];
+                                        foreach($_SESSION['cart'] as $id => $value){
+                                            $count += $_SESSION['cart'][$id]['quantity'];
                                         }
                                         echo $count;
                                     ?>
                                     </span>
-                                    <?php } ?>
                                 </a>
-                                <?php if($checkAccountSession == true){ ?>
+
                                 <div class="cart-dropdown-wrap cart-container cart-dropdown-hm2">
                                     <?php if($count == 0){   
                                     echo '<div>Chưa có sản phẩm nào trong giỏ hàng.</div>';
                                     }
                                     else{ ?>
                                     <ul>
-                                        <?php  
-                                        $sql1 = "select * from shopping_session ss, cart_item ci, product p, image_product ip where ss.id = ci.session_id and ci.product_id = p.id and p.id = ip.product_id and ss.user_id = '".$rowUser["id"]."'";
+                                        <?php
+                                        $priceTotal = 0;
+                                        $sql1="SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN ("; 
+                  
+                                        foreach($_SESSION['cart'] as $id => $value) { 
+                                            $sql1.="'".$id."',"; 
+                                        } 
+                                          
+                                        $sql1 = substr($sql1, 0, -1).")"; 
                                         $list1 = DataProvider::execQuery($sql1);
-                                        while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
-                                            $priceTotal += $row1["price"] * $row1["quantity"];
+                        
+                                        while($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)){
+                                            $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
                                         ?>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="product?item=<?php echo $row1["product_text"] ?>"><img alt="<?php echo $row1["product_name"] ?>" src="<?php echo $row1["img_thumb"] ?>"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a></h4>
-                                                <h4><span><?php echo $row1["quantity"] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".")?> ₫</h4> 
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <button class="btn-delete-cart-product" tyle="button" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>"><i class="fi-rs-cross-small"></i></button>
-                                            </div>
-                                        </li>
+                                            <li>
+                                                <div class="shopping-cart-img">
+                                                    <a href="product?item=<?php echo $row1["product_text"] ?>"><img alt="<?php echo $row1["product_name"] ?>" src="<?php echo $row1["img_thumb"] ?>"></a>
+                                                </div>
+                                                <div class="shopping-cart-title">
+                                                    <h4><a href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a></h4>
+                                                    <h4><span><?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".")?> ₫</h4> 
+                                                </div>
+                                                <div class="shopping-cart-delete">
+                                                    <button class="btn-delete-cart-product" tyle="button" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>"><i class="fi-rs-cross-small"></i></button>
+                                                </div>
+                                            </li>
                                         <?php } ?>
                                     </ul>
                                     <div class="shopping-cart-footer">
@@ -329,7 +336,6 @@
                                     </div>
                                     <?php } ?>
                                 </div>
-                                <?php } ?>
                             </div>
                         
                         </div>
