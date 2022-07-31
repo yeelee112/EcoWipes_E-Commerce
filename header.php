@@ -7,6 +7,7 @@
     $nameUser = '';
     $phone = '';
     $count = 0;
+    $priceTotal = 0;
     $checkAccountSession = false;
 
 
@@ -107,10 +108,10 @@
                                 <?php if ($checkAccountSession == true) { ?>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
-                                            <!-- <li>
-                                                <a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>My Account</a>
-                                            </li>
                                             <li>
+                                                <a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>Thông tin tài khoản</a>
+                                            </li>
+                                            <!--<li>
                                                 <a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
                                             </li>
                                             <li>
@@ -275,7 +276,8 @@
                         </nav>
                     </div>
                 </div>
-                <div class="header-action-right">
+                
+                <div class="header-action-right" <?php if($activePage == 'cart'){ echo 'style="visibility: hidden";'; } ?>>
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
                                 <a style="line-height:0" class="mini-cart-icon" href="cart">
@@ -283,8 +285,13 @@
                                     <span class="pro-count blue">
                                     <?php 
                                         $count = 0;
-                                        foreach($_SESSION['cart'] as $id => $value){
-                                            $count += $_SESSION['cart'][$id]['quantity'];
+                                        if(isset($_SESSION['cart'])){
+                                            foreach($_SESSION['cart'] as $id => $value){
+                                                $count += $_SESSION['cart'][$id]['quantity'];
+                                            }
+                                        }
+                                        else{
+                                            $count = 0;
                                         }
                                         echo $count;
                                     ?>

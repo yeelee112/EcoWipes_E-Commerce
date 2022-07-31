@@ -1,8 +1,19 @@
 <?php
 session_start();
-if (!isset($_SESSION['nameUser']) && !isset($_SESSION['phoneUser'])) {
-    header("Location: /");
+
+$count = 0;
+$priceTotalCart = 0;
+
+if(isset($_SESSION['cart'])){
+    foreach($_SESSION['cart'] as $id => $value){
+        $count += $_SESSION['cart'][$id]['quantity'];
+    }
 }
+
+if(!isset($_SESSION['cart']) && $count == 0){
+    header('Location: /');
+}
+
 $priceTotalWithNoReset = 0;
 $totalQuantityProduct = 0;
 ?>
@@ -34,19 +45,19 @@ $totalQuantityProduct = 0;
                 <div class="col">
                     <div class="info-user-shipping">
                         <h4 class="info-shipping-title">Thông tin nhận hàng</h4>
-                        <form method="post" action="processOrder" id="orderAccept" class="form-user-info-shipping">
+                        <form method="post" action="processOrder" enctype="multipart/form-data" id="orderAccept" class="form-user-info-shipping">
                             <div class="row">
                                 <div class="form-group col-lg-4">
                                     <label for="inputName" class="form-label">Họ tên *</label>
-                                    <input type="text" id="inputName" required name="name" value="<?php echo $rowUser["fullname"] ?>">
+                                    <input type="text" id="inputName" required name="name" value="<?php if($checkAccountSession == true){echo $rowUser["fullname"]; }?>">
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="inputPhone" class="form-label">Số điện thoại *</label>
-                                    <input type="text" pattern="\d*" id="inputPhone" maxlength="10" value="<?php echo $rowUser["phone"] ?>" required name="phone">
+                                    <input type="text" pattern="\d*" id="inputPhone" maxlength="10" value="<?php if($checkAccountSession == true){echo $rowUser["phone"];} ?>" required name="phone">
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="inputEmail" class="form-label">Email</label>
-                                    <input required type="email" id="inputEmail" name="email" value="<?php echo $rowUser["email"] ?>">
+                                    <input type="email" id="inputEmail" name="email" value="<?php if($checkAccountSession == true){ echo $rowUser["email"];} ?>">
                                 </div>
                             </div>
                             <div class="row">
@@ -79,16 +90,22 @@ $totalQuantityProduct = 0;
                         </div>
                         <div class="cart-body">
                             <?php
-                            require_once 'DataProvider.php';
-                            $priceTotal = 0;
-                            $sql1 = "select * from shopping_session ss, cart_item ci, product p, image_product ip where ss.id = ci.session_id and ci.product_id = p.id and p.id = ip.product_id and ss.user_id = '" . $rowUser["id"] . "'";
-                            $list1 = DataProvider::execQuery($sql1);
-                            while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
-                                $totalQuantityProduct += $row1["quantity"];
-                                $priceTotal += $row1["price"] * $row1["quantity"];
-                                $priceTotalWithNoReset += $row1["price"] * $row1["quantity"];
-                                $priceTotalShow = number_format($priceTotal, 0, ",", ".") . ' ₫';
-                            ?>
+                            if($count > 0){
+                                $priceTotal = 0;
+                                $sql1="SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
+
+                                foreach ($_SESSION['cart'] as $id => $value) {
+                                    $sql1 .= "'" . $id . "',";
+                                }
+
+                                $sql1 = substr($sql1, 0, -1) . ")";
+                                $list1 = DataProvider::execQuery($sql1);
+
+                                while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
+                                    $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
+                                    $priceTotalCart += $priceTotal;
+
+                                ?>
                                 <div class="cart-item">
                                     <div class=" d-flex align-items-center text-start row">
                                         <div class="col-md-5 col-12">
@@ -114,7 +131,7 @@ $totalQuantityProduct = 0;
                                                         <div class="d-md-none text-muted col-md-12 col-6">Số lượng</div>
                                                         <div class="col-md-12 col-sm-3 col-5 d-md-flex justify-content-center">
                                                             <div class="detail-qty mb-0">
-                                                                <?php echo $row1["quantity"] ?>
+                                                                <?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -123,7 +140,7 @@ $totalQuantityProduct = 0;
                                                     <div class="row">
                                                         <div class="d-md-none text-muted col-6">Tổng</div>
                                                         <div class="text-start col-md-12 col-6 text-total-price d-md-flex justify-content-end">
-                                                            <?php echo $priceTotalShow ?>
+                                                            <?php echo number_format($priceTotal, 0, ",", "."); ?> ₫
                                                         </div>
                                                     </div>
                                                 </div>
@@ -133,7 +150,8 @@ $totalQuantityProduct = 0;
                                 </div>
                             <?php
                                 $priceTotal = 0;
-                            } ?>
+                            } 
+                        }?>
                         </div>
                     </div>
                 </div>
@@ -201,7 +219,7 @@ $totalQuantityProduct = 0;
                                     Thành tiền (<?php echo $totalQuantityProduct; ?> sản phẩm):
                                 </div>
                                 <div class="total-price-checkout-container">
-                                    <?php echo number_format($priceTotalWithNoReset, 0, ",", "."); ?> ₫
+                                    <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
                                 </div>
                             </div>
                         </div>

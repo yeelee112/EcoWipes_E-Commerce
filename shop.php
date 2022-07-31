@@ -128,6 +128,81 @@ function removeQueryStringParameter($url, $varname)
 
         <div class="container mb-30">
             <div class="row">
+                <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
+                    <div class="modal-filter-catalogue mb-30" style="">
+                        <div class="section-title style-2" style="margin-bottom: 0px !important">
+                            <h3 style="margin-bottom: 0px !important">Danh mục</h3>
+                        </div>
+
+                        <button type="button" class="btn btn-modal-filter" data-bs-toggle="modal" data-bs-target="#modalFilter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000" class="bi bi-sliders" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="categories-container">
+                        <div class="categories-inner">
+                            <div class="accordion">
+                                <ul class="categories-parent-container">
+                                    <?php
+                                    require_once 'DataProvider.php';
+                                    $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                    $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
+                                    while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
+                                    ?>
+                                        <li>
+                                            <a href="shop?pid=<?php echo $rowBrandAccordion["brand_text"] ?>"><?php echo $rowBrandAccordion["brand_name"] ?></a>
+                                            <ul class="categories-child-container">
+                                                <?php
+                                                require_once 'DataProvider.php';
+                                                $sqlTypeAccordion = "select * from brand_product bp, group_product gp, type_product tp where bp.id = gp.brand_id and gp.id = tp.group_id and bp.id = '" . $rowBrandAccordion["id"] . "'";
+                                                $listTypeAccordion = DataProvider::execQuery($sqlTypeAccordion);
+                                                while ($rowTypeAccordion = mysqli_fetch_array($listTypeAccordion, MYSQLI_ASSOC)) {
+                                                ?>
+                                                    <li>
+                                                        <a href="shop?cid=<?php echo $rowTypeAccordion["type_text"] ?>"><?php echo $rowTypeAccordion["type_name"] ?></a>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product sidebar Widget -->
+                    <div class="sidebar-widget product-sidebar mt-50 mb-30 p-30 bg-grey border-radius-10">
+                        <h5 class="section-title style-1 mb-30">Sản phẩm mới</h5>
+                        <?php
+                        require_once 'DataProvider.php';
+                        $sql = "select p.product_name, p.price, i.img_thumb, p.product_text from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id LIMIT 3";
+                        $list = DataProvider::execQuery($sql);
+                        while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
+                        ?>
+                            <div class="single-post clearfix">
+                                <div class="image">
+                                    <img src="<?php echo $row['img_thumb'] ?>" alt="<?php echo $row['product_name'] ?>">
+                                </div>
+                                <div class="content pt-10">
+                                    <h6><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row['product_name'] ?></a></h6>
+                                    <p class="price mb-0 mt-5"><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</p>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <!-- <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
+                        <img src="assets/imgs/banner/banner-11.png" alt>
+                        <div class="banner-text">
+                            <span>Oganic</span>
+                            <h4>
+                                Save 17% <br>
+                                on <span class="text-brand">Oganic</span><br>
+                                Juice
+                            </h4>
+                        </div>
+                    </div> -->
+                </div>
                 <div class="col-lg-4-5">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
@@ -192,10 +267,10 @@ function removeQueryStringParameter($url, $varname)
                                         </div>
                                         <h2><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row["product_name"] ?></a></h2>
                                         <div class="count-product-sold">
-                                                Đã bán: <?php echo $row["total_sold"] ?>
-                                            </div>
+                                            Đã bán: <?php echo $row["total_sold"] ?>
+                                        </div>
                                         <div class="product-card-bottom">
-                                        
+
                                             <div class="product-price">
                                                 <span><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</span>
                                                 <!-- <span class="old-price">40.000 đ</span> -->
@@ -213,51 +288,52 @@ function removeQueryStringParameter($url, $varname)
                     <!--product grid-->
                 </div>
 
-                <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
-                    <div class="sidebar-widget widget-category-2 mb-30">
-                        <h5 class="section-title style-1 mb-30">Danh mục</h5>
-                        <ul>
-                            <?php
-                            require_once 'DataProvider.php';
-                            $sqlCountBrand = "select b.brand_name, b.brand_text, count(p.id) as count from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id group by b.brand_name;";
-                            $listCountBrand = DataProvider::execQuery($sqlCountBrand);
-                            while ($row = mysqli_fetch_array($listCountBrand, MYSQLI_ASSOC)) {
-                                echo '<li><a href="shop?pid=' . $row['brand_text'] . '">' . $row['brand_name'] . '</a><span class="count">' . $row['count'] . '</span></li>';
-                            } ?>
-                        </ul>
-                    </div>
-                    <!-- Product sidebar Widget -->
-                    <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
-                        <h5 class="section-title style-1 mb-30">Sản phẩm mới</h5>
-                        <?php
-                        require_once 'DataProvider.php';
-                        $sql = "select p.product_name, p.price, i.img_thumb, p.product_text from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id LIMIT 3";
-                        $list = DataProvider::execQuery($sql);
-                        while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
-                        ?>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="<?php echo $row['img_thumb'] ?>" alt="<?php echo $row['product_name'] ?>">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="product?item=<?php echo $row["product_text"] ?>"><?php echo $row['product_name'] ?></a></h6>
-                                    <p class="price mb-0 mt-5"><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</p>
+                <div class="modal fade" id="modalFilter" tabindex="-1" aria-labelledby="modalFilterLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Danh mục</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="categories-inner">
+                                    <div class="accordion">
+                                        <ul class="categories-parent-container">
+                                            <?php
+                                            require_once 'DataProvider.php';
+                                            $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                            $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
+                                            while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
+                                            ?>
+                                                <li>
+                                                    <a href="shop?pid=<?php echo $rowBrandAccordion["brand_text"] ?>"><?php echo $rowBrandAccordion["brand_name"] ?></a>
+                                                    <ul class="categories-child-container">
+                                                        <?php
+                                                        require_once 'DataProvider.php';
+                                                        $sqlTypeAccordion = "select * from brand_product bp, group_product gp, type_product tp where bp.id = gp.brand_id and gp.id = tp.group_id and bp.id = '" . $rowBrandAccordion["id"] . "'";
+                                                        $listTypeAccordion = DataProvider::execQuery($sqlTypeAccordion);
+                                                        while ($rowTypeAccordion = mysqli_fetch_array($listTypeAccordion, MYSQLI_ASSOC)) {
+                                                        ?>
+                                                            <li>
+                                                                <a href="shop?cid=<?php echo $rowTypeAccordion["type_text"] ?>"><?php echo $rowTypeAccordion["type_name"] ?></a>
+                                                            </li>
+                                                        <?php } ?>
+                                                    </ul>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        <?php } ?>
-                    </div>
-                    <!-- <div class="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
-                        <img src="assets/imgs/banner/banner-11.png" alt>
-                        <div class="banner-text">
-                            <span>Oganic</span>
-                            <h4>
-                                Save 17% <br>
-                                on <span class="text-brand">Oganic</span><br>
-                                Juice
-                            </h4>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     </main>

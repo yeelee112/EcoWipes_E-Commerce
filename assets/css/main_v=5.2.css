@@ -13035,5 +13035,52 @@ button.cart-remove{
   padding: 20px 0;
 }
 
+.btn-modal-filter{
+  display: none;
+}
 
+.modal-filter-catalogue{
+  display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .btn-modal-filter{
+    display: block;
+  }
+  .categories-container{
+    display: none;
+  }
+
+  .primary-sidebar .sidebar-widget{
+    display: none;
+  }
+}
+
+.btn-viewmore{
+  display: inline-block;
+  font-size: 14px;
+  color: #ffffff;
+  border-radius: 4px;
+  line-height: 1;
+  padding: 10px 20px;
+  background-color: var(--main-color);
+  font-family: "Quicksand", sans-serif;
+  border: 2px solid var(--main-color);
+}
+
+.btn-viewmore:hover{
+  background-color: var(--op-main-color);
+  border: 2px solid var(--op-main-color);
+  align-items: center;
+}
+
+.btn-viewmore-container{
+  margin:0;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 /*# sourceMappingURL=main.css.map */

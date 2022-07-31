@@ -162,9 +162,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="section-title style-2 mb-20">
-                            <h3>Danh mục</h3>
+                    <div class="modal-filter-catalogue mb-30" style="">
+                        <div class="section-title style-2" style="margin-bottom: 0px !important">
+                            <h3 style="margin-bottom: 0px !important">Danh mục</h3>
                         </div>
+
+                        <button type="button" class="btn btn-modal-filter" data-bs-toggle="modal" data-bs-target="#modalFilter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000" class="bi bi-sliders" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
+                            </svg>
+                        </button>
+                    </div>
                         <div class="categories-container">
                             <div class="categories-inner">
                                 <div class="accordion">
@@ -244,6 +252,9 @@
                                     </div>
                                 </div>
                             <?php } ?>
+                        </div>
+                        <div class="btn-viewmore-container mt-20">
+                            <button class="btn-viewmore">Xem thêm</button>
                         </div>
                     </div>
                     <!--End product-grid-4-->
@@ -381,6 +392,50 @@
                 </div>
             </div>
         </section>
+
+        <div class="modal fade" id="modalFilter" tabindex="-1" aria-labelledby="modalFilterLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Danh mục</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="categories-inner">
+                                    <div class="accordion">
+                                        <ul class="categories-parent-container">
+                                            <?php
+                                            require_once 'DataProvider.php';
+                                            $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                            $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
+                                            while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
+                                            ?>
+                                                <li>
+                                                    <a href="shop?pid=<?php echo $rowBrandAccordion["brand_text"] ?>"><?php echo $rowBrandAccordion["brand_name"] ?></a>
+                                                    <ul class="categories-child-container">
+                                                        <?php
+                                                        require_once 'DataProvider.php';
+                                                        $sqlTypeAccordion = "select * from brand_product bp, group_product gp, type_product tp where bp.id = gp.brand_id and gp.id = tp.group_id and bp.id = '" . $rowBrandAccordion["id"] . "'";
+                                                        $listTypeAccordion = DataProvider::execQuery($sqlTypeAccordion);
+                                                        while ($rowTypeAccordion = mysqli_fetch_array($listTypeAccordion, MYSQLI_ASSOC)) {
+                                                        ?>
+                                                            <li>
+                                                                <a href="shop?cid=<?php echo $rowTypeAccordion["type_text"] ?>"><?php echo $rowTypeAccordion["type_name"] ?></a>
+                                                            </li>
+                                                        <?php } ?>
+                                                    </ul>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <?php require_once 'footer.php' ?>
     </main>
 
@@ -426,6 +481,19 @@
                     alert("failed!");
                 }); //Some action to indicate is Failing ;
         }
+
+        $(".btn-viewmore").click(function(){
+            $.ajax({
+                url: "pagination.php",
+                type: "GET",
+                cache: false,
+                success: function(dataResult){
+                    $(".product-grid-4").html(dataResult);
+                    $(".btn-viewmore").css('display','none');
+                }
+            });
+        });
+
 
         var convertHeight = $(".product-cart-wrap").height();
         $(".banner-img.best-sale-img").css("height", convertHeight);
