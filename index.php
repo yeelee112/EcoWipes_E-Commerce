@@ -142,6 +142,12 @@
                                                             echo '<span class="old-price">' . number_format($row["price_old"], 0, ",", ".") . ' ₫</span>';
                                                         ?>
                                                     </div>
+                                                    <!-- <div class="sold mt-15 mb-15">
+                                                        <div class="progress mb-5">
+                                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <span class="font-xs text-heading"> Đã bán: 60/120</span>
+                                                    </div> -->
                                                     <button class="btn w-100 hover-up" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
                                                 </div>
                                             </div>
@@ -454,7 +460,7 @@
     <?php require_once 'script.php' ?>
 
     <script>
-        $('#clock').countdown('2022/07/23 00:00:00').on('update.countdown',
+        $('#clock').countdown('2022/08/02 00:00:00').on('update.countdown',
             function(event) {
                 var $this = $(this).html(event.strftime('' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> Ngày </span></span>' +

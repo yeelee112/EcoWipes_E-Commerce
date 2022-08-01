@@ -33,7 +33,7 @@
 <body>
     <div class="invoice invoice-content invoice-2">
         <div class="back-top-home hover-up mt-30 ml-30">
-            <a class="hover-up" href><i class="fi-rs-home mr-5"></i> Trang chủ</a>
+            <a class="hover-up" href="/"><i class="fi-rs-home mr-5"></i> Trang chủ</a>
         </div>
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -163,8 +163,8 @@
                             </div>
                         </div>
                         <div class="invoice-btn-section clearfix d-print-none">
-                            <a href="javascript:window.print()" class="btn btn-lg btn-custom btn-print hover-up"> <img src="assets/imgs/theme/icons/icon-print.svg" alt> Print </a>
-                            <a id="invoice_download_btn" class="btn btn-lg btn-custom btn-download hover-up"> <img src="assets/imgs/theme/icons/icon-download.svg" alt> Download </a>
+                            <a href="javascript:window.print()" class="btn btn-lg btn-custom btn-print hover-up"> <img src="assets/imgs/theme/icons/icon-print.svg" alt> In </a>
+                            <a id="invoice_download_btn" class="btn btn-lg btn-custom btn-download hover-up"> <img src="assets/imgs/theme/icons/icon-download.svg" alt> Tải về </a>
                         </div>
                     </div>
                 </div>
