@@ -1,6 +1,4 @@
 <?php 
-
-
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -8,6 +6,8 @@
     $uid = '';
     $checkSecure = 0;
     $priceTotal = 0;
+    $idUserOder = 0;
+
     if(isset($_POST["name"])){
         $nameUser = $_POST["name"];
         $checkSecure++;
@@ -28,6 +28,24 @@
     if(isset($_POST["message"])){
         $messageUser = $_POST["message"];
         $checkSecure++;
+    }
+
+    if(isset($_POST["payment-method"])){
+        $paymentMethod = $_POST["payment-method"];
+        $checkSecure++;
+    }
+
+    if(isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])){
+        require_once 'DataProvider.php';
+        $uid = $_SESSION['phoneUser'];
+        $sqlUser = "select * from user_account where phone = '$uid'";
+        $listUser = DataProvider::execQuery($sqlUser);
+        $rowUser = mysqli_fetch_assoc($listUser);
+
+        $sqlUpdateAccount = "update user_account set address = '$addressUser', updated_at = now() where id = '".$rowUser["id"]."'";
+        DataProvider::execQuery($sqlUpdateAccount);
+
+        $idUserOder = $rowUser["id"];
     }
     
     if($checkSecure >= 3){
@@ -85,10 +103,14 @@
 
                 $sqlAddOrderItem = "insert into order_items values ('','$idOrder','".$row1["product_id"]."','".$_SESSION['cart'][$row1['product_text']]['quantity']."',now(),now())";
                 DataProvider::execQuery($sqlAddOrderItem);
+
+                $sqlUpdateSoldItem = "update product set total_sold = total_sold + ".$_SESSION['cart'][$row1['product_text']]['quantity']." where id = '".$row1["product_id"]."'";
+                DataProvider::execQuery($sqlUpdateSoldItem);
+                
                 $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
 
             }
-            $sqlAddOrderDetail = "insert into order_detail values('$idOrder',00,'$priceTotal','$nameUser','$phoneUser','$addressUser','$messageUser',now(),now())";                
+            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$addressUser','$paymentMethod','$messageUser',now(),now())";                
             DataProvider::execQuery($sqlAddOrderDetail);
             
             unset($_SESSION['cart']);

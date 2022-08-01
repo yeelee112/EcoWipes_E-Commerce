@@ -160,15 +160,15 @@ if (!isset($_GET["item"])) {
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <span class="current-price text-brand"><?php echo number_format($price, 0, ",", "."); ?> ₫</span>
-                                            <?php 
-                                                if ($oldprice != NULL){
-                                                    echo '
+                                            <?php
+                                            if ($oldprice != NULL) {
+                                                echo '
                                                         <span>  
-                                                            <span class="save-price font-md color3 ml-15">Giảm '.round((($oldprice - $price) / $oldprice * 100), 0, PHP_ROUND_HALF_UP).'&#37;</span>
+                                                            <span class="save-price font-md color3 ml-15">Giảm ' . round((($oldprice - $price) / $oldprice * 100), 0, PHP_ROUND_HALF_UP) . '&#37;</span>
                                                             <span class="old-price font-md ml-15">' . number_format($oldprice, 0, ",", ".") . ' ₫</span>
                                                         </span>
                                                     ';
-                                                }
+                                            }
                                             ?>
                                             <!-- <span>
                                                 <span class="save-price font-md color3 ml-15">Giảm 5%</span>
@@ -229,14 +229,14 @@ if (!isset($_GET["item"])) {
                                                 <strong class="mr-20">Số lượng: </strong>
                                                 <a class="qty-down border" style="right: -1px;position: relative;"><i class="fa-solid fa-minus"></i></a>
                                                 <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="<?php echo $totalStore; ?>" oninput="this.value = Math.abs(this.value)"></input>
-                                                <a class="qty-up border"  style="right: 1px;position: relative;"><i class="fa-solid fa-plus"></i></a>
+                                                <a class="qty-up border" style="right: 1px;position: relative;"><i class="fa-solid fa-plus"></i></a>
                                             </div>
 
                                             <div class="product-extra-link2">
                                                 <button type="button" onclick="add_to_cart()" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
-                                    </form >
+                                    </form>
                                     <div class="overview-product-container">
                                         <div class="overview-product-title">
                                             <h4>Thông tin sản phẩm</h4>
@@ -400,7 +400,7 @@ if (!isset($_GET["item"])) {
         });
 
         var txtProduct = "<?php echo $textProduct; ?>";
-        
+
 
         function add_to_cart() {
             cuteToast({
@@ -410,15 +410,23 @@ if (!isset($_GET["item"])) {
             });
             var qtyProduct = $('.qty-val').val();
             $.ajax({
-                    method: "POST", // phương thức dữ liệu được truyền đi 
-                    url: "processAddToCart", // gọi đến file server show_data.php để xử lý
-                    data: "id=" + txtProduct + "&qty=" + qtyProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
-                })
-                .done(function(data) {
+                method: "POST", // phương thức dữ liệu được truyền đi 
+                url: "processAddToCart", // gọi đến file server show_data.php để xử lý
+                data: "id=" + txtProduct + "&qty=" + qtyProduct,
+                success: function(data) {
                     $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
-                }).fail(function() {
-                    alert("failed!");
-                }); //Some action to indicate is Failing ;
+                },
+                complete: function() {
+                    $.ajax({
+                        method: "POST",
+                        url: "processUpdateCount",
+                        success: function(data) {
+                            $('.pro-count').text(data);
+                        },
+                    })
+                } //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
+            })
+
         }
     </script>
 </body>

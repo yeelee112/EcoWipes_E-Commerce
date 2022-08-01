@@ -1,56 +1,56 @@
 <?php
-    require_once 'library.php';
-    require_once 'functionPhp.php';
-    $activePage = basename($_SERVER['PHP_SELF'], ".php");
-    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $currentPage = $_SERVER['REQUEST_URI'];
-    $nameUser = '';
-    $phone = '';
-    $count = 0;
-    $priceTotal = 0;
-    $checkAccountSession = false;
+require_once 'library.php';
+require_once 'functionPhp.php';
+$activePage = basename($_SERVER['PHP_SELF'], ".php");
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$currentPage = $_SERVER['REQUEST_URI'];
+$nameUser = '';
+$phone = '';
+$count = 0;
+$priceTotal = 0;
+$checkAccountSession = false;
 
 
 
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+if (!isset($_SESSION)) {
+    session_start();
+}
+require_once 'DataProvider.php';
+
+if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
+    $nameUser = $_SESSION['nameUser'];
+    $phone = $_SESSION['phoneUser'];
+    $checkAccountSession = true;
+
     require_once 'DataProvider.php';
+    $sqlUser = "select * from user_account where phone = '$phone'";
+    $listUser = DataProvider::execQuery($sqlUser);
+    $rowUser = mysqli_fetch_assoc($listUser);
 
-    if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
-        $nameUser = $_SESSION['nameUser'];
-        $phone = $_SESSION['phoneUser'];
-        $checkAccountSession = true;
+    $priceTotal = 0;
+}
 
-        require_once 'DataProvider.php';
-        $sqlUser = "select * from user_account where phone = '$phone'";
-        $listUser = DataProvider::execQuery($sqlUser);
-        $rowUser = mysqli_fetch_assoc($listUser);
+$logoutAction = $_SERVER['PHP_SELF'] . "?doLogout=true";
 
-        $priceTotal = 0;
-    }
+if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")) {
+    $logoutAction .= "&" . htmlentities($_SERVER['QUERY_STRING']);
+}
 
-    $logoutAction = $_SERVER['PHP_SELF'] . "?doLogout=true";
+if ($currentPage != '/login' && (empty($_GET['doLogout']))) {
+    $_SESSION['rewindURL'] = NULL;
 
-    if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")) {
-        $logoutAction .= "&" . htmlentities($_SERVER['QUERY_STRING']);
-    }
+    unset($_SESSION['rewindURL']);
+    $_SESSION['rewindURL'] = $currentPage;
+}
 
-    if ($currentPage != '/login' && (empty($_GET['doLogout']))) {
-        $_SESSION['rewindURL'] = NULL;
+if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
+    $_SESSION['nameUser'] = NULL;
+    $_SESSION['phoneUser'] = NULL;
+    unset($_SESSION['nameUser']);
+    unset($_SESSION['phoneUser']);
 
-        unset($_SESSION['rewindURL']);
-        $_SESSION['rewindURL'] = $currentPage;
-    }
-
-    if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
-        $_SESSION['nameUser'] = NULL;
-        $_SESSION['phoneUser'] = NULL;
-        unset($_SESSION['nameUser']);
-        unset($_SESSION['phoneUser']);
-
-        redirect($_SESSION['rewindURL']);
-    }
+    redirect($_SESSION['rewindURL']);
+}
 ?>
 
 <header class="header-area header-style-1 header-height-2">
@@ -74,16 +74,18 @@
                                 }
                                 ?>
                             </select>
-                            <input type="text" name="search" placeholder="Tìm kiếm trên EcoWipes" value="<?php if(isset($_GET["search"])){ echo $_GET["search"]; } ?>">
+                            <input type="text" name="search" placeholder="Tìm kiếm trên EcoWipes" value="<?php if (isset($_GET["search"])) {
+                                                                                                                echo $_GET["search"];
+                                                                                                            } ?>">
                         </form>
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
 
                             <div class="hotline d-none d-lg-flex">
-                    <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline">
-                    <p>1900 - 1009<span>Chăm sóc khách hàng</span></p>
-                </div>
+                                <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline">
+                                <p>1900 - 1009<span>Chăm sóc khách hàng</span></p>
+                            </div>
                             <div class="header-action-icon-2">
                                 <div class="signin-block-container">
                                     <?php
@@ -104,12 +106,12 @@
                                     <?php } ?>
                                     <!--  -->
                                 </div>
-                                
+
                                 <?php if ($checkAccountSession == true) { ?>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
-                                            <li>
-                                                <a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>Thông tin tài khoản</a>
+                                            <li style="justify-content: center;">
+                                                <a href="account" style="display: flex;align-items: center;"><i style="line-height: 0;" class="fi fi-rs-user mr-10"></i>Tài khoản</a>
                                             </li>
                                             <!--<li>
                                                 <a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
@@ -128,7 +130,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <?php } ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -201,7 +203,7 @@
                                     <a class="<?php echo ($activePage == 'index') ? 'active' : ''; ?>" href="/">Trang chủ</a>
                                 </li>
                                 <li>
-                                    <a href="about-us" class="<?php echo ($activePage == 'about-us') ? 'active' : ''; ?>" >Về chúng tôi</a>
+                                    <a href="about-us" class="<?php echo ($activePage == 'about-us') ? 'active' : ''; ?>">Về chúng tôi</a>
                                 </li>
                                 <li class="position-static">
                                     <a href="shop" class="<?php echo ($activePage == 'shop' || $activePage == 'product') ? 'active' : ''; ?>">Sản phẩm <i class="fi-rs-angle-down"></i></a>
@@ -276,46 +278,46 @@
                         </nav>
                     </div>
                 </div>
-                
-                <div class="header-action-right" <?php if($activePage == 'cart'){ echo 'style="visibility: hidden";'; } ?>>
-                        <div class="header-action-2">
-                            <div class="header-action-icon-2">
-                                <a style="line-height:0" class="mini-cart-icon" href="cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                    <span class="pro-count blue">
-                                    <?php 
-                                        $count = 0;
-                                        if(isset($_SESSION['cart'])){
-                                            foreach($_SESSION['cart'] as $id => $value){
-                                                $count += $_SESSION['cart'][$id]['quantity'];
-                                            }
-                                        }
-                                        else{
-                                            $count = 0;
-                                        }
-                                        echo $count;
-                                    ?>
-                                    </span>
-                                </a>
 
-                                <div class="cart-dropdown-wrap cart-container cart-dropdown-hm2">
-                                    <?php if($count == 0){   
-                                    echo '<div>Chưa có sản phẩm nào trong giỏ hàng.</div>';
+                <div class="header-action-right" <?php if ($activePage == 'cart') {
+                                                        echo 'style="visibility: hidden";';
+                                                    } ?>>
+                    <div class="header-action-2">
+                        <div class="header-action-icon-2">
+                            <a style="line-height:0" class="mini-cart-icon" href="cart">
+                                <ion-icon name="cart-outline"></ion-icon>
+                                <span class="pro-count blue">
+                                    <?php
+                                    $count = 0;
+                                    if (isset($_SESSION['cart'])) {
+                                        foreach ($_SESSION['cart'] as $id => $value) {
+                                            $count += $_SESSION['cart'][$id]['quantity'];
+                                        }
+                                    } else {
+                                        $count = 0;
                                     }
-                                    else{ ?>
+                                    echo $count;
+                                    ?>
+                                </span>
+                            </a>
+
+                            <div class="cart-dropdown-wrap cart-container cart-dropdown-hm2">
+                                <?php if ($count == 0) {
+                                    echo '<div>Chưa có sản phẩm nào trong giỏ hàng.</div>';
+                                } else { ?>
                                     <ul>
                                         <?php
                                         $priceTotal = 0;
-                                        $sql1="SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN ("; 
-                  
-                                        foreach($_SESSION['cart'] as $id => $value) { 
-                                            $sql1.="'".$id."',"; 
-                                        } 
-                                          
-                                        $sql1 = substr($sql1, 0, -1).")"; 
+                                        $sql1 = "SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
+
+                                        foreach ($_SESSION['cart'] as $id => $value) {
+                                            $sql1 .= "'" . $id . "',";
+                                        }
+
+                                        $sql1 = substr($sql1, 0, -1) . ")";
                                         $list1 = DataProvider::execQuery($sql1);
-                        
-                                        while($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)){
+
+                                        while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
                                             $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
                                         ?>
                                             <li>
@@ -324,7 +326,7 @@
                                                 </div>
                                                 <div class="shopping-cart-title">
                                                     <h4><a href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a></h4>
-                                                    <h4><span><?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".")?> ₫</h4> 
+                                                    <h4><span><?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".") ?> ₫</h4>
                                                 </div>
                                                 <div class="shopping-cart-delete">
                                                     <button class="btn-delete-cart-product" tyle="button" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>"><i class="fi-rs-cross-small"></i></button>
@@ -341,13 +343,13 @@
                                             <a href="checkout">Thanh toán</a>
                                         </div>
                                     </div>
-                                    <?php } ?>
-                                </div>
+                                <?php } ?>
                             </div>
-                        
                         </div>
+
                     </div>
-                
+                </div>
+
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
                         <span class="burger-icon-top"></span>
@@ -358,34 +360,65 @@
                 <div class="header-action-right d-block d-lg-none">
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="#">
-                                <img alt="Nest" src="assets/imgs/theme/icons/icon-cart.svg">
-                                <span class="pro-count white">1</span>
+                            <a style="line-height:0" class="mini-cart-icon" href="cart">
+                                <ion-icon name="cart-outline"></ion-icon>
+                                <span class="pro-count blue">
+                                    <?php
+                                    $count = 0;
+                                    if (isset($_SESSION['cart'])) {
+                                        foreach ($_SESSION['cart'] as $id => $value) {
+                                            $count += $_SESSION['cart'][$id]['quantity'];
+                                        }
+                                    } else {
+                                        $count = 0;
+                                    }
+                                    echo $count;
+                                    ?>
+                                </span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                <ul>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="Nest" src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                <?php if ($count == 0) {
+                                    echo '<div>Chưa có sản phẩm nào trong giỏ hàng.</div>';
+                                } else { ?>
+                                    <ul>
+                                        <?php
+                                        $priceTotal = 0;
+                                        $sql1 = "SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
+
+                                        foreach ($_SESSION['cart'] as $id => $value) {
+                                            $sql1 .= "'" . $id . "',";
+                                        }
+
+                                        $sql1 = substr($sql1, 0, -1) . ")";
+                                        $list1 = DataProvider::execQuery($sql1);
+
+                                        while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
+                                            $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
+                                        ?>
+                                            <li>
+                                                <div class="shopping-cart-img">
+                                                    <a href="product?item=<?php echo $row1["product_text"] ?>"><img alt="<?php echo $row1["product_name"] ?>" src="<?php echo $row1["img_thumb"] ?>"></a>
+                                                </div>
+                                                <div class="shopping-cart-title">
+                                                    <h4><a href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a></h4>
+                                                    <h4><span><?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?> × </span><?php echo number_format($row1["price"], 0, ",", ".") ?> ₫</h4>
+                                                </div>
+                                                <div class="shopping-cart-delete">
+                                                    <button class="btn-delete-cart-product" tyle="button" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>"><i class="fi-rs-cross-small"></i></button>
+                                                </div>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                    <div class="shopping-cart-footer">
+                                        <div class="shopping-cart-total">
+                                            <h4>Tổng cộng <span><?php echo number_format($priceTotal, 0, ",", "."); ?> ₫</span></h4>
                                         </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Plain Striola Shirts</a></h4>
-                                            <h3><span>1 × </span>$800.00</h3>
+                                        <div class="shopping-cart-button">
+                                            <a href="cart" class="outline">Xem giỏ hàng</a>
+                                            <a href="checkout">Thanh toán</a>
                                         </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-footer">
-                                    <div class="shopping-cart-total">
-                                        <h4>Total <span>$383.00</span></h4>
                                     </div>
-                                    <div class="shopping-cart-button">
-                                        <a href="shop-cart.html">View cart</a>
-                                        <a href="shop-checkout.html">Checkout</a>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -419,38 +452,28 @@
                 <nav>
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
-                            <a href>Home</a>
+                            <a href>Trang chủ</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="#">Mega menu</a>
+                            <a href="#">Sản phẩm</a>
                             <ul class="dropdown">
+                                <?php
+                                require_once 'DataProvider.php';
+                                $sqlP1 = "SELECT * FROM brand_product";
+                                $listP1  = DataProvider::execQuery($sqlP1);
+                                while ($rowP1 = mysqli_fetch_array($listP1, MYSQLI_ASSOC)) { ?>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Women's Fashion</a>
+                                    <a href="shop?pid=<?php echo $rowP1["brand_text"] ?>"><?php echo $rowP1["brand_name"] ?></a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Blouses & Shirts</a></li>
-                                        <li><a href="#">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="#">Women's Sets</a></li>
+                                    <?php
+                                        $sqlP2 = "SELECT * FROM brand_product bp, group_product gp, type_product tp where bp.id = gp.brand_id and gp.id = tp.group_id and bp.id = '".$rowP1["id"]."'";
+                                        $listP2  = DataProvider::execQuery($sqlP2);
+                                        while ($rowP2 = mysqli_fetch_array($listP2, MYSQLI_ASSOC)) { ?>
+                                            <li><a href="shop?cid=<?php echo $rowP2["type_text"] ?>"><?php echo $rowP2["type_name"] ?></a></li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Jackets</a></li>
-                                        <li><a href="#">Casual Faux Leather</a></li>
-                                        <li><a href="#">Genuine Leather</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Gaming Laptops</a></li>
-                                        <li><a href="#">Ultraslim Laptops</a></li>
-                                        <li><a href="#">Tablets</a></li>
-                                        <li><a href="#">Laptop Accessories</a></li>
-                                        <li><a href="#">Tablet Accessories</a></li>
-                                    </ul>
-                                </li>
+                                <?php } ?>
                             </ul>
                         </li>
                     </ul>
@@ -459,22 +482,14 @@
             </div>
             <div class="mobile-header-info-wrap">
                 <div class="single-mobile-header-info">
-                    <a href="page-contact.html"><i class="fi-rs-marker"></i> Our location </a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="page-login.html"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                    <a href="account">
+                        <i class="fi-rs-user"></i>
+                        <?php if ($checkAccountSession == true) { echo $nameUser; } else{ echo "Đăng ký / Đăng nhập";} ?>
+                     </a>
                 </div>
                 <div class="single-mobile-header-info">
                     <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
                 </div>
-            </div>
-            <div class="mobile-social-icon mb-50">
-                <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt></a>
             </div>
             <div class="site-copyright">Copyright © 2021 Ecowipes Vietnam Corporation, All Rights Reserved.</div>
         </div>
@@ -483,18 +498,25 @@
 
 
 <script>
+    function remove_from_cart(textProduct) {
+        var txtProduct = textProduct;
+        $.ajax({
+                method: "POST", // phương thức dữ liệu được truyền đi 
+                url: "processRemoveFromCart", // gọi đến file server show_data.php để xử lý
+                data: "id=" + txtProduct,
+                success: function(data) {
+                    $('.cart-container').html(data);
+                },
+                complete: function() {
+                    $.ajax({
+                        method: "POST",
+                        url: "processUpdateCount",
+                        success: function(data) {
+                            $('.pro-count').text(data);
+                        },
+                    })
+                }
 
-function remove_from_cart(textProduct) {
-    var txtProduct = textProduct;
-    $.ajax({
-            method: "POST", // phương thức dữ liệu được truyền đi 
-            url: "processRemoveFromCart", // gọi đến file server show_data.php để xử lý
-            data: "id=" + txtProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
-        })
-        .done(function(data) {
-            $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
-        }).fail(function() {
-            alert("failed!");
-        }); //Some action to indicate is Failing ;
-}
+            }); //Some action to indicate is Failing ;
+    }
 </script>

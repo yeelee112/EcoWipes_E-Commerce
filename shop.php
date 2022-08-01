@@ -361,16 +361,24 @@ function removeQueryStringParameter($url, $varname)
                 message: "Đã thêm vào giỏ hàng",
                 timer: 3000
             });
+
             $.ajax({
-                    method: "POST", // phương thức dữ liệu được truyền đi 
-                    url: "processAddToCart", // gọi đến file server show_data.php để xử lý
-                    data: "id=" + txtProduct, //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
-                })
-                .done(function(data) {
+                method: "POST", // phương thức dữ liệu được truyền đi 
+                url: "processAddToCart", // gọi đến file server show_data.php để xử lý
+                data: "id=" + txtProduct,
+                success: function(data) {
                     $('.cart-container').html(data); //Callback Replace the html of your shoppingCart Containe with the response of addtocart.php
-                }).fail(function() {
-                    alert("failed!");
-                }); //Some action to indicate is Failing ;
+                },
+                complete: function() {
+                    $.ajax({
+                        method: "POST",
+                        url: "processUpdateCount",
+                        success: function(data) {
+                            $('.pro-count').text(data);
+                        },
+                    })
+                } //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
+            }) //Some action to indicate is Failing ;
         }
 
         var txtSort = $('.sort-by-product-area .sort-by-cover a.active').text();

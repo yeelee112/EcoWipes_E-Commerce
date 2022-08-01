@@ -63,8 +63,9 @@ $totalQuantityProduct = 0;
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <label for="inputAddress" class="form-label">Địa chỉ cụ thể *</label>
-                                    <input type="text" id="inputAddress" name="address" required value="">
+                                    <input type="text" id="inputAddress" name="address" required value="<?php if($checkAccountSession == true){ echo $rowUser["address"];} ?>">
                                     <input type="hidden" class="message-form" name="message">
+                                    <input type="hidden" class="payment-method-form" name="payment-method" value="COD">
                                 </div>
                             </div>
                         </form>
@@ -161,7 +162,7 @@ $totalQuantityProduct = 0;
                             <div class="col-md-6">
                                 <div class="feature-checkout-container d-inline-flex align-items-center">
                                     <label for="inputMessage" class="lb-message">Lời nhắn:</label>
-                                    <input type="text" id="inputMessage" name="message" placeholder="Lưu ý cho cửa hàng" onchange="messageRedirect(this.value)" required>
+                                    <input type="text" id="inputMessage" name="message" placeholder="Lưu ý cho cửa hàng" onchange="messageRedirect(this.value)">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -246,8 +247,11 @@ $totalQuantityProduct = 0;
             function() {
                 if ($(this).val() == 'Banking') {
                     $('.info-banking-container').css("display", "block");
+                    $(".payment-method-form").val("Banking");
+                    
                 } else {
                     $('.info-banking-container').css("display", "none");
+                    $(".payment-method-form").val("COD");
                 }
             });
     </script>

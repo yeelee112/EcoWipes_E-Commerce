@@ -6576,6 +6576,23 @@ h6.post-title {
   color: var(--bs-table-striped-color);
 }
 
+
+@media print {
+  .invoice .invoice-header {
+    padding: 30px 0 !important;
+  }
+  
+  .invoice .invoice-top { 
+    padding: 20px 0 0 0  !important;
+    margin-bottom: 10PX !important;
+  }
+
+  .invoice .invoice-center {
+    padding: 0 0 15px !important;
+  }
+}
+
+
 .invoice .invoice-top {
   padding: 40px 150px 25px 150px;
   font-size: 15px;
@@ -13077,10 +13094,6 @@ align-items: center;
 }
 
 .btn-viewmore-container{
-  margin:0;
-  position: relative;
-  left: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
