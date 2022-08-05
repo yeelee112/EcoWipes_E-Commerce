@@ -1,3 +1,8 @@
+<?php
+$priceToFreeShip = 0;
+$messageContainerFreeShip = '';
+?>
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -53,10 +58,10 @@
                         <div class="cart-body">
                             <?php
                             require_once 'DataProvider.php';
-                            
-                            if($count > 0){
+
+                            if ($count > 0) {
                                 $priceTotal = 0;
-                                $sql1="SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
+                                $sql1 = "SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
 
                                 foreach ($_SESSION['cart'] as $id => $value) {
                                     $sql1 .= "'" . $id . "',";
@@ -68,7 +73,7 @@
                                 while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
                                     $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
 
-                                ?>
+                            ?>
                                     <div class="cart-item">
                                         <div class=" d-flex align-items-center text-start row">
                                             <div class="col-md-5 col-12">
@@ -118,12 +123,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?php
+                            <?php
                                 }
-                            } 
-                            else{
+                            } else {
                                 echo '<div class="empty-product-cart">Chưa có sản phẩm nào trong giỏ hàng.</div>';
-                            }?>
+                            } ?>
                         </div>
                         <div class="my-5 d-flex justify-content-between flex-column flex-lg-row">
                             <div class="cart-action d-flex justify-content-between">
@@ -145,35 +149,67 @@
                                 </div>
                             </div>
                         </div>
-
+                        <?php
+                            if ($priceTotal < $freeShippingUrbanLevel) {
+                                $priceToFreeShip = $freeShippingUrbanLevel - $priceTotal;
+                                $messageContainerFreeShip = '
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                            } else if ($priceTotal < $freeShippingSubUrbanLevel) {
+                                $priceToFreeShip = $freeShippingSubUrbanLevel - $priceTotal;
+                                $messageContainerFreeShip = '
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ở mọi nơi<br>
+                                                    Bạn đã được miễn phí vận chuyển ở TP.HCM
+                                                    </div>
+                                                </div>
+                                            </div>';
+                            } else if ($priceTotal > $freeShippingUrbanLevel && $priceTotal < $freeShippingSubUrbanLevel) {
+                                $messageContainerFreeShip = '
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="price-count-free-ship">YAY bạn đã được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                            }
+                        ?>
                         <div class="total-cart-body">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-5">
                                     <p class="order-summary-label">Tạm tính</p>
                                 </div>
-                                <div class="col-6 text-end">
+                                <div class="col-7 text-end">
                                     <p class="order-summary-value"><?php echo number_format($priceTotal, 0, ",", "."); ?> ₫</p>
                                     <input type="hidden" class="input-sub-total" value="">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-5">
                                     <p class="ship-summary-label">Vận chuyển</p>
                                 </div>
-                                <div class="col-6 text-end">
+                                <div class="col-7 text-end">
                                     <p class="ship-summary-value">Chưa xác định</p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-5">
                                     <p class="total-summary-label">Tổng cộng</p>
                                 </div>
-                                <div class="col-6 text-end">
+                                <div class="col-7 text-end">
                                     <p class="total-summary-value"><?php echo number_format($priceTotal, 0, ",", "."); ?> ₫<span> *</span></p>
-                                    <p class="sup-total-summary-label">(Không bao gồm phí ship)</p>
+                                    <p class="sup-total-summary-label">
+                                        (Chưa bao gồm phí ship)
+                                    </p>
                                     <input type="hidden" class="input-total-summary" value="">
                                 </div>
                             </div>
+                            <?php echo $messageContainerFreeShip; ?>
                         </div>
                     </div>
                     <div class="coupon-container">
@@ -182,7 +218,7 @@
                                 <label class="coupon-label">Mã giảm giá</label>
                                 <form method="post" class="apply-coupon">
                                     <input type="text" placeholder="Nhập mã giảm giá">
-                                    <button class="btn  btn-md" name="login">Sử dụng</button>
+                                    <button class="btn btn-md" name="login">Sử dụng</button>
                                 </form>
                             </div>
                         </div>
@@ -191,7 +227,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="go-to-checkout">
-                                    <a href="<?php if($count > 0){ echo "checkout"; } else{ echo "/"; } ?>" class="btn checkout-btn">Tiếp tục</a>
+                                    <a href="<?php if ($count > 0) {
+                                                    echo "checkout";
+                                                } else {
+                                                    echo "/";
+                                                } ?>" class="btn checkout-btn">Tiếp tục</a>
                                 </div>
                             </div>
                         </div>

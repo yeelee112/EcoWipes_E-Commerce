@@ -11677,6 +11677,18 @@ footer .hotline img {
   }
 }
 
+@media only screen and (max-width: 991px) {
+  .form-select{
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 377px) {
+  p.sup-total-summary-label{
+    font-size: 0.74rem !important;
+  }
+}
+
 /*Tablet*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header-action .header-action-icon {
@@ -12860,6 +12872,13 @@ p.sup-total-summary-label{
   color: #ff8f2e;
 }
 
+.total-price-checkout-container.text-total-price{
+  padding: 0 1.5rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--txt-main-color);
+}
+
 .title-checkout-container{
   font-size: 14px;
 }
@@ -13095,5 +13114,14 @@ align-items: center;
 
 .btn-viewmore-container{
   text-align: center;
+}
+
+.price-count-free-ship{
+  border-top: 1px solid #e9ecef;
+  padding-top: 10px;
+}
+
+.price-count-free-ship strong{
+  color: var(--main-color);
 }
 /*# sourceMappingURL=main.css.map */

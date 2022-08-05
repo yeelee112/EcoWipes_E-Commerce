@@ -95,6 +95,7 @@
             $idAfterHash = $date.$phoneUser;
 
             $idOrder =  hash("adler32", $idAfterHash, FALSE);
+            $idOrder = 'DH-'.strtoupper($idOrder);
 
             $sql1 = substr($sql1, 0, -1) . ")";
             $list1 = DataProvider::execQuery($sql1);
@@ -114,7 +115,6 @@
             DataProvider::execQuery($sqlAddOrderDetail);
             
             unset($_SESSION['cart']);
-            echo "<script>alert('Cảm ơn bạn đã đặt hàng thành công');  window.location.href = '/';</script>";   
         }
     }
 

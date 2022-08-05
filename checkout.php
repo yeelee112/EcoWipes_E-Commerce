@@ -4,13 +4,13 @@ session_start();
 $count = 0;
 $priceTotalCart = 0;
 
-if(isset($_SESSION['cart'])){
-    foreach($_SESSION['cart'] as $id => $value){
+if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $id => $value) {
         $count += $_SESSION['cart'][$id]['quantity'];
     }
 }
 
-if(!isset($_SESSION['cart']) && $count == 0){
+if (!isset($_SESSION['cart']) && $count == 0) {
     header('Location: /');
 }
 
@@ -25,6 +25,30 @@ $totalQuantityProduct = 0;
     <meta charset="utf-8">
     <title>EcoWipes | E-Commerce</title>
     <?php require_once 'library.php'; ?>
+    <link href="assets/css/plugins/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <style>
+        .form-select{
+            height: 40px !important;
+            font-weight: 500;
+            padding: .375rem 2.25rem .375rem 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        .form-group input{
+            height:40px  !important;
+        }
+        .form-group input{
+            font-size:15px !important;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+            font-size: 15px;
+        }
+        .form-select:focus{
+            border-color: #BCE3C9;
+            outline: 0;
+            box-shadow: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -45,28 +69,55 @@ $totalQuantityProduct = 0;
                 <div class="col">
                     <div class="info-user-shipping">
                         <h4 class="info-shipping-title">Thông tin nhận hàng</h4>
-                        <form method="post" action="processOrder" enctype="multipart/form-data" id="orderAccept" class="form-user-info-shipping">
+                        <form method="post" enctype="multipart/form-data" id="orderAccept" class="form-user-info-shipping">
                             <div class="row">
                                 <div class="form-group col-lg-4">
                                     <label for="inputName" class="form-label">Họ tên *</label>
-                                    <input type="text" id="inputName" required name="name" value="<?php if($checkAccountSession == true){echo $rowUser["fullname"]; }?>">
+                                    <input type="text" id="inputName" required name="name" value="<?php if ($checkAccountSession == true) {
+                                                                                                        echo $rowUser["fullname"];
+                                                                                                    } ?>">
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="inputPhone" class="form-label">Số điện thoại *</label>
-                                    <input type="text" pattern="\d*" id="inputPhone" maxlength="10" value="<?php if($checkAccountSession == true){echo $rowUser["phone"];} ?>" required name="phone">
+                                    <input type="text" pattern="\d*" id="inputPhone" maxlength="10" value="<?php if ($checkAccountSession == true) {
+                                                                                                                echo $rowUser["phone"];
+                                                                                                            } ?>" required name="phone">
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="inputEmail" class="form-label">Email</label>
-                                    <input type="email" id="inputEmail" name="email" value="<?php if($checkAccountSession == true){ echo $rowUser["email"];} ?>">
+                                    <input type="email" id="inputEmail" name="email" value="<?php if ($checkAccountSession == true) {
+                                                                                                echo $rowUser["email"];
+                                                                                            } ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <label for="inputAddress" class="form-label">Địa chỉ cụ thể *</label>
-                                    <input type="text" id="inputAddress" name="address" required value="<?php if($checkAccountSession == true){ echo $rowUser["address"];} ?>">
-                                    <input type="hidden" class="message-form" name="message">
-                                    <input type="hidden" class="payment-method-form" name="payment-method" value="COD">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <select class="form-select form-select-sm" id="city" name="city" aria-label=".form-select-sm" required>
+                                                <option value="" selected>Chọn tỉnh thành</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <select class="form-select form-select-sm" id="district" name="district" aria-label=".form-select-sm" required>
+                                                <option value="" selected>Chọn quận huyện</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <select class="form-select form-select-sm" id="ward" name="ward" aria-label=".form-select-sm" required>
+                                                <option value="" selected>Chọn phường xã</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" id="inputAddress" name="address" placeholder="Nhập địa chỉ cụ thể" required value="<?php if ($checkAccountSession == true) {
+                                                                                                                echo $rowUser["address"];
+                                                                                                            } ?>">
+                                </div>
+                                <input type="hidden" class="message-form" name="message">
+                                <input type="hidden" class="payment-method-form" name="payment-method" value="COD">
                             </div>
                         </form>
                     </div>
@@ -91,9 +142,9 @@ $totalQuantityProduct = 0;
                         </div>
                         <div class="cart-body">
                             <?php
-                            if($count > 0){
+                            if ($count > 0) {
                                 $priceTotal = 0;
-                                $sql1="SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
+                                $sql1 = "SELECT * FROM product p, image_product i WHERE p.id = i.product_id and p.product_text IN (";
 
                                 foreach ($_SESSION['cart'] as $id => $value) {
                                     $sql1 .= "'" . $id . "',";
@@ -106,53 +157,53 @@ $totalQuantityProduct = 0;
                                     $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
                                     $priceTotalCart += $priceTotal;
 
-                                ?>
-                                <div class="cart-item">
-                                    <div class=" d-flex align-items-center text-start row">
-                                        <div class="col-md-5 col-12">
-                                            <div class="d-flex align-items-center"><a href="product?item=<?php echo $row1["product_text"] ?>"><img class="cart-item-img" src="<?php echo $row1["img_thumb"] ?>" alt="..." /></a>
-                                                <div class="cart-title text-start"><a class="text-uppercase text-dark text-product-cart" href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-4 mt-md-0 col-md-7 col-12">
-                                            <div class="align-items-center row">
-                                                <div class="col-md-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="d-md-none text-muted col-6">Đơn giá</div>
-                                                        <div class="text-start col-md-12 col-6 price-per-item">
-                                                            <input type="hidden" class="hidden-input" value="40000">
-                                                            <div class="first-price"><?php echo number_format($row1["price"], 0, ",", "."); ?> ₫</div>
-                                                            <!-- <div class="original-price">40.000 đ</div> -->
-                                                        </div>
+                            ?>
+                                    <div class="cart-item">
+                                        <div class=" d-flex align-items-center text-start row">
+                                            <div class="col-md-5 col-12">
+                                                <div class="d-flex align-items-center"><a href="product?item=<?php echo $row1["product_text"] ?>"><img class="cart-item-img" src="<?php echo $row1["img_thumb"] ?>" alt="..." /></a>
+                                                    <div class="cart-title text-start"><a class="text-uppercase text-dark text-product-cart" href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="align-items-center row">
-                                                        <div class="d-md-none text-muted col-md-12 col-6">Số lượng</div>
-                                                        <div class="col-md-12 col-sm-3 col-5 d-md-flex justify-content-center">
-                                                            <div class="detail-qty mb-0">
-                                                                <?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?>
+                                            </div>
+                                            <div class="mt-4 mt-md-0 col-md-7 col-12">
+                                                <div class="align-items-center row">
+                                                    <div class="col-md-3">
+                                                        <div class="row align-items-center">
+                                                            <div class="d-md-none text-muted col-6">Đơn giá</div>
+                                                            <div class="text-start col-md-12 col-6 price-per-item">
+                                                                <input type="hidden" class="hidden-input" value="40000">
+                                                                <div class="first-price"><?php echo number_format($row1["price"], 0, ",", "."); ?> ₫</div>
+                                                                <!-- <div class="original-price">40.000 đ</div> -->
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="row">
-                                                        <div class="d-md-none text-muted col-6">Tổng</div>
-                                                        <div class="text-start col-md-12 col-6 text-total-price d-md-flex justify-content-end">
-                                                            <?php echo number_format($priceTotal, 0, ",", "."); ?> ₫
+                                                    <div class="col-md-4">
+                                                        <div class="align-items-center row">
+                                                            <div class="d-md-none text-muted col-md-12 col-6">Số lượng</div>
+                                                            <div class="col-md-12 col-sm-3 col-5 d-md-flex justify-content-center">
+                                                                <div class="detail-qty mb-0">
+                                                                    <?php echo $_SESSION['cart'][$row1['product_text']]['quantity'] ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="row">
+                                                            <div class="d-md-none text-muted col-6">Tổng</div>
+                                                            <div class="text-start col-md-12 col-6 text-total-price d-md-flex justify-content-end">
+                                                                <?php echo number_format($priceTotal, 0, ",", "."); ?> ₫
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             <?php
-                                $priceTotal = 0;
-                            } 
-                        }?>
+                                    $priceTotal = 0;
+                                }
+                            } ?>
                         </div>
                     </div>
                 </div>
@@ -214,16 +265,25 @@ $totalQuantityProduct = 0;
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row row-cols-1">
                             <div class="col d-flex justify-content-md-end align-items-md-center">
                                 <div class="title-checkout-container">
-                                    Thành tiền (<?php echo $totalQuantityProduct; ?> sản phẩm):
+                                    Phí vận chuyển:
+                                </div>
+                                <div class="total-price-checkout-container text-total-price">
+                                    <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-md-end align-items-md-center">
+                                <div class="title-checkout-container">
+                                    Thành tiền (<?php echo $count; ?> sản phẩm):
                                 </div>
                                 <div class="total-price-checkout-container">
                                     <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col d-flex justify-content-end align-items-center">
@@ -238,6 +298,9 @@ $totalQuantityProduct = 0;
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
     <script>
         function messageRedirect(val) {
             $(".message-form").val(val);
@@ -248,12 +311,89 @@ $totalQuantityProduct = 0;
                 if ($(this).val() == 'Banking') {
                     $('.info-banking-container').css("display", "block");
                     $(".payment-method-form").val("Banking");
-                    
                 } else {
                     $('.info-banking-container').css("display", "none");
                     $(".payment-method-form").val("COD");
                 }
             });
+        $("#orderAccept").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            $.ajax({
+                method: "POST", // phương thức dữ liệu được truyền đi 
+                url: "processOrder", // gọi đến file server show_data.php để xử lý
+                data: $("#orderAccept").serialize(),
+                success: function() {
+                    Swal.fire({
+                        html: "<strong>Đặt hàng thành công!</strong><br> <div class='mt-10' style='font-size:16px;'>Bạn sẽ tự động trở về trang chủ sau 3 giây<div>",
+                        icon: "success",
+                        timerProgressBar: true,
+                        timer: 3000,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                // b.textContent = Swal.getTimerLeft()
+                            }, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                            location.href = "/";
+                        }
+                    });
+                },
+            })
+        });
+    </script>
+    <script>
+        var convertH = $('.total-price-checkout-container').width();
+        $('.total-price-checkout-container.text-total-price').css('width','convertH');
+    </script>
+
+    <script>
+        var citis = document.getElementById("city");
+        var districts = document.getElementById("district");
+        var wards = document.getElementById("ward");
+        var Parameter = {
+            url: "vietnam.json", //Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
+            method: "POST",
+            responseType: "application/json",
+        };
+
+        var promise = axios(Parameter);
+        //Xử lý khi request thành công
+        promise.then(function(result) {
+            renderCity(result.data);
+        });
+
+        function renderCity(data) {
+            for (const x of data) {
+                citis.options[citis.options.length] = new Option(x.Name, x.Name);
+            }
+
+            citis.onchange = function() {
+                district.length = 1;
+                ward.length = 1;
+                if (this.value != "") {
+                    const result = data.filter(n => n.Name === this.value);
+
+                    for (const k of result[0].Districts) {
+                        district.options[district.options.length] = new Option(k.Name, k.Name);
+                    }
+                }
+            };
+
+            district.onchange = function() {
+                ward.length = 1;
+                const dataCity = data.filter((n) => n.Name === citis.value);
+                if (this.value != "") {
+                    const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
+
+                    for (const w of dataWards) {
+                        wards.options[wards.options.length] = new Option(w.Name, w.Name);
+                    }
+                }
+            };
+        }
     </script>
 </body>
 

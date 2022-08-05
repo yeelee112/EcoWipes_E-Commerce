@@ -9,6 +9,13 @@ $phone = '';
 $count = 0;
 $priceTotal = 0;
 $checkAccountSession = false;
+$shippingFee = 0;
+$shippingUrbanFee = 20000;
+$shippingSubUrbanFee = 40000;
+
+$freeShippingUrbanLevel = 300000;
+$freeShippingSubUrbanLevel = 500000;
+
 
 
 

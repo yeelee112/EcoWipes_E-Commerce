@@ -7,6 +7,9 @@
     $data = '';
     $checkSecure = 0;
     $count = 0;
+    $message = '';
+    $messageContainerFreeShip = '';
+
     if(isset($_POST["id"])){
         $id = $_POST["id"];
         $checkSecure++;
@@ -37,60 +40,92 @@
                 }
 
                 $priceShow = number_format($priceTotal, 0, ",", ".") . ' ₫';
+
+
+                if ($priceTotal < 300000) {
+                    $priceToFreeShip = 300000 - $priceTotal;
+                    $messageContainerFreeShip = '
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                        </div>
+                                    </div>
+                                </div>';
+                } else if ($priceTotal < 500000) {
+                    $priceToFreeShip = 500000 - $priceTotal;
+                    $messageContainerFreeShip = '
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ở mọi nơi<br>
+                                        Bạn đã được miễn phí vận chuyển ở TP.HCM
+                                        </div>
+                                    </div>
+                                </div>';
+                } else if ($priceTotal > 300000 && $priceTotal < 500000) {
+                    $messageContainerFreeShip = '
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="price-count-free-ship">YAY bạn đã được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                        </div>
+                                    </div>
+                                </div>';
+                }
+                    
                 $data = '<div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="order-summary-label">Tạm tính</p>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-7 text-end">
                                 <p class="order-summary-value">' . $priceShow . '</p>
                                 <input type="hidden" class="input-sub-total" value="">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="ship-summary-label">Vận chuyển</p>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-7 text-end">
                                 <p class="ship-summary-value">Chưa xác định</p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="total-summary-label">Tổng cộng</p>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-7 text-end">
                                 <p class="total-summary-value">' . $priceShow . '<span> *</span></p>
-                                <p class="sup-total-summary-label">(Không bao gồm phí ship)</p>
+                                <p class="sup-total-summary-label">(Chưa bao gồm phí ship)</p>
                                 <input type="hidden" class="input-total-summary" value="">
                             </div>
-                        </div>';
+                        </div>
+                        '.$messageContainerFreeShip;
 
                 echo $data;
             }
             else{
                 $priceShow = number_format('0', 0, ",", ".") . ' ₫';
                 $data = '<div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="order-summary-label">Tạm tính</p>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-7 text-end">
                                 <p class="order-summary-value">' . $priceShow . '</p>
                                 <input type="hidden" class="input-sub-total" value="">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="ship-summary-label">Vận chuyển</p>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-7 text-end">
                                 <p class="ship-summary-value">Chưa xác định</p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-5">
                                 <p class="total-summary-label">Tổng cộng</p>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-7 text-end">
                                 <p class="total-summary-value">' . $priceShow . '<span> *</span></p>
                                 <p class="sup-total-summary-label">(Không bao gồm phí ship)</p>
                                 <input type="hidden" class="input-total-summary" value="">
