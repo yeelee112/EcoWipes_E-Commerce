@@ -93,7 +93,7 @@
                             <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán chạy</button>
                         </li> -->
                         <li class="nav-item" role="presentation" style="display:flex;">
-                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Mới</button>
+                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New</button>
                         </li>
                     </ul>
                 </div>
@@ -128,7 +128,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="hot">Mới</span>
+                                                        <span class="hot">New</span>
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
@@ -229,7 +229,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">Mới</span>
+                                                <span class="hot">New</span>
                                             </div>
                                         </div>
                                         <div class="product-content-wrap">
@@ -330,9 +330,9 @@
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <h2 class="mb-20 text-white">
-                                    Nhận ưu đãi và<br> coupon mới nhất!
+                                    Nhận ưu đãi và<br> coupon New nhất!
                                 </h2>
-                                <p class="mb-45 text-white">Đăng ký để nhận được thông báo mới nhất</p>
+                                <p class="mb-45 text-white">Đăng ký để nhận được thông báo New nhất</p>
 
                             </div>
                             <div class="col-md-6">
@@ -351,7 +351,7 @@
         <section class="featured section-padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6 mb-md-4 mb-xl-0">
+                    <div class="col-lg-1-4 col-md-3 col-12 col-sm-6 mb-md-4 mb-xl-0 mb-5">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay="0">
                             <div class="banner-icon">
                                 <img src="assets/imgs/theme/icons/icon-3.svg" alt>
@@ -362,7 +362,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6">
+                    <div class="col-lg-1-4 col-md-3 col-12 col-sm-6 mb-5">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                             <div class="banner-icon">
                                 <img src="assets/imgs/theme/icons/icon-2.svg" alt>
@@ -373,7 +373,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6">
+                    <div class="col-lg-1-4 col-md-3 col-12 col-sm-6 mb-5">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                             <div class="banner-icon">
                                 <img src="assets/imgs/theme/icons/icon-1.svg" alt>
@@ -384,7 +384,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1-4 col-md-3 col-6 col-sm-6">
+                    <div class="col-lg-1-4 col-md-3 col-12 col-sm-6 mb-5">
                         <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
                             <div class="banner-icon">
                                 <img src="assets/imgs/theme/icons/icon-4.svg" alt>

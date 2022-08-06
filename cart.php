@@ -155,7 +155,7 @@ $messageContainerFreeShip = '';
                                 $messageContainerFreeShip = '
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">miễn phí vận chuyển</span> ngay tại TP Hồ Chí Minh<br>
                                                     </div>
                                                 </div>
                                             </div>';
@@ -164,8 +164,8 @@ $messageContainerFreeShip = '';
                                 $messageContainerFreeShip = '
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ở mọi nơi<br>
-                                                    Bạn đã được miễn phí vận chuyển ở TP.HCM
+                                                    <div class="price-count-free-ship">Bạn đã được <span class="free-ship-text mb-5">miễn phí vận chuyển</span> ở TP.HCM<br>
+                                                    Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">miễn phí vận chuyển</span> tại 63 tỉnh thành
                                                     </div>
                                                 </div>
                                             </div>';
@@ -217,7 +217,7 @@ $messageContainerFreeShip = '';
                             <div class="col-12">
                                 <label class="coupon-label">Mã giảm giá</label>
                                 <form method="post" class="apply-coupon">
-                                    <input type="text" placeholder="Nhập mã giảm giá">
+                                    <input type="text" style="font-size: 14px;" placeholder="Nhập mã giảm giá">
                                     <button class="btn btn-md" name="login">Sử dụng</button>
                                 </form>
                             </div>
@@ -419,7 +419,7 @@ $messageContainerFreeShip = '';
                 data: "id=" + txtProduct,
                 success: function(data) {
                     var t = $('a[href="product?item=' + txtProduct + '"]');
-                    t.closest(".cart-item").html(data);
+                    t.closest(".cart-item").hide();
                 },
                 complete: function() {
                     $.ajax({

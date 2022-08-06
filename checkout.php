@@ -95,7 +95,7 @@ $totalQuantityProduct = 0;
                                     <label for="inputAddress" class="form-label">Địa chỉ cụ thể *</label>
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <select class="form-select form-select-sm" id="city" name="city" aria-label=".form-select-sm" required>
+                                            <select  class="form-select form-select-sm" id="city" name="city" aria-label=".form-select-sm" required>
                                                 <option value="" selected>Chọn tỉnh thành</option>
                                             </select>
                                         </div>
@@ -117,6 +117,7 @@ $totalQuantityProduct = 0;
                                                                                                             } ?>">
                                 </div>
                                 <input type="hidden" class="message-form" name="message">
+                                <input type="hidden" class="shipping-fee" name="shipping-fee">
                                 <input type="hidden" class="payment-method-form" name="payment-method" value="COD">
                             </div>
                         </form>
@@ -270,15 +271,16 @@ $totalQuantityProduct = 0;
                                 <div class="title-checkout-container">
                                     Phí vận chuyển:
                                 </div>
-                                <div class="total-price-checkout-container text-total-price">
-                                    <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
+                                <div class="total-price-checkout-container text-total-price shipping-price">
+                                    <!-- <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫ -->
+                                    Chưa xác định
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-md-end align-items-md-center">
+                            <div class="col d-flex justify-content-md-end align-items-md-center pb-20 mt-10">
                                 <div class="title-checkout-container">
                                     Thành tiền (<?php echo $count; ?> sản phẩm):
                                 </div>
-                                <div class="total-price-checkout-container">
+                                <div class="total-price-checkout-container total-price">
                                     <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
                                 </div>
                             </div>
@@ -344,15 +346,12 @@ $totalQuantityProduct = 0;
             })
         });
     </script>
-    <script>
-        var convertH = $('.total-price-checkout-container').width();
-        $('.total-price-checkout-container.text-total-price').css('width','convertH');
-    </script>
 
     <script>
         var citis = document.getElementById("city");
         var districts = document.getElementById("district");
         var wards = document.getElementById("ward");
+        var total = Number(($('.total-price').text()).replace(/[^0-9,-]+/g, ""));
         var Parameter = {
             url: "vietnam.json", //Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
             method: "POST",
@@ -380,6 +379,36 @@ $totalQuantityProduct = 0;
                         district.options[district.options.length] = new Option(k.Name, k.Name);
                     }
                 }
+                var cityRs = this.value;
+
+                
+                $.ajax({
+                    url: "processUpdateShipping.php",
+                    type: "GET",
+                    data: "city=" + cityRs + "&totalPrice=" + <?php echo $priceTotalCart ?>,
+                    success: function(dataResult) {
+                        if(Math.floor(dataResult) == dataResult && $.isNumeric(dataResult)) {
+                            $(".shipping-price").text(new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(dataResult));
+                            $(".shipping-fee").val(dataResult);
+                            var totalRs = parseInt(dataResult) + parseInt(total);
+
+                            $('.total-price').text(new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(totalRs));
+                        }
+                        else{
+                            $(".shipping-price").text(dataResult);
+                            $('.total-price').text(new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(total));
+                        }
+                    },
+                });
             };
 
             district.onchange = function() {

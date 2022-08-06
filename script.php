@@ -23,4 +23,5 @@
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <!-- Template  JS -->
 <script src="assets/js/main_v%3D5.2.js"></script>
+<script src="assets/js/ajaxReader.js"></script>
 <script src="assets/js/shop_v%3D5.2.js"></script>

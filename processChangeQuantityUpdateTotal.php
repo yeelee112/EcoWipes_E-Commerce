@@ -47,7 +47,7 @@
                     $messageContainerFreeShip = '
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                        <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">miễn phí vận chuyển</span> ngay tại TP Hồ Chí Minh<br>
                                         </div>
                                     </div>
                                 </div>';
@@ -56,16 +56,9 @@
                     $messageContainerFreeShip = '
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được miễn phí vận chuyển ở mọi nơi<br>
-                                        Bạn đã được miễn phí vận chuyển ở TP.HCM
-                                        </div>
-                                    </div>
-                                </div>';
-                } else if ($priceTotal > 300000 && $priceTotal < 500000) {
-                    $messageContainerFreeShip = '
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="price-count-free-ship">YAY bạn đã được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                        <div class="price-count-free-ship">
+                                        Bạn đã được <span class="free-ship-text">miễn phí vận chuyển</span> ở TP.HCM<br>
+                                        Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">miễn phí vận chuyển</span> tại 63 tỉnh thành
                                         </div>
                                     </div>
                                 </div>';

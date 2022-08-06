@@ -25,6 +25,21 @@
         $checkSecure++;
     }
 
+    if(isset($_POST["city"])){
+        $city = $_POST["city"];
+        $checkSecure++;
+    }
+
+    if(isset($_POST["district"])){
+        $district = $_POST["district"];
+        $checkSecure++;
+    }
+
+    if(isset($_POST["ward"])){
+        $ward = $_POST["ward"];
+        $checkSecure++;
+    }
+
     if(isset($_POST["message"])){
         $messageUser = $_POST["message"];
         $checkSecure++;
@@ -33,6 +48,14 @@
     if(isset($_POST["payment-method"])){
         $paymentMethod = $_POST["payment-method"];
         $checkSecure++;
+    }
+
+    if(isset($_POST["shipping-fee"])){
+        $shippingFee = $_POST["shipping-fee"];
+        $checkSecure++;
+        if(!is_int($shippingFee)){
+            $shippingFee = 0;
+        }
     }
 
     if(isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])){
@@ -97,8 +120,11 @@
             $idOrder =  hash("adler32", $idAfterHash, FALSE);
             $idOrder = 'DH-'.strtoupper($idOrder);
 
+            $address = $ward.' - '.$district.' - '.$city;
+            echo '<script>alert("'.$address.'")</script>';
             $sql1 = substr($sql1, 0, -1) . ")";
             $list1 = DataProvider::execQuery($sql1);
+
 
             while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
 
@@ -109,11 +135,11 @@
                 DataProvider::execQuery($sqlUpdateSoldItem);
                 
                 $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
-
             }
-            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$addressUser','$paymentMethod','$messageUser',now(),now())";                
-            DataProvider::execQuery($sqlAddOrderDetail);
             
+            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',now(),now())";                
+            DataProvider::execQuery($sqlAddOrderDetail);
+            echo '<script>alert('.$sqlAddOrderDetail.')</script>';
             unset($_SESSION['cart']);
         }
     }
@@ -121,3 +147,4 @@
     else{
         header('Location: /');
     }
+?>

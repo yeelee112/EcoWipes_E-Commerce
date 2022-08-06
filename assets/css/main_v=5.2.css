@@ -12883,9 +12883,6 @@ p.sup-total-summary-label{
   font-size: 14px;
 }
 
-.confirm-shipping-container .row:last-child{
-  height: 60px;
-}
 
 .payment-method-radio-container{
   padding: 1rem 2rem;
@@ -13123,5 +13120,22 @@ align-items: center;
 
 .price-count-free-ship strong{
   color: var(--main-color);
+}
+
+.free-ship-text{
+  color: #ff3a21;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.price-count-free-ship br{
+  content: "";
+  margin: 2em;
+  display: block;
+  font-size: 24%;
+}
+
+body.loading .modal {
+  display: block;
 }
 /*# sourceMappingURL=main.css.map */
