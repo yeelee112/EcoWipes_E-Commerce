@@ -61,6 +61,22 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
 ?>
 
 <header class="header-area header-style-1 header-height-2">
+<div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="text-center">
+                            <div id="news-flash" class="d-inline-block">
+                                <ul>
+                                    <li>Khăn ướt sạch - Môi trường xanh</li>
+                                    <li>Chất lượng vàng mang ngàn thấu hiểu</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
             <div class="header-wrap">

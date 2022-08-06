@@ -1324,6 +1324,10 @@ textarea:focus {
   color: #253D4E;
 }
 
+.info-user-shipping .select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 16px;
+}
+
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 26px;
   position: absolute;
@@ -1429,7 +1433,7 @@ textarea:focus {
 }
 
 .select2-container {
-  max-width: 135px;
+  max-width: 100%;
 }
 
 /*contact form*/
@@ -6974,7 +6978,7 @@ h6.post-title {
 .header-top-ptb-1 #news-flash {
   min-width: 400px;
   font-size: 14px;
-  line-height: 10px;
+  line-height: 17px;
   font-weight: 600;
 }
 
@@ -8311,7 +8315,8 @@ h6.post-title {
 
 .header-style-1 .header-top-ptb-1 {
   background-image: none;
-  padding: 10px 0;
+  /* padding: 10px 0; */
+  background-color: #f1f1f1;
 }
 
 .header-style-1 .header-top-ptb-1 .language-dropdown a {
@@ -12819,6 +12824,7 @@ p.sup-total-summary-label{
 
 .form-user-info-shipping{
   padding: 1.2rem 2rem;
+  font-family: "Quicksand", sans-serif;
 }
 
 .product-checkout-container{
@@ -13137,5 +13143,13 @@ align-items: center;
 
 body.loading .modal {
   display: block;
+}
+
+.discount-shipping-fee{
+  padding: 0 1.5rem;
+}
+
+.old-price{
+  text-decoration: line-through;
 }
 /*# sourceMappingURL=main.css.map */

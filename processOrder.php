@@ -82,7 +82,7 @@
         //     $rowUser = mysqli_fetch_assoc($listUser);
             
         //     $sqlCart = "select * from shopping_session ss where ss.user_id = '".$rowUser["id"]."'"; 
-        //     $listCart = DataProvider::execQuery($sqlCart);
+        //     $listCart = DataProvider::execQuery($sqlCart);   
         //     $rowCart = mysqli_fetch_assoc($listCart);
             
         //     $sqlAddOrderDetail = "insert into order_detail values('".$rowCart["id"]."','".$rowUser["id"]."','".$rowCart["total_price"]."','$nameUser','$phoneUser','$addressUser','$messageUser',now(),now())";

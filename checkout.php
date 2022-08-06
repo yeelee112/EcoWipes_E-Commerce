@@ -95,18 +95,18 @@ $totalQuantityProduct = 0;
                                     <label for="inputAddress" class="form-label">Địa chỉ cụ thể *</label>
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <select  class="form-select form-select-sm" id="city" name="city" aria-label=".form-select-sm" required>
-                                                <option value="" selected>Chọn tỉnh thành</option>
+                                            <select class="form-select form-select-sm js-example-basic-single" id="city" name="city" aria-label=".form-select-sm" required>
+                                                <option value="" selected>Chọn Tỉnh/Thành</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-4">
-                                            <select class="form-select form-select-sm" id="district" name="district" aria-label=".form-select-sm" required>
-                                                <option value="" selected>Chọn quận huyện</option>
+                                            <select class="form-select form-select-sm js-example-basic-single" id="district" name="district" aria-label=".form-select-sm" required>
+                                                <option value="" selected>Chọn Quận/Huyện</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-4">
-                                            <select class="form-select form-select-sm" id="ward" name="ward" aria-label=".form-select-sm" required>
-                                                <option value="" selected>Chọn phường xã</option>
+                                            <select class="form-select form-select-sm js-example-basic-single" id="ward" name="ward" aria-label=".form-select-sm" required>
+                                                <option value="" selected>Chọn Phường/Xã</option>
                                             </select>
                                         </div>
                                     </div>
@@ -276,6 +276,11 @@ $totalQuantityProduct = 0;
                                     Chưa xác định
                                 </div>
                             </div>
+                            <div class="col d-flex justify-content-md-end align-items-md-center">
+                                <div class="discount-shipping-fee">
+                                    <span class="free-ship-text">Giảm 25%</span> <span class="old-price pl-10">40.000đ</span>
+                                </div>
+                            </div>
                             <div class="col d-flex justify-content-md-end align-items-md-center pb-20 mt-10">
                                 <div class="title-checkout-container">
                                     Thành tiền (<?php echo $count; ?> sản phẩm):
@@ -304,6 +309,11 @@ $totalQuantityProduct = 0;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
     <script>
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
         function messageRedirect(val) {
             $(".message-form").val(val);
         }
@@ -378,6 +388,7 @@ $totalQuantityProduct = 0;
                     for (const k of result[0].Districts) {
                         district.options[district.options.length] = new Option(k.Name, k.Name);
                     }
+                    $(this).parent().find('.select2-container--default .select2-selection--single').css('border-bottom', '3px solid #72be44');
                 }
                 var cityRs = this.value;
 
@@ -385,7 +396,7 @@ $totalQuantityProduct = 0;
                 $.ajax({
                     url: "processUpdateShipping.php",
                     type: "GET",
-                    data: "city=" + cityRs + "&totalPrice=" + <?php echo $priceTotalCart ?>,
+                    data: "city=" + cityRs + "&totalPrice=" + total,
                     success: function(dataResult) {
                         if(Math.floor(dataResult) == dataResult && $.isNumeric(dataResult)) {
                             $(".shipping-price").text(new Intl.NumberFormat('vi-VN', {
@@ -420,6 +431,14 @@ $totalQuantityProduct = 0;
                     for (const w of dataWards) {
                         wards.options[wards.options.length] = new Option(w.Name, w.Name);
                     }
+                    $(this).parent().find('.select2-container--default .select2-selection--single').css('border-bottom', '3px solid #72be44');
+
+                }
+            };
+
+            ward.onchange = function() {
+                if (this.value != "") {
+                    $(this).parent().find('.select2-container--default .select2-selection--single').css('border-bottom', '3px solid #72be44');
                 }
             };
         }
