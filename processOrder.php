@@ -137,7 +137,7 @@
                 $priceTotal += $row1["price"] * $_SESSION['cart'][$row1['product_text']]['quantity'];
             }
             
-            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',now(),now())";                
+            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";                
             DataProvider::execQuery($sqlAddOrderDetail);
             echo '<script>alert('.$sqlAddOrderDetail.')</script>';
             unset($_SESSION['cart']);
