@@ -27,23 +27,26 @@ $totalQuantityProduct = 0;
     <?php require_once 'library.php'; ?>
     <link href="assets/css/plugins/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <style>
-        .form-select{
+        .form-select {
             height: 40px !important;
             font-weight: 500;
             padding: .375rem 2.25rem .375rem 20px;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
         }
-        .form-group input{
-            height:40px  !important;
+
+        .form-group input {
+            height: 40px !important;
         }
-        .form-group input{
-            font-size:15px !important;
+
+        .form-group input {
+            font-size: 15px !important;
             font-weight: 500;
             border: 1px solid #e0e0e0;
             font-size: 15px;
         }
-        .form-select:focus{
+
+        .form-select:focus {
             border-color: #BCE3C9;
             outline: 0;
             box-shadow: none;
@@ -113,8 +116,8 @@ $totalQuantityProduct = 0;
                                 </div>
                                 <div class="form-group">
                                     <input type="text" id="inputAddress" name="address" placeholder="Nhập địa chỉ cụ thể" required value="<?php if ($checkAccountSession == true) {
-                                                                                                                echo $rowUser["address"];
-                                                                                                            } ?>">
+                                                                                                                                                echo $rowUser["address"];
+                                                                                                                                            } ?>">
                                 </div>
                                 <input type="hidden" class="message-form" name="message">
                                 <input type="hidden" class="shipping-fee" name="shipping-fee">
@@ -309,7 +312,6 @@ $totalQuantityProduct = 0;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
     <script>
-
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
@@ -318,21 +320,21 @@ $totalQuantityProduct = 0;
             $(".message-form").val(val);
         }
 
-        $('input:radio[name="payment-method"]').change(
-            function() {
-                if ($(this).val() == 'Banking') {
-                    $('.info-banking-container').css("display", "block");
-                    $(".payment-method-form").val("Banking");
-                } else {
-                    $('.info-banking-container').css("display", "none");
-                    $(".payment-method-form").val("COD");
-                }
-            });
+        $('input:radio[name="payment-method"]').change(function() {
+            if ($(this).val() == 'Banking') {
+                $('.info-banking-container').css("display", "block");
+                $(".payment-method-form").val("Banking");
+            } else {
+                $('.info-banking-container').css("display", "none");
+                $(".payment-method-form").val("COD");
+            }
+        });
+        
         $("#orderAccept").submit(function(e) {
-            e.preventDefault(); // avoid to execute the actual submit of the form.
+            e.preventDefault(); 
             $.ajax({
-                method: "POST", // phương thức dữ liệu được truyền đi 
-                url: "processOrder", // gọi đến file server show_data.php để xử lý
+                method: "POST", 
+                url: "processOrder",
                 data: $("#orderAccept").serialize(),
                 success: function() {
                     Swal.fire({
@@ -353,6 +355,12 @@ $totalQuantityProduct = 0;
                         }
                     });
                 },
+                error: function() {
+                    Swal.fire({
+                        html: "<strong>Đặt hàng không thành công!</strong><br>",
+                        icon: "error",
+                    });
+                }
             })
         });
     </script>
@@ -362,6 +370,7 @@ $totalQuantityProduct = 0;
         var districts = document.getElementById("district");
         var wards = document.getElementById("ward");
         var total = Number(($('.total-price').text()).replace(/[^0-9,-]+/g, ""));
+
         var Parameter = {
             url: "vietnam.json", //Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
             method: "POST",
@@ -378,7 +387,7 @@ $totalQuantityProduct = 0;
             for (const x of data) {
                 citis.options[citis.options.length] = new Option(x.Name, x.Name);
             }
-
+            
             citis.onchange = function() {
                 district.length = 1;
                 ward.length = 1;
@@ -392,13 +401,12 @@ $totalQuantityProduct = 0;
                 }
                 var cityRs = this.value;
 
-                
                 $.ajax({
-                    url: "processUpdateShipping.php",
+                    url: "processUpdateShipping",
                     type: "GET",
                     data: "city=" + cityRs + "&totalPrice=" + total,
                     success: function(dataResult) {
-                        if(Math.floor(dataResult) == dataResult && $.isNumeric(dataResult)) {
+                        if (Math.floor(dataResult) == dataResult && $.isNumeric(dataResult)) {
                             $(".shipping-price").text(new Intl.NumberFormat('vi-VN', {
                                 style: 'currency',
                                 currency: 'VND'
@@ -410,13 +418,21 @@ $totalQuantityProduct = 0;
                                 style: 'currency',
                                 currency: 'VND'
                             }).format(totalRs));
-                        }
-                        else{
+                        } else {
                             $(".shipping-price").text(dataResult);
                             $('.total-price').text(new Intl.NumberFormat('vi-VN', {
                                 style: 'currency',
                                 currency: 'VND'
                             }).format(total));
+                        }
+                        console.log(cityRs);
+
+                        if (total >= <?php echo $freeShippingUrbanLevel ?> && cityRs != 'Thành phố Hồ Chí Minh') {
+                            $('.discount-shipping-fee').css('display', 'block');
+                            console.log("giảm");
+                        } else {
+                            $('.discount-shipping-fee').css('display', 'none');
+                            console.log("ko giảm");
                         }
                     },
                 });

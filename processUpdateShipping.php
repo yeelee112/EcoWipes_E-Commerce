@@ -25,6 +25,9 @@
             else if($totalPrice < $freeShippingUrbanLevel){
                 echo $shippingUrbanFee;
             }
+            else{
+                echo $shippingUrbanFee;
+            }
         }
         else{
             if($totalPrice >= $freeShippingSubUrbanLevel){
@@ -33,7 +36,7 @@
             else if($totalPrice < $freeShippingSubUrbanLevel && $totalPrice > $freeShippingUrbanLevel){
                 echo $shippingSubUrbanFee - ($shippingSubUrbanFee * ($percentageDescrease / 100));
             }
-            else if($totalPrice < $freeShippingSubUrbanLevel){
+            else{
                 echo $shippingSubUrbanFee;
             }
         }

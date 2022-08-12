@@ -58,32 +58,34 @@
 
         <section class="section-padding pb-5">
             <div class="container">
+                <div class="countdown-container pb-20">
+                    <div class="pb-10" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;font-weight:600;font-size:16px;">
+                        Kết thúc trong:
+                    </div>
+                    <div class="deals-countdown pl-5" id="clock" data-countdown="">
+                        <span class="countdown-section">
+                            <span class="countdown-amount hover-up">03</span>
+                            <span class="countdown-period"> ngày </span>
+                        </span>
+                        <span class="countdown-section">
+                            <span class="countdown-amount hover-up">02</span>
+                            <span class="countdown-period"> giờ </span>
+                        </span>
+                        <span class="countdown-section">
+                            <span class="countdown-amount hover-up">43</span>
+                            <span class="countdown-period"> phút </span>
+                        </span>
+                        <span class="countdown-section">
+                            <span class="countdown-amount hover-up">29</span>
+                            <span class="countdown-period"> giây </span>
+                        </span>
+                    </div>
+                </div>
                 <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
                     <h3 class>Best Sells Mỗi ngày</h3>
                     <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
-                                <div class="" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
-                                    Kết thúc trong:
-                                </div>
-                                <div class="deals-countdown pl-5" id="clock" data-countdown="">
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">03</span>
-                                        <span class="countdown-period"> ngày </span>
-                                    </span>
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">02</span>
-                                        <span class="countdown-period"> giờ </span>
-                                    </span>
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">43</span>
-                                        <span class="countdown-period"> phút </span>
-                                    </span>
-                                    <span class="countdown-section">
-                                        <span class="countdown-amount hover-up">29</span>
-                                        <span class="countdown-period"> giây </span>
-                                    </span>
-                                </div>
                                 <div class="" style="background: linear-gradient(to left, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;">
                                     Flash Sale
                                 </div>
@@ -172,9 +174,8 @@
                             <div class="section-title style-2" style="margin-bottom: 0px !important">
                                 <h3 style="margin-bottom: 0px !important">Danh mục</h3>
                             </div>
-
                             <button type="button" class="btn btn-modal-filter" data-bs-toggle="modal" data-bs-target="#modalFilter">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000" class="bi bi-sliders" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#fff" class="bi bi-sliders" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                                 </svg>
                             </button>
@@ -460,7 +461,7 @@
     <?php require_once 'script.php' ?>
 
     <script>
-        $('#clock').countdown('2022/08/02 00:00:00').on('update.countdown',
+        $('#clock').countdown('2022/08/10 00:00:00').on('update.countdown',
             function(event) {
                 var $this = $(this).html(event.strftime('' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> Ngày </span></span>' +

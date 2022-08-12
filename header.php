@@ -23,6 +23,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 require_once 'DataProvider.php';
+require_once 'counterGuest.php';
 
 if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
     $nameUser = $_SESSION['nameUser'];
@@ -59,24 +60,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
     redirect($_SESSION['rewindURL']);
 }
 ?>
-
 <header class="header-area header-style-1 header-height-2">
-<div class="header-top header-top-ptb-1 d-none d-lg-block">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <div class="text-center">
-                            <div id="news-flash" class="d-inline-block">
-                                <ul>
-                                    <li>Khăn ướt sạch - Môi trường xanh</li>
-                                    <li>Chất lượng vàng mang ngàn thấu hiểu</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
             <div class="header-wrap">
@@ -465,9 +449,11 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
         </div>
         <div class="mobile-header-content-area">
             <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="Search for items…">
-                    <button type="submit"><i class="fi-rs-search"></i></button>
+                <form action="shop">
+                    <input type="text" name="search" placeholder="Tìm kiếm trên EcoWipes…" value="<?php if (isset($_GET["search"])) {
+                                                                                                                echo $_GET["search"];
+                                                                                                            } ?>">
+                    <button type="submit" ><i class="fi-rs-search"></i></button>
                 </form>
             </div>
             <div class="mobile-menu-wrap mobile-header-border">
@@ -505,7 +491,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
             </div>
             <div class="mobile-header-info-wrap">
                 <div class="single-mobile-header-info">
-                    <a href="account">
+                    <a href="login">
                         <i class="fi-rs-user"></i>
                         <?php if ($checkAccountSession == true) { echo $nameUser; } else{ echo "Đăng ký / Đăng nhập";} ?>
                      </a>

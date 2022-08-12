@@ -12111,7 +12111,6 @@ footer .hotline img {
     display: block;
   }
   .carausel-6-columns, .carausel-4-columns {
-    max-width: 375px;
     overflow: hidden;
   }
   .hero-slider-1 {
@@ -12859,6 +12858,7 @@ p.sup-total-summary-label{
 
 .feature-checkout-container input{
   height: 50px;
+  font-size: 14px;
 }
 
 @media only screen and (min-width: 767px) {
@@ -12888,7 +12888,6 @@ p.sup-total-summary-label{
 .title-checkout-container{
   font-size: 14px;
 }
-
 
 .payment-method-radio-container{
   padding: 1rem 2rem;
@@ -13147,9 +13146,25 @@ body.loading .modal {
 
 .discount-shipping-fee{
   padding: 0 1.5rem;
+  display: none;
 }
 
 .old-price{
   text-decoration: line-through;
+}
+
+.countdown-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.swal2-styled.swal2-confirm{
+  background-color: var(--main-color) !important;
+}
+
+.swal2-loader{
+  border-color: var(--main-color) transparent var(--main-color) transparent !important;
 }
 /*# sourceMappingURL=main.css.map */
