@@ -3,7 +3,10 @@
 	define("DATABASE", "ecowipes_ecommerce");
 	define("USERNAME", "root");
 	define("PASSWORD", "");
-	
+	// define("SERVER", "localhost");
+	// define("DATABASE", "the09770_ecowipes_ecommerce");
+	// define("USERNAME", "the09770_ecommerce");
+	// define("PASSWORD", "gbJR8ZwnJ~DJ");
 	class DataProvider
 	{
 		public static function getConnection(){

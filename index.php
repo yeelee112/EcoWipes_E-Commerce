@@ -337,11 +337,12 @@
 
                             </div>
                             <div class="col-md-6">
-                                <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Nhập địa chỉ email của bạn">
-                                    <button class="btn" type="submit" style="width: 200px;">Đăng ký</button>
+                                <form class="form-subcriber d-flex" id="subscribe-email-form" method="POST">
+                                    <input type="email" name="email" class="subscribe-email" required placeholder="Nhập địa chỉ email của bạn">
+                                    <button class="btn" id="btn-subscribe" style="width: 200px;">Đăng ký</button>
                                 </form>
                             </div>
+                            <div class="alert-subscribe-email"></div>
                             <!-- <img src="assets/imgs/banner/banner-1.png" alt="newsletter"> 72be44   AEEB88 -->
                         </div>
                     </div>
@@ -459,6 +460,7 @@
     </div> -->
     <!-- Vendor JS-->
     <?php require_once 'script.php' ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $('#clock').countdown('2022/08/10 00:00:00').on('update.countdown',
@@ -495,6 +497,24 @@
                 } //lấy toàn thông tin các fields trong form bằng hàm serialize của jquery
             }) //Some action to indicate is Failing ;
         }
+
+        // var emailSubscribe = $('.subscribe-email').val();
+        $("#subscribe-email-form").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+
+            $.ajax({
+                type: "POST",
+                url: "processSubscribeEmail",
+                data:  $("#subscribe-email-form").serialize(), // serializes the form's elements.
+                success: function(data)
+                {
+                    $('.alert-subscribe-email').html(data);
+                    $('.subscribe-email').val("")
+                }
+            });
+
+            });
+        
 
         $(".btn-viewmore").click(function() {
             $.ajax({
