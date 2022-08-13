@@ -286,7 +286,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                     </div>
                 </div>
 
-                <div class="header-action-right" <?php if ($activePage == 'cart') {
+                <div class="header-action-right" <?php if ($activePage == 'cart' || $activePage == 'checkout') {
                                                         echo 'style="visibility: hidden";';
                                                     } ?>>
                     <div class="header-action-2">

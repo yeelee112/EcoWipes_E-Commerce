@@ -28,16 +28,19 @@
     if(isset($_POST["city"])){
         $city = $_POST["city"];
         $checkSecure++;
+        $cookie_city = $city;
     }
 
     if(isset($_POST["district"])){
         $district = $_POST["district"];
         $checkSecure++;
+        $cookie_district = $district;
     }
 
     if(isset($_POST["ward"])){
         $ward = $_POST["ward"];
         $checkSecure++;
+        $cookie_ward = $ward;
     }
 
     if(isset($_POST["message"])){
@@ -57,6 +60,10 @@
             $shippingFee = 0;
         }
     }
+    
+    setcookie("city", $cookie_city, time() + (86400 * 100), "/");
+    setcookie("district", $cookie_district, time() + (86400 * 300), "/");
+    setcookie("ward", $cookie_ward, time() + (86400 * 300), "/");
 
     if(isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])){
         require_once 'DataProvider.php';

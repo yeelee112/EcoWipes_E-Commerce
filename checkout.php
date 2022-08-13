@@ -1,23 +1,30 @@
 <?php
-session_start();
+    session_start();
 
-$count = 0;
-$priceTotalCart = 0;
+    $count = 0;
+    $priceTotalCart = 0;
+    $setCookieSelect = false;
 
-if (isset($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $id => $value) {
-        $count += $_SESSION['cart'][$id]['quantity'];
+    if (isset($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $id => $value) {
+            $count += $_SESSION['cart'][$id]['quantity'];
+        }
     }
-}
 
-if (!isset($_SESSION['cart']) && $count == 0) {
-    header('Location: /');
-}
+    if (!isset($_SESSION['cart']) && $count == 0) {
+        header('Location: /');
+    }
 
-$priceTotalWithNoReset = 0;
-$totalQuantityProduct = 0;
+    $priceTotalWithNoReset = 0;
+    $totalQuantityProduct = 0;
+
+    if(isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["ward"])) {
+        $cityBinding = $_COOKIE["city"];
+        $districtBinding = $_COOKIE["district"];
+        $wardBinding = $_COOKIE["ward"];
+        $setCookieSelect = true;
+    }
 ?>
-
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -82,7 +89,7 @@ $totalQuantityProduct = 0;
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="inputPhone" class="form-label">Số điện thoại *</label>
-                                    <input type="text" pattern="\d*" id="inputPhone" maxlength="10" value="<?php if ($checkAccountSession == true) {
+                                    <input type="text" class="phone" pattern="\d*" id="inputPhone" value="<?php if ($checkAccountSession == true) {
                                                                                                                 echo $rowUser["phone"];
                                                                                                             } ?>" required name="phone">
                                 </div>
@@ -310,8 +317,18 @@ $totalQuantityProduct = 0;
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
+        // $("#orderAccept").validate();
+        // $('#inputPhone').rules("add", { pattern: "/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/" })
+
+        // $.validator.addMethod('phone', function (value) {
+        //     return /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/.test(value);
+        // }, 'Please enter a valid US or Canadian postal code.');
+
+
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
@@ -366,6 +383,10 @@ $totalQuantityProduct = 0;
     </script>
 
     <script>
+
+
+        
+
         var citis = document.getElementById("city");
         var districts = document.getElementById("district");
         var wards = document.getElementById("ward");
@@ -382,6 +403,14 @@ $totalQuantityProduct = 0;
         promise.then(function(result) {
             renderCity(result.data);
         });
+
+
+        
+        // $(document).ready(function() {
+        //     $('#city').val("Thành phố Hồ Chí Minh").change();
+        // });
+        
+
 
         function renderCity(data) {
             for (const x of data) {
@@ -425,14 +454,11 @@ $totalQuantityProduct = 0;
                                 currency: 'VND'
                             }).format(total));
                         }
-                        console.log(cityRs);
 
                         if (total >= <?php echo $freeShippingUrbanLevel ?> && cityRs != 'Thành phố Hồ Chí Minh') {
                             $('.discount-shipping-fee').css('display', 'block');
-                            console.log("giảm");
                         } else {
                             $('.discount-shipping-fee').css('display', 'none');
-                            console.log("ko giảm");
                         }
                     },
                 });
@@ -456,8 +482,18 @@ $totalQuantityProduct = 0;
                 if (this.value != "") {
                     $(this).parent().find('.select2-container--default .select2-selection--single').css('border-bottom', '3px solid #72be44');
                 }
-            };
+            };       
         }
+        <?php 
+        if($setCookieSelect == true) {
+            echo '
+            $(document).ready(function() {
+                $("#city").val("'.$cityBinding.'").change();
+                $("#district").val("'.$districtBinding.'").change();
+                $("#ward").val("'.$wardBinding.'")  .change();
+            });';
+        }
+        ?>
     </script>
 </body>
 
