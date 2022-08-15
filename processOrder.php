@@ -54,11 +54,8 @@
     }
 
     if(isset($_POST["shipping-fee"])){
-        $shippingFee = $_POST["shipping-fee"];
+        $shippingFee = intval($_POST["shipping-fee"]);
         $checkSecure++;
-        if(!is_int($shippingFee)){
-            $shippingFee = 0;
-        }
     }
     
     setcookie("city", $cookie_city, time() + (86400 * 100), "/");
