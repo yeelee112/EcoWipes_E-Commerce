@@ -26,7 +26,8 @@
 <!-- <script src="assets/js/ajaxReader.js"></script> -->
 <script src="assets/js/shop_v%3D5.2.js"></script>
 
-<div id="fb-root"></div>
+<!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
 
     <!-- Your Chat Plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat">
@@ -51,7 +52,7 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
