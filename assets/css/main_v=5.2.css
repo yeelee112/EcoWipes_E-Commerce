@@ -13173,4 +13173,9 @@ body.loading .modal {
     display:none !important;
   }
 }
+
+.select2-results__option[aria-selected]{
+  font-size: 15px;
+  font-weight: 500;
+}
 /*# sourceMappingURL=main.css.map */
