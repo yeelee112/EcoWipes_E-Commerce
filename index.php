@@ -528,9 +528,10 @@
             });
         });
 
-
-        var convertHeight = $(".product-cart-wrap").height();
-        $(".banner-img.best-sale-img").css("height", convertHeight);
+        $(document).ready(function() {
+            var convertHeight = $(".product-cart-wrap").height();
+            $(".banner-img.best-sale-img").css("height", convertHeight);
+        });
     </script>
 
 </body>

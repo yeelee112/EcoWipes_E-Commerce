@@ -23,7 +23,7 @@
         }
         else{
             echo '<script>Swal.fire({
-                html: "<strong>Đăng ký thất bại!</strong>",
+                html: "<strong>Đăng ký thất bại, tài khoản đã được đăng ký trước đó!</strong>",
                 icon: "error",
             });</script>';
 
