@@ -304,7 +304,7 @@ if (!isset($_GET["item"])) {
                                             <div class="product-price">
                                             <span class="current-price text-brand"><?php echo number_format($rowRelate["price"], 0, ",", "."); ?> ₫</span>
                                             <?php
-                                            if ($oldprice != NULL) {
+                                            if ($rowRelate["price_old"] != NULL) {
                                                 echo '
                                                         <span>  
                                                             <span class="save-price font-md color3 ml-15">Giảm ' . round((($oldprice - $price) / $oldprice * 100), 0, PHP_ROUND_HALF_UP) . '&#37;</span>
