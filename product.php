@@ -278,107 +278,46 @@ if (!isset($_GET["item"])) {
                         </div>
                         <div class="col-12">
                             <div class="row related-products">
+                                <?php
+                                    $sqlRelate = "select * from product p, brand_product bp, group_product gp, type_product tp, image_product ip where bp.id = gp.brand_id and gp.id = tp.group_id and p.type_id = tp.id and bp.id = '".$brandProduct["id"]."' and ip.product_id = p.id LIMIT 4";
+                                    $listRelate = DataProvider::execQuery($sqlRelate);
+                                    while($rowRelate = mysqli_fetch_assoc($listRelate)){
+                                ?>
                                 <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                     <div class="product-cart-wrap hover-up">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img">
-                                                <a href="shop-product-right.html" tabindex="0">
-                                                    <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                    <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
+                                                <a href="product?item=<?php echo $rowRelate["product_text"] ?>" tabindex="0">
+                                                    <img class="default-img" src="<?php echo $rowRelate["img_thumb"] ?>" alt>
+                                                    <img class="hover-img" src="<?php echo $rowRelate["img_1"] ?>" alt>
                                                 </a>
                                             </div>
-                                            <div class="product-action-1">
+                                            <!-- <div class="product-action-1">
                                                 <a aria-label="Xem trước" class="action-btn small" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            </div>
+                                            </div> -->
                                             <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">Hot</span>
+                                                <span class="hot">New</span>
                                             </div>
                                         </div>
                                         <div class="product-content-wrap">
-                                            <h2><a href="shop-product-right.html" tabindex="0">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
+                                            <h2><a href="shop-product-right.html" tabindex="0"><?php echo $rowRelate["product_name"] ?></a></h2>
                                             <div class="product-price">
-                                                <span>38.000 đ </span>
-                                                <span class="old-price">40.000 đ</span>
+                                            <span class="current-price text-brand"><?php echo number_format($rowRelate["price"], 0, ",", "."); ?> ₫</span>
+                                            <?php
+                                            if ($oldprice != NULL) {
+                                                echo '
+                                                        <span>  
+                                                            <span class="save-price font-md color3 ml-15">Giảm ' . round((($oldprice - $price) / $oldprice * 100), 0, PHP_ROUND_HALF_UP) . '&#37;</span>
+                                                            <span class="old-price font-md ml-15">' . number_format($oldprice, 0, ",", ".") . ' ₫</span>
+                                                        </span>
+                                                    ';
+                                            }
+                                            ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                    <div class="product-cart-wrap hover-up">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img">
-                                                <a href="shop-product-right.html" tabindex="0">
-                                                    <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                    <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Xem trước" class="action-btn small" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="sale">-12%</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content-wrap">
-                                            <h2><a href="shop-product-right.html" tabindex="0">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
-                                            <div class="product-price">
-                                                <span>38.000 đ </span>
-                                                <span class="old-price">40.000 đ</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                    <div class="product-cart-wrap hover-up">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img">
-                                                <a href="shop-product-right.html" tabindex="0">
-                                                    <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                    <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Xem trước" class="action-btn small" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="sale">-12%</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content-wrap">
-                                            <h2><a href="shop-product-right.html" tabindex="0">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
-
-                                            <div class="product-price">
-                                                <span>38.000 đ </span>
-                                                <span class="old-price">40.000 đ</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                    <div class="product-cart-wrap hover-up">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img">
-                                                <a href="shop-product-right.html" tabindex="0">
-                                                    <img class="default-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_0Thumb.png" alt>
-                                                    <img class="hover-img" src="assets/imgs/product/EW_MALL_ECOBI_80s_BLUE_Features_01.png" alt>
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Xem trước" class="action-btn small" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="sale">-12%</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content-wrap">
-                                            <h2><a href="shop-product-right.html" tabindex="0">Khăn ướt Ecobi 80 tờ - Không Mùi</a></h2>
-                                            <div class="product-price">
-                                                <span>38.000 đ </span>
-                                                <span class="old-price">40.000 đ</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
