@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>EcoWipes | E-Commerce</title>
+    <title>Thế Giới Khăn Ướt | EcoWipes</title>
     <?php
     require_once 'library.php';
-    ?>
+    ?>  
 </head>
 
 <body>
@@ -19,15 +19,15 @@
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
                         <a href="shop?pid=ecobi">
                             <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
-                                <div class="slider-content mt-30 ml-110" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
-                                    <h1 class="display-2 mb-10 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
-                                        Chất lượng vàng
+                                <div class="slider-content ecobi-text-slider" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
+                                    <h1 class="display-2 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                        Chất lượng vàng 
                                     </h1>
                                     <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
                                 </div>
                             </div>
                         </a>
-                        <a href="shop?cid=khan-lau-bep'">
+                        <!-- <a href="shop?cid=khan-lau-bep">
                             <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
                                 <div class="slider-content">
                                     <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
@@ -49,7 +49,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="slider-arrow hero-slider-1-arrow"></div>
                 </div>
@@ -150,7 +150,7 @@
                                                         </div>
                                                         <span class="font-xs text-heading"> Đã bán: 60/120</span>
                                                     </div> -->
-                                                    <button class="btn w-100 hover-up" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" style="padding: 12px 8px !important;"><i class="fi-rs-shopping-cart mr-5"></i>Thêm vào giỏ hàng</button>
+                                                    <button class="btn w-100 hover-up add-to-cart-btn" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" ><i class="fi-rs-shopping-cart mr-5"></i><span class="add-to-cart-txt">Thêm vào giỏ hàng</span></button>
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -213,15 +213,15 @@
                     </div>
                     <!--End nav-tabs-->
                     <div class="col-md-9">
-                        <div class="row product-grid-4">
+                        <div class="row g-2 product-grid-4">
                             <?php
                             require_once 'DataProvider.php';
                             $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 12";
                             $listChild = DataProvider::execQuery($sqlChild);
                             while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
                             ?>
-                                <div class="col-lg-1-4 col-md-3  col-12 col-sm-6">
-                                    <div class="product-cart-wrap mb-30">
+                                <div class="col-lg-1-4 col-md-3  col-6 col-sm-6">
+                                    <div class="product-cart-wrap">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img">
                                                 <a href="product?item=<?php echo $rowChild["product_text"] ?>">
@@ -239,7 +239,7 @@
                                             </div>
                                             <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
                                             <div>
-                                                <span class="font-small text-muted">Thương hiệu: <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
+                                                <span class="brand-text-span">Thương hiệu:</span><span class="font-small text-muted"> <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
                                             </div>
                                             <div class="count-product-sold">
                                                 Đã bán: <?php echo $rowChild["total_sold"] ?>
@@ -331,15 +331,15 @@
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <h2 class="mb-20 text-white">
-                                    Nhận ưu đãi và<br> coupon New nhất!
+                                    Nhận ưu đãi và<br> coupon mới nhất!
                                 </h2>
-                                <p class="mb-45 text-white">Đăng ký để nhận được thông báo New nhất</p>
+                                <p class="mb-45 text-white">Đăng ký để nhận được thông báo mới nhất</p>
 
                             </div>
                             <div class="col-md-6">
                                 <form class="form-subcriber d-flex" id="subscribe-email-form" method="POST">
                                     <input type="email" name="email" class="subscribe-email" required placeholder="Nhập địa chỉ email của bạn">
-                                    <button class="btn" id="btn-subscribe" style="width: 200px;">Đăng ký</button>
+                                    <button class="btn" id="btn-subscribe" style="width: 200px;"><i class="fa-solid fa-paper-plane"></i><span class="subscribe-email-text pl-5">Đăng ký</span></button>
                                 </form>
                             </div>
                             <div class="alert-subscribe-email"></div>
@@ -535,5 +535,4 @@
     </script>
 
 </body>
-
 </html>

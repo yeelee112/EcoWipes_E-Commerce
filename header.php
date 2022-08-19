@@ -108,7 +108,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                             <a href="login">Đăng nhập</a>
                                         </div>
                                         <div class="signup-label-header">
-                                            <a href="login">Đăng ký</a>
+                                            <a href="login?action=register">Đăng ký</a>
                                         </div>
                                     <?php } ?>
                                     <!--  -->

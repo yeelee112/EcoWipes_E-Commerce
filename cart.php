@@ -9,7 +9,7 @@ $messageContainerFreeShip = '';
 
 <head>
     <meta charset="utf-8">
-    <title>EcoWipes | E-Commerce</title>
+    <title>Giỏ hàng - Thế Giới Khăn Ướt</title>
     <?php require_once 'library.php'; ?>
 
 </head>
@@ -22,7 +22,7 @@ $messageContainerFreeShip = '';
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
+                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
                     <span></span> Giỏ hàng
                     <span></span>
                     <div class="breadcrumb-next-step">Thanh toán</div>
@@ -155,7 +155,7 @@ $messageContainerFreeShip = '';
                                 $messageContainerFreeShip = '
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">miễn phí vận chuyển</span> ngay tại TP Hồ Chí Minh<br>
+                                                    <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">FREESHIP</span> ngay tại TP Hồ Chí Minh<br>
                                                     </div>
                                                 </div>
                                             </div>';
@@ -164,8 +164,8 @@ $messageContainerFreeShip = '';
                                 $messageContainerFreeShip = '
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="price-count-free-ship">Bạn đã được <span class="free-ship-text mb-5">miễn phí vận chuyển</span> ở TP.HCM<br>
-                                                    Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">miễn phí vận chuyển</span> tại 63 tỉnh thành
+                                                    <div class="price-count-free-ship">Bạn đã được <span class="free-ship-text mb-5">FREESHIP</span> tại TP.HCM<br>
+                                                    Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">FREESHIP</span> toàn quốc
                                                     </div>
                                                 </div>
                                             </div>';
@@ -173,7 +173,7 @@ $messageContainerFreeShip = '';
                                 $messageContainerFreeShip = '
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="price-count-free-ship">YAY bạn đã được miễn phí vận chuyển ngay tại TP Hồ Chí Minh<br>
+                                                    <div class="price-count-free-ship">YAY bạn đã được FREESHIP ngay tại TP Hồ Chí Minh<br>
                                                     </div>
                                                 </div>
                                             </div>';

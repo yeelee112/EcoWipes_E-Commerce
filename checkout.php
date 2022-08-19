@@ -1,36 +1,36 @@
 <?php
-    session_start();
+session_start();
 
-    $count = 0;
-    $priceTotalCart = 0;
-    $setCookieSelect = false;
+$count = 0;
+$priceTotalCart = 0;
+$setCookieSelect = false;
 
-    if (isset($_SESSION['cart'])) {
-        foreach ($_SESSION['cart'] as $id => $value) {
-            $count += $_SESSION['cart'][$id]['quantity'];
-        }
+if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $id => $value) {
+        $count += $_SESSION['cart'][$id]['quantity'];
     }
+}
 
-    if (!isset($_SESSION['cart']) && $count == 0) {
-        header('Location: /');
-    }
+if (!isset($_SESSION['cart']) && $count == 0) {
+    header('Location: /');
+}
 
-    $priceTotalWithNoReset = 0;
-    $totalQuantityProduct = 0;
+$priceTotalWithNoReset = 0;
+$totalQuantityProduct = 0;
 
-    if(isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["ward"])) {
-        $cityBinding = $_COOKIE["city"];
-        $districtBinding = $_COOKIE["district"];
-        $wardBinding = $_COOKIE["ward"];
-        $setCookieSelect = true;
-    }
+if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["ward"])) {
+    $cityBinding = $_COOKIE["city"];
+    $districtBinding = $_COOKIE["district"];
+    $wardBinding = $_COOKIE["ward"];
+    $setCookieSelect = true;
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>EcoWipes | E-Commerce</title>
+    <title>Thanh toán - Thế Giới Khăn Ướt | EcoWipes</title>
     <?php require_once 'library.php'; ?>
     <link href="assets/css/plugins/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <style>
@@ -67,8 +67,8 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
-                    <span></span> Giỏ hàng
+                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
+                    <a href="cart"><span></span> Giỏ hàng</a>
                     <span></span>
                     <div>Thanh toán</div>
                 </div>
@@ -265,42 +265,52 @@
                             </div>
                         </div>
                         <div class="row justify-content-end">
-                            <div class="col-lg-3 align-self-end">
+                            <div class="col-lg-5 align-self-end">
                                 <div class="info-banking-container">
                                     <div class="info-banking-inner">
-                                        <div>Ngân hàng: <span>ACB</span></div>
-                                        <div>STK: <span>01000110011010</span></div>
-                                        <div>Chủ TK: <span>Cty Cổ phần EcoWipes</span></div>
-                                        <div class="note-banking-method">(*) Đơn hàng sẽ được chuyển đi ngay sau khi cửa hàng xác nhận chuyển khoản thành công</div>
+                                        <div>Ngân hàng: <span>SACOMBANK (Ngân hàng Sài Gòn Thương Tín)</span></div>
+                                        <div>STK: <span class="banking-no">060190213679</span></div>
+                                        <div>Chủ TK: <span>Công ty CP ECO WIPES VIETNAM</span></div>
+                                        <!-- <div class="note-banking-method">(*) Đơn hàng sẽ được chuyển đi ngay sau khi cửa hàng xác nhận chuyển khoản thành công</div> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row row-cols-1">
+                        <div class="row row-cols-1 price-container">
+                            <div class="col d-flex justify-content-md-end align-items-md-center">
+                                <div class="title-checkout-container">
+                                    Tổng tiền hàng:
+                                </div>
+                                <div class="total-price-checkout-container text-total-price price-binding-width">
+                                    <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
+                                </div>
+                            </div>
                             <div class="col d-flex justify-content-md-end align-items-md-center">
                                 <div class="title-checkout-container">
                                     Phí vận chuyển:
                                 </div>
-                                <div class="total-price-checkout-container text-total-price shipping-price">
+                                <div class="total-price-checkout-container text-total-price shipping-price price-binding-width">
                                     <!-- <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫ -->
                                     Chưa xác định
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-md-end align-items-md-center">
-                                <div class="discount-shipping-fee">
-                                    <span class="free-ship-text">Giảm 25%</span> <span class="old-price pl-10">40.000đ</span>
+                                <div class="title-checkout-container discount-shipping-fee">
+                                    Giảm giá phí vận chuyển:
+                                </div>
+                                <div class="total-price-checkout-container text-total-price price-binding-width discount-shipping-fee">
+                                    -40.000 ₫
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-md-end align-items-md-center pb-20 mt-10">
-                                <div class="title-checkout-container">
-                                    Thành tiền (<?php echo $count; ?> sản phẩm):
+                                <div class="title-checkout-container total-price-text">
+                                    Thành tiền:
                                 </div>
                                 <div class="total-price-checkout-container total-price">
                                     <?php echo number_format($priceTotalCart, 0, ",", "."); ?> ₫
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col d-flex justify-content-end align-items-center">
@@ -346,11 +356,11 @@
                 $(".payment-method-form").val("COD");
             }
         });
-        
+
         $("#orderAccept").submit(function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
             $.ajax({
-                method: "POST", 
+                method: "POST",
                 url: "processOrder",
                 data: $("#orderAccept").serialize(),
                 success: function() {
@@ -383,10 +393,6 @@
     </script>
 
     <script>
-
-
-        
-
         var citis = document.getElementById("city");
         var districts = document.getElementById("district");
         var wards = document.getElementById("ward");
@@ -401,22 +407,29 @@
         var promise = axios(Parameter);
         //Xử lý khi request thành công
         promise.then(function(result) {
-            renderCity(result.data);
-        });
+                renderCity(result.data);
+            })
+            .then(function() {
+                <?php
+                if ($setCookieSelect == true) {
+                    echo '
+                        $("#city").val("' . $cityBinding . '").change();
+                        $("#district").val("' . $districtBinding . '").change();
+                        $("#ward").val("' . $wardBinding . '")  .change();
+                        ';
+                }
+                ?>
+            });
 
-
-        
         // $(document).ready(function() {
         //     $('#city').val("Thành phố Hồ Chí Minh").change();
         // });
-        
-
 
         function renderCity(data) {
             for (const x of data) {
                 citis.options[citis.options.length] = new Option(x.Name, x.Name);
             }
-            
+
             citis.onchange = function() {
                 district.length = 1;
                 ward.length = 1;
@@ -432,34 +445,12 @@
 
                 $.ajax({
                     url: "processUpdateShipping",
-                    type: "GET",
+                    type: "POST",
+                    dataType: "json",
                     data: "city=" + cityRs + "&totalPrice=" + total,
                     success: function(dataResult) {
-                        if (Math.floor(dataResult) == dataResult && $.isNumeric(dataResult)) {
-                            $(".shipping-price").text(new Intl.NumberFormat('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND'
-                            }).format(dataResult));
-                            $(".shipping-fee").val(dataResult);
-                            var totalRs = parseInt(dataResult) + parseInt(total);
-
-                            $('.total-price').text(new Intl.NumberFormat('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND'
-                            }).format(totalRs));
-                        } else {
-                            $(".shipping-price").text(dataResult);
-                            $('.total-price').text(new Intl.NumberFormat('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND'
-                            }).format(total));
-                        }
-
-                        if (total >= <?php echo $freeShippingUrbanLevel ?> && cityRs != 'Thành phố Hồ Chí Minh') {
-                            $('.discount-shipping-fee').css('display', 'block');
-                        } else {
-                            $('.discount-shipping-fee').css('display', 'none');
-                        }
+                        $('.price-container').html(dataResult.html);
+                        $('.shipping-fee').val(dataResult.shippingFee);
                     },
                 });
             };
@@ -474,7 +465,6 @@
                         wards.options[wards.options.length] = new Option(w.Name, w.Name);
                     }
                     $(this).parent().find('.select2-container--default .select2-selection--single').css('border-bottom', '3px solid #72be44');
-
                 }
             };
 
@@ -482,18 +472,8 @@
                 if (this.value != "") {
                     $(this).parent().find('.select2-container--default .select2-selection--single').css('border-bottom', '3px solid #72be44');
                 }
-            };       
+            };
         }
-        <?php 
-        if($setCookieSelect == true) {
-            echo '
-            $(document).ready(function() {
-                $("#city").val("'.$cityBinding.'").change();
-                $("#district").val("'.$districtBinding.'").change();
-                $("#ward").val("'.$wardBinding.'")  .change();
-            });';
-        }
-        ?>
     </script>
 </body>
 

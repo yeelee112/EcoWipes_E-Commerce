@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>EcoWipes | E-Commerce</title>
+    <title>Về chúng tôi - Thế Giới Khăn Ướt</title>
     <link rel="stylesheet" href="assets/css/eco.css">
 
     <?php

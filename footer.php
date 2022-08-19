@@ -17,7 +17,7 @@
                 <div class="col-12 col-md-4">
                     <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                         <div class="logo mb-30">
-                            <a href class="mb-15" style="font-size:calc(0.8vw + 0.8vh)">Công ty Cổ phần EcoWipes Việt Nam</a>
+                            <a href class="mb-15 footer-company-text" style="font-size:calc(0.8vw + 0.8vh)">Công ty Cổ phần EcoWipes Việt Nam</a>
                         </div>
                         <ul class="contact-infor">
                             <li><img src="assets/imgs/theme/icons/icon-location.svg" alt><strong>Địa chỉ: </strong> <span>Số 03 đường An Phú Đông 25, P.An Phú Đông, Q.12, Tp.HCM</span></li>
@@ -61,7 +61,7 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6">
-                <p class="font-sm mb-0">&copy; 2021, <strong class="text-brand">EcoWipes Vietnam Corporation</strong> - All Rights Reserved.</p>
+                <p class="font-sm mb-0">&copy; 2022 <strong class="text-brand">EcoWipes Vietnam Corporation</strong> - All Rights Reserved.</p>
             </div>
             <div class="col-xl-6 col-lg-6 text-center d-none d-xl-block">
                 <div class="hotline d-lg-inline-flex mr-30">

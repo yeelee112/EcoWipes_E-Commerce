@@ -4,6 +4,7 @@
 
     $postData = $statusLogin = $statusRegister = $status = '';
     $msgClass = 'errordiv';
+    $action = '';
 
     $expire = 365 * 24 * 3600; // We choose a one year duration
     ini_set('session.gc_maxlifetime', $expire);
@@ -12,6 +13,10 @@
 
     if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
         header("Location: /");
+    }
+
+    if(isset($_GET['action'])){
+        $action = $_GET['action']; 
     }
 
     $errorForm = 0;
@@ -195,14 +200,14 @@
                     <div class="col-lg-6 col-md-8">
                         <ul class="nav nav-tabs d-flex justify-content-center" id="loginPage" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link <?php if ($errorForm == 0) {
+                                <button class="nav-link <?php if ($errorForm == 0 && $action != 'register') {
                                                             echo "active";
                                                         } ?>" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="home" aria-selected="true">
                                     ĐĂNG NHẬP
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link <?php if ($errorForm == 1) {
+                                <button class="nav-link <?php if ($errorForm == 1 || $action == 'register') {
                                                             echo "active";
                                                         } ?>" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="profile" aria-selected="false">
                                     ĐĂNG KÝ
@@ -210,7 +215,7 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="loginTab">
-                            <div class="tab-pane <?php if ($errorForm == 0) {
+                            <div class="tab-pane <?php if ($errorForm == 0 && $action != 'register') {
                                                         echo "show active";
                                                     } ?>" id="login" role="tabpanel" aria-labelledby="login-tab">
                                 <form method="POST" action="login" class="form-container" enctype="multipart/form-data">
@@ -239,7 +244,7 @@
                                     <button name="submitSignin" id="submit-login" class="btn-full-width">ĐĂNG NHẬP</button>
                                 </form>
                             </div>
-                            <div class="tab-pane <?php if ($errorForm == 1) {
+                            <div class="tab-pane <?php if ($errorForm == 1 || $action == 'register') {
                                                         echo "show active";
                                                     } ?>" id="register" role="tabpanel" aria-labelledby="register-tab">
                                 <form method="POST" action="" class="form-container" enctype="multipart/form-data">

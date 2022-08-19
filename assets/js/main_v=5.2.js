@@ -78,6 +78,7 @@
         fade: true,
         loop: true,
         dots: true,
+        responsive: true,
         arrows: true,
         prevArrow: '<span class="slider-btn slider-prev"><i class="fi-rs-angle-left"></i></span>',
         nextArrow: '<span class="slider-btn slider-next"><i class="fi-rs-angle-right"></i></span>',
@@ -193,18 +194,19 @@
             loop: true,
             variableWidth: false,
             adaptiveHeight: true,
+            pauseOnHover: true,
             responsive: [
                 {
                     breakpoint: 1025,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 1
                     }
                 },
                 {
                     breakpoint: 480,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                         slidesToScroll: 1
                     }
                 }

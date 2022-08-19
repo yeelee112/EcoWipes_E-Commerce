@@ -55,6 +55,10 @@
       }
     );
     //Elevate Zoom
+    var totalPrice = $('.total-price').width();
+    $('.price-binding-width').width(totalPrice);
+
+
     if ($(".product-image-slider").length) {
       $(".product-image-slider .slick-active img").elevateZoom({
         zoomType: "inner",
