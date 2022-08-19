@@ -313,7 +313,7 @@
                                                 <tr>
                                                     <td class="bg_white email-section">
                                                         <div class="heading-section" style="text-align: center; padding: 0 30px;">
-                                                            <h1 style="color:#503629;margin-bottom: 0;font-size:20px">Đơn hàng <span style="color:#72be44">'.$idOrder.'</span> ('.$paymentMethod.')</h1>
+                                                            <h1 style="color:#503629;margin-bottom: 0;font-size:20px">Đơn hàng <span style="color:#72be44">#'.$idOrder.'</span> ('.$paymentMethod.')</h1>
                                                             <p style="margin:0;font-size: 0.8rem;">'.$date.'</p>
                                                         </div>
                                                         '.$userInfo.'
