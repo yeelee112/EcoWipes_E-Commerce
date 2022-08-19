@@ -150,7 +150,7 @@
                                                         </div>
                                                         <span class="font-xs text-heading"> Đã bán: 60/120</span>
                                                     </div> -->
-                                                    <button class="btn w-100 hover-up add-to-cart-btn" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" ><i class="fi-rs-shopping-cart mr-5"></i><span class="add-to-cart-txt">Thêm vào giỏ hàng</span></button>
+                                                    <button class="btn w-100 hover-up add-to-cart-btn" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>" ><span class="add-to-cart-txt-visible">Thêm vào</span><i class="fi-rs-shopping-cart mr-5"></i><span class="add-to-cart-txt">Thêm vào giỏ hàng</span></button>
                                                 </div>
                                             </div>
                                         <?php } ?>

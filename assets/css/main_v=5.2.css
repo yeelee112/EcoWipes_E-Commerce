@@ -13621,8 +13621,16 @@ button.cart-remove {
   .add-to-cart-txt {
     display: none;
   }
+  .add-to-cart-txt-visible {
+    display: inline !important;
+    margin-right: 5px;
+    font-weight: 500;
+  }
 }
 
+.add-to-cart-txt-visible {
+  display: none;
+}
 
 @media only screen and (max-width: 360px) {
   .footer-company-text {
@@ -13861,6 +13869,9 @@ body.loading .modal {
 
   .ecobi-text-slider p {
     font-size: 12px !important;
+  }
+  .hero-slider-1 .single-hero-slider{
+    border-radius: 5px !important;
   }
 }
 

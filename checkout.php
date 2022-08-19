@@ -375,6 +375,15 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
             }
         });
 
+        $(document).on({
+            ajaxStart: function(){
+                $("body").addClass("loading"); 
+            },
+            ajaxStop: function(){ 
+                $("body").removeClass("loading"); 
+            }    
+        });
+
         $("#orderAccept").submit(function(e) {
             e.preventDefault();
             $.ajax({
@@ -442,14 +451,7 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
         // $(document).ready(function() {
         //     $('#city').val("Thành phố Hồ Chí Minh").change();
         // });
-        $(document).on({
-            ajaxStart: function(){
-                $("body").addClass("loading"); 
-            },
-            ajaxStop: function(){ 
-                $("body").removeClass("loading"); 
-            }    
-        });
+
 
         function renderCity(data) {
             for (const x of data) {
