@@ -32,6 +32,6 @@ src="https://www.facebook.com/tr?id=5853805558008915&ev=PageView
 <!-- Template CSS -->
 <script src="https://kit.fontawesome.com/f9c6ab967f.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
-<link rel="stylesheet" href="assets/css/main_v%3D5.2.css">
+<link rel="stylesheet" href="assets/css/main_v%3D5.2.css?v=1.4">
 <link rel="stylesheet" href="assets/css/style.css" />
 <script src="assets/js/plugins/cute-alert.js"></script>
