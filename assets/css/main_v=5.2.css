@@ -6795,7 +6795,7 @@ h6.post-title {
 }
 
 .invoice .table> :not(caption)>*>* {
-  padding: 15px 20px;
+  padding: 0.2rem 0.5rem;
 }
 
 .invoice .table td {
@@ -12328,7 +12328,7 @@ footer .hotline img {
 
   .hero-slider-1 .single-hero-slider .slider-content p {
     font-size: 22px;
-    margin-bottom: 40px !important;
+    margin-bottom: 40px;
   }
 
   .banner-img .banner-text h4 {
@@ -12445,7 +12445,7 @@ footer .hotline img {
 
   .hero-slider-1 .single-hero-slider .slider-content p {
     font-size: 16px;
-    margin-bottom: 55px !important;
+    margin-bottom: 55px;
   }
 
   .hero-slider-1 .single-hero-slider .slider-content form {
@@ -13856,6 +13856,13 @@ body.loading .modal {
   }
 }
 
+.text-slider-container h1{
+    margin-bottom: 40px;
+}
+
+.text-slider-container p{
+  margin-bottom: 65px;
+}
 
 @media only screen and (max-width: 500px) {
   .ecobi-text-slider {
@@ -13873,6 +13880,8 @@ body.loading .modal {
   .hero-slider-1 .single-hero-slider{
     border-radius: 5px !important;
   }
+
+
 }
 
 @media only screen and (max-width: 460px) {
@@ -13887,6 +13896,15 @@ body.loading .modal {
 
   .ecobi-text-slider p {
     font-size: 12px !important;
+  }
+
+  .text-slider-container h1{
+    margin-bottom: 20px;
+  }
+
+  .text-slider-container p{
+  margin-bottom: 30px !important;
+    
   }
 }
 
@@ -13917,6 +13935,16 @@ body.loading .modal {
 
   .ecobi-text-slider p {
     font-size: 10px !important;
+    line-height: 1;
+  }
+  
+  .text-slider-container h1{
+    margin-bottom: 10px !important;
+    font-size: 24px !important;
+  }
+
+  .text-slider-container p{
+    font-size: 14px;
     line-height: 1;
   }
 }

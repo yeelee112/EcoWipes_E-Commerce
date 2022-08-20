@@ -18,6 +18,7 @@
     $dataMail = '';
     $noteFromUser = '';
     $userInfo = '';
+    $emailUser = '';
 
     if(isset($_POST["name"])){
         $nameUser = $_POST["name"];
@@ -224,7 +225,7 @@
                 </div>';
             }
             
-            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";                
+            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser',$emailUser,'$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";                
             DataProvider::execQuery($sqlAddOrderDetail);
             
             

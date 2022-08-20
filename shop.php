@@ -251,8 +251,8 @@ function removeQueryStringParameter($url, $varname)
                         $listProduct = DataProvider::execQuery($sqlListProduct);
                         while ($row = mysqli_fetch_array($listProduct, MYSQLI_ASSOC)) {
                         ?>
-                            <div class="col-lg-1-4 col-md-3 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
+                            <div class="col-md-3 col-6 col-sm-6 g-3">
+                                <div class="product-cart-wrap">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img">
                                             <a href="product?item=<?php echo $row["product_text"] ?>">

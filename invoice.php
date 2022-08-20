@@ -28,6 +28,15 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <link rel="stylesheet" href="assets/css/main_v%3D5.2.css">
+    <style>
+        p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            margin-bottom: 5px;
+            color: #7E7E7E;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,21 +83,25 @@
                                         <div class="invoice-number">
                                             <!-- <h4 class="invoice-title-1 mb-10">Bill To</h4> -->
                                             <p class="invoice-addr-1">
-                                                <strong><?php echo $row["fullname"]; ?></strong> <br>
-                                                <a href="tel:<?php echo $row["phone"]; ?>" class="__cf_email__" data-cfemail="c6a4afaaaaafa8a18688a3b5b28ba7b4b2e8a5a9ab"><?php echo $row["phone"]; ?></a> <br>
-                                                <?php echo $row["address"]; ?>
+                                                Họ tên: <strong><?php echo $row["fullname"]; ?></strong> <br>
+                                                Số điện thoại: <a href="tel:<?php echo $row["phone"]; ?>" class="__cf_email__" data-cfemail="c6a4afaaaaafa8a18688a3b5b28ba7b4b2e8a5a9ab"><?php echo $row["phone"]; ?></a> <br>
+                                                <?php
+                                                    if($row["email"] != ''){
+                                                        echo 'Email: <a href="mailto:'.$row["email"].'" class="__cf_email__" data-cfemail="c6a4afaaaaafa8a18688a3b5b28ba7b4b2e8a5a9ab">'.$row["email"].'</a> <br>';
+                                                    }
+                                                ?>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="col-lg-9 col-sm-8">
-                                        <h4 class="invoice-title-1 mb-10">Ngày</h4>
-                                        <p class="invoice-from-1"><?php echo $row["created_at"]; ?></p>
-                                    </div>
                                     <div class="col-lg-3 col-sm-4">
                                         <h4 class="invoice-title-1 mb-10">Phương thức thanh toán</h4>
                                         <p class="invoice-from-1"><?php echo $row["payment_method"]; ?></p>
+                                    </div>
+                                    <div class="col-lg-9 col-sm-8">
+                                        <h4 class="invoice-title-1 mb-10">Địa chỉ</h4>
+                                        <p class="invoice-from-1"><?php echo $row["address_detail"].', '.$row["address"]; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +128,7 @@
                                                 <td>
                                                     <div class="item-desc-1">
                                                         <span><?php echo $rowOrderItem["product_name"] ?></span>
-                                                        <small>SKU: <?php echo $rowOrderItem["id"] ?></small>
+                                                        <!-- <small>SKU: <?php echo $rowOrderItem["id"] ?></small> -->
                                                     </div>
                                                 </td>
                                                 <td class="text-center"><?php echo number_format($rowOrderItem["price"], 0, ",", ".") . ' ₫' ?></td>
@@ -126,15 +139,15 @@
                                             
                                             <tr>
                                                 <td colspan="3" class="text-end f-w-600">Tạm tính</td>
-                                                <td class="text-right"><?php echo number_format($totalPrice, 0, ",", ".") ?></td>
+                                                <td class="text-right"><?php echo number_format($totalPrice, 0, ",", ".") ?> ₫</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-end f-w-600">Vận chuyển</td>
-                                                <td class="text-right">Chưa xác định</td>
+                                                <td class="text-right"><?php echo number_format($row["shipping_fee"], 0, ",", ".")  ?> ₫</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-end f-w-600" style="font-weight: 600;color: #253d4e;font-size: 1.1rem;margin-bottom: 0px;">Tổng cộng</td>
-                                                <td class="text-right f-w-600" style="font-weight: 600;color: #253d4e;font-size: 1.1rem;margin-bottom: 0px;" ><?php echo number_format($totalPrice, 0, ",", ".") ?></td>
+                                                <td class="text-right f-w-600" style="font-weight: 600;color: #253d4e;font-size: 1.1rem;margin-bottom: 0px;" ><?php echo number_format($totalPrice + $row["shipping_fee"], 0, ",", ".") ?> ₫</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -1,12 +1,12 @@
 <?php
-	define("SERVER", "localhost");
-	define("DATABASE", "ecowipes_ecommerce");
-	define("USERNAME", "root");
-	define("PASSWORD", "");
 	// define("SERVER", "localhost");
-	// define("DATABASE", "the09770_ecowipes_ecommerce");
-	// define("USERNAME", "the09770_ecommerce");
-	// define("PASSWORD", "gbJR8ZwnJ~DJ");
+	// define("DATABASE", "ecowipes_ecommerce");
+	// define("USERNAME", "root");
+	// define("PASSWORD", "");
+	define("SERVER", "103.138.88.77");
+	define("DATABASE", "the09770_ecowipes_ecommerce");
+	define("USERNAME", "the09770_ecommerce");
+	define("PASSWORD", "gbJR8ZwnJ~DJ");
 	class DataProvider
 	{
 		public static function getConnection(){

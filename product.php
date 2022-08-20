@@ -243,12 +243,7 @@ if (!isset($_GET["item"])) {
                                         </div>
                                         <div class="overview-product-list">
                                             <ul>
-                                                <li>Quy cách: 80 tờ/gói - 24 gói/thùng.</li>
-                                                <li>Kích thước khăn: Khăn khổ lớn 170x200mm.</li>
-                                                <li>Định lượng vải: Vải bi 50gsm với các hạt nổi 3D.</li>
-                                                <li>Mùi hương: KHÔNG MÙI.</li>
-                                                <li>Hạn sử dụng: 3 năm từ ngày sản xuất.</li>
-                                                <li>Ngày sản xuất & hạn sử dụng: In trên bao bì.</li>
+                                                <?php echo $item["product_info"] ?>
                                             </ul>
                                         </div>
                                     </div>

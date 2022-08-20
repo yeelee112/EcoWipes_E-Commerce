@@ -27,20 +27,20 @@
                                 </div>
                             </div>
                         </a>
-                        <!-- <a href="shop?cid=khan-lau-bep">
+                        <a href="shop?cid=khan-lau-bep">
                             <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
-                                <div class="slider-content">
-                                    <h1 class="display-2 mb-40 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                <div class="slider-content text-slider-container">
+                                    <h1 class="display-2 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
                                         Khăn ướt Lau bếp<br>
                                     </h1>
-                                    <p class="mb-65 animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
+                                    <p class="animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
                                 </div>
                             </div>
                         </a>
                         <a href="shop?cid=khan-tay-trang">
                             <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
-                                <div class="slider-content">
-                                    <h1 class="display-2 mb-40" style="color:#59392f">
+                                <div class="slider-content text-slider-container">
+                                    <h1 class="display-2" style="color:#59392f">
                                         Khăn ướt Tẩy trang
                                     </h1>
                                     <p class="mb-65" style="font-weight:700">Làm sạch lớp trang điểm
@@ -49,7 +49,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </a> -->
+                        </a>
                     </div>
                     <div class="slider-arrow hero-slider-1-arrow"></div>
                 </div>

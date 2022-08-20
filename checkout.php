@@ -263,7 +263,7 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
                             <div class="col d-md-flex justify-content-end align-items-center">
                                 <div class="title-payment-method"> Phương thức thanh toán</div>
                                 <div class="payment-method-radio-container">
-                                    <input type="radio" class="btn-check" name="payment-method" id="cod" value="COD" checked>
+                                    <input type="radio" class="btn-check" style="width:20px" name="payment-method" id="cod" value="COD" checked>
                                     <label class="btn-shipping-method mb-0" for="cod">
                                         Thanh toán khi nhận hàng
                                         <div class="checked-payment-method">
@@ -275,7 +275,7 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
                                         </div>
                                     </label>
 
-                                    <input type="radio" class="btn-check" name="payment-method" id="banking" value="Banking">
+                                    <input type="radio" class="btn-check" style="width:20px" name="payment-method" id="banking" value="Banking">
                                     <label class="btn-shipping-method mb-0" for="banking">
                                         Chuyển khoản qua ngân hàng
                                         <div class="checked-payment-method">
