@@ -58,22 +58,29 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
             outline: 0;
             box-shadow: none;
         }
-        .overlay{
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    background: rgba(255,255,255,0.8) url("assets/imgs/loader.gif") center no-repeat;
+        .modal {
+            display:    none;
+            position:   fixed;
+            z-index:    1000;
+            top:        0;
+            left:       0;
+            height:     100%;
+            width:      100%;
+            background: rgba( 255, 255, 255, .8 ) 
+                        url("assets/imgs/loader.gif") 
+                        50% 50% 
+                        no-repeat;
         }
-        /* Turn off scrollbar when body element has the loading class */
-        body.loading{
+
+        /* When the body has the loading class, we turn
+        the scrollbar off with overflow:hidden */
+        body.loading .modal {
             overflow: hidden;   
         }
-        /* Make spinner image visible when body element has the loading class */
-        body.loading .overlay{
+
+        /* Anytime the body has the loading class, our
+        modal element will be visible */
+        body.loading .modal {
             display: block;
         }
     </style>
@@ -312,14 +319,14 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
                                     Chưa xác định
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-md-end align-items-md-center">
+                            <!-- <div class="col d-flex justify-content-md-end align-items-md-center">
                                 <div class="title-checkout-container discount-shipping-fee">
                                     Giảm giá phí vận chuyển:
                                 </div>
                                 <div class="total-price-checkout-container text-total-price price-binding-width discount-shipping-fee">
                                     -40.000 ₫
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col d-flex justify-content-md-end align-items-md-center pb-20 mt-10">
                                 <div class="title-checkout-container total-price-text">
                                     Thành tiền:
@@ -332,13 +339,14 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
                     </div>
                 </div>
                 <div class="col d-flex justify-content-end align-items-center">
-                    <div class="btn-order-container">
-                        <button class="btn btn-order" type="submit" form="orderAccept">Đặt hàng</button>
+                    <div class="btn-order-container overlay">
+                        <button class="btn btn-order " type="submit" form="orderAccept">Đặt hàng</button>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <div class="modal"><!-- Place at bottom of page --></div>
 
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
@@ -375,13 +383,11 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
             }
         });
 
+
+        $body = $("body");
         $(document).on({
-            ajaxStart: function(){
-                $("body").addClass("loading"); 
-            },
-            ajaxStop: function(){ 
-                $("body").removeClass("loading"); 
-            }    
+            ajaxStart: function() { $body.addClass("loading");    },
+            ajaxStop: function() { $body.removeClass("loading"); }    
         });
 
         $("#orderAccept").submit(function(e) {
