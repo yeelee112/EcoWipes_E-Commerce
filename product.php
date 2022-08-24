@@ -262,7 +262,7 @@ if (!isset($_GET["item"])) {
                                                         $explodeComboName = $strings[0].' '.$strings[1].' '.$strings[2];
                                                         if($i === 0){
                                                             if($rowCombo["is_combo"] != 1){
-                                                                echo '<div class="href-suggest-combo"><a href="product? ='.$rowCombo["product_text"].'">'.$explodeComboName.'</a></div>';
+                                                                echo '<div class="href-suggest-combo"><a href="product?item='.$rowCombo["product_text"].'">'.$explodeComboName.'</a></div>';
                                                             }
                                                             else{
                                                                 echo '<div class="href-suggest-combo"><a href="product?item='.$rowCombo["product_text"].'">1 '.$typeComboProduct.'</a></div>';
