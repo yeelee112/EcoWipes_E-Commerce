@@ -192,6 +192,7 @@ if (!isset($_GET["item"])) {
                                                 $sqlSheet = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and tp.type = '" . $row["type_style"] . "' and tp.type = p.type_style and s.sheet = '" . $row["sheet"] . "' and p.is_combo = '".$row["is_combo"]."'";
                                                 $listSheet = DataProvider::execQuery($sqlSheet);
                                                 $rowSheet = mysqli_fetch_assoc($listSheet);
+                                                if(!empty($rowSheet["product_text"])){
                                             ?>
                                                 <li class="<?php if ($sheetStyle == $row["sheet"]) {
                                                                 echo "active disabled";
@@ -201,7 +202,7 @@ if (!isset($_GET["item"])) {
                                                                             ?>"><?php echo $row["sheet"] ?>
                                                     </a>
                                                 </li>
-                                            <?php } ?>
+                                            <?php } } ?>
                                         </ul>
                                     </div>
                                     <div class="attr-detail attr-size mb-10">
