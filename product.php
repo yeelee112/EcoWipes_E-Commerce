@@ -33,6 +33,7 @@ if (!isset($_GET["item"])) {
             $textProduct = $item["product_text"];
             $totalStore = $item["total_store"];
             $oldprice = $item["price_old"];
+            $isCombo = $item["is_combo"];
 
             $sqlType = "select * from type_product where id = '$idType'";
             $rowType = DataProvider::execQuery($sqlType);
@@ -54,7 +55,7 @@ if (!isset($_GET["item"])) {
 
 <head>
     <meta charset="utf-8">
-    <title>EcoWipes | E-Commerce</title>
+    <title><?php echo $nameProduct ?> | Thế Giới Khăn Ướt</title>
     <?php require_once 'library.php'; ?>
 
 </head>
@@ -121,6 +122,12 @@ if (!isset($_GET["item"])) {
                                                 <img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>">
                                             </figure>
                                         <?php } ?>
+
+                                        <?php if ($item["img_6"] != NULL) { ?>
+                                            <figure class="border-radius-10">
+                                                <img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>">
+                                            </figure>
+                                        <?php } ?>
                                     </div>
                                     <!-- THUMBNAILS -->
                                     <div class="slider-nav-thumbnails">
@@ -148,7 +155,9 @@ if (!isset($_GET["item"])) {
                                             <div><img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>"></div>
                                         <?php } ?>
 
-
+                                        <?php if ($item["img_6"] != NULL) { ?>
+                                            <div><img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <!-- End Gallery -->
@@ -170,10 +179,6 @@ if (!isset($_GET["item"])) {
                                                     ';
                                             }
                                             ?>
-                                            <!-- <span>
-                                                <span class="save-price font-md color3 ml-15">Giảm 5%</span>
-                                                <span class="old-price font-md ml-15">40.000 đ</span>
-                                            </span> -->
                                         </div>
                                     </div>
                                     <div class="attr-detail attr-size mb-10">
@@ -184,7 +189,7 @@ if (!isset($_GET["item"])) {
                                             $sql = "select * from product p, sheets s, type_product t where s.type_id = t.id and p.product_text = '$textProduct' and t.id = p.type_id;";
                                             $list = DataProvider::execQuery($sql);
                                             while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
-                                                $sqlSheet = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and tp.type = '" . $row["type_style"] . "' and tp.type = p.type_style and s.sheet = '" . $row["sheet"] . "'";
+                                                $sqlSheet = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and tp.type = '" . $row["type_style"] . "' and tp.type = p.type_style and s.sheet = '" . $row["sheet"] . "' and p.is_combo = '".$row["is_combo"]."'";
                                                 $listSheet = DataProvider::execQuery($sqlSheet);
                                                 $rowSheet = mysqli_fetch_assoc($listSheet);
                                             ?>
@@ -207,9 +212,10 @@ if (!isset($_GET["item"])) {
                                             $sql = "select * from product p, types tp, type_product t where tp.type_id = t.id and p.product_text = '$textProduct' and t.id = p.type_id;";
                                             $list = DataProvider::execQuery($sql);
                                             while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
-                                                $sqlStyle = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and s.sheet = '" . $row["sheet_style"] . "' and tp.type = p.type_style and tp.type = '" . $row["type"] . "'";
+                                                $sqlStyle = "select * from type_product t join types tp on t.id = tp.type_id join sheets s on t.id = s.type_id, product p where t.id = '" . $row["type_id"] . "' and p.type_id = t.id and p.sheet_style = s.sheet and s.sheet = '" . $row["sheet_style"] . "' and tp.type = p.type_style and tp.type = '" . $row["type"] . "' and p.is_combo = '".$row["is_combo"]."'";
                                                 $listStyle = DataProvider::execQuery($sqlStyle);
                                                 $rowStyle = mysqli_fetch_assoc($listStyle);
+                                                if(!empty($rowStyle["product_text"])){
                                             ?>
                                                 <li class="<?php if ($typeStyle == $row["type"]) {
                                                                 echo "active disabled";
@@ -219,7 +225,7 @@ if (!isset($_GET["item"])) {
                                                                             ?>"><?php echo $row["type"] ?>
                                                     </a>
                                                 </li>
-                                            <?php } ?>
+                                            <?php } } ?>
                                             <!-- <li class="active"><a href="#">Không Mùi</a></li> -->
                                         </ul>
                                     </div>
@@ -231,7 +237,44 @@ if (!isset($_GET["item"])) {
                                                 <input class="qty-val border" id="qty-val" value="1" min="1" type="number" inputmode="numeric" max="<?php echo $totalStore; ?>" oninput="this.value = Math.abs(this.value)"></input>
                                                 <a class="qty-up border" style="right: 1px;position: relative;"><i class="fa-solid fa-plus"></i></a>
                                             </div>
+                                            <div class="suggest-combo-product mb-10">
+                                                <strong class="mr-20">Gợi ý:</strong>
+                                                <?php 
+                                                    require_once 'DataProvider.php';
 
+                                                    $comboNameSub = $nameProduct;
+                                                    $stringsSub = explode(' ', $comboNameSub);
+                                                    $typeComboProduct = $stringsSub[2];
+
+                                                    $i = 0;
+                                                    $subIdProduct = substr($idProduct, 0, 11);
+
+                                                    if(str_contains($idProduct, 'ETGH180VN') && $isCombo == 1){
+                                                        $subIdProduct = substr($idProduct, 0, 9);
+                                                    }
+
+                                                    $sqlCombo = "select p.is_combo, p.product_text, p.product_name from product p where p.id like '$subIdProduct%' and p.id != '$idProduct' and p.is_combo != $isCombo"; 
+                                                    $listCombo = DataProvider::execQuery($sqlCombo);
+
+                                                    while ($rowCombo = mysqli_fetch_array($listCombo, MYSQLI_ASSOC)) {
+                                                        $comboName = $rowCombo["product_name"];
+                                                        $strings = explode(' ', $comboName);
+                                                        $explodeComboName = $strings[0].' '.$strings[1].' '.$strings[2];
+                                                        if($i === 0){
+                                                            if($rowCombo["is_combo"] != 1){
+                                                                echo '<div class="href-suggest-combo"><a href="product? ='.$rowCombo["product_text"].'">'.$explodeComboName.'</a></div>';
+                                                            }
+                                                            else{
+                                                                echo '<div class="href-suggest-combo"><a href="product?item='.$rowCombo["product_text"].'">1 '.$typeComboProduct.'</a></div>';
+                                                            }
+                                                        }
+                                                        else{
+                                                            echo '<div class="href-suggest-combo">&nbsp; - &nbsp;<a href="product?item='.$rowCombo["product_text"].'">'.$explodeComboName.'</a></div>';
+                                                        }
+                                                        $i++;
+                                                    }
+                                                ?>
+                                            </div>
                                             <div class="product-extra-link2">
                                                 <button type="button" onclick="add_to_cart()" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Thêm vào giỏ hàng</button>
                                             </div>

@@ -117,7 +117,7 @@
                                     <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
                                         <?php
                                         require_once 'DataProvider.php';
-                                        $sql = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 8";
+                                        $sql = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 order by p.created_at ASC LIMIT 8";
                                         $list = DataProvider::execQuery($sql);
                                         while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
                                         ?>
@@ -216,7 +216,7 @@
                         <div class="row g-2 product-grid-4">
                             <?php
                             require_once 'DataProvider.php';
-                            $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC LIMIT 12";
+                            $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 order by p.created_at ASC LIMIT 12";
                             $listChild = DataProvider::execQuery($sqlChild);
                             while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
                             ?>
@@ -477,7 +477,7 @@
             cuteToast({
                 type: "success", // or 'info', 'error', 'warning'
                 message: "Đã thêm vào giỏ hàng",
-                timer: 3000
+                timer: 2000
             });
             $.ajax({
                 method: "POST", // phương thức dữ liệu được truyền đi 

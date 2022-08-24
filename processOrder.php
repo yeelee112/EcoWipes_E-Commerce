@@ -175,32 +175,32 @@
             }
 
             $userInfo = '<table role="presentation" class="bg_white" cellspacing="0" cellpadding="0" border="0" width="100%">
-            <tr>
-                <td class="text-services" style="text-align: left; padding-left:25px;">
-                    <div class="heading-section">
-                        <table>
-                            <tr>
-                                <th style="padding-right:40px;">Họ tên:</th>
-                                <td style="font-weight: 700;color:#72be44;">'.$nameUser.'</td>
-                            </tr>
-                            <tr>
-                                <th>SĐT:</th>
-                                <td>'.$phoneUser.'</td>
-                            </tr>
-                            '.$emailInfo.'
-                            <tr>
-                                <th>Địa chỉ:</th>
-                                <td style="font-weight: 500;">'.$addressUser.'</td>
-                            </tr>
-                            <tr>
-                                <td colspan=2>'.$address.'
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </table>';
+                <tr>
+                    <td class="text-services" style="text-align: left; padding-left:25px;">
+                        <div class="heading-section">
+                            <table>
+                                <tr>
+                                    <th style="padding-right:40px;">Họ tên:</th>
+                                    <td style="font-weight: 700;color:#72be44;">'.$nameUser.'</td>
+                                </tr>
+                                <tr>
+                                    <th>SĐT:</th>
+                                    <td>'.$phoneUser.'</td>
+                                </tr>
+                                '.$emailInfo.'
+                                <tr>
+                                    <th>Địa chỉ:</th>
+                                    <td style="font-weight: 500;">'.$addressUser.'</td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2>'.$address.'
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>';
 
             $dataMail .= '<tr style="border-top:1px solid #e7e7e7;"></tr>
             <tr class="final-tr">
@@ -225,7 +225,7 @@
                 </div>';
             }
             
-            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser',$emailUser,'$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";                
+            $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$emailUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";                
             DataProvider::execQuery($sqlAddOrderDetail);
             
             
@@ -314,7 +314,7 @@
                                                 <tr>
                                                     <td class="bg_white email-section">
                                                         <div class="heading-section" style="text-align: center; padding: 0 30px;">
-                                                            <h1 style="color:#503629;margin-bottom: 0;font-size:20px">Đơn hàng <span style="color:#72be44">#'.$idOrder.'</span> ('.$paymentMethod.')</h1>
+                                                            <h1 style="color:#503629;margin-bottom: 0;font-size:20px">Đơn hàng <a href="https://thegioikhanuot.com/invoice?id='.$idOrder.'" style="color:#72be44">#'.$idOrder.'</a> ('.$paymentMethod.')</h1>
                                                             <p style="margin:0;font-size: 0.8rem;">'.$date.'</p>
                                                         </div>
                                                         '.$userInfo.'
@@ -339,8 +339,7 @@
                                 </table>
                                 <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
                                     style="margin: auto;">
-                                    <img width="100%" style="background-color: white; padding-top:30px" src="https://lh3.googleusercontent.com/pw/AM-JKLUUIG08ry3MK2YGgiT4SQQuF0ZF1nQFW9_QHGh_6J2JCKDUVUbuGEi4bNz7CKuIwbX-B07sIaXOAhMQlzq6BuGChrmLiSKWKQBI97kdf2AP1dlGIZRj0RVtTsa5_WHpCNy6p-W6eki_vUal6TxL0qsr=w1560-h282-no?authuser=1">
-                    
+                                    <img width="100%" style="background-color: white; padding-top:30px" src="https://lh3.googleusercontent.com/pw/AM-JKLUUIG08ry3MK2YGgiT4SQQuF0ZF1nQFW9_QHGh_6J2JCKDUVUbuGEi4bNz7CKuIwbX-B07sIaXOAhMQlzq6BuGChrmLiSKWKQBI97kdf2AP1dlGIZRj0RVtTsa5_WHpCNy6p-W6eki_vUal6TxL0qsr=w1560-h282-no">
                                 </table>
                     
                             </div>

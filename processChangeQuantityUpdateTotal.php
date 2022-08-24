@@ -47,7 +47,7 @@
                     $messageContainerFreeShip = '
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="price-count-free-ship">Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">FREESHIP</span> ngay tại TP Hồ Chí Minh<br>
+                                        <div class="price-count-free-ship">Chà, chỉ cần mua thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">FREESHIP</span> ở TP.HCM hoặc giảm 25% phí ship toàn quốc luôn đó, dạo một vòng nữa nào!<br>
                                         </div>
                                     </div>
                                 </div>';
@@ -57,8 +57,8 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="price-count-free-ship">
-                                        Bạn đã được <span class="free-ship-text">FREESHIP</span> tại TP.HCM<br>
-                                        Đặt thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">FREESHIP</span> toàn quốc
+                                        Ngon lành! Bạn đã được <span class="free-ship-text">FREESHIP</span> tại TP.HCM.<br>
+                                        Giờ mà mua thêm <strong>' . number_format($priceToFreeShip, 0, ",", ".") . '₫</strong> nữa, bạn sẽ được <span class="free-ship-text">FREESHIP</span> toàn quốc luôn đó nha.
                                         </div>
                                     </div>
                                 </div>';

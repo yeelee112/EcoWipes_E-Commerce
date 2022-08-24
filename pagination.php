@@ -11,7 +11,7 @@ $start_from = ($page - 1) * $limit;
 
 <?php
 require_once 'DataProvider.php';
-$sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id order by p.created_at ASC";
+$sqlChild = "SELECT * from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 order by p.created_at ASC";
 $listChild = DataProvider::execQuery($sqlChild);
 while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
 ?>
