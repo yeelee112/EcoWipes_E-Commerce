@@ -44,7 +44,7 @@
                         <ul class="footer-list mb-sm-5 mb-md-0">
                             <li><a href="huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
                             <li><a href="chinh-sach-doi-tra">Hướng dẫn đổi trả</a></li>
-                            <li><a class="to-messenger">Hotline & Chat trực tuyến</a></li>
+                            <li><a class="to-messenger" onclick="FB.CustomerChat.showDialog();">Hotline & Chat trực tuyến</a></li>
                         </ul>
                         <ul class="li-flex pt-10">
                             <li>

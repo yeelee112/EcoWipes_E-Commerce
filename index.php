@@ -359,7 +359,7 @@
                                 <img src="assets/imgs/theme/icons/icon-3.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <a class="to-messenger">
+                                <a class="to-messenger" onclick="FB.CustomerChat.showDialog();">
                                     <h3 class="icon-box-title">Hỗ trợ trực tiếp</h3>
                                     <p>Khi khách hàng cần</p>
                                 </a>

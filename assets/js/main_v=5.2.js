@@ -729,10 +729,6 @@
         });
     });
 
-    $(".to-messenger").click(function() {
-        $(".fb_dialog_content").click();
-    });
-
     /*--- VSticker ----*/
     $("#news-flash").vTicker({
         speed: 500,
