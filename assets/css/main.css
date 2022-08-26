@@ -4094,7 +4094,12 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-img-action-wrap .product-img a img {
-  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+  width: 100%;
 }
 
 .product-cart-wrap .product-img-action-wrap .product-img a img.hover-img {
