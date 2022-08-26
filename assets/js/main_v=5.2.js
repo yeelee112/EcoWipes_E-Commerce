@@ -716,6 +716,7 @@
 
     /*-----Modal----*/
     
+
     $(".modal").on("shown.bs.modal", function (e) {
         $(".product-image-slider").slick("setPosition");
         $(".slider-nav-thumbnails").slick("setPosition");
@@ -726,6 +727,10 @@
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 750
         });
+    });
+
+    $(".to-messenger").click(function() {
+        $(".fb_dialog_content").click();
     });
 
     /*--- VSticker ----*/
