@@ -15,7 +15,7 @@ $sqlChild = "SELECT * from brand_product b, group_product g, type_product t, pro
 $listChild = DataProvider::execQuery($sqlChild);
 while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
 ?>
-    <div class="col-lg-1-4 col-md-3 col-12 col-sm-6">
+    <div class="col-md-3 col-6 col-sm-6">
         <div class="product-cart-wrap">
             <div class="product-img-action-wrap">
                 <div class="product-img">

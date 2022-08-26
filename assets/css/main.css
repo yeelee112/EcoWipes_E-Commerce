@@ -4103,7 +4103,7 @@ table .product-thumbnail img {
   top: 0;
   z-index: 2;
   opacity: 0;
-  height: 100%;
+  width: 100%;
   object-fit: cover !important;
   visibility: hidden;
   transition: 0.25s opacity, 0.25s visibility, transform 1.5s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 1.5s cubic-bezier(0, 0, 0.2, 1);
