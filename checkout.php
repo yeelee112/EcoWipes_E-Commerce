@@ -24,6 +24,9 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
     $wardBinding = $_COOKIE["ward"];
     $setCookieSelect = true;
 }
+
+define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
+define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -154,6 +157,7 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
                                 <input type="hidden" class="message-form" name="message">
                                 <input type="hidden" class="shipping-fee" name="shipping-fee">
                                 <input type="hidden" class="payment-method-form" name="payment-method" value="COD">
+                                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
                             </div>
                         </form>
                     </div>
@@ -350,12 +354,20 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
 
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
-
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+	<script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('<?php echo SITE_KEY; ?>', {action: 'homepage'})
+            .then(function(token) {
+                //console.log(token);
+                document.getElementById('g-recaptcha-response').value=token;
+            });
+        });
+    </script>
     <script>
         // $("#orderAccept").validate();
         // $('#inputPhone').rules("add", { pattern: "/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/" })

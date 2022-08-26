@@ -7,10 +7,14 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     
-    require 'PHPMailer-master/src/PHPMailer.php'; 
-    require 'PHPMailer-master/src/Exception.php';
-    require 'PHPMailer-master/src/SMTP.php';
+    require_once 'PHPMailer-master/src/PHPMailer.php'; 
+    require_once 'PHPMailer-master/src/Exception.php';
+    require_once 'PHPMailer-master/src/SMTP.php';
 
+
+    define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
+    define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
+    
     $uid = '';
     $checkSecure = 0;
     $priceTotal = 0;
@@ -87,7 +91,15 @@
         $idUserOder = $rowUser["id"];
     }
     
-    if($checkSecure >= 3){
+    function getCaptcha($SecretKey){
+        $Response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRET_KEY."&response={$SecretKey}");
+        $Return = json_decode($Response);
+        return $Return;
+    }
+    
+    $Return = getCaptcha($_POST['g-recaptcha-response']);
+    
+    if($checkSecure >= 3 && $Return->success == true && $Return->score > 0.5){
         // if(isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])){
         //     $uid = $_SESSION['phoneUser'];
             
@@ -227,24 +239,27 @@
             
             $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$emailUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";                
             DataProvider::execQuery($sqlAddOrderDetail);
-            
+            $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
             
             $mail = new PHPMailer();                              // Passing `true` enables exceptions
             try {
+                if($Return->success == true && $Return->score > 0.5){
                 //Server settings
                 // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                 $mail->isSMTP();                                            //Send using SMTP
                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                $mail->Username   = 'digital@ecowipes.com.vn';                     //SMTP username
-                $mail->Password   = 'uisafrgcjfgrgpqe';                               //SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           //Enable implicit TLS encryption
-                $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-            
-                //Recipients
-                $mail->setFrom('digital@ecowipes.com.vn','Thông báo đơn hàng mới Thế Giới Khăn Ướt');
-                $mail->addAddress('chauhoangan789@gmail.com');     //Add a recipient             //Name is optional
-                $mail->addReplyTo('digital@ecowipes.com.vn');
+                $mail->SMTPAuth   = true;                       
+                
+                    $mail->Username   = 'digital@ecowipes.com.vn';                     //SMTP username
+                    $mail->Password   = 'utwlhgnvhjovvkdp';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           //Enable implicit TLS encryption
+                    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                
+                    //Recipients
+                    $mail->setFrom('digital@ecowipes.com.vn','Thông báo đơn hàng mới Thế Giới Khăn Ướt');
+                    $mail->addAddress('chauhoangan789@gmail.com');     //Add a recipient             //Name is optional
+                    $mail->addReplyTo('digital@ecowipes.com.vn');
+                    
             
                 //Attachments
                 // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
@@ -348,13 +363,15 @@
                     </html>';
 
                 $mail->send();
-                echo 'Message has been sent';
-            }
+                unset($_SESSION['cart']);
+                }
+                else{
+                    header('Location: /');
+                }
+            }   
             catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 header('Location: /');
             }
-            unset($_SESSION['cart']);
         }
     }
 

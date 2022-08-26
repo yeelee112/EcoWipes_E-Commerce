@@ -91,7 +91,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
 
                             <div class="hotline d-none d-lg-flex">
                                 <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline">
-                                <p>1900 - 1009<span>Chăm sóc khách hàng</span></p>
+                                <a href="tel:0909526282"><p>0909 52 62 82<span>Chăm sóc khách hàng</span></p></a>
                             </div>
                             <div class="header-action-icon-2">
                                 <div class="signin-block-container">
@@ -461,10 +461,13 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                 <nav>
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
-                            <a href>Trang chủ</a>
+                            <a href="/">Trang chủ</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="#">Sản phẩm</a>
+                            <a href="about-us">Về chúng tôi</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="shop">Sản phẩm</a>
                             <ul class="dropdown">
                                 <?php
                                 require_once 'DataProvider.php';
@@ -485,22 +488,36 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                 <?php } ?>
                             </ul>
                         </li>
+                        <li class="menu-item-has-children">
+                            <a href="contact-us">Liên hệ</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="dieu-khoan-dich-vu">Chính sách & Điều khoản</a>
+                            <ul class="dropdown">
+                                <li><a href="dieu-khoan-dich-vu">Điều khoản dịch vụ</a></li>
+                                <li><a href="chinh-sach-bao-mat">Chính sách bảo mật</a></li>
+                                <li><a href="chinh-sach-doi-tra">Chính sách đổi trả</a></li>
+                                <li><a href="chinh-sach-van-chuyen">Chính sách vận chuyển</a></li>
+                                <li><a href="huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
+                                <li><a href="chinh-sach-doi-tra">Hướng dẫn đổi trả</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
             </div>
             <div class="mobile-header-info-wrap">
                 <div class="single-mobile-header-info">
-                    <a href="login">
+                    <a href="<?php if ($checkAccountSession == true) { echo "account";} else{ echo "login";}?>">
                         <i class="fi-rs-user"></i>
                         <?php if ($checkAccountSession == true) { echo $nameUser; } else{ echo "Đăng ký / Đăng nhập";} ?>
                      </a>
                 </div>
                 <div class="single-mobile-header-info">
-                    <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
+                    <a href="tel:0909526282"><i class="fi-rs-headphones"></i> 0909 52 62 82</a>
                 </div>
             </div>
-            <div class="site-copyright">Copyright © 2021 Ecowipes Vietnam Corporation, All Rights Reserved.</div>
+            <div class="site-copyright">Copyright © 2022 Ecowipes Vietnam Corporation, All Rights Reserved.</div>
         </div>
     </div>
 </div>

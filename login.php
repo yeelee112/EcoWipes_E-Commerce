@@ -2,6 +2,9 @@
     require_once 'functionPhp.php';
     require_once 'DataProvider.php';
 
+    define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
+    define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
+    
     $postData = $statusLogin = $statusRegister = $status = '';
     $msgClass = 'errordiv';
     $action = '';
@@ -298,6 +301,7 @@
 
         <?php require_once 'footer.php' ?>
         <?php require_once 'script.php' ?>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo"></script>
         <script>
             $(".togglePassword").click(function(e) {
                 e.preventDefault();

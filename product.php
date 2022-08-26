@@ -57,7 +57,6 @@ if (!isset($_GET["item"])) {
     <meta charset="utf-8">
     <title><?php echo $nameProduct ?> | Thế Giới Khăn Ướt</title>
     <?php require_once 'library.php'; ?>
-
 </head>
 
 <body class="single-product">
@@ -125,7 +124,7 @@ if (!isset($_GET["item"])) {
 
                                         <?php if ($item["img_6"] != NULL) { ?>
                                             <figure class="border-radius-10">
-                                                <img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>">
+                                                <img src="<?php echo $item["img_6"] ?>" alt="<?php echo $nameProduct ?>">
                                             </figure>
                                         <?php } ?>
                                     </div>
@@ -156,7 +155,7 @@ if (!isset($_GET["item"])) {
                                         <?php } ?>
 
                                         <?php if ($item["img_6"] != NULL) { ?>
-                                            <div><img src="<?php echo $item["img_5"] ?>" alt="<?php echo $nameProduct ?>"></div>
+                                            <div><img src="<?php echo $item["img_6"] ?>" alt="<?php echo $nameProduct ?>"></div>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -339,7 +338,7 @@ if (!isset($_GET["item"])) {
                                             </div>
                                         </div>
                                         <div class="product-content-wrap">
-                                            <h2><a href="shop-product-right.html" tabindex="0"><?php echo $rowRelate["product_name"] ?></a></h2>
+                                            <h2><a href="product?item=<?php echo $rowRelate["product_text"];?>" tabindex="0"><?php echo $rowRelate["product_name"] ?></a></h2>
                                             <div class="product-price">
                                             <span class="current-price text-brand"><?php echo number_format($rowRelate["price"], 0, ",", "."); ?> ₫</span>
                                             <?php
