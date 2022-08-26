@@ -192,6 +192,8 @@
             slidesToShow: 4,
             slidesToScroll: 1,
             loop: true,
+            variableWidth: false,
+            adaptiveHeight: true,
             pauseOnHover: true,
             responsive: [
                 {
