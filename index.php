@@ -28,7 +28,7 @@
                             </div>
                         </a>
                         <a href="shop?cid=khan-lau-bep">
-                            <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
                                 <div class="slider-content text-slider-container">
                                     <h1 class="display-2 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
                                         Khăn ướt Lau bếp<br>
@@ -38,7 +38,7 @@
                             </div>
                         </a>
                         <a href="shop?cid=khan-tay-trang">
-                            <div class="single-hero-slider single-animation-wrap lazyload" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
                                 <div class="slider-content text-slider-container">
                                     <h1 class="display-2" style="color:#59392f">
                                         Khăn ướt Tẩy trang
@@ -125,8 +125,8 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img">
                                                         <a href="product?item=<?php echo $row["product_text"] ?>">
-                                                            <img class="default-img lazyload" src="<?php echo $row["img_thumb"]; ?>" alt>
-                                                            <img class="hover-img lazyload" src="<?php echo $row["img_1"]; ?>" alt>
+                                                            <img class="default-img" src="<?php echo $row["img_thumb"]; ?>" alt>
+                                                            <img class="hover-img" src="<?php echo $row["img_1"]; ?>" alt>
                                                         </a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
@@ -225,8 +225,8 @@
                                         <div class="product-img-action-wrap">
                                             <div class="product-img">
                                                 <a href="product?item=<?php echo $rowChild["product_text"] ?>">
-                                                    <img class="default-img lazyload" src="<?php echo $rowChild["img_thumb"] ?>" alt>
-                                                    <img class="hover-img lazyload" src="<?php echo $rowChild["img_1"] ?>" alt>
+                                                    <img class="default-img" src="<?php echo $rowChild["img_thumb"] ?>" alt>
+                                                    <img class="hover-img" src="<?php echo $rowChild["img_1"] ?>" alt>
                                                 </a>
                                             </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">

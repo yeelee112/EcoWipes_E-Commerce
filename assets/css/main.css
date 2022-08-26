@@ -4095,7 +4095,7 @@ table .product-thumbnail img {
 
 .product-cart-wrap .product-img-action-wrap .product-img a img {
   width: 100% !important;
-  max-width: 100% !important;
+  object-fit: cover !important;
 }
 
 .product-cart-wrap .product-img-action-wrap .product-img a img.hover-img {
