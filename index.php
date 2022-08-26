@@ -359,8 +359,10 @@
                                 <img src="assets/imgs/theme/icons/icon-3.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <h3 class="icon-box-title">Hỗ trợ trực tiếp</h3>
-                                <p>Khi khách hàng cần</p>
+                                <a class="to-messenger">
+                                    <h3 class="icon-box-title">Hỗ trợ trực tiếp</h3>
+                                    <p>Khi khách hàng cần</p>
+                                </a>
                             </div>
                         </div>
                     </div>

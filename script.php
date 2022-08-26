@@ -22,37 +22,37 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <!-- Template  JS -->
-<script src="assets/js/main_v%3D5.2.js?v=1.1"></script>
+<script src="assets/js/main_v%3D5.2.js?v=1.2"></script>
 <!-- <script src="assets/js/ajaxReader.js"></script> -->
 <script src="assets/js/shop_v%3D5.2.js?v=1.1"></script>
 
 <!-- Messenger Chat Plugin Code -->
-    <div id="fb-root"></div>
+    <!--<div id="fb-root"></div>-->
 
     <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
+    <!--<div id="fb-customer-chat" class="fb-customerchat">-->
+    <!--</div>-->
 
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "108782610539239");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+    <!--<script>-->
+    <!--  var chatbox = document.getElementById('fb-customer-chat');-->
+    <!--  chatbox.setAttribute("page_id", "108782610539239");-->
+    <!--  chatbox.setAttribute("attribution", "biz_inbox");-->
+    <!--</script>-->
 
     <!-- Your SDK code -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'API-VERSION'
-        });
-      };
+    <!--<script>-->
+    <!--  window.fbAsyncInit = function() {-->
+    <!--    FB.init({-->
+    <!--      xfbml            : true,-->
+    <!--      version          : 'API-VERSION'-->
+    <!--    });-->
+    <!--  };-->
 
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+    <!--  (function(d, s, id) {-->
+    <!--    var js, fjs = d.getElementsByTagName(s)[0];-->
+    <!--    if (d.getElementById(id)) return;-->
+    <!--    js = d.createElement(s); js.id = id;-->
+    <!--    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";-->
+    <!--    fjs.parentNode.insertBefore(js, fjs);-->
+    <!--  }(document, 'script', 'facebook-jssdk'));-->
+    <!--</script>-->

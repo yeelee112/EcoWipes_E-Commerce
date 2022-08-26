@@ -44,7 +44,7 @@
                         <ul class="footer-list mb-sm-5 mb-md-0">
                             <li><a href="huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
                             <li><a href="chinh-sach-doi-tra">Hướng dẫn đổi trả</a></li>
-                            <li><a href="#">Hotline & Chat trực tuyến</a></li>
+                            <li><a class="to-messenger">Hotline & Chat trực tuyến</a></li>
                         </ul>
                         <ul class="li-flex pt-10">
                             <li>
@@ -103,3 +103,32 @@
         </div>
     </div>
 </footer>
+<div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "108782610539239");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'API-VERSION'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
