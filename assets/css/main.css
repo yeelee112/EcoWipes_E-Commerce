@@ -4070,7 +4070,7 @@ table .product-thumbnail img {
   position: relative;
   background-color: #fff;
   overflow: hidden;
-  /* max-height: 320px; */
+  max-height: 320px;
   /* padding: 25px 25px 0 25px; */
 }
 
@@ -4092,10 +4092,10 @@ table .product-thumbnail img {
   display: -ms-flexbox;
   display: flex;
 }
-/* 
+
 .product-cart-wrap .product-img-action-wrap .product-img a img {
   width: 100%;
-} */
+}
 
 .product-cart-wrap .product-img-action-wrap .product-img a img.hover-img {
   position: absolute;
