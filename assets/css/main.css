@@ -4094,7 +4094,8 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-img-action-wrap .product-img a img {
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .product-cart-wrap .product-img-action-wrap .product-img a img.hover-img {
@@ -13067,7 +13068,7 @@ ion-icon {
   padding-top: 40px;
   display: block !important;
   margin: 0 auto;
-  height: 100% !important;
+  width: 100% !important;
 }
 
 .title-describe-source h3 {
