@@ -4092,12 +4092,10 @@ table .product-thumbnail img {
   display: -ms-flexbox;
   display: flex;
 }
-
+/* 
 .product-cart-wrap .product-img-action-wrap .product-img a img {
-  left: 0;
-  top: 0;
   width: 100%;
-}
+} */
 
 .product-cart-wrap .product-img-action-wrap .product-img a img.hover-img {
   position: absolute;

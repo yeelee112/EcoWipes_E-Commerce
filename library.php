@@ -15,7 +15,7 @@
 <!-- Template CSS -->
 <script src="https://kit.fontawesome.com/f9c6ab967f.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
-<link rel="stylesheet" href="assets/css/main.css?v=2.1">
+<link rel="stylesheet" href="assets/css/main.css?v=2.2">
 <link rel="stylesheet" href="assets/css/style.css" />
 <script src="assets/js/plugins/cute-alert.js"></script>
 <script>
