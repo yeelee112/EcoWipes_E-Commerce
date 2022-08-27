@@ -480,6 +480,9 @@
         });
     }
 
+    var productWidth = $('.product-cart-wrap .product-img-action-wrap .product-img a img').width();
+    $('.product-cart-wrap .product-img-action-wrap .product-img a img').height(productWidth);
+    
     /*-----------------------
         Shop filter active 
     ------------------------- */
