@@ -18,12 +18,12 @@
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
                         <a href="shop?pid=ecobi">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH770px.png)">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH700px.png)">
                                 <div class="slider-content ecobi-text-slider" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
                                     <h1 class="display-2 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
                                         Chất lượng vàng 
                                     </h1>
-                                    <p class="mb-65 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
+                                    <p class="mb-55 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
                                 </div>
                             </div>
                         </a>
@@ -38,14 +38,31 @@
                             </div>
                         </a>
                         <a href="shop?cid=khan-tay-trang">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_MakeupRemover_W1920xH770px.png)">
-                                <div class="slider-content text-slider-container">
-                                    <h1 class="display-2" style="color:#59392f">
-                                        Khăn ướt Tẩy trang
-                                    </h1>
-                                    <p class="mb-65" style="font-weight:700">Làm sạch lớp trang điểm
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_MAKEUP-Remover_SlideBanner_W1920xH700px.png)">
+                                <div class="slider-content text-slider-2-container text-slider-2-pt">
+                                    <p class="" style="font-weight:700; color:#59392f">Làm sạch lớp trang điểm
                                         <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
                                         bụi bẩn và nhờn
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="shop?cid=khan-lau-giay">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SNEAKER-Wipes_SlideBanner_W1920xH700px.png)">
+                                <div class="slider-content text-slider-2-container text-slider-3-pt">
+                                    <p class="" style="font-weight:700; text-transform: uppercase;color:white">Sử dụng dễ dàng
+                                        <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
+                                        Làm sạch nhanh chóng
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="shop?cid=khan-lau-giay">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png)">
+                                <div class="slider-content text-slider-2-container text-slider-4-pt">
+                                    <p class="" style="font-weight:700; text-transform: uppercase;color:white">100% vải tre sinh thái
+                                        <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
+                                        bao bì bền vững có thể tái chế
                                     </p>
                                 </div>
                             </div>

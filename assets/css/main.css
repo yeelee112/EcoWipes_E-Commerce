@@ -2046,6 +2046,11 @@ input.qty-val {
   font-size: 30px;
 }
 
+.hero-slider-1 .slider-content.text-slider-3-pt p {
+  font-size: 26px;
+}
+
+
 .hero-slider-1 .single-slider-img-1 {
   height: 538px;
   position: relative;
@@ -11973,13 +11978,16 @@ footer .hotline img {
   .header-style-5 .search-style-2 {
     display: none;
   }
+
+
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (min-width: 767px) and (max-width: 991px) {
   .form-select {
     margin-bottom: 10px;
   }
 }
+
 
 @media only screen and (max-width: 377px) {
   p.sup-total-summary-label {
@@ -12243,7 +12251,7 @@ footer .hotline img {
   }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (MIN-width: 991px) and (max-width: 1400px) {
   .product-cart-wrap.style-2 .product-content-wrap {
     max-width: 94%;
   }
@@ -12280,9 +12288,18 @@ footer .hotline img {
     margin-bottom: 15px;
   }
 
+  .hero-slider-1 .slider-content.text-slider-3-pt p {
+    font-size: 24px;
+  }
+
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1250px) {
+  .text-slider-2-container{
+    padding-left: 3px;
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
   .header-style-1 .main-categori-wrap {
     margin-right: 20px;
   }
@@ -12349,7 +12366,7 @@ footer .hotline img {
 
   .hero-slider-1 .single-hero-slider .slider-content p {
     font-size: 22px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
   }
 
   .banner-img .banner-text h4 {
@@ -12466,7 +12483,7 @@ footer .hotline img {
 
   .hero-slider-1 .single-hero-slider .slider-content p {
     font-size: 16px;
-    margin-bottom: 55px;
+    /* margin-bottom: 55px; */
   }
 
   .hero-slider-1 .single-hero-slider .slider-content form {
@@ -13833,10 +13850,22 @@ body.loading .modal {
   padding-left: 95px;
 }
 .ecobi-text-slider h1 {
-  margin-bottom:30px;
+  margin-bottom:15px;
 }
 
-@media only screen and (max-width: 1400px) {
+.text-slider-2-pt{
+  padding-top:220px;
+}
+
+.text-slider-3-pt{
+  padding-top:300px;
+}
+
+.text-slider-2-container{
+  padding-left: 60px;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
   .ecobi-text-slider {
     margin-top: 30px;
     padding-left: 5vw;
@@ -13852,7 +13881,7 @@ body.loading .modal {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
   .ecobi-text-slider {
     padding-left: 0;
   }
@@ -13867,7 +13896,7 @@ body.loading .modal {
   }
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (min-width: 767px) and (max-width: 991px) {
   .ecobi-text-slider {
     padding-left: 3vw;
   }
@@ -13879,6 +13908,26 @@ body.loading .modal {
 
   .ecobi-text-slider p {
     font-size: 14px !important;
+  }
+
+  .text-slider-2-container{
+    padding-left: 30px !important;
+  }
+
+  .hero-slider-1 .slider-content.text-slider-2-container p{
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .text-slider-2-pt{
+    padding-top:120px;
+  }
+  .text-slider-3-pt{
+    padding-top:150px;
+  }
+
+  .hero-slider-1 .slider-content.text-slider-3-pt p{
+    font-size: 12px;
   }
 }
 
@@ -13894,6 +13943,36 @@ body.loading .modal {
 
   .ecobi-text-slider p {
     font-size: 13px !important;
+  }
+
+  .hero-slider-1 .single-hero-slider{
+    height: 178px;
+  }
+
+  .text-slider-2-container{
+    padding-left: 18px;
+  }
+
+  .text-slider-2-container.text-slider-2-pt p{
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .text-slider-2-pt{
+    padding-top: 85px;
+  }
+
+  .text-slider-3-pt{
+    padding-top: 120px;
+  }
+  
+  .hero-slider-1 .slider-content.text-slider-3-pt p {
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .hero-slider-1 .single-hero-slider{
+    height: 178px;
   }
 }
 
@@ -13922,7 +14001,13 @@ body.loading .modal {
     border-radius: 5px !important;
   }
 
-
+  .hero-slider-1 .single-hero-slider{
+    height: 143px;
+  }
+  .text-slider-4-pt p{
+    font-size: 10px !important;
+    line-height: 1;
+  }
 }
 
 @media only screen and (max-width: 460px) {
@@ -13948,16 +14033,47 @@ body.loading .modal {
     
   }
 
+  .text-slider-4-pt p{
+    font-size: 10px !important;
+    line-height: 1;
+  }
+
   .toast-content{
     position: fixed;
     top: 70px !important;
     right: 10px !important;
   }
+
 }
 
 @media only screen and (max-width: 440px) {
+  .hero-slider-1 .single-hero-slider{
+    height: 155px;
+  }
+
+  .text-slider-2-container.text-slider-4-pt p{
+    padding-left: 12px;
+  }
+
+  .ecobi-text-slider h1{
+    margin-bottom: 0;
+  }
+
+  .text-slider-4-pt p{
+    font-size: 8px !important;
+    line-height: 1;
+  }
+
+  .text-slider-2-container.text-slider-4-pt{
+    padding-left: 5px !important;
+  }
+
+  .text-slider-2-container.text-slider-2-pt p{
+    font-size:10px;
+  }
+
   .ecobi-text-slider {
-    padding-left: 0vw;
+    padding-left: 5vw;
     margin-bottom: 0px !important;
   }
 
@@ -13970,12 +14086,37 @@ body.loading .modal {
   }
 }
 
+@media only screen and (max-width: 420px) {
+  .text-slider-2-container{
+    padding-left: 9px;
+  }
+  .text-slider-2-container.text-slider-4-pt p{
+    padding-left: 0;
+  }
+  .text-slider-3-pt{
+    padding-top: 100px;
+  }
+  .text-slider-2-container{
+    padding-left: 0;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .ecobi-text-slider {
     padding-left: 6vw;
     margin-bottom: 0px !important;
   }
 
+  .text-slider-2-container.text-slider-4-pt p{
+    padding-left: 10px;
+  }
+  .text-slider-2-pt p{
+    font-size: 10px !important;
+  }
+  .hero-slider-1 .single-hero-slider{
+    height: 135px;
+  }
+  
   .ecobi-text-slider h1 {
     font-size: 14px !important;
   }
@@ -13994,12 +14135,40 @@ body.loading .modal {
     font-size: 14px;
     line-height: 1;
   }
+
+  .text-slider-2-pt{
+    padding-top: 65px;
+  }
+
+  .text-slider-3-pt{
+    padding-top: 75px !important;
+  }
 }
 
 @media only screen and (max-width: 380px) {
   .ecobi-text-slider {
     padding-left: 3vw;
     margin-bottom: 0px !important;
+  }
+
+  .text-slider-2-pt p{
+    font-size: 9px !important;
+  }
+
+  .hero-slider-1 .single-hero-slider{
+    height: 132px
+  }
+
+  .hero-slider-1 .single-hero-slider .display-2{
+    padding-bottom: 5px;
+  }
+
+  .text-slider-2-pt{
+    padding-top: 70px;
+  }
+
+  .text-slider-3-pt{
+    padding-top: 85px;
   }
 
   .ecobi-text-slider h1 {

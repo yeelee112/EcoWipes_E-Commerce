@@ -3,10 +3,9 @@
   /*Product Details*/
   var productDetails = function () {
     $(".product-image-slider").slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
       arrows: false,
       fade: false,
+      swipeToSlide: true,
       asNavFor: ".slider-nav-thumbnails",
     });
 
@@ -54,10 +53,16 @@
         });
       }
     );
+    // $(document).ready(function() {
+    //   if ($(window).width() < 767) {
+    //     $(".zoomWindowContainer,.zoomContainer").remove();
+    //   }
+    // });
+
     //Elevate Zoom
     var totalPrice = $('.total-price').width();
     $('.price-binding-width').width(totalPrice);
-
+    
 
     if ($(".product-image-slider").length) {
       $(".product-image-slider .slick-active img").elevateZoom({

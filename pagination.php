@@ -25,7 +25,7 @@ while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
                     </a>
                 </div>
                 <div class="product-badges product-badges-position product-badges-mrg">
-                    <span class="hot">Mới</span>
+                    <span class="hot">New</span>
                 </div>
             </div>
             <div class="product-content-wrap">
@@ -53,4 +53,8 @@ while ($rowChild = mysqli_fetch_array($listChild, MYSQLI_ASSOC)) {
             </div>
         </div>
     </div>
+    <script>
+            var productWidth = $('.product-cart-wrap .product-img-action-wrap .product-img a img').width();
+            $('.product-cart-wrap .product-img-action-wrap .product-img a img').height(productWidth);
+    </script>
 <?php } ?>
