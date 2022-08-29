@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="shop?cid=khan-lau-giay">
+                        <a href="shop?cid=khan-uot-bamboo">
                             <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png)">
                                 <div class="slider-content text-slider-2-container text-slider-4-pt">
                                     <p class="" style="font-weight:700; text-transform: uppercase;color:white">100% vải tre sinh thái
