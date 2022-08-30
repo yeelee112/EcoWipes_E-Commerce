@@ -11,10 +11,18 @@
     require_once 'PHPMailer-master/src/Exception.php';
     require_once 'PHPMailer-master/src/SMTP.php';
 
+    require_once realpath(__DIR__ . '/vendor/autoload.php');
+	
+	// $dotenv->required(['DB_SERVER', 'DB_DATABASE', 'DB_USER', 'DB_PASS']);
+	
+	$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+	$dotenv->load();
+
+	$dotenv->required(['USER_APP_GMAIL', 'PASSWORD_APP_GMAIL']);
 
     define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
     define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
-    
+
     $uid = '';
     $checkSecure = 0;
     $priceTotal = 0;
@@ -28,14 +36,17 @@
         $nameUser = $_POST["name"];
         $checkSecure++;
     }
+    
     if(isset($_POST["phone"])){
         $phoneUser = $_POST["phone"];
         $checkSecure++;
     }
+
     if(isset($_POST["email"])){
         $emailUser = $_POST["email"];
         $checkSecure++;
     }
+
     if(isset($_POST["address"])){
         $addressUser = $_POST["address"];
         $checkSecure++;
@@ -250,15 +261,15 @@
                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                       
                 
-                    $mail->Username   = 'digital@ecowipes.com.vn';                     //SMTP username
-                    $mail->Password   = 'utwlhgnvhjovvkdp';                               //SMTP password
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           //Enable implicit TLS encryption
-                    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                $mail->Username   = $_ENV['USER_APP_GMAIL'];                     //SMTP username
+                $mail->Password   = $_ENV['PASSWORD_APP_GMAIL'];                               //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           //Enable implicit TLS encryption
+                $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                 
                     //Recipients
-                    $mail->setFrom('digital@ecowipes.com.vn','Thông báo đơn hàng mới Thế Giới Khăn Ướt');
-                    $mail->addAddress('chauhoangan789@gmail.com');     //Add a recipient             //Name is optional
-                    $mail->addReplyTo('digital@ecowipes.com.vn');
+                $mail->setFrom($_ENV['USER_APP_GMAIL'],'Thông báo đơn hàng mới Thế Giới Khăn Ướt');
+                $mail->addAddress('chauhoangan789@gmail.com');     //Add a recipient             //Name is optional
+                $mail->addReplyTo('digital@ecowipes.com.vn');
                     
             
                 //Attachments

@@ -28,7 +28,7 @@
                                 <div class="single-page pr-30 mb-lg-0 mb-sm-5">
                                     <div class="single-header style-2">
                                         <div class="entry-meta meta-1 meta-3 font-xs mt-15 mb-15">
-                                            <span class="post-on">Cập nhật lần cuối: 24 Tháng 8 2022</span>
+                                            <span class="post-on">Cập nhật lần cuối: Ngày 24 Tháng 8 Năm 2022</span>
                                         </div>
                                         <h2>Điều khoản dịch vụ</h2>
                                     </div>
@@ -36,7 +36,7 @@
                                         <h4>Chào mừng bạn đến với cửa hàng online của EcoWipes</h4>
                                         <ul>
                                             <li>Công ty Cổ phần EcoWipes có Trụ sở chính: Số 3 đường An Phú Đông 25, Phường An Phú Đông, Quận 12, TP. Hồ Chí Minh có Giấy chứng nhận đăng ký kinh doanh số 0315110990 cấp bởi Sở kế hoạch và Đầu tư Thành phố Hồ Chí Minh; Điện thoại: <a href="tel:02862874999">028 628 74 999.</a></li>
-                                            <li>Sau khi truy cập vào trang Thông tin Điện tử <a href="https://thegioikhanuot.com/">thegioikhanuot.com</a> (Website) để tham khảo hoặc mua sắm, bạn đã đồng ý tuân thủ và ràng buộc với những quy định của Ecowipes. Vui lòng xem kỹ các quy định và hợp tác với EcoWipes để xây dựng một hệ thống cửa hàng Mẹ bầu và Em bé ngày càng thân thiện và phục vụ tốt những yêu cầu của chính bạn. Ngoài ra, nếu có bất cứ câu hỏi nào về những thỏa thuận trên đây, vui lòng email cho EcoWipes qua địa chỉ <a href="mailto:cskh@ecowipes.com.vn">cskh@ecowipes.com.vn</a></li>
+                                            <li>Sau khi truy cập vào trang Thông tin Điện tử <a href="https://thegioikhanuot.com/">thegioikhanuot.com</a> (Website) để tham khảo hoặc mua sắm, bạn đã đồng ý tuân thủ và ràng buộc với những quy định của Ecowipes. Vui lòng xem kỹ các quy định và hợp tác với EcoWipes để xây dựng một hệ thống cửa hàng Mẹ và Em ngày càng thân thiện và phục vụ tốt những yêu cầu của chính bạn. Ngoài ra, nếu có bất cứ câu hỏi nào về những thỏa thuận trên đây, vui lòng email cho EcoWipes qua địa chỉ <a href="mailto:cskh@ecowipes.com.vn">cskh@ecowipes.com.vn</a></li>
                                             <li>Quý khách vui lòng kiểm tra thường xuyên để cập nhật những thay đổi của EcoWipes.</li>
                                         </ul>
                                         <h4>1. Hướng dẫn sử dụng trang website <a href="https://thegioikhanuot.com/">thegioikhanuot.com</a></h4>

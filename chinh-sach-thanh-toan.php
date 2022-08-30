@@ -28,7 +28,7 @@
                                 <div class="single-page pr-30 mb-lg-0 mb-sm-5">
                                     <div class="single-header style-2">
                                         <div class="entry-meta meta-1 meta-3 font-xs mt-15 mb-15">
-                                            <span class="post-on">Cập nhật lần cuối: 24 Tháng 8 2022</span>
+                                            <span class="post-on">Cập nhật lần cuối: Ngày 24 Tháng 8 Năm 2022</span>
                                         </div>
                                         <h2>Chính sách vận chuyển</h2>
                                     </div>
