@@ -15,7 +15,7 @@
 <!-- Template CSS -->
 <script src="https://kit.fontawesome.com/f9c6ab967f.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
-<link rel="stylesheet" href="assets/css/main.css?v=2.5">
+<link rel="stylesheet" href="assets/css/main.css?v=2.6">
 <link rel="stylesheet" href="assets/css/style.css" />
 <script src="assets/js/plugins/cute-alert.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

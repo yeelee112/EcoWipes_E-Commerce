@@ -22,9 +22,9 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <!-- Template  JS -->
-<script src="assets/js/main_v%3D5.2.js?v=1.5"></script>
+<script src="assets/js/main_v%3D5.2.js?v=1.7"></script>
 <!-- <script src="assets/js/ajaxReader.js"></script> -->
-<script src="assets/js/shop_v%3D5.2.js?v=1.5"></script>
+<script src="assets/js/shop_v%3D5.2.js?v=1.7"></script>
 <!-- <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtFGYA82BG34W2Aq-Ln8s54yJjdmhAtkY&callback=initMap">
 </script> -->

@@ -256,7 +256,7 @@
                                             </div>
                                             <h2><a href="product?item=<?php echo $rowChild["product_text"] ?>"><?php echo $rowChild["product_name"] ?></a></h2>
                                             <div>
-                                                <span class="brand-text-span">Thương hiệu:</span><span class="font-small text-muted"> <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span>
+                                                <span class="brand-text-span">Thương hiệu:<span class="font-small text-muted"> <a href="shop?pid=<?php echo $rowChild["brand_text"] ?>"><?php echo $rowChild["brand_name"] ?></a></span></span>
                                             </div>
                                             <div class="count-product-sold">
                                                 Đã bán: <?php echo $rowChild["total_sold"] ?>
