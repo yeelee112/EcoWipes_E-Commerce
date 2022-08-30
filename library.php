@@ -18,11 +18,12 @@
 <link rel="stylesheet" href="assets/css/main.css?v=2.5">
 <link rel="stylesheet" href="assets/css/style.css" />
 <script src="assets/js/plugins/cute-alert.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.1';
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.2';
 n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
@@ -35,3 +36,23 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=5853805558008915&ev=PageView
 &noscript=1"/>
 </noscript>
+<script>
+    function initMap() {
+        // The location of Uluru
+        const uluru = {
+            lat: -25.344,
+            lng: 131.031
+        };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 8,
+            center: uluru,
+        });
+    }
+    const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+    });
+
+    window.initMap = initMap;
+</script>
