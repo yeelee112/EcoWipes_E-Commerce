@@ -25,9 +25,9 @@
 <script src="assets/js/main_v%3D5.2.js?v=1.5"></script>
 <!-- <script src="assets/js/ajaxReader.js"></script> -->
 <script src="assets/js/shop_v%3D5.2.js?v=1.5"></script>
-<script async
+<!-- <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtFGYA82BG34W2Aq-Ln8s54yJjdmhAtkY&callback=initMap">
-</script>
+</script> -->
 <!-- Messenger Chat Plugin Code -->
     <!--<div id="fb-root"></div>-->
 

@@ -36,7 +36,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=5853805558008915&ev=PageView
 &noscript=1"/>
 </noscript>
-<script>
+<!-- <script>
     function initMap() {
         // The location of Uluru
         const uluru = {
@@ -55,4 +55,4 @@ src="https://www.facebook.com/tr?id=5853805558008915&ev=PageView
     });
 
     window.initMap = initMap;
-</script>
+</script> -->

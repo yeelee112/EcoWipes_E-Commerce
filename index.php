@@ -17,8 +17,8 @@
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                    <a href="shop?cid=khan-uot-bamboo-">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png)">
+                        <a href="shop?cid=khan-uot-bamboo">
+                            <div class="single-hero-slider single-animation-wrap slider-img-1">
                                 <div class="slider-content text-slider-2-container text-slider-4-pt">
                                     <p class="animate__animated animate__fadeInLeft" style="font-weight:700; text-transform: uppercase;color:white">100% vải tre sinh thái
                                         <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
@@ -28,7 +28,7 @@
                             </div>
                         </a>
                         <a href="shop?pid=ecobi">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH700px.png)">
+                            <div class="single-hero-slider single-animation-wrap slider-img-2">
                                 <div class="slider-content ecobi-text-slider" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
                                     <h1 class="display-2 animate__animated animate__fadeInLeft " style="color:#00a0b4; font-size:52px; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
                                         Chất lượng vàng 
@@ -38,7 +38,7 @@
                             </div>
                         </a>
                         <a href="shop?cid=khan-tay-trang">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_MAKEUP-Remover_SlideBanner_W1920xH700px.png)">
+                            <div class="single-hero-slider single-animation-wrap slider-img-3">
                                 <div class="slider-content text-slider-2-container text-slider-2-pt">
                                     <p class="" style="font-weight:700; color:#59392f">Làm sạch lớp trang điểm
                                         <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
@@ -48,7 +48,7 @@
                             </div>
                         </a>
                         <a href="shop?cid=khan-lau-giay">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SNEAKER-Wipes_SlideBanner_W1920xH700px.png)">
+                            <div class="single-hero-slider single-animation-wrap slider-img-4">
                                 <div class="slider-content text-slider-2-container text-slider-3-pt">
                                     <p class="" style="font-weight:700; text-transform: uppercase;color:white">Sử dụng dễ dàng
                                         <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
@@ -58,7 +58,7 @@
                             </div>
                         </a>
                         <a href="shop?cid=khan-lau-bep">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
+                            <div class="single-hero-slider single-animation-wrap slider-img-5">
                                 <div class="slider-content text-slider-container">
                                     <h1 class="display-2 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
                                         Khăn ướt Lau bếp<br>
@@ -73,7 +73,7 @@
             </div>
         </section>
 
-        <section class="section-padding pb-5">
+        <section class="section-best-sale">
             <div class="container">
                 <!-- <div class="countdown-container pb-20">
                     <div class="pb-10" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;font-weight:600;font-size:16px;">
@@ -183,7 +183,7 @@
             </div>
         </section>
 
-        <section class="product-tabs section-padding position-relative pt-80">
+        <section class="product-tabs section-padding position-relative">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">

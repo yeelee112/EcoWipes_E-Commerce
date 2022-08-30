@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Chính sách vận chuyển | Thế Giới Khăn Ướt</title>
+    <title>Chính sách thanh toán | Thế Giới Khăn Ướt</title>
     <?php require_once 'library.php'; ?>
 </head>
 
@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
-                    <span></span>Chính sách vận chuyển
+                    <span></span>Chính sách thanh toán
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                                         <div class="entry-meta meta-1 meta-3 font-xs mt-15 mb-15">
                                             <span class="post-on">Cập nhật lần cuối: Ngày 24 Tháng 8 Năm 2022</span>
                                         </div>
-                                        <h2>Chính sách vận chuyển</h2>
+                                        <h2>Chính sách thanh toán</h2>
                                     </div>
                                     <div class="single-content mb-50">
                                         <h6>EcoWipes áp dụng 2 hình thức thanh toán bao gồm <i class="italic">thanh toán trả trước</i> và <i class="italic">thanh toán khi nhận hàng</i> (hay còn gọi là thanh toán COD).</h6>

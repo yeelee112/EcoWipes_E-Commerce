@@ -33,16 +33,24 @@
                                         <h2>Chính sách vận chuyển</h2>
                                     </div>
                                     <div class="single-content mb-50">
-                                        <h4>1. Chính sách giao hàng của các đơn hàng mua Online tại <a href="https://thegioikhanuot.com/">Thegioikhanuot.com</a></h4>
+                                        <h6>
+                                        Công ty EcoWipes có đội ngũ giao hàng riêng ở TP. Hồ Chí Minh. Ngoài ra, chúng tôi còn hợp tác với những đơn vị vận chuyển đáng tin cậy để giao hàng trực tiếp đến nhà khách hàng cho các khu vực ngoại tỉnh.
+                                        </h6>
+                                        <h4>1. Chính sách giao hàng</h4>
                                         <ul>
-                                            <li class="unstyle-list pt-10">Chi phí vận chuyển của các đơn hàng Online của Ecowipes sẽ được tính dựa trên 3 yếu tố:</li>
-                                            <li>Tổng khối lượng của đơn hàng: được tính dựa trên tổng khối lượng của các sản phẩm được đóng gói trong đơn hàng</li>
-                                            <li>Khoảng cách giữa địa chỉ khách nhận hàng và nhà máy Ecowipes.</li>
+                                            <li class="unstyle-list">Chi phí vận chuyển của các đơn hàng Online của Ecowipes sẽ được tính dựa trên 3 yếu tố:</li>
+                                            <li>Khoảng cách giữa địa chỉ khách nhận hàng và nhà máy EcoWipes tại TP.HCM</li>
                                             <li>Tổng giá trị đơn hàng</li>
-                                            <li class="unstyle-list pt-10">Tùy vào chính sách hỗ trợ riêng ở mỗi thời điểm, sản phẩm và địa điểm khách nhận hàng, đơn hàng sẽ thể hiện hình thức vận chuyển và mức phí cuối cùng khác nhau.</li>
-                                            <li class="unstyle-list">Ecowipes cung cấp đa dạng các dịch vụ giao hàng và thường xuyên cập nhật những ưu đãi phí giao hàng với mong muốn phục vụ khách hàng tốt nhất, tuy nhiên thực tế vận hành có thể phát sinh những rủi ro ngoài ý muốn. Trong trường hợp này, quý khách có bất kỳ thông tin gì cần trao đổi vui lòng liên hệ bộ phận Chăm sóc khách hàng theo số Hotline miễn phí: TELEPHONE  (8h-17h, Ngoại trừ Chủ Nhật và các ngày nghỉ lễ theo quy định của nhà nước). </li>
-                                            <li class="unstyle-list">Ecowipes cam kết sẽ kiểm tra đơn hàng và có chính sách giải quyết phù hợp với từng trường hợp cụ thể.</li>
-                                            
+                                            <li class="unstyle-list pt-10">Chi phí vận chuyển cho đơn hàng dưới 300.000đ:</li>
+                                            <li>Khu vực TP. Hồ Chí Minh: 20.000đ</li>
+                                            <li>Ngoại tỉnh: 40.000đ</li>
+                                            <li class="unstyle-list pt-10">Chi phí vận chuyển cho đơn hàng từ 300.000đ trở lên:</li>
+                                            <li>Khu vực TP. Hồ Chí Minh: MIỄN PHÍ</li>
+                                            <li>Ngoại tỉnh: Giảm 25% phí ship = 30.000đ</li>
+                                            <li class="unstyle-list pt-10">Chi phí vận chuyển cho đơn hàng từ 500.000đ trở lên</li>
+                                            <li>MIỄN PHÍ SHIP toàn quốc.</li>
+                                            <li class="unstyle-list">Tùy vào chính sách hỗ trợ riêng ở mỗi thời điểm, sản phẩm và địa điểm khách nhận hàng, đơn hàng sẽ thể hiện hình thức vận chuyển và mức phí cuối cùng khác nhau.</li>
+                                            <li class="unstyle-list">Trong trường hợp phát sinh những rủi ro ngoài ý muốn, Quý khách có bất kỳ thông tin gì cần trao đổi vui lòng liên hệ bộ phận Chăm sóc khách hàng theo số Hotline: <a href="tel:0909526282">0909 52 62 82</a>. EcoWipes cam kết sẽ kiểm tra đơn hàng và có chính sách giải quyết phù hợp với từng trường hợp cụ thể.</li>
                                         </ul>
                                         <h4>2. Quy trình giao nhận hàng</h4>
                                         <ul>
@@ -52,7 +60,7 @@
                                             <li>Kiểm tra bao bì và sản phẩm có bị hư hại do quá trình vận chuyển hay không.</li>
                                             <li class="unstyle-list pt-10">Nếu không hài lòng với 1 trong 3 điều trên, Khách hàng có thể yêu cầu Nhân viên giao hàng xác nhận và trả lại hàng.</li>
                                             <li class="unstyle-list">Ecowipes sẽ không chịu trách nhiệm giải quyết khiếu nại về việc thiếu hàng hoặc giao sai hàng của Khách hàng sau khi Khách hàng đã ký nhận và thanh toán.</li>
-                                            <li class="unstyle-list pt-10"><strong><i>Lưu ý:</i></strong> Đơn hàng sẽ tự động hủy nếu nhân viên giao hàng không liên lạc được với Khách hàng tại thời điểm giao hàng (tối đa 3 cuộc gọi và mỗi lần cách nhau 10 phút).</li>
+                                            <li class="unstyle-list pt-10"><strong><i>Lưu ý:</i> Đơn hàng sẽ tự động hủy nếu nhân viên giao hàng không liên lạc được với Khách hàng tại thời điểm giao hàng (tối đa 3 cuộc gọi và mỗi lần cách nhau 10 phút).</strong></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -68,5 +76,4 @@
     require_once "script.php";
     ?>
 </body>
-
 </html>

@@ -78,16 +78,23 @@ $messageContainerFreeShip = '';
                                         <div class=" d-flex align-items-center text-start row">
                                             <div class="col-md-5 col-12">
                                                 <div class="d-flex align-items-center"><a href="product?item=<?php echo $row1["product_text"] ?>"><img class="cart-item-img" src="<?php echo $row1["img_thumb"] ?>" alt="..." /></a>
-                                                    <div class="cart-title text-start"><a class="text-uppercase text-dark text-product-cart" href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a>
+                                                    <div class="cart-title text-start">
+                                                        <a class="text-uppercase text-dark text-product-cart" href="product?item=<?php echo $row1["product_text"] ?>"><?php echo $row1["product_name"] ?></a>
+                                                        <div class="row align-items-center d-md-none">
+                                                            <div class="text-start col-md-12 col-12 price-per-item">
+                                                                <input type="hidden" class="hidden-input" value="<?php echo $row1["price"] ?>">
+                                                                <div class="first-price"><?php echo number_format($row1["price"], 0, ",", "."); ?> ₫</div>
+                                                                <!-- <div class="original-price">40.000 đ</div> -->
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-4 mt-md-0 col-md-7 col-12">
+                                            <div class="mt-md-0 col-md-7 col-12">
                                                 <div class="align-items-center row">
                                                     <div class="col-md-3 mt-5 mb-5">
                                                         <div class="row align-items-center">
-                                                            <div class="d-md-none text-muted col-6">Giá</div>
-                                                            <div class="text-start col-md-12 col-6 price-per-item">
+                                                            <div class="text-start col-md-12 col-6 price-per-item d-none d-md-block">
                                                                 <input type="hidden" class="hidden-input" value="<?php echo $row1["price"] ?>">
                                                                 <div class="first-price"><?php echo number_format($row1["price"], 0, ",", "."); ?> ₫</div>
                                                                 <!-- <div class="original-price">40.000 đ</div> -->
@@ -118,7 +125,7 @@ $messageContainerFreeShip = '';
                                                     <div class="d-none d-md-block text-center col-2">
                                                         <button class="cart-remove" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>">Xóa</button>
                                                     </div>
-                                                    <button class="cart-remove close text-md-center mt-3 d-md-none" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>">Xóa</button>
+                                                    <button class="cart-remove close text-md-center d-md-none" onclick="remove_from_cart(this.value);" value="<?php echo $row1["product_text"] ?>">Xóa</button>
                                                 </div>
                                             </div>
                                         </div>

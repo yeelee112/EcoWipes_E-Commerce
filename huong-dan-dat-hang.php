@@ -33,7 +33,7 @@
                                         <h2>Hướng dẫn đặt hàng</h2>
                                     </div>
                                     <div class="single-content mb-50">
-                                        <h4>1. Gọi điện thoại: TELEPHONE để được tư vấn và mua hàng nhanh nhất.</h4>
+                                        <h4>1. Gọi điện thoại: <a href="tel:0909526282">0909 52 62 82</a> để được tư vấn và mua hàng nhanh nhất.</h4>
                                         <h4>2. Đặt hàng trực tuyến trên website:</h4>
                                         <ul>
                                             <li class="unstyle-list"><strong>Bước 1:</strong> Truy cập website và lựa chọn sản phẩm cần mua để mua hàng</li>

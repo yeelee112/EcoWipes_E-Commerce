@@ -6017,10 +6017,9 @@ table.no-border thead {
 }
 
 .single-content h6 {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
   margin-bottom: 22px;
 }
 
@@ -14213,6 +14212,7 @@ body.loading .modal {
 
 .single-content{
   font-family: "Quicksand", sans-serif;
+  font-weight: 500;
 }
 
 .single-content a{
@@ -14289,4 +14289,87 @@ body.loading .modal {
   width: 100%;
   /* The width is the width of the web page */
 }
+
+.slider-img-1{
+  background-image: url(../imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png);
+}
+
+.slider-img-2{
+  background-image: url(../imgs/slider/ECOBI_SlideBanner_W1920xH700px.png);
+}
+
+.slider-img-3{
+  background-image: url(../imgs/slider/EW_MAKEUP-Remover_SlideBanner_W1920xH700px.png);
+}
+
+.slider-img-4{
+  background-image: url(../imgs/slider/EW_SNEAKER-Wipes_SlideBanner_W1920xH700px.png);
+}
+
+.slider-img-5{
+  background-image: url(../imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)
+}
+
+.product-tabs.section-padding.position-relative{
+  padding-top: 80px;
+}
+
+@media only screen and (max-width: 500px) {
+  .hero-slider-1 .single-hero-slider{
+    width: 100%;
+  }
+
+  .product-tabs.section-padding.position-relative{
+    padding-top: 20px;
+  }
+
+  .slider-img-1{
+    background-image: url(../imgs/slider/EB_BAMBOO-Wipes_MobileBanner_01_W600xH300px.png);
+  }
+
+  .slider-img-1 div{
+    display: none;
+  }
+  
+  .slider-img-2{
+    /* background-image: url(../imgs/slider/ECOBI_SlideBanner_W1920xH700px.png); */
+  }
+
+  .slider-img-2 div{
+    display: none !important;
+  }
+
+  .slider-img-3{
+    background-image: url(../imgs/slider/EW_MAKEUP-Remover_MobileBanner_W600xH300px.png);
+  }
+
+  .slider-img-3 div{
+    display: none;
+  }
+  
+  .slider-img-4{
+    background-image: url(../imgs/slider/EW_SNEAKER-Wipes_MobileBanner_W600xH300px.png);
+  }
+
+  .slider-img-4 div{
+    display: none;
+  }
+  
+  .slider-img-5{
+    background-image: url(../imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)
+  }
+
+  .slider-img-5 div{
+    display: none;
+  }
+  .section-best-sale{
+    padding: 0 0 !important;
+  }
+}
+
+.section-best-sale{
+  padding: 25px 0;
+}
+
+
 /*# sourceMappingURL=main.css.map */
