@@ -17,6 +17,16 @@
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                    <a href="shop?cid=khan-uot-bamboo-">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png)">
+                                <div class="slider-content text-slider-2-container text-slider-4-pt">
+                                    <p class="animate__animated animate__fadeInLeft" style="font-weight:700; text-transform: uppercase;color:white">100% vải tre sinh thái
+                                        <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
+                                        <span class="animate__animated animate__fadeInLeft animate__slow">bao bì bền vững có thể tái chế</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                         <a href="shop?pid=ecobi">
                             <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/ECOBI_SlideBanner_W1920xH700px.png)">
                                 <div class="slider-content ecobi-text-slider" style="display:flex; align-items:center;flex-direction: column; justify-content: space-around;">
@@ -24,16 +34,6 @@
                                         Chất lượng vàng 
                                     </h1>
                                     <p class="mb-55 animate__animated animate__fadeInLeft animate__slow" style="font-weight:600;color:#00a0b4">mang ngàn thấu hiểu</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="shop?cid=khan-lau-bep">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
-                                <div class="slider-content text-slider-container">
-                                    <h1 class="display-2 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
-                                        Khăn ướt Lau bếp<br>
-                                    </h1>
-                                    <p class="animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
                                 </div>
                             </div>
                         </a>
@@ -57,13 +57,13 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="shop?cid=khan-uot-bamboo">
-                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png)">
-                                <div class="slider-content text-slider-2-container text-slider-4-pt">
-                                    <p class="" style="font-weight:700; text-transform: uppercase;color:white">100% vải tre sinh thái
-                                        <br style='content: "";margin: 2em;display: block;font-size: 24%;'>
-                                        bao bì bền vững có thể tái chế
-                                    </p>
+                        <a href="shop?cid=khan-lau-bep">
+                            <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)">
+                                <div class="slider-content text-slider-container">
+                                    <h1 class="display-2 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
+                                        Khăn ướt Lau bếp<br>
+                                    </h1>
+                                    <p class="animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
                                 </div>
                             </div>
                         </a>
@@ -203,7 +203,7 @@
                                     <ul class="categories-parent-container">
                                         <?php
                                         require_once 'DataProvider.php';
-                                        $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                        $sqlBrandAccordion = "select * from brand_product order by priority ASC";
                                         $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
                                         while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
                                         ?>
@@ -433,7 +433,7 @@
                                 <ul class="categories-parent-container">
                                     <?php
                                     require_once 'DataProvider.php';
-                                    $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                    $sqlBrandAccordion = "select * from brand_product order by priority ASC";
                                     $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
                                     while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
                                     ?>

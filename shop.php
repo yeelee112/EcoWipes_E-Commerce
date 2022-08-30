@@ -147,7 +147,7 @@ function removeQueryStringParameter($url, $varname)
                                 <ul class="categories-parent-container">
                                     <?php
                                     require_once 'DataProvider.php';
-                                    $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                    $sqlBrandAccordion = "select * from brand_product order by priority ASC";
                                     $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
                                     while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
                                     ?>
@@ -301,7 +301,7 @@ function removeQueryStringParameter($url, $varname)
                                         <ul class="categories-parent-container">
                                             <?php
                                             require_once 'DataProvider.php';
-                                            $sqlBrandAccordion = "select * from brand_product order by created_at DESC";
+                                            $sqlBrandAccordion = "select * from brand_product order by priority ASC";
                                             $listBrandAccordion = DataProvider::execQuery($sqlBrandAccordion);
                                             while ($rowBrandAccordion = mysqli_fetch_array($listBrandAccordion, MYSQLI_ASSOC)) {
                                             ?>
