@@ -1,3 +1,9 @@
+<?php
+	define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
+	define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
+?>
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 
@@ -158,6 +164,7 @@
 										<div class="form-group">
 											<textarea name="message" class="form-control" placeholder="Hãy để lời nhắn cho chúng tôi" required=""><?php echo !empty($postData['message']) ? $postData['message'] : ''; ?></textarea>
 										</div>
+										<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
 										<div class="submit">
 											<input type="submit" name="submit" class="btn-submit-job" value="Gửi ngay">
 										</div>

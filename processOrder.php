@@ -188,7 +188,6 @@
                 ';
                 $temp++;
             }
-            
             $emailInfo = '';
 
             if($emailUser != '' || $emailUser != NULL){
