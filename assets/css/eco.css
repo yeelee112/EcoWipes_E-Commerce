@@ -1295,13 +1295,13 @@ input[type="search"] {
 .hero2 .hero3-text h2,
 .hero3 .hero3-text h2,
 .hero4 .hero3-text h2 {
-  font-size: 45px;
+  font-size: 34px;
   text-transform: uppercase;
   letter-spacing: 2.6px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.3;
   padding-bottom: 20px;
-  color:white;
+  color: white;
 }
 
 .news-banner .hero3-text p,
@@ -1350,11 +1350,11 @@ input[type="search"] {
   }
 
   .hero3-text h2 {
-    font-size: 30px !important;
+    font-size: 17px !important;
   }
 
   .hero3-text p {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .hero3-text button {
@@ -1510,7 +1510,7 @@ input[type="search"] {
     color: #fff;
     font-size: 30px;
     font-weight: 100;
-    padding: 100px 50px;
+    padding: 205px 50px 50px;
     margin: 0 50px 0 50px;
   }
 
@@ -2115,7 +2115,7 @@ input[type="search"] {
 
 #reservation h3 {
   color: #fff;
-  font-size: 24px !important;
+  font-size: 21px !important;
   font-weight: 700;
   padding-bottom: 20px;
 }
