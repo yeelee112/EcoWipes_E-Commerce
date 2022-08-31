@@ -2046,6 +2046,11 @@ input.qty-val {
   font-size: 30px;
 }
 
+
+.hero-slider-1 .slider-content.text-slider-2-pt p {
+  font-size: 36px;
+}
+
 .hero-slider-1 .slider-content.text-slider-3-pt p {
   font-size: 26px;
 }
@@ -13058,6 +13063,11 @@ ion-icon {
   text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
+.text-shadow-regular {
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.8);
+}
+
+
 .text-name-product {
   font-size: 20px;
   font-weight: 600;
@@ -14155,7 +14165,7 @@ body.loading .modal {
   }
 
   .hero-slider-1 .single-hero-slider{
-    height: 132px
+    height: 177px;
   }
 
   .hero-slider-1 .single-hero-slider .display-2{
@@ -14307,7 +14317,7 @@ body.loading .modal {
 }
 
 .slider-img-5{
-  background-image: url(../imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)
+  background-image: url(../imgs/slider/EW_KITCHEN-Wipes_SlideBanner_W1920xH700px.png)
 }
 
 .product-tabs.section-padding.position-relative{
@@ -14332,7 +14342,7 @@ body.loading .modal {
   }
   
   .slider-img-2{
-    /* background-image: url(../imgs/slider/ECOBI_SlideBanner_W1920xH700px.png); */
+    background-image: url(../imgs/slider/ECOBI_MobileBanner_W600xH300px.png);
   }
 
   .slider-img-2 div{
@@ -14356,7 +14366,7 @@ body.loading .modal {
   }
   
   .slider-img-5{
-    background-image: url(../imgs/slider/EW_SlideBanner_KitchenWipes_W1920xH770px.png)
+    background-image: url(../imgs/slider/EW_KITCHEN-Wipes_MobileBanner_W600xH300px.png)
   }
 
   .slider-img-5 div{

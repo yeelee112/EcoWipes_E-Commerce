@@ -56,7 +56,7 @@
 
     $Return = getCaptcha($_POST['g-recaptcha-response']);
 
-    if ($Return->success == true && $Return->score > 0.5 && $CheckSecure == 5) {
+    if($Return->success == true && $Return->score > 0.5){
         if (!empty($email) && !empty($name) && !empty($subjectEmail) && !empty($message) && !empty($phone)) {
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $date = date('H:i:s d/m/Y');
@@ -199,12 +199,12 @@
 
                 echo '<script>alert("Biểu mẫu đã được gửi! EcoWipes cảm ơn bạn!");window.history.back();</script>';
             } catch (Exception $e) {
-                // header('Location: /');
-                echo '<script>alert("1");window.history.back();</script>';
+                header('Location: /');
+                // echo '<script>alert("1");window.history.back();</script>';
             }
         }
     } else {
-        // header('Location: /');
-        echo '<script>alert("2");window.history.back();</script>';
+        header('Location: /');
+        // echo '<script>alert("2");window.history.back();</script>';
     }
 ?>

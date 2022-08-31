@@ -267,7 +267,7 @@
                 $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                 
                     //Recipients
-                $mail->setFrom($_ENV['USER_APP_GMAIL'],'Thông báo đơn hàng mới Thế Giới Khăn Ướt');
+                $mail->setFrom($_ENV['USER_APP_GMAIL'],"Đơn hàng mới $idOrder");
                 $mail->addAddress('chauhoangan789@gmail.com');     //Add a recipient             //Name is optional
                 $mail->addReplyTo('digital@ecowipes.com.vn');
                     
@@ -278,7 +278,7 @@
                 $mail->CharSet = 'UTF-8';
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
-                $mail->Subject = 'Đơn hàng mới';
+                $mail->Subject = 'Thông báo đơn hàng mới Thế Giới Khăn Ướt';
                 $mail->Body    = '<!DOCTYPE html>
                     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
                         xmlns:o="urn:schemas-microsoft-com:office:office">

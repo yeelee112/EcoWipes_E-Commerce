@@ -59,11 +59,8 @@
                         </a>
                         <a href="shop?cid=khan-lau-bep">
                             <div class="single-hero-slider single-animation-wrap slider-img-5">
-                                <div class="slider-content text-slider-container">
-                                    <h1 class="display-2 animate__animated animate__fadeInLeft animate__slow" style="color:#72be44; text-shadow:-1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff">
-                                        Khăn ướt Lau bếp<br>
-                                    </h1>
-                                    <p class="animate__animated animate__fadeInLeft text-shadow-light" style="font-weight:600;color:white">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
+                                <div class="slider-content text-slider-2-container text-slider-2-pt">
+                                    <p class="animate__animated animate__fadeInLeft text-shadow-regular" style="font-weight:600;color:white;font-family: 'Quicksand', sans-serif !important;">Sự lựa chọn tối ưu<br style='content: "";margin: 2em;display: block;font-size: 24%;'>cho việc chăm sóc nhà cửa</p>
                                 </div>
                             </div>
                         </a>
@@ -376,7 +373,7 @@
                                 <img src="assets/imgs/theme/icons/icon-3.svg" alt>
                             </div>
                             <div class="banner-text">
-                                <a class="to-messenger" onclick="FB.CustomerChat.showDialog();">
+                                <a href="tel:0909526282">
                                     <h3 class="icon-box-title">Hỗ trợ trực tiếp</h3>
                                     <p>Khi khách hàng cần</p>
                                 </a>

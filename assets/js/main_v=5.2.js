@@ -28,8 +28,6 @@
     if ($(window).width() < 500) {
         var widthSlider = $('.hero-slider-1 .single-hero-slider').width();
         $('.hero-slider-1 .single-hero-slider').height(widthSlider/2);
-        $('.home-slide-cover .hero-slider-1 a[href$="shop?pid=ecobi"]:first').remove();
-        $('.home-slide-cover .hero-slider-1 a[href$="shop?cid=khan-lau-bep"]:first').remove();
      }
 
     /*------ ScrollUp -------- */
