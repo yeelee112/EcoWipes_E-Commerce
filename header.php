@@ -5,10 +5,11 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $currentPage = $_SERVER['REQUEST_URI'];
 $nameUser = '';
-$phone = '';
+$idUser = '';
 $count = 0;
 $priceTotal = 0;
 $checkAccountSession = false;
+$loggedWith = '';
 $shippingFee = 0;
 $shippingUrbanFee = 20000;
 $shippingSubUrbanFee = 40000;
@@ -17,25 +18,27 @@ $freeShippingUrbanLevel = 300000;
 $freeShippingSubUrbanLevel = 500000;
 
 
-
-
 if (!isset($_SESSION)) {
     session_start();
 }
 require_once 'DataProvider.php';
 require_once 'counterGuest.php';
 
-if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
+if (isset($_SESSION['nameUser']) && isset($_SESSION['idUser'])) {
     $nameUser = $_SESSION['nameUser'];
-    $phone = $_SESSION['phoneUser'];
+    $idUser = $_SESSION['idUser'];
     $checkAccountSession = true;
 
     require_once 'DataProvider.php';
-    $sqlUser = "select * from user_account where phone = '$phone'";
+    $sqlUser = "select * from user_account where id = '$idUser' or uid = '$idUser'";
     $listUser = DataProvider::execQuery($sqlUser);
     $rowUser = mysqli_fetch_assoc($listUser);
 
     $priceTotal = 0;
+}
+
+if(isset($_SESSION['fb_access_token'])){
+    $loggedWith = 'facebook';
 }
 
 $logoutAction = $_SERVER['PHP_SELF'] . "?doLogout=true";
@@ -53,9 +56,18 @@ if ($currentPage != '/login' && (empty($_GET['doLogout']))) {
 
 if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
     $_SESSION['nameUser'] = NULL;
-    $_SESSION['phoneUser'] = NULL;
+    $_SESSION['idUser'] = NULL;
+
     unset($_SESSION['nameUser']);
-    unset($_SESSION['phoneUser']);
+    unset($_SESSION['idUser']);
+
+    if(isset($_SESSION['fb_access_token'])){
+        unset($_SESSION['fb_access_token']);
+    }
+
+    if(isset($_SESSION['emailUser'])){
+        unset($_SESSION['emailUser']);
+    }
 
     redirect($_SESSION['rewindURL']);
 }
@@ -98,7 +110,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                     <?php
                                     if ($checkAccountSession == true) { ?>
                                         <a href="#">
-                                            <img class="avt-account" src="https://ui-avatars.com/api/?name=<?php echo $nameUser; ?>&rounded=true&size=48">
+                                            <img class="avt-account" src="<?php if($loggedWith == ''){ echo "https://ui-avatars.com/api/?name=$nameUser; &rounded=true&size=48"; } else{  echo "<img src='//graph.facebook.com/$idUser/picture'>"; }?> ">
                                         </a>
                                         <a><span class="lable ml-0"><?php echo $nameUser; ?></span></a>
                                     <?php

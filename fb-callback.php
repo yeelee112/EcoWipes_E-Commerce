@@ -1,4 +1,8 @@
 <?php
+    if(!session_id()) {
+        session_start();
+    }
+
     require_once realpath(__DIR__ . '/vendor/autoload.php');
 
     // $dotenv->required(['DB_SERVER', 'DB_DATABASE', 'DB_USER', 'DB_PASS']);
@@ -37,13 +41,29 @@
             header('HTTP/1.0 400 Bad Request');
             echo 'Bad request';
         }
+        header("Location: /");
         exit;
     }
     // Logged in
     $me = $response->getGraphUser();
-    echo 'Logged in as: ' . $me->getName();
-    echo 'ID:' . $me->getId();
-    echo 'Email:' . $me->getEmail();
-    echo 'Avatar:' . $me->getPicture();
+    // echo 'Logged in as: ' . $me->getName();
+    // echo 'ID:' . $me->getId();
+    // echo 'Email:' . $me->getEmail();
+    // echo 'Avatar:' . $me->getPicture();
+
+    $email = $me->getEmail();
+    $fullname = $me->getName();
+    $id = $me->getId();
+
     $_SESSION['fb_access_token'] = (string) $accessToken;
+    $_SESSION['nameUser'] = $fullname;
+    $_SESSION['emailUser'] = $email;
+    $_SESSION['idUser'] = $id;
+
+    require_once 'DataProvider.php';
+
+    $sql = "insert into user_account values ('','$id','$email','','$fullname','',NULL,NOW(),NOW())";
+    DataProvider::execQuery($sql);
+
+    header("Location: /");
 ?>

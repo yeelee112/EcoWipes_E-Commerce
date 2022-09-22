@@ -1,52 +1,55 @@
 <?php
-$checkAccountSession = false;
-if (!isset($_SESSION)) {
-    session_start();
-}
+    $checkAccountSession = false;
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
-$uid = '';
-$checkSecure = 0;
-$priceTotal = 0;
-if (isset($_POST["name"])) {
-    $fnameUser = $_POST["name"];
-    $checkSecure++;
-}
-if (isset($_POST["phone"])) {
-    $phoneUser = $_POST["phone"];
-    $checkSecure++;
-}
-if (isset($_POST["email"])) {
-    $emailUser = $_POST["email"];
-    $checkSecure++;
-}
-if (isset($_POST["address"])) {
-    $addressUser = $_POST["address"];
-    $checkSecure++;
-}
+    if ((empty($_SESSION['idUser']))) {
+        header("Location: /");
+    }
 
-if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
-    $nameUser = $_SESSION['nameUser'];
-    $phone = $_SESSION['phoneUser'];
-    $checkAccountSession = true;
-}
-require_once 'DataProvider.php';
-$sqlUser = "select * from user_account where phone = '$phone'";
-$listUser = DataProvider::execQuery($sqlUser);
-$rowUser = mysqli_fetch_assoc($listUser);
+    $uid = '';
+    $checkSecure = 0;
+    $priceTotal = 0;
+    if (isset($_POST["name"])) {
+        $fnameUser = $_POST["name"];
+        $checkSecure++;
+    }
+    if (isset($_POST["phone"])) {
+        $phoneUser = $_POST["phone"];
+        $checkSecure++;
+    }
+    if (isset($_POST["email"])) {
+        $emailUser = $_POST["email"];
+        $checkSecure++;
+    }
+    if (isset($_POST["address"])) {
+        $addressUser = $_POST["address"];
+        $checkSecure++;
+    }
 
-$idUser = $rowUser["id"];
+    if (isset($_SESSION['nameUser']) && isset($_SESSION['idUser'])) {
+        $nameUser = $_SESSION['nameUser'];
+        $idUser = $_SESSION['idUser'];
+        $checkAccountSession = true;
+    }
 
-if ($checkAccountSession == true && $checkSecure > 0) {
-    $sqlUpdateAccount = "update user_account set email = '$emailUser', fullname = '$fnameUser', phone = '$phone', address = '$addressUser', updated_at = now() where id = '" . $rowUser["id"] . "'";
-    DataProvider::execQuery($sqlUpdateAccount);
+    require_once 'DataProvider.php';
+    $sqlUser = "select * from user_account where id = '$idUser' or uid = '$idUser'";
+    $listUser = DataProvider::execQuery($sqlUser);
+    $rowUser = mysqli_fetch_assoc($listUser);
 
-    $_SESSION['nameUser'] = $fnameUser;
-    $_SESSION['phoneUser'] = $phone;
-    echo "<script>alert('Cập nhật thành công!')</script>";
-}
-if ($checkAccountSession == false) {
-    redirect("/");
-}
+    if ($checkAccountSession == true && $checkSecure > 0) {
+        $sqlUpdateAccount = "update user_account set email = '$emailUser', fullname = '$fnameUser', phone = '$phone', address = '$addressUser', updated_at = now() where id = '" . $rowUser["id"] . "' or uid = '" . $rowUser["id"] . "'";
+        DataProvider::execQuery($sqlUpdateAccount);
+
+        $_SESSION['nameUser'] = $fnameUser;
+        echo "<script>alert('Cập nhật thành công!')</script>";
+    }
+
+    if ($checkAccountSession == false) {
+        redirect("/");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +158,7 @@ if ($checkAccountSession == false) {
                                                             <tbody>
                                                                 <?php
                                                                 require_once 'DataProvider.php';
-                                                                $sql = "SELECT * from order_detail od where od.user_id = $idUser or od.phone = $phone order by created_at DESC";
+                                                                $sql = "SELECT * from order_detail od where od.user_id = $idUser or od.phone = '".$rowUser["phone"]."' order by created_at DESC";
                                                                 $list = DataProvider::execQuery($sql);
                                                                 while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
                                                                 ?>

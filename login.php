@@ -21,7 +21,7 @@
     session_start();
     setcookie(session_name(), session_id(), time() + $expire);
 
-    if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
+    if ((isset($_SESSION['nameUser']) && isset($_SESSION['idUser'])) || (isset($_SESSION['fb_access_token']) && isset($_SESSION['idUser']))) {
         header("Location: /");
     }
 
@@ -54,7 +54,7 @@
             if ($numRow === 1) {
                 if ($row["phone"] == $phone && $row["user_password"] == $password) {
                     $_SESSION['nameUser'] = $row["fullname"];
-                    $_SESSION['phoneUser'] = $row['phone'];
+                    $_SESSION['idUser'] = $row['id'];
                     if (isset($_SESSION['rewindURL']) && !empty($_SESSION['rewindURL'])) {
                         $rewindUrl = $_SESSION['rewindURL'];
                         header("Location: $rewindUrl");
@@ -92,10 +92,16 @@
                 if ($password == $repassword) {
                     $password = md5($password);
 
-                    $sql = "insert into user_account values ('','$email','$password','$fullname','$phone',NULL,NOW(),NOW())";
+                    $sql = "insert into user_account values ('','','$email','$password','$fullname','$phone',NULL,NOW(),NOW())";
                     DataProvider::execQuery($sql);
-                    $_SESSION['nameUser'] = $fullname;
-                    $_SESSION['phoneUser'] = $phone;
+
+                    $sqlGetIDUser = "select * from user_account where email = '$email' and phone = '$phone'";
+                    $listGetIDUser = DataProvider::execQuery($sqlGetIDUser);
+                    $rowGetIDUser = mysqli_fetch_assoc($listGetIDUser);
+
+                    $_SESSION['nameUser'] = $rowGetIDUser["fullname"];
+                    $_SESSION['idUser'] = $rowGetIDUser["id"];
+                    
                     header("Location: /");
                 } else {
                     $statusRegister = 'Mật khẩu và xác nhận mật khẩu không trùng nhau. Vui lòng thử lại.';
@@ -109,7 +115,7 @@
     }
 
     require_once( 'Facebook/autoload.php' );
-    
+
     $fb = new Facebook\Facebook([
         'app_id' => $_ENV["FACEBOOK_ID_APP"],
         'app_secret' => $_ENV["FACEBOOK_SECRET_KEY"],
@@ -118,7 +124,7 @@
 
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email']; // Optional permissions
-    $loginUrl = $helper->getLoginUrl('https://thegioikhanuot.com/fb-callback.php', $permissions);
+    $loginUrl = $helper->getLoginUrl('https://thegioikhanuot.com/fb-callback', $permissions);
 
 ?>
 

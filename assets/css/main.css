@@ -14418,11 +14418,13 @@ body.loading .modal {
 .separator.separator-content::after {
   margin-left: 1.25rem;
 }
+
 .separator.separator-content::before, .separator.separator-content::after {
   content: " ";
   width: 50%;
   border-bottom: 1px solid #dfdfdf;
 }
+
 .separator.separator-content {
   display: flex;
   align-items: center;
@@ -14431,6 +14433,7 @@ body.loading .modal {
   margin-top: 2rem !important;
   margin-bottom: 2rem !important;
 }
+
 .separator {
   display: block;
   height: 0;
