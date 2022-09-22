@@ -27,6 +27,7 @@ if (isset($_COOKIE["city"]) && isset($_COOKIE["district"]) && isset($_COOKIE["wa
 
 define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
 define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -258,38 +259,59 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-checkout-container d-inline-flex align-items-center">
-                                    <label for="inputVoucher" class="lb-message"><img class="pr-5" src="assets/imgs/voucher.svg">Voucher: </label>
+                                    <label for="inputVoucher" class="lb-message"><img class="pr-10" src="assets/imgs/icon/ticket.svg">Voucher: </label>
                                     <input type="text" id="inputVoucher" name="voucher" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col d-md-flex justify-content-end align-items-center">
-                                <div class="title-payment-method"> Phương thức thanh toán</div>
+                                <div class="title-payment-method">Lựa chọn phương thức thanh toán:</div>
                                 <div class="payment-method-radio-container">
                                     <input type="radio" class="btn-check" style="width:20px" name="payment-method" id="cod" value="COD" checked>
                                     <label class="btn-shipping-method mb-0" for="cod">
-                                        Thanh toán khi nhận hàng
-                                        <div class="checked-payment-method">
-                                            <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
-                                                <g>
-                                                    <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
-                                                </g>
-                                            </svg>
-                                        </div>
+                                        <span class="payment-method-with-icon">
+                                            <img class="pr-10" src="assets/imgs/icon/cash-on-delivery.svg" width="32" height="32">
+                                            Thanh toán khi nhận hàng
+                                            <div class="checked-payment-method">
+                                                <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
+                                                    <g>
+                                                        <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </span>
                                     </label>
 
                                     <input type="radio" class="btn-check" style="width:20px" name="payment-method" id="banking" value="Banking">
                                     <label class="btn-shipping-method mb-0" for="banking">
-                                        Chuyển khoản qua ngân hàng
-                                        <div class="checked-payment-method">
-                                            <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
-                                                <g>
-                                                    <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
-                                                </g>
-                                            </svg>
-                                        </div>
+                                        <span class="payment-method-with-icon">
+                                            <img class="pr-10" src="assets/imgs/icon/debit-card.svg" width="32" height="32">
+                                            Chuyển khoản qua ngân hàng
+                                            <div class="checked-payment-method">
+                                                <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
+                                                    <g>
+                                                        <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </span>
                                     </label>
+
+                                    <!-- <input type="radio" class="btn-check" style="width:20px" name="payment-method" id="momo" value="MOMO">
+                                    <label class="btn-shipping-method mb-0" for="momo">
+                                        <span class="payment-method-with-icon">
+                                            <img class="pr-10" src="assets/imgs/icon/momo_icon_square_pinkbg.svg" width="32" height="32">
+                                            Ví MoMo
+                                            <div class="checked-payment-method">
+                                                <svg enable-background="new 0 0 12 12" viewBox="0 0 12 12" x="0" y="0" class="tick-svg-icon icon-tick-bold">
+                                                    <g>
+                                                        <path d="m5.2 10.9c-.2 0-.5-.1-.7-.2l-4.2-3.7c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l3.4 3 5.1-7c .3-.4 1-.5 1.4-.2s.5 1 .2 1.4l-5.7 7.9c-.2.2-.4.4-.7.4 0-.1 0-.1-.1-.1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </span>
+                                    </label> -->
                                 </div>
                             </div>
                         </div>
@@ -299,7 +321,7 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                                     <div class="info-banking-inner">
                                         <div>Ngân hàng: <span>SACOMBANK (Ngân hàng Sài Gòn Thương Tín)</span></div>
                                         <div>STK: <span class="banking-no">060190213679</span></div>
-                                        <div>Chủ TK: <span>Công ty CP ECO WIPES VIETNAM</span></div>
+                                        <div>Chủ TK: <span>CONG TY CP ECO WIPES VIETNAM</span></div>
                                         <!-- <div class="note-banking-method">(*) Đơn hàng sẽ được chuyển đi ngay sau khi cửa hàng xác nhận chuyển khoản thành công</div> -->
                                     </div>
                                 </div>
@@ -388,17 +410,15 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
         $('input:radio[name="payment-method"]').change(function() {
             if ($(this).val() == 'Banking') {
                 $('.info-banking-container').css("display", "block");
-                $(".payment-method-form").val("Banking");
             } else {
                 $('.info-banking-container').css("display", "none");
-                $(".payment-method-form").val("COD");
             }
+            $(".payment-method-form").val($(this).val());
         });
-
 
         $body = $("body");
         $(document).on({
-            ajaxStart: function() { $body.addClass("loading");    },
+            ajaxStart: function() { $body.addClass("loading"); },
             ajaxStop: function() { $body.removeClass("loading"); }    
         });
 
@@ -408,7 +428,10 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                 method: "POST",
                 url: "processOrder",
                 data: $("#orderAccept").serialize(),
-                success: function() {
+                dataType:"json",
+            })
+            .done(function(data) {
+                if(data == true){
                     Swal.fire({
                         html: "<strong>Đặt hàng thành công!</strong><br> <div class='mt-10' style='font-size:16px;'>Bạn sẽ tự động trở về trang chủ sau 3 giây<div>",
                         icon: "success",
@@ -426,14 +449,17 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                             location.href = "/";
                         }
                     });
-                },
-                error: function() {
+                }
+                if(data == false){
                     Swal.fire({
                         html: "<strong>Đặt hàng không thành công!</strong><br>",
                         icon: "error",
                     });
                 }
-            })
+                if(data.location){
+                    window.location.href = data.location;
+                }
+            });
         });
     </script>
 

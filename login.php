@@ -1,10 +1,17 @@
-<?php 
+<?php
     require_once 'functionPhp.php';
     require_once 'DataProvider.php';
 
     define('SITE_KEY', '6LdLU6chAAAAAMIuG36XQwBKP7jkzgIaRnqEQWJo');
     define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
-    
+
+    require_once realpath(__DIR__ . '/vendor/autoload.php');
+
+    // $dotenv->required(['DB_SERVER', 'DB_DATABASE', 'DB_USER', 'DB_PASS']);
+
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
     $postData = $statusLogin = $statusRegister = $status = '';
     $msgClass = 'errordiv';
     $action = '';
@@ -12,14 +19,14 @@
     $expire = 365 * 24 * 3600; // We choose a one year duration
     ini_set('session.gc_maxlifetime', $expire);
     session_start();
-    setcookie(session_name(), session_id(), time() + $expire); 
+    setcookie(session_name(), session_id(), time() + $expire);
 
     if (isset($_SESSION['nameUser']) && isset($_SESSION['phoneUser'])) {
         header("Location: /");
     }
 
-    if(isset($_GET['action'])){
-        $action = $_GET['action']; 
+    if (isset($_GET['action'])) {
+        $action = $_GET['action'];
     }
 
     $errorForm = 0;
@@ -27,7 +34,7 @@
     $mysqli = DataProvider::getConnection();
     $postData = $_POST;
 
-    if(isset($_POST['submitSignin'])){
+    if (isset($_POST['submitSignin'])) {
         $phone = $_POST['phone'];
         $password = $_POST['password'];
 
@@ -44,27 +51,23 @@
 
             $numRow = mysqli_num_rows($list);
 
-            if($numRow === 1){
-                if($row["phone"] == $phone && $row["user_password"] == $password){
+            if ($numRow === 1) {
+                if ($row["phone"] == $phone && $row["user_password"] == $password) {
                     $_SESSION['nameUser'] = $row["fullname"];
                     $_SESSION['phoneUser'] = $row['phone'];
-                    if(isset($_SESSION['rewindURL']) && !empty($_SESSION['rewindURL'])){
+                    if (isset($_SESSION['rewindURL']) && !empty($_SESSION['rewindURL'])) {
                         $rewindUrl = $_SESSION['rewindURL'];
                         header("Location: $rewindUrl");
-                    }
-                    else{
+                    } else {
                         header("Location: /");
                     }
-                }
-                else{
+                } else {
                     $statusLogin = 'Số điện thoại hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
                 }
-            }
-            else{
+            } else {
                 $statusLogin = 'Số điện thoại hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
             }
-        }
-        else{
+        } else {
             $statusLogin = 'Số điện thoại hoặc mật khẩu không hợp lệ. Vui lòng thử lại.';
         }
     }
@@ -94,19 +97,29 @@
                     $_SESSION['nameUser'] = $fullname;
                     $_SESSION['phoneUser'] = $phone;
                     header("Location: /");
-                } 
-                else {
+                } else {
                     $statusRegister = 'Mật khẩu và xác nhận mật khẩu không trùng nhau. Vui lòng thử lại.';
                 }
-            } 
-            else {
+            } else {
                 $statusRegister = 'Số điện thoại này đã được đăng ký. Vui lòng thử với số điện thoại khác.';
             }
-        }
-        else {
+        } else {
             $statusRegister = 'Vui lòng điền đầy đủ thông tin.';
         }
     }
+
+    require_once( 'Facebook/autoload.php' );
+    
+    $fb = new Facebook\Facebook([
+        'app_id' => $_ENV["FACEBOOK_ID_APP"],
+        'app_secret' => $_ENV["FACEBOOK_SECRET_KEY"],
+        'default_graph_version' => 'v2.9',
+    ]);
+
+    $helper = $fb->getRedirectLoginHelper();
+    $permissions = ['email']; // Optional permissions
+    $loginUrl = $helper->getLoginUrl('https://thegioikhanuot.com/fb-callback.php', $permissions);
+
 ?>
 
 <!DOCTYPE html>
@@ -222,12 +235,28 @@
                                                         echo "show active";
                                                     } ?>" id="login" role="tabpanel" aria-labelledby="login-tab">
                                 <form method="POST" action="login" class="form-container" enctype="multipart/form-data">
-                                    <div class="mb-3 pt-3">
+                                    <div class="row pt-30">
+                                        <div class="col-md-6 pt-10">
+                                            <a href="#" class="btn-login-social">
+                                                <img alt="Logo" src="assets/imgs/icon/google.svg" class="pr-10">Đăng nhập với Google
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 pt-10">
+                                            <a href="<?php echo $loginUrl ?>" class="btn-login-social">
+                                                <img alt="Logo" src="assets/imgs/icon/facebook.svg" class="pr-10">Đăng nhập với Facebook
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="separator separator-content my-14">
+                                        <span class="w-125px text-gray-500 fw-semibold fs-7">Hoặc</span>
+                                    </div>
+                                        
                                         <?php
                                         if (!empty($statusLogin)) { ?>
+                                        <div class="mb-3 pt-3">
                                             <p class="statusLogin <?php echo !empty($msgClass) ? $msgClass : ''; ?>"><?php echo $statusLogin; ?></p>
+                                        </div>
                                         <?php } ?>
-                                    </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Số điện thoại</label>
                                         <input type="number" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" value="<?php echo !empty($postData['phone']) ? $postData['phone'] : ''; ?>" required="">

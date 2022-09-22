@@ -38,7 +38,7 @@
                                         </h6>
                                         <h4>1. Chính sách giao hàng</h4>
                                         <ul>
-                                            <li class="unstyle-list">Chi phí vận chuyển của các đơn hàng Online của Ecowipes sẽ được tính dựa trên 3 yếu tố:</li>
+                                            <li class="unstyle-list">Chi phí vận chuyển của các đơn hàng Online của Ecowipes sẽ được tính dựa trên 2 yếu tố:</li>
                                             <li>Khoảng cách giữa địa chỉ khách nhận hàng và nhà máy EcoWipes tại TP.HCM</li>
                                             <li>Tổng giá trị đơn hàng</li>
                                             <li class="unstyle-list pt-10">Chi phí vận chuyển cho đơn hàng dưới 300.000đ:</li>

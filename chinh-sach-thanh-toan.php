@@ -48,6 +48,10 @@
                                         <ul>
                                             <li class="unstyle-list">Khách hàng chọn thanh toán tiền mặt khi nhận hàng tại thời điểm thao tác đặt hàng trên website <a href="https://thegioikhanuot.com/">Thegioikhanuot.com</a> EcoWipes sẽ kiểm tra địa chỉ giao hàng của khách với điều kiện chấp nhận thanh toán COD. Nếu không thỏa điều kiện chấp nhận thanh toán COD, Bộ phận chăm sóc khách hàng sẽ liên hệ hướng dẫn khách hàng thanh toán trả trước. Nếu thỏa điều kiện chấp nhận thanh toán COD, nhân viên giao hàng sẽ giao hàng và nhận tiền thanh toán trực tiếp từ khách.</li>
                                         </ul>
+                                        <h4>3. Thanh Toán bằng Ví MoMo.</h4>
+                                        <ul>
+                                            <li class="unstyle-list">Khách hàng chọn thanh toán bằng ví MoMo</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
