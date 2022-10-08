@@ -67,8 +67,8 @@ if (!isset($_GET["item"])) {
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a>
-                    <span></span> <a href="shop">Cửa hàng</a>
+                    <!-- <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Trang chủ</a> -->
+                    <a href="shop">Sản phẩm</a>
                     <span></span><a href="shop?pid=<?php echo $brandProduct["brand_text"] ?>"> <?php echo $brandProduct["brand_name"] ?> </a>
                     <span></span><a href="shop?gid=<?php echo $groupProduct["group_text"] ?>"> <?php echo $groupProduct["group_name"] ?> </a>
                     <span></span><a href="shop?cid=<?php echo $typeProduct["type_text"] ?>"> <?php echo $typeProduct["type_name"] ?> </a>

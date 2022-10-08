@@ -243,7 +243,7 @@
                                 <form method="POST" action="login" class="form-container" enctype="multipart/form-data">
                                     <div class="row pt-30">
                                         <div class="col-md-6 pt-10">
-                                            <a href="#" class="btn-login-social">
+                                            <a href="google-login" class="btn-login-social">
                                                 <img alt="Logo" src="assets/imgs/icon/google.svg" class="pr-10">Đăng nhập với Google
                                             </a>
                                         </div>

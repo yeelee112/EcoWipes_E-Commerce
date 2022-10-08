@@ -72,9 +72,9 @@
 
         <section class="section-best-sale">
             <div class="container">
-                <!-- <div class="countdown-container pb-20">
+                <div class="countdown-container pb-20">
                     <div class="pb-10" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;font-weight:600;font-size:16px;">
-                        Kết thúc trong:
+                        Coming Soon
                     </div>
                     <div class="deals-countdown pl-5" id="clock" data-countdown="">
                         <span class="countdown-section">
@@ -94,9 +94,9 @@
                             <span class="countdown-period"> giây </span>
                         </span>
                     </div>
-                </div> -->
+                </div>
                 <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
-                    <h3 class>Best Sells Mỗi ngày</h3>
+                    <h3 class>Brand Opening</h3>
                     <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
                         <!-- <li class="nav-item" role="presentation">
                             <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
@@ -479,7 +479,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        $('#clock').countdown('2022/08/10 00:00:00').on('update.countdown',
+        $('#clock').countdown('2022/10/10 00:00:00').on('update.countdown',
             function(event) {
                 var $this = $(this).html(event.strftime('' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> Ngày </span></span>' +

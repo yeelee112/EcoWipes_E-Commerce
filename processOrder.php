@@ -244,7 +244,7 @@
 
                     //Recipients
                     $mail->setFrom($_ENV['USER_APP_GMAIL'], "Đơn hàng mới $idOrder");
-                    $mail->addAddress('chauhoangan789@gmail.com');     //Add a recipient             //Name is optional
+                    $mail->addAddress('cskh@ecowipes.com.vn');     //Add a recipient             //Name is optional
                     $mail->addReplyTo('digital@ecowipes.com.vn');
 
 
@@ -378,8 +378,8 @@
                     return $result;
                 }
 
-                // $endpoint = "https://payment.momo.vn/v2/gateway/api/create";
-                $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                $endpoint = "https://payment.momo.vn/v2/gateway/api/create";
+                // $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
                 $urlHost = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
@@ -404,8 +404,6 @@
                     $signature = hash_hmac("sha256", $rawHash, $secretKey);
                     $data = array(
                         'partnerCode' => $partnerCode,
-                        'partnerName' => "Test",
-                        "storeId" => "MomoTestStore",
                         'requestId' => $requestId,
                         'amount' => $amount,
                         'orderId' => $orderId,
@@ -423,8 +421,10 @@
                     $sqlAddTempOrder = "insert into temp_order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$emailUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";
                     DataProvider::execQuery($sqlAddTempOrder);
 
+                    echo $result;
+
                     // header('Location: ' . $jsonResult['payUrl']);
-                    echo json_encode(['location' => $jsonResult['payUrl']]);
+                    // echo json_encode(['location' => $jsonResult['payUrl']]);
                 }
             }
         }

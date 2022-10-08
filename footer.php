@@ -10,24 +10,33 @@
     </div>
 </div>
 
+
+<div class="popup">
+    <div id="close"><ion-icon name="close-circle-outline"></ion-icon></div>
+    <div class="popup-img-container">
+        <img src="assets/imgs/sale/EW_WebsiteEcommerce_GrandOpening_PopUp-800px.png" />
+    </div>
+</div>
+
 <footer class="main" style="margin-top:80px;">
     <section class="section-padding footer-mid">
         <div class="container pt-15 pb-20">
             <div class="row">
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6">
                     <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                         <div class="logo mb-30">
-                            <a href class="mb-15 footer-company-text" style="font-size:calc(0.8vw + 0.8vh)">Công ty Cổ phần EcoWipes Việt Nam</a>
+                            <a href="https://ecowipes.com.vn/" target="_blank" class="mb-15 footer-company-text" style="font-size:calc(0.8vw + 0.8vh)">Công ty Cổ phần EcoWipes Việt Nam</a>
                         </div>
                         <ul class="contact-infor">
-                            <li><img src="assets/imgs/theme/icons/icon-location.svg" alt><strong>Địa chỉ: </strong> <span>Số 03 đường An Phú Đông 25, P.An Phú Đông, Q.12, Tp.HCM</span></li>
-                            <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt><strong>ĐT: </strong><span><a href="tel:02862874999">(+84) 28 628 74 999</a></span></li>
-                            <li><img src="assets/imgs/theme/icons/icon-email-2.svg" alt><strong>Email: </strong><span><a href="mailto:info@ecowipes.com.vn" class="__cf_email__" data-cfemail="81f2e0ede4c1cfe4f2f5afe2eeec">info@ecowipes.com.vn</a></span></li>
-                            <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt><strong>Giờ làm việc: </strong><span>08:00 - 17:00, Thứ 2 - Thứ 7</span></li>
+                            <li><img src="assets/imgs/theme/icons/icon-location.svg" alt><strong>Địa chỉ:</strong> <span>&nbsp;Số 03 đường An Phú Đông 25, P.An Phú Đông, Q.12, Tp.HCM</span></li>
+                            <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt><strong>ĐT:</strong><span><a href="tel:02862874999" class="pr-20">&nbsp;(+84) 28 628 74 999</a></span><img src="assets/imgs/theme/icons/icon-email-2.svg" alt> <strong>Email: </strong><span><a href="mailto:info@ecowipes.com.vn" class="__cf_email__">&nbsp;info@ecowipes.com.vn</a></span></li>
+                            <li><img src="assets/imgs/theme/icons/icon-man.svg" alt><strong>Người đại diện:</strong><span>&nbsp;Nguyễn Anh Tuấn</span></li>
+                            <li><img src="assets/imgs/theme/icons/icon-paper.svg" alt><strong>ĐKKD:</strong>&nbsp;Số 0315110990 do sở KH &amp; ĐT TP.HCM cấp ngày 10/06/2022</li>
+                            <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt><strong>Giờ làm việc: &nbsp;</strong><span>08:00 - 17:00, Thứ 2 - Thứ 7</span></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-3">
                     <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
                         <h4 class="widget-title">Chính sách & Điều khoản</h4>
                         <ul class="footer-list mb-sm-5 mb-md-0">
@@ -38,7 +47,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-3">
                     <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
                         <h4 class="widget-title">Liên hệ với EcoWipes</h4>
                         <ul class="footer-list mb-sm-5 mb-md-0">
@@ -47,7 +56,7 @@
                             <li><a href="huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
                         </ul>
 
-                        <ul class="li-flex pt-10">
+                        <ul class="li-flex-align-center pt-10">
                             <li>
                                 <a href="https://www.facebook.com/ecowipesvietnam" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="40" height="40" x="0" y="0" viewBox="0 0 152 152" style="enable-background:new 0 0 512 512" xml:space="preserve">
@@ -80,6 +89,9 @@
                                     </svg>
                                 </a>
                             </li>
+                            <li>
+                                <a href="http://online.gov.vn/Home/WebDetails/98040" target="_blank"><img class="pt-5 pl-15" alt="" height="70" width="auto" title="" src="assets/imgs/icon/logoSaleNoti.png" /></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -93,7 +105,7 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6">
-                <p class="font-sm mb-0">&copy; 2022 <strong class="text-brand">EcoWipes Vietnam Corporation</strong> - All Rights Reserved.</p>
+                <p class="font-sm mb-0">&copy; 2022 <strong class="text-brand"><a href="https://ecowipes.com.vn/" target="_blank">EcoWipes Vietnam Corporation</a></strong> - All Rights Reserved.</p>
             </div>
             <div class="col-xl-6 col-lg-6 text-center d-none d-xl-block">
                 <div class="hotline d-lg-inline-flex mr-30">

@@ -92,6 +92,44 @@
         autoplay: true
     });
 
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
+
+    function setCookie(c_name, value, exdays) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+        document.cookie = c_name + "=" + c_value;
+    }
+
+    $(document).on('ready', function(){
+        if(getCookie("isPopupShow") === true){
+            if($('.popup').hasClass('show')){
+                $('.popup.show').removeClass('show'); 
+                console.log(1);
+            }
+        }
+        else{
+            $('.popup.show #close').on('click', function(){
+                $('.popup.show').removeClass('show');
+                console.log(2);
+                setCookie("isPopupShow",true,3);
+            });
+        }
+      });
 
     /*Carausel 8 columns*/
     $(".carausel-8-columns").each(function (key, item) {

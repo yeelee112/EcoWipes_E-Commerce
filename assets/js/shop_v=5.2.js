@@ -45,19 +45,36 @@
       function (event, slick, currentSlide, nextSlide) {
         var img = $(slick.$slides[nextSlide]).find("img");
         $(".zoomWindowContainer,.zoomContainer").remove();
-        $(img).elevateZoom({
-          zoomType: "inner",
-          cursor: "crosshair",
-          zoomWindowFadeIn: 500,
-          zoomWindowFadeOut: 750,
-        });
+        if ($(window).width() > 767) {
+          $(img).elevateZoom({
+            zoomType: "inner",
+            cursor: "crosshair",
+            zoomWindowFadeIn: 500,
+            zoomWindowFadeOut: 750,
+          });
+        }
+        if ($(window).width() < 767) {
+          $(img).elevateZoom({
+            zoomType: 'inner',
+    cursor: 'crosshair'
+          });
+        }
       }
     );
-    // $(document).ready(function() {
-    //   if ($(window).width() < 767) {
-    //     $(".zoomWindowContainer,.zoomContainer").remove();
-    //   }
+
+    // b.$elem.bind("touchmove", function(a) {
+    //   a.preventDefault();
+    //   b.setPosition(a.originalEvent.touches[0] || a.originalEvent.changedTouches[0])
     // });
+    
+    $(document).ready(function() {
+      if ($(window).width() < 767) {
+        var image = $(".product-image-slider .slick-active img");
+        $.removeData(image, 'elevateZoom');//remove zoom instance from image
+
+        $('.zoomContainer').remove();// remove zoom container from DOM
+      }
+    });
 
     //Elevate Zoom
     var totalPrice = $('.total-price').width();

@@ -11562,6 +11562,11 @@ footer .hotline img {
 }
 
 @media only screen and (max-width: 768px) {
+  .breadcrumb span {
+    position: relative;
+    text-align: center;
+    padding: 0 5px;
+  }
   .totall-product h2 {
     font-size: 28px;
   }
@@ -14292,6 +14297,11 @@ body.loading .modal {
   display: flex !important;
 }
 
+.li-flex-align-center{
+  display: flex !important;
+  align-items: center;
+}
+
 #map {
   height: 200px;
   /* The height is 400 pixels */
@@ -14438,5 +14448,66 @@ body.loading .modal {
   display: block;
   height: 0;
   border-bottom: 1px solid #dfdfdf;
+}
+
+ul.contact-infor li {
+  display: flex;
+  align-items: center;
+}
+
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/* ------------------------------------ */
+
+
+.popup.show {
+  display:    block;
+  position:   fixed;
+  z-index:    1000;
+  top:        0;
+  left:       0;
+  height:     100%;
+  width:      100%;
+  background: rgba( 0, 0, 0, .4 ) 
+              50% 50% 
+              no-repeat;
+}
+
+.popup.show popup-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.popup.show img{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.popup.show div ion-icon{
+  color: #fff;
+  height: 42px;
+  width: 42px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  cursor: pointer !important; 
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+
+@media only screen and (max-width: 768px) {
+  .popup.show img{
+    display: block;
+    margin: auto;
+    width: 80%;
+  }
 }
 /*# sourceMappingURL=main.css.map */

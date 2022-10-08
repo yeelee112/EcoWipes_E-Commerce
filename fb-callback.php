@@ -59,11 +59,20 @@
     $_SESSION['nameUser'] = $fullname;
     $_SESSION['emailUser'] = $email;
     $_SESSION['idUser'] = $id;
+    $_SESSION['loggedWith'] = 'Facebook';
 
     require_once 'DataProvider.php';
 
-    $sql = "insert into user_account values ('','$id','$email','','$fullname','',NULL,NOW(),NOW())";
-    DataProvider::execQuery($sql);
+    $sqlFind = "select * from user_account where uid = '$id' and email = '$email'";
+    $listFind = DataProvider::execQuery($sqlFind);
+
+    $numRow = mysqli_num_rows($listFind);
+
+    if($numRow < 1){
+        $sql = "insert into user_account values ('','$id','$email','','$fullname','',NULL,NOW(),NOW())";
+        DataProvider::execQuery($sql);
+    }
+   
 
     header("Location: /");
 ?>

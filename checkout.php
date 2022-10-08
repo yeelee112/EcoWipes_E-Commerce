@@ -428,37 +428,38 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                 method: "POST",
                 url: "processOrder",
                 data: $("#orderAccept").serialize(),
-                dataType:"json",
+                // dataType:"json",
             })
             .done(function(data) {
-                if(data == true){
-                    Swal.fire({
-                        html: "<strong>Đặt hàng thành công!</strong><br> <div class='mt-10' style='font-size:16px;'>Bạn sẽ tự động trở về trang chủ sau 3 giây<div>",
-                        icon: "success",
-                        timerProgressBar: true,
-                        timer: 3000,
-                        didOpen: () => {
-                            Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval);
-                            location.href = "/";
-                        }
-                    });
-                }
-                if(data == false){
-                    Swal.fire({
-                        html: "<strong>Đặt hàng không thành công!</strong><br>",
-                        icon: "error",
-                    });
-                }
-                if(data.location){
-                    window.location.href = data.location;
-                }
+                // if(data == true){
+                //     Swal.fire({
+                //         html: "<strong>Đặt hàng thành công!</strong><br> <div class='mt-10' style='font-size:16px;'>Bạn sẽ tự động trở về trang chủ sau 3 giây<div>",
+                //         icon: "success",
+                //         timerProgressBar: true,
+                //         timer: 3000,
+                //         didOpen: () => {
+                //             Swal.showLoading()
+                //             const b = Swal.getHtmlContainer().querySelector('b')
+                //             timerInterval = setInterval(() => {
+                //                 // b.textContent = Swal.getTimerLeft()
+                //             }, 100)
+                //         },
+                //         willClose: () => {
+                //             clearInterval(timerInterval);
+                //             location.href = "/";
+                //         }
+                //     });
+                // }
+                // if(data == false){
+                //     Swal.fire({
+                //         html: "<strong>Đặt hàng không thành công!</strong><br>",
+                //         icon: "error",
+                //     });
+                // }
+                // if(data.location){
+                //     window.location.href = data.location;
+                // }
+                console.log(data);
             });
         });
     </script>

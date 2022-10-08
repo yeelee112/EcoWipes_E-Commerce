@@ -16,11 +16,12 @@ $shippingSubUrbanFee = 40000;
 
 $freeShippingUrbanLevel = 300000;
 $freeShippingSubUrbanLevel = 500000;
-
+$avtUser = '';
 
 if (!isset($_SESSION)) {
     session_start();
 }
+
 require_once 'DataProvider.php';
 require_once 'counterGuest.php';
 
@@ -37,8 +38,15 @@ if (isset($_SESSION['nameUser']) && isset($_SESSION['idUser'])) {
     $priceTotal = 0;
 }
 
-if(isset($_SESSION['fb_access_token'])){
-    $loggedWith = 'facebook';
+
+echo $idUser;
+
+if(isset($_SESSION['avtUser'])){
+    $avtUser = $_SESSION['avtUser'];
+}
+
+if(isset($_SESSION['loggedWith'])){
+    $loggedWith = $_SESSION['loggedWith'];
 }
 
 $logoutAction = $_SERVER['PHP_SELF'] . "?doLogout=true";
@@ -63,6 +71,14 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
 
     if(isset($_SESSION['fb_access_token'])){
         unset($_SESSION['fb_access_token']);
+    }
+
+    if(isset($_SESSION['avtUser'])){
+        unset($_SESSION['avtUser']);
+    }
+
+    if(isset($_SESSION['loggedWith'])){
+        unset($_SESSION['loggedWith']);
     }
 
     if(isset($_SESSION['emailUser'])){
@@ -110,7 +126,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
                                     <?php
                                     if ($checkAccountSession == true) { ?>
                                         <a href="#">
-                                            <img class="avt-account" src="<?php if($loggedWith == ''){ echo "https://ui-avatars.com/api/?name=$nameUser; &rounded=true&size=48"; } else{  echo "<img src='//graph.facebook.com/$idUser/picture'>"; }?> ">
+                                            <img class="avt-account" style="height:48px;border-radius: 50%;" src="<?php if($loggedWith == ''){ echo "https://ui-avatars.com/api/?name=$nameUser; &rounded=true&size=48"; } else if($loggedWith == 'Facebook'){  echo "//graph.facebook.com/$idUser/picture"; } else if($loggedWith == 'Google'){ echo $_SESSION['avtUser']; }?> ">
                                         </a>
                                         <a><span class="lable ml-0"><?php echo $nameUser; ?></span></a>
                                     <?php

@@ -6,6 +6,7 @@ $mysqli = DataProvider::getConnection();
 $result = '&';
 $temp = 0;
 $rs = 0;
+$sort = '';
 $sqlListProduct = "";
 $searchStatus = 0;
 
@@ -37,17 +38,21 @@ if (isset($_GET["sort"])) {
     $sort = mysqli_real_escape_string($mysqli, $_GET["sort"]);
 }
 
+if(!isset($_GET["sort"])){
+    $sort = 'porpularity';
+}
+
 
 if (isset($pid)) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and b.brand_text = '$pid'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1, p.price_old from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 and b.brand_text = '$pid'";
 } else if (isset($gid)) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and g.group_text = '$gid'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1, p.price_old from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 and g.group_text = '$gid'";
 } else if (isset($cid)) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and t.type_text = '$cid'";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1, p.price_old from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 and t.type_text = '$cid'";
 } else if ($searchStatus == 1) {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and (b.brand_name like '%$search%' or g.group_name like '%$search%' or t.type_name like '%$search%' or p.sheet_style like '%$search%' or p.type_style like '%$search%')";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1, p.price_old from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id and p.is_combo = 1 and (b.brand_name like '%$search%' or g.group_name like '%$search%' or t.type_name like '%$search%' or p.sheet_style like '%$search%' or p.type_style like '%$search%')";
 } else {
-    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1 from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id";
+    $sqlListProduct = "SELECT p.id as SKU, p.product_text, p.product_name, p.price, p.total_sold, b.brand_name, b.brand_text, g.group_text, g.group_name, t.type_name, i.img_thumb, i.img_1, p.price_old from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.is_combo = 1 and p.id = i.product_id";
 }
 
 if ($temp > 1) {
@@ -176,7 +181,7 @@ function removeQueryStringParameter($url, $varname)
                         <h5 class="section-title style-1 mb-30">Sản phẩm mới</h5>
                         <?php
                         require_once 'DataProvider.php';
-                        $sql = "select p.product_name, p.price, i.img_thumb, p.product_text from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.id = i.product_id LIMIT 3";
+                        $sql = "select p.product_name, p.price, i.img_thumb, p.product_text from brand_product b, group_product g, type_product t, product p, image_product i where b.id = g.brand_id and g.id = t.group_id and t.id = p.type_id and p.is_combo = 1 and p.id = i.product_id LIMIT 3";
                         $list = DataProvider::execQuery($sql);
                         while ($row = mysqli_fetch_array($list, MYSQLI_ASSOC)) {
                         ?>
@@ -273,7 +278,10 @@ function removeQueryStringParameter($url, $varname)
 
                                             <div class="product-price">
                                                 <span><?php echo number_format($row["price"], 0, ",", "."); ?> ₫</span>
-                                                <!-- <span class="old-price">40.000 đ</span> -->
+                                                <?php 
+                                                    if ($row["price_old"] != NULL)
+                                                        echo '<span class="old-price">' . number_format($row["price_old"], 0, ",", ".") . ' ₫</span>';
+                                                ?>
                                             </div>
                                             <div class="add-cart">
                                                 <button class="add" onclick="add_to_cart_per_click(this.value)" value="<?php echo $row["product_text"] ?>"><i class="fi-rs-shopping-cart mr-5"></i> <span>Thêm</span></button>
