@@ -116,20 +116,18 @@
     }
 
     $(document).on('ready', function(){
-        if(getCookie("isPopupShow") === true){
-            if($('.popup').hasClass('show')){
-                $('.popup.show').removeClass('show'); 
-                console.log(1);
-            }
+        if(getCookie("isPopupShow") !== 'true'){
+            $('.popup').addClass('show');
         }
-        else{
-            $('.popup.show #close').on('click', function(){
-                $('.popup.show').removeClass('show');
-                console.log(2);
-                setCookie("isPopupShow",true,3);
-            });
-        }
+    });
+
+    $(document).on("ready", function () {
+      $(".popup.show #close").on("click", function () {
+        $(".popup.show").removeClass("show");
+        setCookie("isPopupShow", true, 3);
+        $(".popup").remove();
       });
+    });
 
     /*Carausel 8 columns*/
     $(".carausel-8-columns").each(function (key, item) {

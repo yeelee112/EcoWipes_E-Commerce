@@ -14461,6 +14461,9 @@ ul.contact-infor li {
 /* ------------------------------------ */
 /* ------------------------------------ */
 
+.popup{
+  display: none;
+}
 
 .popup.show {
   display:    block;
