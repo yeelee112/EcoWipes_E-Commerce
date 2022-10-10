@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html class="no-js" lang="vi">
 
 <head>
@@ -17,6 +17,11 @@
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                        <a href="shop">
+                            <div class="single-hero-slider single-animation-wrap slider-img-discount">
+
+                            </div>
+                        </a>
                         <a href="shop?cid=khan-uot-bamboo">
                             <div class="single-hero-slider single-animation-wrap slider-img-1">
                                 <div class="slider-content text-slider-2-container text-slider-4-pt">
@@ -74,7 +79,7 @@
             <div class="container">
                 <div class="countdown-container pb-20">
                     <div class="pb-10" style="background: linear-gradient(to right, purple, red);-webkit-background-clip: text;-webkit-mask-clip: text;-webkit-text-fill-color: transparent;font-weight:600;font-size:16px;">
-                        Coming Soon
+                        FLASH SALE
                     </div>
                     <div class="deals-countdown pl-5" id="clock" data-countdown="">
                         <span class="countdown-section">
@@ -96,7 +101,7 @@
                     </div>
                 </div>
                 <div class="section-title wow animate__animated animate__fadeIn" style="display:flex;align-items:center;">
-                    <h3 class>Brand Opening</h3>
+                    <h3 class>Grand Opening Sale</h3>
                     <ul class="nav nav-tabs links" id="myTab-2" role="tablist">
                         <!-- <li class="nav-item" role="presentation">
                             <button class="nav-link active" style="display:flex;align-items:center;" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">
@@ -109,7 +114,7 @@
                             <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán chạy</button>
                         </li> -->
                         <li class="nav-item" role="presentation" style="display:flex;">
-                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New</button>
+                            <button class="nav-link active" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Sale</button>
                         </li>
                     </ul>
                 </div>
@@ -144,7 +149,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="hot">New</span>
+                                                        <span class="hot">Sale</span>
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
@@ -244,7 +249,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">New</span>
+                                                <span class="hot">Sale</span>
                                             </div>
                                         </div>
                                         <div class="product-content-wrap">
@@ -479,7 +484,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        $('#clock').countdown('2022/10/10 00:00:00').on('update.countdown',
+        $('#clock').countdown('2022/10/17 00:00:00').on('update.countdown',
             function(event) {
                 var $this = $(this).html(event.strftime('' +
                     '<span class="countdown-section"><span class="countdown-amount hover-up">%D</span><span class="countdown-period"> Ngày </span></span>' +

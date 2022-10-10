@@ -1,4 +1,7 @@
 <?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     $shippingUrbanFee = 20000;
     $shippingSubUrbanFee = 40000;
 
@@ -12,6 +15,18 @@
     $shippingFeeText = '';
     $priceTotalCart = 0;
     $data = '';
+
+    if(isset($_SESSION["coupon"])){
+        $coupon = $_SESSION["coupon"];
+        require_once "DataProvider.php";
+
+        $sql = "select * from coupon where coupon_code = '$coupon'";
+        $list = DataProvider::execQuery($sql);
+        $row = mysqli_fetch_assoc($list);
+
+        $shippingUrbanFee = 'Miễn phí';
+        $shippingSubUrbanFee = 'Miễn phí';
+    }
 
     if(isset($_POST["city"])){
         $city = $_POST["city"];
@@ -35,7 +50,7 @@
             if($totalPrice >= $freeShippingSubUrbanLevel){
                 $shippingFee = 'Miễn phí';
             }
-            else if($totalPrice < $freeShippingSubUrbanLevel && $totalPrice > $freeShippingUrbanLevel){
+            else if($totalPrice < $freeShippingSubUrbanLevel && $totalPrice >= $freeShippingUrbanLevel){
                 // echo $shippingSubUrbanFee - ($shippingSubUrbanFee * ($percentageDescrease / 100));
                 $shippingFee = $shippingSubUrbanFee;
                 $shippingDiscount = ($shippingSubUrbanFee * ($percentageDecrease / 100));

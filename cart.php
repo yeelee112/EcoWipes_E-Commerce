@@ -223,10 +223,11 @@ $messageContainerFreeShip = '';
                         <div class="row">
                             <div class="col-12">
                                 <label class="coupon-label">Mã giảm giá</label>
-                                <form method="post" class="apply-coupon">
-                                    <input type="text" style="font-size: 14px;" placeholder="Nhập mã giảm giá">
-                                    <button class="btn btn-md" name="login">Sử dụng</button>
+                                <form method="post" id="apply-coupon" class="apply-coupon">
+                                    <input type="text" style="font-size: 14px;" name="coupon" id="coupon" placeholder="Nhập mã giảm giá">
+                                    <button class="btn btn-md" type="submit" form="apply-coupon">Sử dụng</button>
                                 </form>
+                                <div class="coupon-result"></div>
                             </div>
                         </div>
                     </div>
@@ -260,6 +261,20 @@ $messageContainerFreeShip = '';
         //     }
         // });
 
+
+        $(".apply-coupon").submit(function(e) {
+            e.preventDefault();
+            var couponValue = $('#coupon').val();
+            $.ajax({
+                method: "POST",
+                url: "processCouponApply",
+                data: "coupon="+ couponValue,
+                // dataType:"json",
+            })
+            .done(function(data) {
+                $('.coupon-result').html(data);
+            });
+        });
 
 
         $(document).ready(function() {

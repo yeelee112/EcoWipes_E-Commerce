@@ -5894,6 +5894,8 @@ table.no-border thead {
   padding-left: 50px;
 }
 
+
+
 .apply-coupon button {
   min-width: 120px;
   height: 51px;
@@ -11562,6 +11564,15 @@ footer .hotline img {
 }
 
 @media only screen and (max-width: 768px) {
+  .apply-coupon input {
+    height: 51px;
+    border-radius: 10px 0 0 10px;
+    background-image: none;
+    /* background-position: 20px center; */
+    /* background-repeat: no-repeat; */
+    padding-left: 20px;
+  }
+
   .breadcrumb span {
     position: relative;
     text-align: center;
@@ -13419,6 +13430,8 @@ p.sup-total-summary-label {
     border: 1px dashed #c5c5c5;
 
   }
+
+
 }
 
 .total-price-checkout-container {
@@ -14309,6 +14322,10 @@ body.loading .modal {
   /* The width is the width of the web page */
 }
 
+.slider-img-discount{
+  background-image: url(../imgs/slider/EW_Website_GrandOpening_SlideBanner_W1920xH700px.png);
+}
+
 .slider-img-1{
   background-image: url(../imgs/slider/EB_BAMBOO-Wipes_SlideBanner_02_W1920xH700px.png);
 }
@@ -14512,5 +14529,24 @@ ul.contact-infor li {
     margin: auto;
     width: 80%;
   }
+
+  .inline-btn {
+    /* margin-left: -50px; */
+    height: 50px;
+    width: 150px;
+    padding: 0 0 !important;
+    font-size: 12px !important;
+  }
+  .feature-checkout-container input {
+    font-size: 12px;
+  }
+}
+
+.inline-btn {
+  /* margin-left: -50px; */
+  height: 50px;
+  width: 150px;
+  padding: 0 0 !important;
+  font-size:14px !important;
 }
 /*# sourceMappingURL=main.css.map */

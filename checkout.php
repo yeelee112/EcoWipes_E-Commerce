@@ -62,24 +62,22 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
             outline: 0;
             box-shadow: none;
         }
+
         .modal {
-            display:    none;
-            position:   fixed;
-            z-index:    1000;
-            top:        0;
-            left:       0;
-            height:     100%;
-            width:      100%;
-            background: rgba( 255, 255, 255, .8 ) 
-                        url("assets/imgs/loader.gif") 
-                        50% 50% 
-                        no-repeat;
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .8) url("assets/imgs/loader.gif") 50% 50% no-repeat;
         }
 
         /* When the body has the loading class, we turn
         the scrollbar off with overflow:hidden */
         body.loading .modal {
-            overflow: hidden;   
+            overflow: hidden;
         }
 
         /* Anytime the body has the loading class, our
@@ -258,10 +256,14 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="feature-checkout-container d-inline-flex align-items-center">
-                                    <label for="inputVoucher" class="lb-message"><img class="pr-10" src="assets/imgs/icon/ticket.svg">Voucher: </label>
-                                    <input type="text" id="inputVoucher" name="voucher" required>
-                                </div>
+                                <form method="post" id="apply-coupon">
+                                    <div class="feature-checkout-container d-inline-flex align-items-center">
+                                        <label for="inputVoucher" class="lb-message"><img class="pr-10" src="assets/imgs/icon/ticket.svg">Voucher: </label>
+                                        <input type="text" id="inputVoucher" name="voucher" required>
+                                        <button class="inline-btn" type="submit" form="apply-coupon">Áp dụng</button>
+                                    </div>
+                                </form>
+                                <div style="padding-left:30px;"class="coupon-result"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -372,7 +374,9 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
             </div>
         </div>
     </main>
-    <div class="modal"><!-- Place at bottom of page --></div>
+    <div class="modal">
+        <!-- Place at bottom of page -->
+    </div>
 
     <?php require_once 'footer.php' ?>
     <?php require_once 'script.php' ?>
@@ -381,13 +385,15 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script>
+    <script>
         grecaptcha.ready(function() {
-            grecaptcha.execute('<?php echo SITE_KEY; ?>', {action: 'homepage'})
-            .then(function(token) {
-                //console.log(token);
-                document.getElementById('g-recaptcha-response').value=token;
-            });
+            grecaptcha.execute('<?php echo SITE_KEY; ?>', {
+                    action: 'homepage'
+                })
+                .then(function(token) {
+                    //console.log(token);
+                    document.getElementById('g-recaptcha-response').value = token;
+                });
         });
     </script>
     <script>
@@ -397,6 +403,19 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
         // $.validator.addMethod('phone', function (value) {
         //     return /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/.test(value);
         // }, 'Please enter a valid US or Canadian postal code.');
+        $(".apply-coupon").submit(function(e) {
+            e.preventDefault();
+            var couponValue = $('#inputVoucher').val();
+            $.ajax({
+                method: "POST",
+                url: "processCouponApply",
+                data: "coupon="+ couponValue,
+                // dataType:"json",
+            })
+            .done(function(data) {
+                $('.coupon-result').html(data);
+            });
+        });
 
 
         $(document).ready(function() {
@@ -418,49 +437,53 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
 
         $body = $("body");
         $(document).on({
-            ajaxStart: function() { $body.addClass("loading"); },
-            ajaxStop: function() { $body.removeClass("loading"); }    
+            ajaxStart: function() {
+                $body.addClass("loading");
+            },
+            ajaxStop: function() {
+                $body.removeClass("loading");
+            }
         });
 
         $("#orderAccept").submit(function(e) {
             e.preventDefault();
             $.ajax({
-                method: "POST",
-                url: "processOrder",
-                data: $("#orderAccept").serialize(),
-                // dataType:"json",
-            })
-            .done(function(data) {
-                // if(data == true){
-                //     Swal.fire({
-                //         html: "<strong>Đặt hàng thành công!</strong><br> <div class='mt-10' style='font-size:16px;'>Bạn sẽ tự động trở về trang chủ sau 3 giây<div>",
-                //         icon: "success",
-                //         timerProgressBar: true,
-                //         timer: 3000,
-                //         didOpen: () => {
-                //             Swal.showLoading()
-                //             const b = Swal.getHtmlContainer().querySelector('b')
-                //             timerInterval = setInterval(() => {
-                //                 // b.textContent = Swal.getTimerLeft()
-                //             }, 100)
-                //         },
-                //         willClose: () => {
-                //             clearInterval(timerInterval);
-                //             location.href = "/";
-                //         }
-                //     });
-                // }
-                // if(data == false){
-                //     Swal.fire({
-                //         html: "<strong>Đặt hàng không thành công!</strong><br>",
-                //         icon: "error",
-                //     });
-                // }
-                // if(data.location){
-                //     window.location.href = data.location;
-                // }
-                console.log(data);
-            });
+                    method: "POST",
+                    url: "processOrder",
+                    data: $("#orderAccept").serialize(),
+                    // dataType:"json",
+                })
+                .done(function(data) {
+                    if (data == true) {
+                        Swal.fire({
+                            html: "<strong>Đặt hàng thành công!</strong><br> <div class='mt-10' style='font-size:16px;'>Bạn sẽ tự động trở về trang chủ sau 3 giây<div>",
+                            icon: "success",
+                            timerProgressBar: true,
+                            timer: 3000,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    // b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval);
+                                location.href = "/";
+                            }
+                        });
+                    }
+                    if (data == false) {
+                        Swal.fire({
+                            html: "<strong>Đặt hàng không thành công!</strong><br>",
+                            icon: "error",
+                        });
+                    }
+                    if (data.location) {
+                        window.location.href = data.location;
+                    }
+                    // console.log(data);
+                });
         });
     </script>
 
