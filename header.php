@@ -39,8 +39,6 @@ if (isset($_SESSION['nameUser']) && isset($_SESSION['idUser'])) {
 }
 
 
-echo $idUser;
-
 if(isset($_SESSION['avtUser'])){
     $avtUser = $_SESSION['avtUser'];
 }

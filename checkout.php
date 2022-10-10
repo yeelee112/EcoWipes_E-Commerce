@@ -259,7 +259,7 @@ define('SECRET_KEY', '6LdLU6chAAAAAAfLBWJRTvd5u-Rm6oJxxFaQAoZU');
                                 <form method="post" id="apply-coupon">
                                     <div class="feature-checkout-container d-inline-flex align-items-center">
                                         <label for="inputVoucher" class="lb-message"><img class="pr-10" src="assets/imgs/icon/ticket.svg">Voucher: </label>
-                                        <input type="text" id="inputVoucher" name="voucher" required>
+                                        <input type="text" id="inputVoucher" name="voucher" value="<?php if(isset($_SESSION["coupon"])){ echo $_SESSION["coupon"]; } ?>" required>
                                         <button class="inline-btn" type="submit" form="apply-coupon">Áp dụng</button>
                                     </div>
                                 </form>

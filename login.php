@@ -92,7 +92,7 @@
                 if ($password == $repassword) {
                     $password = md5($password);
 
-                    $sql = "insert into user_account values ('','','$email','$password','$fullname','$phone',NULL,NOW(),NOW())";
+                    $sql = "insert into user_account values ('','','$email','$password','$fullname','$phone',NULL,NULL,NOW(),NOW())";
                     DataProvider::execQuery($sql);
 
                     $sqlGetIDUser = "select * from user_account where email = '$email' and phone = '$phone'";
@@ -279,14 +279,18 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <button name="submitSignin" id="submit-login" class="btn-full-width">ĐĂNG NHẬP</button>
+                                    <div class="d-flex flex-row-reverse">
+                                        <a href="reset-password">Quên mật khẩu?</a>
+                                    </div>
+                                    
+                                    <button name="submitSignin" id="submit-login" class="btn-full-width mt-3">ĐĂNG NHẬP</button>
                                 </form>
                             </div>
                             <div class="tab-pane <?php if ($errorForm == 1 || $action == 'register') {
                                                         echo "show active";
                                                     } ?>" id="register" role="tabpanel" aria-labelledby="register-tab">
                                 <form method="POST" action="" class="form-container" enctype="multipart/form-data">
-                                    <div class="mb-3 pt-3">
+                                    <div class="pb-3 pt-3">
                                         <?php
                                         if (!empty($statusRegister)) { ?>
                                             <p class="statusRegister <?php echo !empty($msgClass) ? $msgClass : ''; ?>"><?php echo $statusRegister; ?></p>

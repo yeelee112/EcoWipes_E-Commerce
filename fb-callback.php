@@ -69,7 +69,7 @@
     $numRow = mysqli_num_rows($listFind);
 
     if($numRow < 1){
-        $sql = "insert into user_account values ('','$id','$email','','$fullname','',NULL,NOW(),NOW())";
+        $sql = "insert into user_account values ('','$id','$email','','$fullname','',NULL,NULL,NOW(),NOW())";
         DataProvider::execQuery($sql);
     }
    

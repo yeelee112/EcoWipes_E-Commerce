@@ -7,9 +7,9 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    require_once 'PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
-    require_once 'PHPMailer-master/PHPMailer-master/src/Exception.php';
-    require_once 'PHPMailer-master/PHPMailer-master/src/SMTP.php';
+    require_once 'PHPMailer-master/src/PHPMailer.php';
+    require_once 'PHPMailer-master/src/Exception.php';
+    require_once 'PHPMailer-master/src/SMTP.php';
 
     require_once realpath(__DIR__ . '/vendor/autoload.php');
 
@@ -134,7 +134,11 @@
             $sql1 = substr($sql1, 0, -1) . ")";
             $list1 = DataProvider::execQuery($sql1);
             $temp = 1;
-
+                $dataMail .= '<tr>
+                    <th>No.</th>
+                    <th class="center-tr">Sản phẩm</th>
+                    <th>Số lượng</th>
+                    </tr>';
             while ($row1 = mysqli_fetch_array($list1, MYSQLI_ASSOC)) {
 
                 $sqlAddOrderItem = "insert into order_items values ('','$idOrder','" . $row1["product_id"] . "','" . $_SESSION['cart'][$row1['product_text']]['quantity'] . "',now(),now())";
@@ -158,11 +162,7 @@
 
             if ($paymentMethod == "COD" || $paymentMethod == "Banking") {
 
-                $dataMail = '<tr>
-                    <th>No.</th>
-                    <th class="center-tr">Sản phẩm</th>
-                    <th>Số lượng</th>
-                    </tr>';
+
 
                 $emailInfo = '';
 
@@ -223,6 +223,8 @@
                         <p style="font-size: 0.8rem;">*Ghi chú: ' . $messageUser . '</p>
                         </div>';
                 }
+
+                unset($_SESSION["coupon"]);
 
                 $sqlAddOrderDetail = "insert into order_detail values('$idOrder', '$idUserOder','$priceTotal','$nameUser','$phoneUser','$emailUser','$addressUser','$address', $shippingFee ,'$paymentMethod','$messageUser',0,now(),now())";
                 DataProvider::execQuery($sqlAddOrderDetail);

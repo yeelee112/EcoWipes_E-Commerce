@@ -64,7 +64,7 @@
             $_SESSION['avtUser'] = $picture;
             $_SESSION['loggedWith'] = 'Google';
 
-            $sql = "insert into user_account values ('','$id','$email','','$name','',NULL,NOW(),NOW())";
+            $sql = "insert into user_account values ('','$id','$email','','$name','',NULL,NULL,NOW(),NOW())";
             DataProvider::execQuery($sql);
             header('Location: /');
         }
